@@ -71,7 +71,14 @@ class AreaSelectorWidget:
     
     def _clear_selection(self):
         try:
-            self.selector.clear()
+            # Clear the selector data
+            self.selector.x1 = None
+            self.selector.y1 = None
+            self.selector.x2 = None
+            self.selector.y2 = None
+            self.selector.is_configured = False
+            self.selector.preview_image = None
+            
             self._update_status()
             self._update_preview()
             self.main_app.log(f"{self.title} area cleared")

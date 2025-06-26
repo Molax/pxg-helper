@@ -431,3 +431,17 @@ class AreaSelector:
         except Exception as e:
             self.logger.error(f"Error capturing region: {e}", exc_info=True)
             return None
+        
+    def configure_from_coordinates(self, x1, y1, x2, y2):
+        """Compatibility method for old interface"""
+        return self.configure_from_saved(x1, y1, x2, y2)
+
+    def clear(self):
+        """Clear the area selection"""
+        self.x1 = None
+        self.y1 = None
+        self.x2 = None
+        self.y2 = None
+        self.is_configured = False
+        self.preview_image = None
+        return True

@@ -53,7 +53,10 @@ class ConfigManager:
                     x1, y1, x2, y2 = area_config.get("x1"), area_config.get("y1"), area_config.get("x2"), area_config.get("y2")
                     
                     if all(coord is not None for coord in [x1, y1, x2, y2]):
-                        if selector.configure_from_coordinates(x1, y1, x2, y2):
+                        # Use the correct method name: configure_from_saved
+                        # Don't rely on return value, check is_setup() instead
+                        selector.configure_from_saved(x1, y1, x2, y2)
+                        if selector.is_setup():
                             areas_loaded += 1
                             self.main_app.log(f"Loaded {area_name}: ({x1},{y1}) to ({x2},{y2})")
                             
@@ -90,12 +93,15 @@ class ConfigManager:
     
     def _load_navigation_config(self, config):
         navigation_steps = config.get("navigation_steps", [])
-        if navigation_steps:
-            self.main_app.navigation_manager.load_steps_data(navigation_steps)
-            if hasattr(self.main_app, 'interface_manager') and hasattr(self.main_app.interface_manager, 'navigation_panel'):
-                self.main_app.interface_manager.navigation_panel.refresh_steps_display()
-                self.main_app.interface_manager.navigation_panel.check_navigation_ready()
-            self.main_app.log(f"Loaded {len(navigation_steps)} navigation steps")
+        if navigation_steps and hasattr(self.main_app, 'navigation_manager'):
+            try:
+                self.main_app.navigation_manager.load_steps_data(navigation_steps)
+                if hasattr(self.main_app, 'interface_manager') and hasattr(self.main_app.interface_manager, 'navigation_panel'):
+                    self.main_app.interface_manager.navigation_panel.refresh_steps_display()
+                    self.main_app.interface_manager.navigation_panel.check_navigation_ready()
+                self.main_app.log(f"Loaded {len(navigation_steps)} navigation steps")
+            except Exception as e:
+                logger.error(f"Error loading navigation config: {e}")
     
     def _load_helper_settings(self, config):
         try:
@@ -179,7 +185,13 @@ class ConfigManager:
         except Exception as e:
             logger.debug(f"Could not save controls panel settings: {e}")
             
-        config["navigation_steps"] = self.main_app.navigation_manager.get_steps_data()
+        # Save navigation steps if navigation manager exists
+        if hasattr(self.main_app, 'navigation_manager'):
+            try:
+                config["navigation_steps"] = self.main_app.navigation_manager.get_steps_data()
+            except Exception as e:
+                logger.debug(f"Could not save navigation steps: {e}")
+                config["navigation_steps"] = []
     
     def save_on_exit(self):
         try:
