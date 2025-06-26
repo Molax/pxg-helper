@@ -1,0 +1,25 @@
+2025-06-26 16:59:33,135 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 16:59:33,323 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 16:59:33,489 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 16:59:33,522 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 16:59:33,524 - PokeXHelper - INFO - Selection configured from saved coordinates: (40,420) to (277,463)
+2025-06-26 16:59:33,754 - PokeXHelper - INFO - Loaded health_bar: (40,420) to (277,463)
+2025-06-26 16:59:33,932 - PokeXHelper - INFO - Selection configured from saved coordinates: (1447,55) to (1712,372)
+2025-06-26 16:59:34,088 - PokeXHelper - INFO - Loaded minimap: (1447,55) to (1712,372)
+2025-06-26 16:59:34,249 - PokeXHelper - INFO - Selection configured from saved coordinates: (17,337) to (283,704)
+2025-06-26 16:59:34,402 - PokeXHelper - INFO - Loaded battle_area: (17,337) to (283,704)
+2025-06-26 16:59:34,586 - PokeXHelper - INFO - Configuration loaded: 3/3 areas restored
+2025-06-26 16:59:34,588 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 16:59:34,588 - PokeXHelper - INFO - Selection configured from saved coordinates: (1452,60) to (1571,84)
+2025-06-26 16:59:34,762 - PokeXHelper - INFO - Loaded coordinate area: (1452,60) to (1571,84)
+2025-06-26 16:59:34,764 - PokeXHelper - INFO - Loaded 2 navigation steps
+2025-06-26 16:59:34,766 - PokeXHelper - INFO - Refreshing steps display - 2 steps
+2025-06-26 16:59:34,946 - PokeXHelper - INFO - Navigation ready with 2 configured steps
+2025-06-26 16:59:34,947 - PokeXHelper - INFO - Loaded 2 navigation steps
+2025-06-26 16:59:34,948 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 16:59:39,403 - PokeXHelper - INFO - Saving health_bar: (40,420) to (277,463)
+2025-06-26 16:59:39,403 - PokeXHelper - INFO - Saving minimap: (1447,55) to (1712,372)
+2025-06-26 16:59:39,403 - PokeXHelper - INFO - Saving battle_area: (17,337) to (283,704)
+2025-06-26 16:59:39,404 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-06-26 16:59:39,404 - PokeXHelper - INFO - Serialized 2 steps for saving
+2025-06-26 16:59:39,405 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved

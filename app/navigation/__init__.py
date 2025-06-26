@@ -1,9 +1,9 @@
-from .navigation_manager import NavigationManager
+from .managers.navigation_manager import NavigationManager
 from .navigation_step import NavigationStep
-from .step_detector import StepDetector
+from .processors.step_detector import StepDetector
 from .coordinate_parser import CoordinateParser
-from .step_validator import StepValidator
-from .icon_manager import IconManager
+from .validation.step_validator import StepValidator
+from .services.icon_service import IconService
 
 __all__ = [
     'NavigationManager',
@@ -11,5 +11,5 @@ __all__ = [
     'StepDetector',
     'CoordinateParser',
     'StepValidator',
-    'IconManager'
+    'IconService'
 ]
