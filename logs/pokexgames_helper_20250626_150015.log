@@ -1,0 +1,71 @@
+2025-06-26 15:00:15,541 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 15:00:15,728 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 15:00:15,735 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 15:00:15,762 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 15:00:15,766 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:00:15,766 - PokeXHelper - INFO - Selection configured from saved coordinates: (64,516) to (260,528)
+2025-06-26 15:00:16,063 - PokeXHelper - INFO - Selection configured from saved coordinates: (3173,46) to (3436,366)
+2025-06-26 15:00:16,361 - PokeXHelper - INFO - Selection configured from saved coordinates: (13,412) to (280,787)
+2025-06-26 15:00:16,627 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:00:16,627 - PokeXHelper - INFO - Coordinate Display Area configured from saved coordinates: (3171,50) to (3292,73)
+2025-06-26 15:00:16,752 - PokeXHelper - INFO - Loaded 2 navigation steps
+2025-06-26 15:00:16,914 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 15:00:31,649 - PokeXHelper - INFO - Starting navigation with 2 valid steps
+2025-06-26 15:00:31,649 - PokeXHelper - INFO -  Starting navigation sequence with 2 steps
+2025-06-26 15:00:31,649 - PokeXHelper - INFO -  Found 2 active steps, 2 ready with icons
+2025-06-26 15:00:31,651 - PokeXHelper - INFO -  Processing step 1/2: 'step first'
+2025-06-26 15:00:31,651 - PokeXHelper - INFO -  Executing step 1: 'step first'
+2025-06-26 15:00:31,791 - PokeXHelper - INFO -  Found step 1 icon at (3281, 216) with 100.0% confidence
+2025-06-26 15:00:32,063 - PokeXHelper - INFO -  Clicked at (3281, 216) for step 1
+2025-06-26 15:00:32,114 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 15:00:32,114 - PokeXHelper - INFO -  Waiting 4.0 seconds for step completion
+2025-06-26 15:00:36,115 - PokeXHelper - INFO -  Validating completion of step 1: 'step first'
+2025-06-26 15:00:36,116 - PokeXHelper - INFO -  Step has coordinate validation: 3953,3633,6
+2025-06-26 15:00:37,124 - PokeXHelper - INFO - OCR method 'basic' successful: (3953, 3633, 6)
+2025-06-26 15:00:37,124 - PokeXHelper - INFO - OCR detected text (threshold 180): '(3953,3633,6),'
+2025-06-26 15:00:37,125 - PokeXHelper - INFO - Extracted coordinates from coordinate area: (3953, 3633, 6)
+2025-06-26 15:00:37,125 - PokeXHelper - INFO -  Coordinate check: Expected (3953, 3633), Actual (3953, 3633)
+2025-06-26 15:00:37,125 - PokeXHelper - INFO -  X difference: 0, Y difference: 0 (margin: 10)
+2025-06-26 15:00:37,125 - PokeXHelper - INFO -  Coordinate validation successful on attempt 1
+2025-06-26 15:00:37,125 - PokeXHelper - INFO -  Step 1 'step first' completed successfully
+2025-06-26 15:00:38,127 - PokeXHelper - INFO -  Processing step 2/2: 'step second'
+2025-06-26 15:00:38,127 - PokeXHelper - INFO -  Executing step 2: 'step second'
+2025-06-26 15:00:38,270 - PokeXHelper - INFO -  Found step 2 icon at (3333, 263) with 100.0% confidence
+2025-06-26 15:00:38,532 - PokeXHelper - INFO -  Clicked at (3333, 263) for step 2
+2025-06-26 15:00:38,583 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 15:00:38,583 - PokeXHelper - INFO -  Waiting 6.0 seconds for step completion
+2025-06-26 15:00:44,584 - PokeXHelper - INFO -  Validating completion of step 2: 'step second'
+2025-06-26 15:00:44,584 - PokeXHelper - INFO -  Step has coordinate validation: 3959,3643,6
+2025-06-26 15:00:44,857 - PokeXHelper - INFO - OCR method 'basic' successful: (3958, 8364, 6)
+2025-06-26 15:00:44,857 - PokeXHelper - INFO - OCR detected text (threshold 180): '(3958836446))'
+2025-06-26 15:00:44,857 - PokeXHelper - INFO - Extracted coordinates from coordinate area: (3958, 8364, 6)
+2025-06-26 15:00:44,857 - PokeXHelper - INFO -  Coordinate check: Expected (3959, 3643), Actual (3958, 8364)
+2025-06-26 15:00:44,857 - PokeXHelper - INFO -  X difference: 1, Y difference: 4721 (margin: 10)
+2025-06-26 15:00:44,857 - PokeXHelper - INFO -  Coordinate validation failed on attempt 1, retrying...
+2025-06-26 15:00:45,606 - PokeXHelper - INFO - OCR method 'basic' successful: (3958, 8364, 6)
+2025-06-26 15:00:45,607 - PokeXHelper - INFO - OCR detected text (threshold 180): '(3958836446))'
+2025-06-26 15:00:45,607 - PokeXHelper - INFO - Extracted coordinates from coordinate area: (3958, 8364, 6)
+2025-06-26 15:00:45,607 - PokeXHelper - INFO -  Coordinate check: Expected (3959, 3643), Actual (3958, 8364)
+2025-06-26 15:00:45,607 - PokeXHelper - INFO -  X difference: 1, Y difference: 4721 (margin: 10)
+2025-06-26 15:00:45,607 - PokeXHelper - INFO -  Coordinate validation failed on attempt 2, retrying...
+2025-06-26 15:00:46,365 - PokeXHelper - INFO - OCR method 'basic' successful: (3958, 8364, 6)
+2025-06-26 15:00:46,365 - PokeXHelper - INFO - OCR detected text (threshold 180): '(3958836446))'
+2025-06-26 15:00:46,365 - PokeXHelper - INFO - Extracted coordinates from coordinate area: (3958, 8364, 6)
+2025-06-26 15:00:46,365 - PokeXHelper - INFO -  Coordinate check: Expected (3959, 3643), Actual (3958, 8364)
+2025-06-26 15:00:46,366 - PokeXHelper - INFO -  X difference: 1, Y difference: 4721 (margin: 10)
+2025-06-26 15:00:46,366 - PokeXHelper - INFO -  Coordinate validation failed on attempt 3, retrying...
+2025-06-26 15:00:47,136 - PokeXHelper - INFO - OCR method 'basic' successful: (3958, 8364, 6)
+2025-06-26 15:00:47,136 - PokeXHelper - INFO - OCR detected text (threshold 180): '(3958836446))'
+2025-06-26 15:00:47,136 - PokeXHelper - INFO - Extracted coordinates from coordinate area: (3958, 8364, 6)
+2025-06-26 15:00:47,136 - PokeXHelper - INFO -  Coordinate check: Expected (3959, 3643), Actual (3958, 8364)
+2025-06-26 15:00:47,137 - PokeXHelper - INFO -  X difference: 1, Y difference: 4721 (margin: 10)
+2025-06-26 15:00:47,137 - PokeXHelper - INFO -  Coordinate validation failed on attempt 4, retrying...
+2025-06-26 15:00:47,137 - PokeXHelper - WARNING -  Coordinate validation failed after 4 attempts
+2025-06-26 15:00:47,138 - PokeXHelper - ERROR -  Navigation failed at step 2 'step second'
+2025-06-26 15:00:48,138 - PokeXHelper - INFO -  Navigation sequence completed - restarting from beginning
+2025-06-26 15:00:50,139 - PokeXHelper - INFO -  Processing step 1/2: 'step first'
+2025-06-26 15:00:50,139 - PokeXHelper - INFO -  Executing step 1: 'step first'
+2025-06-26 15:00:50,281 - PokeXHelper - INFO -  Found step 1 icon at (3281, 151) with 100.0% confidence
+2025-06-26 15:00:50,556 - PokeXHelper - INFO -  Clicked at (3281, 151) for step 1
+2025-06-26 15:00:50,607 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 15:00:50,607 - PokeXHelper - INFO -  Waiting 4.0 seconds for step completion

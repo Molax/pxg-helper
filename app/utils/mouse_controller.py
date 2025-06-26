@@ -44,12 +44,11 @@ class MouseController:
             self.logger.error(f"Error moving mouse to ({x}, {y}): {e}")
             return False
     
-    def click_left(self, x=None, y=None):
+    def click_at(self, x, y):
         try:
-            if x is not None and y is not None:
-                if not self.move_to(x, y):
-                    return False
-                time.sleep(0.1)
+            if not self.move_to(x, y):
+                return False
+            time.sleep(0.1)
             
             MOUSEEVENTF_LEFTDOWN = 0x0002
             MOUSEEVENTF_LEFTUP = 0x0004
@@ -58,7 +57,26 @@ class MouseController:
             time.sleep(0.1)
             ctypes.windll.user32.mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
             
-            self.logger.debug(f"Left click at ({x}, {y})" if x and y else "Left click at current position")
+            self.logger.debug(f"Clicked at ({x}, {y})")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"Error clicking at ({x}, {y}): {e}")
+            return False
+    
+    def click_left(self, x=None, y=None):
+        try:
+            if x is not None and y is not None:
+                return self.click_at(x, y)
+            
+            MOUSEEVENTF_LEFTDOWN = 0x0002
+            MOUSEEVENTF_LEFTUP = 0x0004
+            
+            ctypes.windll.user32.mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
+            time.sleep(0.1)
+            ctypes.windll.user32.mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
+            
+            self.logger.debug("Left click at current position")
             return True
             
         except Exception as e:
@@ -93,9 +111,14 @@ class MouseController:
                     return False
                 time.sleep(0.1)
             
-            self.click_left()
-            time.sleep(0.05)
-            self.click_left()
+            MOUSEEVENTF_LEFTDOWN = 0x0002
+            MOUSEEVENTF_LEFTUP = 0x0004
+            
+            for _ in range(2):
+                ctypes.windll.user32.mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
+                time.sleep(0.05)
+                ctypes.windll.user32.mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
+                time.sleep(0.05)
             
             self.logger.debug(f"Double click at ({x}, {y})" if x and y else "Double click at current position")
             return True

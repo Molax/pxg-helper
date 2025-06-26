@@ -1,0 +1,21 @@
+2025-06-26 15:10:03,659 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 15:10:03,857 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 15:10:03,885 - PokeXHelper - CRITICAL - Fatal error: 'MouseController' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\repositories\pxg-helper\pokexgames_helper.py", line 78, in main
+    app = PokeXGamesHelper(root)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repositories\pxg-helper\app\gui\__init__.py", line 19, in __init__
+    self._initialize_managers()
+  File "C:\repositories\pxg-helper\app\gui\__init__.py", line 44, in _initialize_managers
+    self.component_manager = ComponentManager()
+                             ^^^^^^^^^^^^^^^^^^
+  File "C:\repositories\pxg-helper\app\gui\component_manager.py", line 7, in __init__
+    self._initialize_components()
+  File "C:\repositories\pxg-helper\app\gui\component_manager.py", line 24, in _initialize_components
+    self.navigation_manager = NavigationManager(
+                              ^^^^^^^^^^^^^^^^^^
+  File "C:\repositories\pxg-helper\app\navigation\navigation_manager.py", line 28, in __init__
+    self.coordinate_validation_enabled = self.settings.get("helper_settings", {}).get("coordinate_validation", True)
+                                         ^^^^^^^^^^^^^^^^^
+AttributeError: 'MouseController' object has no attribute 'get'
