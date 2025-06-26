@@ -1,0 +1,46 @@
+{
+    "health_healing_key": "F1",
+    "health_threshold": 60,
+    "scan_interval": 0.5,
+    "debug_enabled": true,
+    "areas": {
+        "area_1": {
+            "name": "Area 1",
+            "x1": null,
+            "y1": null,
+            "x2": null,
+            "y2": null,
+            "configured": false
+        },
+        "area_2": {
+            "name": "Area 2",
+            "x1": null,
+            "y1": null,
+            "x2": null,
+            "y2": null,
+            "configured": false
+        },
+        "area_3": {
+            "name": "Area 3",
+            "x1": null,
+            "y1": null,
+            "x2": null,
+            "y2": null,
+            "configured": false
+        },
+        "health_bar": {
+            "name": "Health Bar",
+            "x1": null,
+            "y1": null,
+            "x2": null,
+            "y2": null,
+            "configured": false
+        }
+    },
+    "helper_settings": {
+        "auto_heal": true,
+        "image_matching_threshold": 0.8,
+        "pokemon_detection_enabled": true,
+        "battle_detection_enabled": true
+    }
+}
