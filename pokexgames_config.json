@@ -42,5 +42,6 @@
         "image_matching_threshold": 0.8,
         "pokemon_detection_enabled": true,
         "battle_detection_enabled": true
-    }
+    },
+    "navigation_steps": []
 }

@@ -1,0 +1,10 @@
+2025-06-26 11:54:23,731 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 11:54:23,880 - PokeXHelper - CRITICAL - Fatal error: cannot import name 'LogPanel' from 'app.ui.log_panel' (C:\repositories\pxg-helper\app\ui\log_panel.py)
+Traceback (most recent call last):
+  File "C:\repositories\pxg-helper\pokexgames_helper.py", line 75, in main
+    from app.gui import PokeXGamesHelper
+  File "C:\repositories\pxg-helper\app\gui.py", line 8, in <module>
+    from app.ui.area_config_panel import AreaConfigPanel
+  File "C:\repositories\pxg-helper\app\ui\__init__.py", line 5, in <module>
+    from .log_panel import LogPanel
+ImportError: cannot import name 'LogPanel' from 'app.ui.log_panel' (C:\repositories\pxg-helper\app\ui\log_panel.py)
