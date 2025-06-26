@@ -1,0 +1,14 @@
+2025-06-26 16:30:05,110 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 16:30:05,317 - PokeXHelper - CRITICAL - Fatal error: cannot import name 'MainLayout' from 'app.gui.layouts.main_layout' (C:\repositories\pxg-helper\app\gui\layouts\main_layout.py)
+Traceback (most recent call last):
+  File "C:\repositories\pxg-helper\pokexgames_helper.py", line 75, in main
+    from app.gui import PokeXGamesHelper
+  File "C:\repositories\pxg-helper\app\gui\__init__.py", line 3, in <module>
+    from .managers.interface_manager import InterfaceManager
+  File "C:\repositories\pxg-helper\app\gui\managers\__init__.py", line 1, in <module>
+    from .interface_manager import InterfaceManager
+  File "C:\repositories\pxg-helper\app\gui\managers\interface_manager.py", line 2, in <module>
+    from ..layouts.main_layout import MainLayout
+  File "C:\repositories\pxg-helper\app\gui\layouts\__init__.py", line 1, in <module>
+    from .main_layout import MainLayout
+ImportError: cannot import name 'MainLayout' from 'app.gui.layouts.main_layout' (C:\repositories\pxg-helper\app\gui\layouts\main_layout.py)

@@ -1,0 +1,32 @@
+2025-06-26 16:25:28,304 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 16:25:28,501 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 16:25:28,504 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 16:25:28,532 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 16:25:28,537 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 16:25:28,537 - PokeXHelper - INFO - Selection configured from saved coordinates: (65,444) to (258,460)
+2025-06-26 16:25:28,802 - PokeXHelper - INFO - Selection configured from saved coordinates: (1445,55) to (1717,374)
+2025-06-26 16:25:29,051 - PokeXHelper - INFO - Selection configured from saved coordinates: (11,339) to (281,710)
+2025-06-26 16:25:29,360 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 16:25:29,360 - PokeXHelper - INFO - Selection configured from saved coordinates: (1452,60) to (1571,84)
+2025-06-26 16:25:29,489 - PokeXHelper - INFO - Loaded 4 navigation steps
+2025-06-26 16:25:30,042 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 16:25:35,833 - PokeXHelper - INFO - Starting navigation with 4 valid steps
+2025-06-26 16:25:35,833 - PokeXHelper - INFO -  Starting navigation sequence with 4 steps
+2025-06-26 16:25:35,834 - PokeXHelper - INFO -  Found 4 active steps, 4 ready with icons
+2025-06-26 16:25:35,834 - PokeXHelper - INFO -  Processing step 1/4: 'step first'
+2025-06-26 16:25:35,834 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 16:25:35,975 - PokeXHelper - INFO -  Found step 1 icon at (1525, 226) with 99.7% confidence (attempt 1/2)
+2025-06-26 16:25:36,245 - PokeXHelper - INFO -  Clicked at (1525, 226) for step 1 (attempt 1/2)
+2025-06-26 16:25:36,296 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:25:36,296 - PokeXHelper - INFO -  Waiting 8.0 seconds for step completion
+2025-06-26 16:25:38,372 - PokeXHelper - INFO - Stopping navigation...
+2025-06-26 16:25:40,376 - PokeXHelper - INFO - Navigation stopped
+2025-06-26 16:25:42,629 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 16:25:42,630 - PokeXHelper - INFO - Saving health_bar: (65,444) to (258,460)
+2025-06-26 16:25:42,630 - PokeXHelper - INFO - Saving minimap: (1445,55) to (1717,374)
+2025-06-26 16:25:42,631 - PokeXHelper - INFO - Saving battle_area: (11,339) to (281,710)
+2025-06-26 16:25:42,631 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-06-26 16:25:42,631 - PokeXHelper - INFO - Serialized 4 steps for saving
+2025-06-26 16:25:42,635 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 16:25:42,636 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 16:25:42,636 - PokeXHelper - INFO - Application closing gracefully

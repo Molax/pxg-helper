@@ -9,8 +9,8 @@ class ComponentManager:
     def _initialize_components(self):
         try:
             from app.screen_capture.area_selector import AreaSelector
-            from app.core.health_detector import HealthDetector
-            from app.core.pokemon_detector import BattleDetector
+            from app.core.detectors.health_detector import HealthDetector
+            from app.core.detectors.battle_detector import BattleDetector
             from app.navigation.navigation_manager import NavigationManager
             from app.utils.mouse_controller import MouseController
             

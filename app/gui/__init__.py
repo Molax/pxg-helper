@@ -1,12 +1,8 @@
-from .interface_manager import InterfaceManager
-from .component_manager import ComponentManager
-from .config_manager import ConfigManager
-
 import tkinter as tk
 import logging
-from .interface_manager import InterfaceManager
+from .managers.interface_manager import InterfaceManager
 from .component_manager import ComponentManager
-from .config_manager import ConfigManager
+from .managers.config_manager import ConfigManager
 
 logger = logging.getLogger('PokeXHelper')
 
@@ -45,12 +41,7 @@ class PokeXGamesHelper:
         self.config_manager = ConfigManager(self)
         self.interface_manager = InterfaceManager(self.root, self)
         
-        self.running = False
-        self.start_time = None
-        self.heals_used = 0
-        self.steps_completed = 0
-        self.battles_won = 0
-        self.helper_thread = None
+        self.component_manager.set_root_window(self.root)
     
     @property
     def health_bar_selector(self):
@@ -88,9 +79,6 @@ class PokeXGamesHelper:
     def stop_helper(self):
         self.interface_manager.stop_helper()
     
-    def helper_loop(self):
-        self.interface_manager.helper_loop()
-    
     def update_status(self, text, color):
         self.interface_manager.update_status(text, color)
     
@@ -98,7 +86,7 @@ class PokeXGamesHelper:
         self.interface_manager.log(message)
     
     def save_settings(self):
-        self.config_manager.save_settings()
+        self.config_manager.save_configuration()
     
     def on_closing(self):
         self.config_manager.save_on_exit()
