@@ -1,0 +1,47 @@
+2025-06-26 13:44:55,867 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 13:44:56,067 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 13:44:56,069 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 13:44:56,096 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 13:44:56,100 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 13:44:56,100 - PokeXHelper - INFO - Selection configured from saved coordinates: (64,516) to (260,528)
+2025-06-26 13:44:56,158 - PokeXHelper - ERROR - Error loading configuration: 'LogPanel' object has no attribute 'log'
+Traceback (most recent call last):
+  File "C:\repositories\pxg-helper\app\gui\config_manager.py", line 15, in load_configuration
+    self._load_areas_config(config)
+  File "C:\repositories\pxg-helper\app\gui\config_manager.py", line 45, in _load_areas_config
+    self.main_app.log(f"Loaded {area_name}: ({x1},{y1}) to ({x2},{y2})")
+  File "C:\repositories\pxg-helper\app\gui\__init__.py", line 98, in log
+    self.interface_manager.log(message)
+  File "C:\repositories\pxg-helper\app\gui\interface_manager.py", line 80, in log
+    self.log_panel.log(message)
+    ^^^^^^^^^^^^^^^^^^
+AttributeError: 'LogPanel' object has no attribute 'log'
+2025-06-26 13:44:56,160 - PokeXHelper - CRITICAL - Fatal error: 'LogPanel' object has no attribute 'log'
+Traceback (most recent call last):
+  File "C:\repositories\pxg-helper\app\gui\config_manager.py", line 15, in load_configuration
+    self._load_areas_config(config)
+  File "C:\repositories\pxg-helper\app\gui\config_manager.py", line 45, in _load_areas_config
+    self.main_app.log(f"Loaded {area_name}: ({x1},{y1}) to ({x2},{y2})")
+  File "C:\repositories\pxg-helper\app\gui\__init__.py", line 98, in log
+    self.interface_manager.log(message)
+  File "C:\repositories\pxg-helper\app\gui\interface_manager.py", line 80, in log
+    self.log_panel.log(message)
+    ^^^^^^^^^^^^^^^^^^
+AttributeError: 'LogPanel' object has no attribute 'log'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\repositories\pxg-helper\pokexgames_helper.py", line 78, in main
+    app = PokeXGamesHelper(root)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repositories\pxg-helper\app\gui\__init__.py", line 22, in __init__
+    self.config_manager.load_configuration()
+  File "C:\repositories\pxg-helper\app\gui\config_manager.py", line 23, in load_configuration
+    self.main_app.log("Error loading configuration - using defaults")
+  File "C:\repositories\pxg-helper\app\gui\__init__.py", line 98, in log
+    self.interface_manager.log(message)
+  File "C:\repositories\pxg-helper\app\gui\interface_manager.py", line 80, in log
+    self.log_panel.log(message)
+    ^^^^^^^^^^^^^^^^^^
+AttributeError: 'LogPanel' object has no attribute 'log'

@@ -5,7 +5,6 @@ import threading
 import cv2
 import numpy as np
 from PIL import Image, ImageGrab
-import re
 
 logger = logging.getLogger('PokeXHelper')
 
@@ -19,6 +18,9 @@ class NavigationStep:
         self.template_image = None
         self.is_active = True
         self.icon_bounds = None
+        
+        if not self.icon_image_path:
+            self.icon_image_path = f"assets/navigation_icons/step_{step_id}_{int(time.time() * 1000)}.png"
         
     def load_template(self):
         if not self.icon_image_path:
@@ -75,8 +77,27 @@ class NavigationManager:
         self.navigation_thread = None
         self.stop_navigation_flag = False
         self.logger = logger
+        self.ui_log_callback = None
         
         self.next_step_id = 1
+    
+    def set_ui_log_callback(self, callback):
+        self.ui_log_callback = callback
+    
+    def log_to_ui(self, message, level="INFO"):
+        if self.ui_log_callback:
+            self.ui_log_callback(message)
+        
+        clean_message = message.encode('ascii', 'ignore').decode('ascii')
+        
+        if level == "INFO":
+            self.logger.info(clean_message)
+        elif level == "WARNING":
+            self.logger.warning(clean_message)
+        elif level == "ERROR":
+            self.logger.error(clean_message)
+        elif level == "DEBUG":
+            self.logger.debug(clean_message)
     
     def add_step(self, name, coordinates="", wait_seconds=3.0):
         step = NavigationStep(
@@ -105,6 +126,28 @@ class NavigationManager:
             self.steps.remove(step)
             self.logger.info(f"Removing step {step_id}: '{step.name}'")
             self.logger.info(f"Step {step_id} removed, remaining steps: {len(self.steps)}")
+    
+    def save_step_icon(self, step, icon_bounds):
+        try:
+            x1, y1, x2, y2 = icon_bounds
+            
+            os.makedirs("assets/navigation_icons", exist_ok=True)
+            
+            icon_image = ImageGrab.grab(bbox=(x1, y1, x2, y2), all_screens=True)
+            icon_image.save(step.icon_image_path)
+            
+            step.icon_bounds = icon_bounds
+            
+            if step.load_template():
+                self.logger.info(f"Saved and loaded icon for step {step.step_id}: {step.icon_image_path}")
+                return True
+            else:
+                self.logger.error(f"Failed to load template after saving for step {step.step_id}")
+                return False
+                
+        except Exception as e:
+            self.logger.error(f"Error saving step icon: {e}")
+            return False
     
     def find_step_icon_in_minimap(self, step, threshold=0.8):
         if step.template_image is None:
@@ -140,31 +183,314 @@ class NavigationManager:
     
     def execute_step(self, step):
         try:
-            self.logger.info(f"Executing step {step.step_id}: '{step.name}'")
+            self.log_to_ui(f"🎯 Executing step {step.step_id}: '{step.name}'")
             
             location = self.find_step_icon_in_minimap(step, threshold=0.7)
             if not location:
-                self.logger.warning(f"Step {step.step_id} icon not found in minimap")
+                self.log_to_ui(f"❌ Step {step.step_id} icon not found in minimap", "WARNING")
                 return False
                 
             x, y, confidence = location
-            self.logger.info(f"Found step {step.step_id} icon at ({x}, {y}) with {confidence:.1%} confidence")
+            self.log_to_ui(f"✅ Found step {step.step_id} icon at ({x}, {y}) with {confidence:.1%} confidence")
             
-            if self.mouse_controller.click_at(x, y):
-                self.logger.info(f"Clicked at ({x}, {y}) for step {step.step_id}")
+            if self.mouse_controller.click_left(x, y):
+                self.log_to_ui(f"🖱️ Clicked at ({x}, {y}) for step {step.step_id}")
+                
+                import ctypes
+                screen_width = ctypes.windll.user32.GetSystemMetrics(0)
+                screen_height = ctypes.windll.user32.GetSystemMetrics(1)
+                center_x = screen_width // 2
+                center_y = screen_height // 2
+                
+                self.mouse_controller.move_to(center_x, center_y)
+                self.log_to_ui(f"🖱️ Moved mouse to screen center ({center_x}, {center_y})")
+                
+                self.log_to_ui(f"⏱️ Waiting {step.wait_seconds} seconds for step completion")
                 time.sleep(step.wait_seconds)
                 return self.validate_step_completion(step)
             else:
-                self.logger.error(f"Failed to click at ({x}, {y}) for step {step.step_id}")
+                self.log_to_ui(f"❌ Failed to click at ({x}, {y}) for step {step.step_id}", "ERROR")
                 return False
                 
         except Exception as e:
-            self.logger.error(f"Error executing step {step.step_id}: {e}")
+            self.log_to_ui(f"❌ Error executing step {step.step_id}: {e}", "ERROR")
+            return False
+    
+    def extract_coordinates_from_image(self, image):
+        try:
+            img_array = np.array(image)
+            gray = cv2.cvtColor(img_array, cv2.COLOR_RGB2GRAY)
+            
+            # Use a lower threshold to capture more text but try different values
+            thresholds = [180, 200, 160, 220]
+            
+            for threshold in thresholds:
+                _, thresh = cv2.threshold(gray, threshold, 255, cv2.THRESH_BINARY)
+                
+                # Clean up the image
+                kernel = np.ones((1,1), np.uint8)
+                thresh = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel)
+                thresh = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel)
+                
+                try:
+                    import pytesseract
+                    
+                    tesseract_paths = [
+                        r'C:\Program Files\Tesseract-OCR\tesseract.exe',
+                        r'C:\Program Files (x86)\Tesseract-OCR\tesseract.exe',
+                        r'C:\Users\{}\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'.format(os.environ.get('USERNAME', '')),
+                        'tesseract'
+                    ]
+                    
+                    for path in tesseract_paths:
+                        if os.path.exists(path) or path == 'tesseract':
+                            pytesseract.pytesseract.tesseract_cmd = path
+                            break
+                    
+                    # Try OCR on the cleaned image directly
+                    configs = [
+                        '--psm 8 -c tessedit_char_whitelist=0123456789,() ',
+                        '--psm 7 -c tessedit_char_whitelist=0123456789,() ',
+                        '--psm 6 -c tessedit_char_whitelist=0123456789,() ',
+                        '--psm 13',
+                        '--psm 8'
+                    ]
+                    
+                    for config in configs:
+                        try:
+                            text = pytesseract.image_to_string(thresh, config=config).strip()
+                            
+                            if text:
+                                self.log_to_ui(f"📄 OCR detected text (threshold {threshold}): '{text}'")
+                            
+                            import re
+                            # Look for 3D coordinates with exactly 4 digits: (3959, 3632, 6)
+                            coord_match = re.search(r'\((\d{4}),\s*(\d{4}),\s*\d+\)', text)
+                            if coord_match:
+                                coord_x = int(coord_match.group(1))
+                                coord_y = int(coord_match.group(2))
+                                self.log_to_ui(f"✅ Successfully extracted 3D coordinates: ({coord_x}, {coord_y})")
+                                return (coord_x, coord_y)
+                            
+                            # Look for 2D coordinates with exactly 4 digits: (3959, 3632)
+                            coord_match = re.search(r'\((\d{4}),\s*(\d{4})\)', text)
+                            if coord_match:
+                                coord_x = int(coord_match.group(1))
+                                coord_y = int(coord_match.group(2))
+                                self.log_to_ui(f"✅ Successfully extracted 2D coordinates: ({coord_x}, {coord_y})")
+                                return (coord_x, coord_y)
+                            
+                            # Try to find consecutive 4-digit numbers in sequence
+                            clean_text = re.sub(r'[^\d,()]', '', text)
+                            four_digit_matches = re.findall(r'\d{4}', clean_text)
+                            if len(four_digit_matches) >= 2:
+                                coord_x = int(four_digit_matches[0])
+                                coord_y = int(four_digit_matches[1])
+                                # Validate coordinates are in reasonable range
+                                if 1000 <= coord_x <= 9999 and 1000 <= coord_y <= 9999:
+                                    self.log_to_ui(f"✅ Extracted coordinates from 4-digit numbers: ({coord_x}, {coord_y})")
+                                    return (coord_x, coord_y)
+                                
+                        except Exception as config_error:
+                            continue
+                    
+                    if text:
+                        self.log_to_ui(f"⚠️ OCR found text: '{text}' but no valid coordinates (threshold {threshold})", "WARNING")
+                    
+                except Exception as ocr_error:
+                    continue
+            
+            self.log_to_ui(f"⚠️ OCR processing failed on all thresholds", "WARNING")
+            return None
+            
+        except Exception as e:
+            self.log_to_ui(f"❌ Error extracting coordinates from image: {e}", "ERROR")
+            return None
+    
+    def get_current_coordinates_simple(self):
+        try:
+            import ctypes
+            screen_width = ctypes.windll.user32.GetSystemMetrics(0)
+            screen_height = ctypes.windll.user32.GetSystemMetrics(1)
+            
+            center_x = screen_width // 2
+            center_y = screen_height // 2
+            
+            self.mouse_controller.move_to(center_x, center_y)
+            time.sleep(0.3)
+            
+            # Position coordinate area correctly - coordinates appear INSIDE the minimap area at the top
+            coord_area_x1 = self.minimap_area.x1 - 50
+            coord_area_y1 = self.minimap_area.y1 + 5
+            coord_area_x2 = self.minimap_area.x1 + 150
+            coord_area_y2 = self.minimap_area.y1 + 35
+            
+            from PIL import ImageGrab
+            coord_screenshot = ImageGrab.grab(bbox=(coord_area_x1, coord_area_y1, coord_area_x2, coord_area_y2), all_screens=True)
+            
+            coordinates = self.extract_coordinates_from_image(coord_screenshot)
+            if coordinates:
+                self.log_to_ui(f"📍 Image processing detected coordinates: {coordinates}")
+                return coordinates
+            
+            debug_dir = "debug_images"
+            if not os.path.exists(debug_dir):
+                os.makedirs(debug_dir)
+            
+            debug_path = f"{debug_dir}/coordinate_area_{int(time.time())}.png"
+            coord_screenshot.save(debug_path)
+            self.log_to_ui(f"📸 Saved coordinate area screenshot: {debug_path}")
+            self.log_to_ui(f"📍 Coordinate area bounds: ({coord_area_x1}, {coord_area_y1}) to ({coord_area_x2}, {coord_area_y2})")
+            self.log_to_ui(f"📍 Minimap bounds: ({self.minimap_area.x1}, {self.minimap_area.y1}) to ({self.minimap_area.x2}, {self.minimap_area.y2})")
+            
+            return None
+        except Exception as e:
+            self.log_to_ui(f"❌ Error in simple coordinate detection: {e}", "ERROR")
+            return None
+    
+    def get_current_coordinates(self):
+        try:
+            if not self.minimap_area.is_setup():
+                return None
+            
+            import ctypes
+            screen_width = ctypes.windll.user32.GetSystemMetrics(0)
+            screen_height = ctypes.windll.user32.GetSystemMetrics(1)
+            
+            center_x = screen_width // 2
+            center_y = screen_height // 2
+            
+            self.mouse_controller.move_to(center_x, center_y)
+            time.sleep(0.5)
+            
+            # Coordinates appear in the TOP portion of the minimap area, not above it
+            coord_area_x1 = self.minimap_area.x1 - 50
+            coord_area_y1 = self.minimap_area.y1 + 5
+            coord_area_x2 = self.minimap_area.x1 + 150
+            coord_area_y2 = self.minimap_area.y1 + 35
+            
+            try:
+                from PIL import ImageGrab
+                coord_image = ImageGrab.grab(bbox=(coord_area_x1, coord_area_y1, coord_area_x2, coord_area_y2), all_screens=True)
+                
+                coordinates = self.extract_coordinates_from_image(coord_image)
+                if coordinates:
+                    return coordinates
+                
+                try:
+                    import pytesseract
+                    
+                    # Try different OCR configurations for better coordinate detection
+                    configs = [
+                        '--psm 8 -c tessedit_char_whitelist=0123456789,() ',
+                        '--psm 7 -c tessedit_char_whitelist=0123456789,() ',
+                        '--psm 6 -c tessedit_char_whitelist=0123456789,() ',
+                        '--psm 13',
+                        '--psm 8'
+                    ]
+                    
+                    for config in configs:
+                        text = pytesseract.image_to_string(coord_image, config=config).strip()
+                        
+                        import re
+                        # Look for coordinates with 3 numbers: (xxxx, yyyy, z)
+                        coord_match = re.search(r'\((\d{4}),\s*(\d{4}),\s*\d+\)', text)
+                        if coord_match:
+                            x = int(coord_match.group(1))
+                            y = int(coord_match.group(2))
+                            self.log_to_ui(f"📍 OCR detected 3D coordinates: ({x}, {y})")
+                            return (x, y)
+                        
+                        # Fallback: Look for coordinates with 2 numbers: (xxxx, yyyy)
+                        coord_match = re.search(r'\((\d{4}),\s*(\d{4})\)', text)
+                        if coord_match:
+                            x = int(coord_match.group(1))
+                            y = int(coord_match.group(2))
+                            self.log_to_ui(f"📍 OCR detected 2D coordinates: ({x}, {y})")
+                            return (x, y)
+                    
+                    self.log_to_ui(f"📍 OCR text found: '{text}' but no coordinates matched", "WARNING")
+                    self.log_to_ui(f"📍 Capture area: ({coord_area_x1}, {coord_area_y1}) to ({coord_area_x2}, {coord_area_y2})", "WARNING")
+                    self.log_to_ui(f"📍 Minimap area: ({self.minimap_area.x1}, {self.minimap_area.y1}) to ({self.minimap_area.x2}, {self.minimap_area.y2})", "WARNING")
+                    return self.get_current_coordinates_simple()
+                except ImportError:
+                    self.log_to_ui("⚠️ pytesseract not available, using image processing", "WARNING")
+                    return self.get_current_coordinates_simple()
+                except Exception as e:
+                    self.log_to_ui(f"⚠️ OCR failed: {e}, using image processing", "WARNING")
+                    return self.get_current_coordinates_simple()
+            
+            except Exception as e:
+                self.log_to_ui(f"⚠️ Could not capture coordinate area: {e}", "WARNING")
+            
+            return None
+        except Exception as e:
+            self.logger.error(f"Error getting current coordinates: {e}")
+            return None
+    
+    def parse_coordinates(self, coord_string):
+        try:
+            if not coord_string or coord_string.strip() == "":
+                return None
+            
+            parts = coord_string.replace(",", " ").split()
+            if len(parts) >= 2:
+                x = int(parts[0])
+                y = int(parts[1])
+                return (x, y)
+            return None
+        except Exception as e:
+            self.logger.error(f"Error parsing coordinates '{coord_string}': {e}")
+            return None
+    
+    def check_coordinates_match(self, expected_coords, actual_coords, margin=2):
+        try:
+            if not expected_coords or not actual_coords:
+                return False
+            
+            exp_x, exp_y = expected_coords
+            act_x, act_y = actual_coords
+            
+            x_match = abs(exp_x - act_x) <= margin
+            y_match = abs(exp_y - act_y) <= margin
+            
+            self.log_to_ui(f"📊 Coordinate check: Expected ({exp_x}, {exp_y}), Actual ({act_x}, {act_y})")
+            self.log_to_ui(f"📏 X difference: {abs(exp_x - act_x)}, Y difference: {abs(exp_y - act_y)} (margin: ±{margin})")
+            
+            return x_match and y_match
+        except Exception as e:
+            self.log_to_ui(f"❌ Error checking coordinate match: {e}", "ERROR")
             return False
     
     def validate_step_completion(self, step):
         try:
+            self.log_to_ui(f"🔍 Validating completion of step {step.step_id}: '{step.name}'")
             time.sleep(0.5)
+            
+            if step.coordinates and step.coordinates.strip():
+                expected_coords = self.parse_coordinates(step.coordinates)
+                if expected_coords:
+                    self.log_to_ui(f"📍 Step has coordinate validation: {step.coordinates}")
+                    
+                    for attempt in range(5):
+                        current_coords = self.get_current_coordinates()
+                        if current_coords:
+                            if self.check_coordinates_match(expected_coords, current_coords):
+                                self.log_to_ui(f"✅ Coordinate validation passed on attempt {attempt + 1}")
+                                return True
+                            else:
+                                self.log_to_ui(f"🔄 Coordinate validation failed on attempt {attempt + 1}, retrying...")
+                                time.sleep(1.0)
+                        else:
+                            self.log_to_ui(f"⚠️ Could not get current coordinates on attempt {attempt + 1}", "WARNING")
+                            time.sleep(1.0)
+                    
+                    self.log_to_ui(f"❌ Coordinate validation failed after 5 attempts", "WARNING")
+                    return False
+                else:
+                    self.log_to_ui("⚠️ Step has coordinate string but could not parse, skipping validation", "WARNING")
+            else:
+                self.log_to_ui("ℹ️ Step has no coordinate validation, assuming success")
             
             if self.battle_area.is_setup():
                 battle_image = self.battle_area.get_current_screenshot_region()
@@ -174,6 +500,8 @@ class NavigationManager:
                         battle_image.save(temp_file.name)
                         temp_path = temp_file.name
                     
+                    self.logger.debug(f"Saved validation image for step {step.step_id}: {temp_path}")
+                    
                     try:
                         os.remove(temp_path)
                     except:
@@ -182,7 +510,7 @@ class NavigationManager:
             return True
             
         except Exception as e:
-            self.logger.error(f"Error validating step completion: {e}")
+            self.log_to_ui(f"❌ Error validating step completion: {e}", "ERROR")
             return False
     
     def start_navigation(self):
@@ -224,52 +552,44 @@ class NavigationManager:
         self.logger.info("Navigation stopped")
     
     def _navigation_loop(self):
-        self.logger.info(f"Starting navigation sequence with {len(self.steps)} steps")
+        self.log_to_ui(f"🚀 Starting navigation sequence with {len(self.steps)} steps")
         
         active_steps = [step for step in self.steps if step.is_active]
         ready_steps = [step for step in active_steps if step.template_image is not None]
         
-        self.logger.info(f"Found {len(active_steps)} active steps, {len(ready_steps)} ready with icons")
+        self.log_to_ui(f"📋 Found {len(active_steps)} active steps, {len(ready_steps)} ready with icons")
         
         if not ready_steps:
-            self.logger.error("No steps with valid icons found")
+            self.log_to_ui("❌ No steps with valid icons found", "ERROR")
             self.is_navigating = False
             return
         
         try:
-            while self.is_navigating and not self.stop_navigation_flag and self.current_step_index < len(self.steps):
-                step = self.steps[self.current_step_index]
+            while self.is_navigating and not self.stop_navigation_flag:
+                for step_index, step in enumerate(ready_steps):
+                    if self.stop_navigation_flag or not self.is_navigating:
+                        break
+                    
+                    self.log_to_ui(f"🎬 Processing step {step_index + 1}/{len(ready_steps)}: '{step.name}'")
+                    
+                    if self.execute_step(step):
+                        self.log_to_ui(f"✅ Step {step.step_id} '{step.name}' completed successfully")
+                    else:
+                        self.log_to_ui(f"❌ Navigation failed at step {step.step_id} '{step.name}'", "ERROR")
+                        break
+                    
+                    if self.is_navigating and not self.stop_navigation_flag and step_index < len(ready_steps) - 1:
+                        self.log_to_ui("⏳ Waiting 1 second before next step")
+                        time.sleep(1.0)
                 
-                self.logger.info(f"Processing step {self.current_step_index + 1}/{len(self.steps)}: '{step.name}'")
-                
-                if not step.is_active:
-                    self.logger.info(f"Step {step.step_id} '{step.name}' is inactive, skipping")
-                    self.current_step_index += 1
-                    continue
-                
-                if not step.template_image:
-                    self.logger.warning(f"Step {step.step_id} '{step.name}' has no icon, skipping")
-                    self.current_step_index += 1
-                    continue
-                
-                if self.execute_step(step):
-                    self.logger.info(f"Step {step.step_id} '{step.name}' completed successfully")
-                    self.current_step_index += 1
-                else:
-                    self.logger.error(f"Navigation failed at step {step.step_id} '{step.name}'")
-                    break
-                
-                if self.is_navigating and not self.stop_navigation_flag:
-                    time.sleep(1.0)
-            
-            if self.current_step_index >= len(self.steps) and not self.stop_navigation_flag:
-                self.logger.info("Navigation sequence completed successfully")
-                self.current_step_index = 0
+                if not self.stop_navigation_flag and self.is_navigating:
+                    self.log_to_ui("🔄 Navigation sequence completed - restarting from beginning")
+                    time.sleep(2.0)
             
         except Exception as e:
-            self.logger.error(f"Error in navigation loop: {e}")
+            self.log_to_ui(f"❌ Error in navigation loop: {e}", "ERROR")
         finally:
-            self.logger.info("Navigation sequence ended")
+            self.log_to_ui("🏁 Navigation sequence ended")
             self.is_navigating = False
             self.stop_navigation_flag = False
     
@@ -324,15 +644,25 @@ class NavigationManager:
                 return
                 
             used_files = {step.icon_image_path for step in self.steps if step.icon_image_path}
+            used_filenames = {os.path.basename(path) for path in used_files}
             
+            self.logger.info(f"Found {len(used_filenames)} icon files in use: {used_filenames}")
+            
+            cleaned_count = 0
             for filename in os.listdir(icons_dir):
-                file_path = os.path.join(icons_dir, filename)
-                if file_path not in used_files and filename.startswith("step_"):
+                if filename.startswith("step_") and filename not in used_filenames:
+                    file_path = os.path.join(icons_dir, filename)
                     try:
                         os.remove(file_path)
                         self.logger.info(f"Cleaned up unused icon: {file_path}")
+                        cleaned_count += 1
                     except Exception as e:
                         self.logger.error(f"Failed to cleanup icon {file_path}: {e}")
+            
+            if cleaned_count == 0:
+                self.logger.info("No unused icon files to clean up")
+            else:
+                self.logger.info(f"Cleaned up {cleaned_count} unused icon files")
                         
         except Exception as e:
             self.logger.error(f"Error during icon cleanup: {e}")

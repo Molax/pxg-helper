@@ -1,0 +1,16 @@
+2025-06-26 13:41:47,548 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 13:41:47,755 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 13:41:47,760 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 13:41:47,847 - PokeXHelper - CRITICAL - Fatal error: 'AreaConfigPanel' object has no attribute 'pack'
+Traceback (most recent call last):
+  File "C:\repositories\pxg-helper\pokexgames_helper.py", line 78, in main
+    app = PokeXGamesHelper(root)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repositories\pxg-helper\app\gui\__init__.py", line 21, in __init__
+    self.interface_manager.create_interface()
+  File "C:\repositories\pxg-helper\app\gui\interface_manager.py", line 24, in create_interface
+    self._create_left_panel(main_container)
+  File "C:\repositories\pxg-helper\app\gui\interface_manager.py", line 53, in _create_left_panel
+    self.area_config_panel.pack(fill=tk.BOTH, expand=True)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AreaConfigPanel' object has no attribute 'pack'

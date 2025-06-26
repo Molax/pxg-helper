@@ -60,7 +60,10 @@
         "navigation_check_interval": 0.5,
         "step_timeout": 30,
         "coordinate_validation": true,
-        "image_matching_threshold": 0.8
+        "image_matching_threshold": 0.8,
+        "health_threshold": 30,
+        "heal_key": "F1",
+        "auto_navigate": false
     },
     "navigation_steps": [
         {

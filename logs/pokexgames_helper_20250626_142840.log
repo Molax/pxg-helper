@@ -1,0 +1,52 @@
+2025-06-26 14:28:40,741 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 14:28:40,923 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 14:28:40,925 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 14:28:40,944 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 14:28:40,961 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 14:28:40,961 - PokeXHelper - INFO - Selection configured from saved coordinates: (64,516) to (260,528)
+2025-06-26 14:28:41,262 - PokeXHelper - INFO - Selection configured from saved coordinates: (3173,46) to (3436,366)
+2025-06-26 14:28:41,544 - PokeXHelper - INFO - Selection configured from saved coordinates: (13,412) to (280,787)
+2025-06-26 14:28:41,811 - PokeXHelper - INFO - Loaded 2 navigation steps
+2025-06-26 14:28:41,817 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 14:28:47,771 - PokeXHelper - INFO - Starting navigation with 2 valid steps
+2025-06-26 14:28:47,987 - PokeXHelper - INFO -  Starting navigation sequence with 2 steps
+2025-06-26 14:28:47,996 - PokeXHelper - INFO -  Found 2 active steps, 2 ready with icons
+2025-06-26 14:28:48,013 - PokeXHelper - INFO -  Processing step 1/2: 'step first'
+2025-06-26 14:28:48,020 - PokeXHelper - INFO -  Executing step 1: 'step first'
+2025-06-26 14:28:48,176 - PokeXHelper - INFO -  Found step 1 icon at (3276, 211) with 100.0% confidence
+2025-06-26 14:28:48,452 - PokeXHelper - INFO -  Clicked at (3276, 211) for step 1
+2025-06-26 14:28:48,504 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 14:28:48,509 - PokeXHelper - INFO -  Waiting 4.0 seconds for step completion
+2025-06-26 14:28:52,522 - PokeXHelper - INFO -  Validating completion of step 1: 'step first'
+2025-06-26 14:28:53,034 - PokeXHelper - INFO -  Step has coordinate validation: 3953,3633,6
+2025-06-26 14:28:54,588 - PokeXHelper - INFO -  OCR detected text (threshold 180): 'a'
+2025-06-26 14:28:54,719 - PokeXHelper - INFO -  OCR detected text (threshold 180): 'a'
+2025-06-26 14:28:54,721 - PokeXHelper - WARNING -  OCR found text: 'a' but no valid coordinates (threshold 180)
+2025-06-26 14:28:55,228 - PokeXHelper - INFO -  OCR detected text (threshold 200): 'a'
+2025-06-26 14:28:55,351 - PokeXHelper - INFO -  OCR detected text (threshold 200): 'a'
+2025-06-26 14:28:55,352 - PokeXHelper - WARNING -  OCR found text: 'a' but no valid coordinates (threshold 200)
+2025-06-26 14:28:55,863 - PokeXHelper - INFO -  OCR detected text (threshold 160): 'a'
+2025-06-26 14:28:55,995 - PokeXHelper - INFO -  OCR detected text (threshold 160): 'a'
+2025-06-26 14:28:55,999 - PokeXHelper - WARNING -  OCR found text: 'a' but no valid coordinates (threshold 160)
+2025-06-26 14:28:56,505 - PokeXHelper - INFO -  OCR detected text (threshold 220): 'a'
+2025-06-26 14:28:56,635 - PokeXHelper - INFO -  OCR detected text (threshold 220): 'a'
+2025-06-26 14:28:56,637 - PokeXHelper - WARNING -  OCR found text: 'a' but no valid coordinates (threshold 220)
+2025-06-26 14:28:56,638 - PokeXHelper - WARNING -  OCR processing failed on all thresholds
+2025-06-26 14:28:57,292 - PokeXHelper - WARNING -  OCR text found: 'a' but no coordinates matched
+2025-06-26 14:28:57,295 - PokeXHelper - WARNING -  Capture area: (2973, -4) to (3273, 41)
+2025-06-26 14:28:58,294 - PokeXHelper - INFO -  OCR detected text (threshold 180): 'a'
+2025-06-26 14:28:58,425 - PokeXHelper - INFO -  OCR detected text (threshold 180): 'a'
+2025-06-26 14:28:58,427 - PokeXHelper - WARNING -  OCR found text: 'a' but no valid coordinates (threshold 180)
+2025-06-26 14:28:58,942 - PokeXHelper - INFO -  OCR detected text (threshold 200): 'a'
+2025-06-26 14:28:59,072 - PokeXHelper - INFO -  OCR detected text (threshold 200): 'a'
+2025-06-26 14:28:59,074 - PokeXHelper - WARNING -  OCR found text: 'a' but no valid coordinates (threshold 200)
+2025-06-26 14:28:59,585 - PokeXHelper - INFO -  OCR detected text (threshold 160): 'a'
+2025-06-26 14:28:59,721 - PokeXHelper - INFO -  OCR detected text (threshold 160): 'a'
+2025-06-26 14:28:59,722 - PokeXHelper - WARNING -  OCR found text: 'a' but no valid coordinates (threshold 160)
+2025-06-26 14:29:00,237 - PokeXHelper - INFO -  OCR detected text (threshold 220): 'a'
+2025-06-26 14:29:00,369 - PokeXHelper - INFO -  OCR detected text (threshold 220): 'a'
+2025-06-26 14:29:00,371 - PokeXHelper - WARNING -  OCR found text: 'a' but no valid coordinates (threshold 220)
+2025-06-26 14:29:00,374 - PokeXHelper - WARNING -  OCR processing failed on all thresholds
+2025-06-26 14:29:00,387 - PokeXHelper - INFO -  Saved coordinate area screenshot: debug_images/coordinate_area_1750958940.png
+2025-06-26 14:29:00,391 - PokeXHelper - INFO -  Coordinate area bounds: (2973, -4) to (3273, 41)
+2025-06-26 14:29:00,396 - PokeXHelper - WARNING -  Could not get current coordinates on attempt 1

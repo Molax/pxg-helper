@@ -1,0 +1,41 @@
+2025-06-26 14:15:52,457 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 14:15:52,660 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 14:15:52,661 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 14:15:52,694 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 14:15:52,698 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 14:15:52,698 - PokeXHelper - INFO - Selection configured from saved coordinates: (64,516) to (260,528)
+2025-06-26 14:15:53,048 - PokeXHelper - INFO - Selection configured from saved coordinates: (3173,46) to (3436,366)
+2025-06-26 14:15:53,288 - PokeXHelper - INFO - Selection configured from saved coordinates: (13,412) to (280,787)
+2025-06-26 14:15:53,556 - PokeXHelper - INFO - Loaded 2 navigation steps
+2025-06-26 14:15:53,572 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 14:15:57,151 - PokeXHelper - INFO - Starting navigation with 2 valid steps
+2025-06-26 14:15:57,356 - PokeXHelper - INFO -  Starting navigation sequence with 2 steps
+2025-06-26 14:15:57,365 - PokeXHelper - INFO -  Found 2 active steps, 2 ready with icons
+2025-06-26 14:15:57,379 - PokeXHelper - INFO -  Processing step 1/2: 'step first'
+2025-06-26 14:15:57,388 - PokeXHelper - INFO -  Executing step 1: 'step first'
+2025-06-26 14:15:57,547 - PokeXHelper - INFO -  Found step 1 icon at (3286, 216) with 100.0% confidence
+2025-06-26 14:15:57,837 - PokeXHelper - INFO -  Clicked at (3286, 216) for step 1
+2025-06-26 14:15:57,888 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 14:15:57,894 - PokeXHelper - INFO -  Waiting 4.0 seconds for step completion
+2025-06-26 14:16:01,905 - PokeXHelper - INFO -  Validating completion of step 1: 'step first'
+2025-06-26 14:16:02,414 - PokeXHelper - INFO -  Step has coordinate validation: 3953,3633,6
+2025-06-26 14:16:03,457 - PokeXHelper - WARNING -  OCR text found: '48,
+' but no coordinates matched
+2025-06-26 14:16:03,858 - PokeXHelper - INFO -  Saved coordinate area screenshot: debug_images/coordinate_area_1750958163.png
+2025-06-26 14:16:03,862 - PokeXHelper - WARNING -  Could not get current coordinates on attempt 1
+2025-06-26 14:16:05,510 - PokeXHelper - WARNING -  OCR text found: '48,
+' but no coordinates matched
+2025-06-26 14:16:05,905 - PokeXHelper - INFO -  Saved coordinate area screenshot: debug_images/coordinate_area_1750958165.png
+2025-06-26 14:16:05,913 - PokeXHelper - WARNING -  Could not get current coordinates on attempt 2
+2025-06-26 14:16:07,584 - PokeXHelper - WARNING -  OCR text found: '48,
+' but no coordinates matched
+2025-06-26 14:16:08,085 - PokeXHelper - INFO -  Saved coordinate area screenshot: debug_images/coordinate_area_1750958168.png
+2025-06-26 14:16:08,095 - PokeXHelper - WARNING -  Could not get current coordinates on attempt 3
+2025-06-26 14:16:08,977 - PokeXHelper - INFO - Stopping navigation...
+2025-06-26 14:16:10,980 - PokeXHelper - INFO - Navigation stopped
+2025-06-26 14:16:11,017 - PokeXHelper - INFO -  OCR detected coordinates: (3953, 3633)
+2025-06-26 14:16:11,036 - PokeXHelper - INFO -  Coordinate check: Expected (3953, 3633), Actual (3953, 3633)
+2025-06-26 14:16:11,062 - PokeXHelper - INFO -  X difference: 0, Y difference: 0 (margin: 2)
+2025-06-26 14:16:11,071 - PokeXHelper - INFO -  Coordinate validation passed on attempt 4
+2025-06-26 14:16:11,081 - PokeXHelper - INFO -  Step 1 'step first' completed successfully
+2025-06-26 14:16:11,113 - PokeXHelper - INFO -  Navigation sequence ended

@@ -1,0 +1,22 @@
+2025-06-26 13:46:18,182 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 13:46:18,381 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 13:46:18,383 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 13:46:18,402 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 13:46:18,406 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 13:46:18,406 - PokeXHelper - INFO - Selection configured from saved coordinates: (64,516) to (260,528)
+2025-06-26 13:46:18,504 - PokeXHelper - INFO - Selection configured from saved coordinates: (3173,46) to (3436,366)
+2025-06-26 13:46:18,617 - PokeXHelper - INFO - Selection configured from saved coordinates: (13,412) to (280,787)
+2025-06-26 13:46:18,725 - PokeXHelper - INFO - Loaded 2 navigation steps
+2025-06-26 13:46:18,729 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 13:46:44,238 - PokeXHelper - INFO - Starting navigation with 2 valid steps
+2025-06-26 13:46:44,239 - PokeXHelper - INFO - Starting navigation sequence with 2 steps
+2025-06-26 13:46:44,239 - PokeXHelper - INFO - Found 2 active steps, 2 ready with icons
+2025-06-26 13:46:44,239 - PokeXHelper - INFO - Processing step 1/2: 'step first'
+2025-06-26 13:46:44,239 - PokeXHelper - ERROR - Error in navigation loop: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-06-26 13:46:44,241 - PokeXHelper - INFO - Navigation sequence ended
+2025-06-26 13:47:02,308 - PokeXHelper - INFO - Starting navigation with 2 valid steps
+2025-06-26 13:47:02,309 - PokeXHelper - INFO - Starting navigation sequence with 2 steps
+2025-06-26 13:47:02,309 - PokeXHelper - INFO - Found 2 active steps, 2 ready with icons
+2025-06-26 13:47:02,309 - PokeXHelper - INFO - Processing step 1/2: 'step first'
+2025-06-26 13:47:02,310 - PokeXHelper - ERROR - Error in navigation loop: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-06-26 13:47:02,310 - PokeXHelper - INFO - Navigation sequence ended

@@ -1,0 +1,41 @@
+2025-06-26 14:04:24,965 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 14:04:25,170 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 14:04:25,200 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 14:04:25,229 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 14:04:25,233 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 14:04:25,233 - PokeXHelper - INFO - Selection configured from saved coordinates: (64,516) to (260,528)
+2025-06-26 14:04:25,539 - PokeXHelper - INFO - Selection configured from saved coordinates: (3173,46) to (3436,366)
+2025-06-26 14:04:25,786 - PokeXHelper - INFO - Selection configured from saved coordinates: (13,412) to (280,787)
+2025-06-26 14:04:26,041 - PokeXHelper - INFO - Loaded 2 navigation steps
+2025-06-26 14:04:26,047 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 14:04:30,355 - PokeXHelper - INFO - Starting navigation with 2 valid steps
+2025-06-26 14:04:30,566 - PokeXHelper - INFO -  Starting navigation sequence with 2 steps
+2025-06-26 14:04:30,577 - PokeXHelper - INFO -  Found 2 active steps, 2 ready with icons
+2025-06-26 14:04:30,594 - PokeXHelper - INFO -  Processing step 1/2: 'step first'
+2025-06-26 14:04:30,605 - PokeXHelper - INFO -  Executing step 1: 'step first'
+2025-06-26 14:04:30,764 - PokeXHelper - INFO -  Found step 1 icon at (3286, 216) with 100.0% confidence
+2025-06-26 14:04:31,042 - PokeXHelper - INFO -  Clicked at (3286, 216) for step 1
+2025-06-26 14:04:31,093 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 14:04:31,098 - PokeXHelper - INFO -  Waiting 4.0 seconds for step completion
+2025-06-26 14:04:35,113 - PokeXHelper - INFO -  Validating completion of step 1: 'step first'
+2025-06-26 14:04:35,626 - PokeXHelper - INFO -  Step has coordinate validation: 3953,3633,6
+2025-06-26 14:04:39,180 - PokeXHelper - WARNING -  OCR failed: tesseract is not installed or it's not in your PATH. See README file for more information., saving debug image
+2025-06-26 14:04:39,603 - PokeXHelper - INFO -  Saved coordinate area screenshot: debug_images/coordinate_area_1750957479.png
+2025-06-26 14:04:39,608 - PokeXHelper - WARNING -  Could not get current coordinates on attempt 1
+2025-06-26 14:04:41,150 - PokeXHelper - WARNING -  OCR failed: tesseract is not installed or it's not in your PATH. See README file for more information., saving debug image
+2025-06-26 14:04:41,549 - PokeXHelper - INFO -  Saved coordinate area screenshot: debug_images/coordinate_area_1750957481.png
+2025-06-26 14:04:41,555 - PokeXHelper - WARNING -  Could not get current coordinates on attempt 2
+2025-06-26 14:04:43,118 - PokeXHelper - WARNING -  OCR failed: tesseract is not installed or it's not in your PATH. See README file for more information., saving debug image
+2025-06-26 14:04:43,532 - PokeXHelper - INFO -  Saved coordinate area screenshot: debug_images/coordinate_area_1750957483.png
+2025-06-26 14:04:43,539 - PokeXHelper - WARNING -  Could not get current coordinates on attempt 3
+2025-06-26 14:04:45,080 - PokeXHelper - WARNING -  OCR failed: tesseract is not installed or it's not in your PATH. See README file for more information., saving debug image
+2025-06-26 14:04:45,649 - PokeXHelper - INFO -  Saved coordinate area screenshot: debug_images/coordinate_area_1750957485.png
+2025-06-26 14:04:45,657 - PokeXHelper - WARNING -  Could not get current coordinates on attempt 4
+2025-06-26 14:04:46,278 - PokeXHelper - INFO - Stopping navigation...
+2025-06-26 14:04:48,289 - PokeXHelper - INFO - Navigation stopped
+2025-06-26 14:04:48,310 - PokeXHelper - WARNING -  OCR failed: tesseract is not installed or it's not in your PATH. See README file for more information., saving debug image
+2025-06-26 14:04:48,821 - PokeXHelper - INFO -  Saved coordinate area screenshot: debug_images/coordinate_area_1750957488.png
+2025-06-26 14:04:48,830 - PokeXHelper - WARNING -  Could not get current coordinates on attempt 5
+2025-06-26 14:04:49,844 - PokeXHelper - WARNING -  Coordinate validation failed after 5 attempts
+2025-06-26 14:04:49,852 - PokeXHelper - ERROR -  Navigation failed at step 1 'step first'
+2025-06-26 14:04:49,886 - PokeXHelper - INFO -  Navigation sequence ended
