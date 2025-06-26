@@ -1,0 +1,62 @@
+2025-06-26 12:09:49,198 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 12:09:49,484 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 12:09:49,487 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 12:09:49,505 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 12:09:49,529 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 12:09:49,529 - PokeXHelper - INFO - Added battle area configuration
+2025-06-26 12:09:49,529 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 12:09:49,534 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 12:09:49,535 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 12:10:26,844 - PokeXHelper - INFO - Starting Health Bar selection...
+2025-06-26 12:10:26,844 - PokeXHelper - INFO - Starting area selection: Health Bar
+2025-06-26 12:10:26,848 - PokeXHelper - INFO - Desktop bounds: (0, 0) to (3440, 1440) = 3440x1440
+2025-06-26 12:10:26,848 - PokeXHelper - INFO - Creating selection window with desktop bounds: (0, 0, 3440, 1440)
+2025-06-26 12:10:26,929 - PokeXHelper - INFO - Screenshot captured with size: (3440, 1440)
+2025-06-26 12:10:27,034 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 12:10:31,255 - PokeXHelper - INFO - Selection complete: (63, 514) to (257, 529), size: 194x15
+2025-06-26 12:10:31,255 - PokeXHelper - INFO - Selection made: (63, 514) to (257, 529)
+2025-06-26 12:10:32,480 - PokeXHelper - INFO - Health Bar selection confirmed: (63, 514) to (257, 529)
+2025-06-26 12:10:32,483 - PokeXHelper - INFO - Health Bar selection completed
+2025-06-26 12:10:34,283 - PokeXHelper - INFO - Starting Minimap Area selection...
+2025-06-26 12:10:34,284 - PokeXHelper - INFO - Starting area selection: Minimap Area
+2025-06-26 12:10:34,284 - PokeXHelper - INFO - Desktop bounds: (0, 0) to (3440, 1440) = 3440x1440
+2025-06-26 12:10:34,285 - PokeXHelper - INFO - Creating selection window with desktop bounds: (0, 0, 3440, 1440)
+2025-06-26 12:10:34,346 - PokeXHelper - INFO - Screenshot captured with size: (3440, 1440)
+2025-06-26 12:10:34,397 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 12:10:37,595 - PokeXHelper - INFO - Selection complete: (359, 260) to (559, 461), size: 200x201
+2025-06-26 12:10:37,595 - PokeXHelper - INFO - Selection made: (359, 260) to (559, 461)
+2025-06-26 12:10:38,754 - PokeXHelper - INFO - Minimap Area selection confirmed: (359, 260) to (559, 461)
+2025-06-26 12:10:38,758 - PokeXHelper - INFO - Minimap Area selection completed
+2025-06-26 12:11:06,608 - PokeXHelper - INFO - Starting Battle Area selection...
+2025-06-26 12:11:06,609 - PokeXHelper - INFO - Starting area selection: Battle Area
+2025-06-26 12:11:06,610 - PokeXHelper - INFO - Desktop bounds: (0, 0) to (3440, 1440) = 3440x1440
+2025-06-26 12:11:06,610 - PokeXHelper - INFO - Creating selection window with desktop bounds: (0, 0, 3440, 1440)
+2025-06-26 12:11:06,674 - PokeXHelper - INFO - Screenshot captured with size: (3440, 1440)
+2025-06-26 12:11:06,733 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 12:11:11,377 - PokeXHelper - INFO - Selection complete: (10, 414) to (282, 784), size: 272x370
+2025-06-26 12:11:11,377 - PokeXHelper - INFO - Selection made: (10, 414) to (282, 784)
+2025-06-26 12:11:12,673 - PokeXHelper - INFO - Battle Area selection confirmed: (10, 414) to (282, 784)
+2025-06-26 12:11:12,679 - PokeXHelper - INFO - Battle Area selection completed
+2025-06-26 12:13:25,451 - PokeXHelper - INFO - Starting area selection: Select Icon for step 1
+2025-06-26 12:13:25,451 - PokeXHelper - INFO - Desktop bounds: (0, 0) to (3440, 1440) = 3440x1440
+2025-06-26 12:13:25,452 - PokeXHelper - INFO - Creating selection window with desktop bounds: (0, 0, 3440, 1440)
+2025-06-26 12:13:25,543 - PokeXHelper - INFO - Screenshot captured with size: (3440, 1440)
+2025-06-26 12:13:25,603 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 12:13:35,573 - PokeXHelper - INFO - Selection complete: (3281, 211) to (3298, 226), size: 17x15
+2025-06-26 12:13:35,574 - PokeXHelper - INFO - Selection made: (3281, 211) to (3298, 226)
+2025-06-26 12:13:36,994 - PokeXHelper - INFO - Select Icon for step 1 selection confirmed: (3281, 211) to (3298, 226)
+2025-06-26 12:13:36,998 - PokeXHelper - INFO - Step icon selected for step 1
+2025-06-26 12:13:53,030 - PokeXHelper - INFO - Starting navigation sequence
+2025-06-26 12:13:53,030 - PokeXHelper - INFO - Executing step 1 (attempt 1)
+2025-06-26 12:13:53,030 - PokeXHelper - INFO - Navigation started
+2025-06-26 12:13:53,031 - PokeXHelper - WARNING - Step 1 not found in minimap
+2025-06-26 12:13:53,032 - PokeXHelper - WARNING - Failed to click step 1
+2025-06-26 12:13:55,033 - PokeXHelper - INFO - Executing step 1 (attempt 2)
+2025-06-26 12:13:55,033 - PokeXHelper - WARNING - Step 1 not found in minimap
+2025-06-26 12:13:55,035 - PokeXHelper - WARNING - Failed to click step 1
+2025-06-26 12:13:57,036 - PokeXHelper - INFO - Executing step 1 (attempt 3)
+2025-06-26 12:13:57,036 - PokeXHelper - WARNING - Step 1 not found in minimap
+2025-06-26 12:13:57,036 - PokeXHelper - WARNING - Failed to click step 1
+2025-06-26 12:13:59,038 - PokeXHelper - ERROR - Step 1 failed after 3 attempts
+2025-06-26 12:13:59,038 - PokeXHelper - ERROR - Navigation failed at step 1
+2025-06-26 12:14:02,941 - PokeXHelper - INFO - Navigation stopped

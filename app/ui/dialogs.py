@@ -10,7 +10,7 @@ class StepConfigDialog:
         
         self.dialog = tk.Toplevel(parent)
         self.dialog.title("Configure Navigation Step")
-        self.dialog.geometry("400x300")
+        self.dialog.geometry("450x350")
         self.dialog.transient(parent)
         self.dialog.grab_set()
         
@@ -27,52 +27,80 @@ class StepConfigDialog:
         main_frame = ttk.Frame(self.dialog)
         main_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=20)
         
-        ttk.Label(main_frame, text="Step Name:").grid(row=0, column=0, sticky="w", pady=5)
+        ttk.Label(main_frame, text="Step Name:", font=("Segoe UI", 10, "bold")).grid(row=0, column=0, sticky="w", pady=5)
         self.name_var = tk.StringVar()
-        ttk.Entry(main_frame, textvariable=self.name_var, width=30).grid(row=0, column=1, pady=5)
+        name_entry = ttk.Entry(main_frame, textvariable=self.name_var, width=35, font=("Segoe UI", 10))
+        name_entry.grid(row=0, column=1, pady=5, sticky="ew")
+        name_entry.focus()
         
-        ttk.Label(main_frame, text="Coordinates:").grid(row=1, column=0, sticky="w", pady=5)
+        ttk.Label(main_frame, text="Target Coordinates:", font=("Segoe UI", 10, "bold")).grid(row=1, column=0, sticky="w", pady=5)
         self.coordinates_var = tk.StringVar()
-        ttk.Entry(main_frame, textvariable=self.coordinates_var, width=30).grid(row=1, column=1, pady=5)
+        coords_entry = ttk.Entry(main_frame, textvariable=self.coordinates_var, width=35, font=("Segoe UI", 10))
+        coords_entry.grid(row=1, column=1, pady=5, sticky="ew")
         
-        ttk.Label(main_frame, text="Wait Seconds:").grid(row=2, column=0, sticky="w", pady=5)
+        coords_help = ttk.Label(main_frame, text="Optional - e.g., (3947, 3633, 6)", 
+                               font=("Segoe UI", 8), foreground="gray")
+        coords_help.grid(row=2, column=1, sticky="w", pady=(0, 10))
+        
+        ttk.Label(main_frame, text="Wait Time (seconds):", font=("Segoe UI", 10, "bold")).grid(row=3, column=0, sticky="w", pady=5)
         self.wait_seconds_var = tk.DoubleVar(value=3.0)
-        ttk.Spinbox(main_frame, from_=0.5, to=60.0, increment=0.5, 
-                   textvariable=self.wait_seconds_var, width=28).grid(row=2, column=1, pady=5)
+        wait_spinbox = ttk.Spinbox(main_frame, from_=0.5, to=60.0, increment=0.5, 
+                                  textvariable=self.wait_seconds_var, width=33, font=("Segoe UI", 10))
+        wait_spinbox.grid(row=3, column=1, pady=5, sticky="ew")
         
-        ttk.Label(main_frame, text="Instructions:", font=("Arial", 9, "bold")).grid(row=3, column=0, columnspan=2, sticky="w", pady=15)
+        separator = ttk.Separator(main_frame, orient='horizontal')
+        separator.grid(row=4, column=0, columnspan=2, sticky="ew", pady=15)
         
-        instructions = tk.Text(main_frame, height=6, width=50, wrap=tk.WORD, state=tk.DISABLED,
-                              bg="#f0f0f0", font=("Arial", 8))
-        instructions.grid(row=4, column=0, columnspan=2, pady=5)
+        instructions_label = ttk.Label(main_frame, text="How it works:", 
+                                      font=("Segoe UI", 11, "bold"), foreground="#0066cc")
+        instructions_label.grid(row=5, column=0, columnspan=2, sticky="w", pady=(0, 5))
         
-        instructions.config(state=tk.NORMAL)
-        instructions.insert(tk.END, 
-            "1. Click 'Select Step Icon' to capture the icon area in the minimap\n"
-            "2. Enter coordinates in format: (x, y, z) - e.g., (3947, 3633, 6)\n"
-            "3. Set wait time - how long to wait after clicking before validation\n"
-            "4. The helper will click the icon and wait for the character to reach the coordinates")
-        instructions.config(state=tk.DISABLED)
+        instructions_frame = tk.Frame(main_frame, bg="#f8f9fa", relief=tk.FLAT, bd=1)
+        instructions_frame.grid(row=6, column=0, columnspan=2, sticky="ew", pady=5)
+        
+        instructions_text = tk.Text(instructions_frame, height=8, width=55, wrap=tk.WORD, 
+                                   bg="#f8f9fa", font=("Segoe UI", 9), relief=tk.FLAT,
+                                   padx=10, pady=10)
+        instructions_text.pack(fill="both", expand=True)
+        
+        instructions_content = """1. After clicking OK, you'll be prompted to select the step icon
+
+2. Use the area selector to capture any icon/button on your screen:
+   • Quest markers, NPCs, buildings, UI buttons, etc.
+   • Can be anywhere on any monitor
+   • Draw a small rectangle around the target
+
+3. During navigation, the helper will:
+   • Search for the icon across all monitors
+   • Click on it when found
+   • Wait for the specified time
+   • Continue to the next step
+
+4. Target coordinates are optional for validation"""
+        
+        instructions_text.insert("1.0", instructions_content)
+        instructions_text.config(state=tk.DISABLED)
+        
+        main_frame.grid_columnconfigure(1, weight=1)
         
         button_frame = ttk.Frame(main_frame)
-        button_frame.grid(row=5, column=0, columnspan=2, pady=20)
+        button_frame.grid(row=7, column=0, columnspan=2, pady=20)
         
-        ttk.Button(button_frame, text="Select Step Icon", 
-                  command=self._select_icon).pack(side=tk.LEFT, padx=5)
-        ttk.Button(button_frame, text="OK", 
-                  command=self._on_ok).pack(side=tk.LEFT, padx=5)
-        ttk.Button(button_frame, text="Cancel", 
-                  command=self._on_cancel).pack(side=tk.LEFT, padx=5)
-    
-    def _select_icon(self):
-        messagebox.showinfo("Select Icon", 
-            "The minimap area selection will open next.\n"
-            "Draw a small rectangle around the step icon in the minimap.")
+        ok_btn = ttk.Button(button_frame, text="Create Step", command=self._on_ok)
+        ok_btn.pack(side=tk.LEFT, padx=5)
+        
+        cancel_btn = ttk.Button(button_frame, text="Cancel", command=self._on_cancel)
+        cancel_btn.pack(side=tk.LEFT, padx=5)
     
     def _on_ok(self):
+        name = self.name_var.get().strip()
+        if not name:
+            messagebox.showerror("Error", "Please enter a step name.")
+            return
+            
         self.result = {
-            'name': self.name_var.get() or f"Step {int(time.time())}",
-            'coordinates': self.coordinates_var.get(),
+            'name': name,
+            'coordinates': self.coordinates_var.get().strip(),
             'wait_seconds': self.wait_seconds_var.get()
         }
         self.dialog.destroy()
@@ -108,6 +136,9 @@ class SettingsDialog:
         health_frame = ttk.Frame(notebook)
         notebook.add(health_frame, text="Health")
         
+        battle_frame = ttk.Frame(notebook)
+        notebook.add(battle_frame, text="Battle")
+        
         nav_frame = ttk.Frame(notebook)
         notebook.add(nav_frame, text="Navigation")
         
@@ -115,6 +146,7 @@ class SettingsDialog:
         notebook.add(advanced_frame, text="Advanced")
         
         self._create_health_settings(health_frame)
+        self._create_battle_settings(battle_frame)
         self._create_navigation_settings(nav_frame)
         self._create_advanced_settings(advanced_frame)
         
@@ -146,6 +178,17 @@ class SettingsDialog:
         self.auto_heal_var = tk.BooleanVar()
         ttk.Checkbutton(parent, text="Enable automatic healing", 
                        variable=self.auto_heal_var).pack(anchor=tk.W, pady=5)
+    
+    def _create_battle_settings(self, parent):
+        ttk.Label(parent, text="Battle Detection", font=("Arial", 12, "bold")).pack(anchor=tk.W, pady=10)
+        
+        self.battle_detection_var = tk.BooleanVar()
+        ttk.Checkbutton(parent, text="Enable battle detection", 
+                       variable=self.battle_detection_var).pack(anchor=tk.W, pady=5)
+        
+        self.auto_battle_var = tk.BooleanVar()
+        ttk.Checkbutton(parent, text="Enable auto battle (future feature)", 
+                       variable=self.auto_battle_var, state=tk.DISABLED).pack(anchor=tk.W, pady=5)
     
     def _create_navigation_settings(self, parent):
         ttk.Label(parent, text="Navigation Settings", font=("Arial", 12, "bold")).pack(anchor=tk.W, pady=10)
@@ -192,6 +235,8 @@ class SettingsDialog:
         helper_settings = self.current_settings.get("helper_settings", {})
         self.auto_heal_var.set(helper_settings.get("auto_heal", True))
         self.auto_nav_var.set(helper_settings.get("auto_navigation", False))
+        self.battle_detection_var.set(helper_settings.get("battle_detection_enabled", True))
+        self.auto_battle_var.set(helper_settings.get("auto_battle", False))
         self.step_timeout_var.set(helper_settings.get("step_timeout", 30))
         self.coordinate_validation_var.set(helper_settings.get("coordinate_validation", True))
         self.match_threshold_var.set(helper_settings.get("image_matching_threshold", 0.8))
@@ -203,6 +248,8 @@ class SettingsDialog:
         self.health_threshold_var.set(60)
         self.auto_heal_var.set(True)
         self.auto_nav_var.set(False)
+        self.battle_detection_var.set(True)
+        self.auto_battle_var.set(False)
         self.step_timeout_var.set(30)
         self.coordinate_validation_var.set(True)
         self.match_threshold_var.set(0.8)
@@ -217,6 +264,8 @@ class SettingsDialog:
             "helper_settings": {
                 "auto_heal": self.auto_heal_var.get(),
                 "auto_navigation": self.auto_nav_var.get(),
+                "battle_detection_enabled": self.battle_detection_var.get(),
+                "auto_battle": self.auto_battle_var.get(),
                 "step_timeout": self.step_timeout_var.get(),
                 "coordinate_validation": self.coordinate_validation_var.get(),
                 "image_matching_threshold": self.match_threshold_var.get(),

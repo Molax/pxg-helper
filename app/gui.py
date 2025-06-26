@@ -29,7 +29,7 @@ class PokeXGamesHelper:
         
         self.root.geometry("1400x900")
         self.root.minsize(1200, 800)
-        self.root.title("PokeXGames Helper - Navigation & Automation")
+        self.root.title("PokeXGames Helper - Battle Automation & Navigation")
         self.root.configure(bg="#1a1a1a")
         
         self._initialize_components()
@@ -46,18 +46,20 @@ class PokeXGamesHelper:
         try:
             from app.screen_capture.area_selector import AreaSelector
             from app.core.health_detector import HealthDetector
+            from app.core.pokemon_detector import BattleDetector
             from app.navigation.navigation_manager import NavigationManager
             from app.utils.mouse_controller import MouseController
             
             self.health_bar_selector = AreaSelector(self.root)
             self.minimap_selector = AreaSelector(self.root)
-            self.coordinates_selector = AreaSelector(self.root)
+            self.battle_area_selector = AreaSelector(self.root)
             
             self.health_detector = HealthDetector()
+            self.battle_detector = BattleDetector()
             self.mouse_controller = MouseController()
             self.navigation_manager = NavigationManager(
                 self.minimap_selector, 
-                self.coordinates_selector, 
+                self.battle_area_selector, 
                 self.mouse_controller
             )
             
@@ -71,6 +73,7 @@ class PokeXGamesHelper:
         self.start_time = None
         self.heals_used = 0
         self.steps_completed = 0
+        self.battles_won = 0
         
         self.helper_thread = None
     
@@ -113,7 +116,7 @@ class PokeXGamesHelper:
                               font=("Segoe UI", 20, "bold"), bg="#1a1a1a", fg="#ffffff")
         title_label.pack(anchor=tk.W)
         
-        subtitle_label = tk.Label(title_section, text="Navigation & Automation Helper", 
+        subtitle_label = tk.Label(title_section, text="Battle Automation & Navigation Helper", 
                                  font=("Segoe UI", 12), bg="#1a1a1a", fg="#ff6b35")
         subtitle_label.pack(anchor=tk.W)
         
@@ -157,7 +160,7 @@ class PokeXGamesHelper:
             left_panel, 
             self.health_bar_selector,
             self.minimap_selector,
-            self.coordinates_selector,
+            self.battle_area_selector,
             self
         )
         
@@ -182,6 +185,12 @@ class PokeXGamesHelper:
             self.log(f"{title} selection completed")
             self.area_config_panel.update_area_status(selector)
             self.check_configuration()
+            
+            try:
+                self._save_configuration()
+                self.log(f"{title} configuration auto-saved")
+            except Exception as e:
+                self.log(f"Failed to auto-save {title} configuration: {e}")
         
         try:
             success = selector.start_selection(
@@ -200,9 +209,9 @@ class PokeXGamesHelper:
     def check_configuration(self):
         health_configured = self.health_bar_selector.is_setup()
         minimap_configured = self.minimap_selector.is_setup()
-        coords_configured = self.coordinates_selector.is_setup()
+        battle_configured = self.battle_area_selector.is_setup()
         
-        if health_configured and minimap_configured and coords_configured:
+        if health_configured and minimap_configured and battle_configured:
             self.area_config_panel.set_config_status("All areas configured! Helper ready.", "#28a745")
             self.controls_panel.enable_start_button()
         else:
@@ -211,8 +220,8 @@ class PokeXGamesHelper:
                 missing.append("Health Bar")
             if not minimap_configured:
                 missing.append("Minimap")
-            if not coords_configured:
-                missing.append("Coordinates")
+            if not battle_configured:
+                missing.append("Battle Area")
             
             self.area_config_panel.set_config_status(f"Configure: {', '.join(missing)}", "#ffc107")
             self.controls_panel.disable_start_button()
@@ -258,12 +267,16 @@ class PokeXGamesHelper:
                                 self.controls_panel.update_heals_count(self.heals_used)
                                 self.log(f"Health low ({health_percent:.1f}%), used heal ({heal_key})")
                 
-                if self.coordinates_selector.is_setup():
-                    current_coords = self.navigation_manager.coordinates_reader.read_coordinates()
-                    if current_coords:
-                        self.area_config_panel.update_coordinates(current_coords)
-                    else:
-                        self.area_config_panel.update_coordinates("Not detected")
+                if self.battle_area_selector.is_setup():
+                    battle_image = self.battle_area_selector.get_current_screenshot_region()
+                    if battle_image:
+                        enemy_count = self.battle_detector.count_enemy_pokemon(battle_image)
+                        in_battle = self.battle_detector.has_enemy_pokemon(battle_image)
+                        
+                        self.area_config_panel.update_battle_info(enemy_count, in_battle)
+                        
+                        if in_battle:
+                            self.log(f"Battle detected! {enemy_count} enemy Pokemon found")
                 
                 if self.controls_panel.should_auto_navigate() and not self.navigation_manager.is_navigating:
                     if self.navigation_manager.steps:
@@ -289,9 +302,23 @@ class PokeXGamesHelper:
     
     def save_settings(self):
         try:
-            self._save_configuration()
-            self.log("Settings saved successfully")
+            self.log("Starting settings save...")
+            
+            try:
+                self.navigation_manager.cleanup_unused_icons()
+                self.log("Icon cleanup completed")
+            except Exception as e:
+                self.log(f"Icon cleanup failed: {e}")
+            
+            try:
+                self._save_configuration()
+                self.log("Settings saved successfully")
+            except Exception as e:
+                self.log(f"Configuration save failed: {e}")
+                raise
+                
         except Exception as e:
+            logger.error(f"Error in save_settings: {e}", exc_info=True)
             self.log(f"Error saving settings: {e}")
     
     def _load_configuration(self):
@@ -300,11 +327,12 @@ class PokeXGamesHelper:
             config = load_config()
             
             areas_config = config.get("areas", {})
+            areas_loaded = 0
             
             for area_name, selector in [
                 ("health_bar", self.health_bar_selector),
                 ("minimap", self.minimap_selector),
-                ("coordinates", self.coordinates_selector)
+                ("battle_area", self.battle_area_selector)
             ]:
                 area_config = areas_config.get(area_name, {})
                 if area_config.get("configured", False):
@@ -314,30 +342,53 @@ class PokeXGamesHelper:
                     y2 = area_config.get("y2")
                     
                     if all([x1 is not None, y1 is not None, x2 is not None, y2 is not None]):
-                        selector.configure_from_saved(x1, y1, x2, y2)
-                        selector.title = area_config.get("name", area_name.replace("_", " ").title())
+                        if selector.configure_from_saved(x1, y1, x2, y2):
+                            selector.title = area_config.get("name", area_name.replace("_", " ").title())
+                            areas_loaded += 1
+                            self.log(f"Loaded {area_name}: ({x1},{y1}) to ({x2},{y2})")
+                            
+                            try:
+                                from PIL import ImageGrab
+                                selector.preview_image = ImageGrab.grab(bbox=(x1, y1, x2, y2), all_screens=True)
+                            except Exception as e:
+                                logger.warning(f"Could not create preview for {area_name}: {e}")
+                            
+                            self.area_config_panel.update_area_status(selector)
+                        else:
+                            logger.warning(f"Failed to configure {area_name} from saved data")
+                    else:
+                        logger.warning(f"Invalid coordinates for {area_name}: {area_config}")
+                else:
+                    logger.debug(f"Area {area_name} not configured in saved data")
             
             navigation_steps = config.get("navigation_steps", [])
             if navigation_steps:
                 self.navigation_manager.load_steps_data(navigation_steps)
                 self.navigation_panel.refresh_steps_display()
+                self.log(f"Loaded {len(navigation_steps)} navigation steps")
             
             self.controls_panel.load_settings_from_config(config)
-            self.log("Configuration loaded from file")
+            
+            if areas_loaded > 0:
+                self.log(f"Configuration loaded: {areas_loaded}/3 areas restored")
+            else:
+                self.log("No saved areas found - using default configuration")
             
         except Exception as e:
-            logger.error(f"Error loading configuration: {e}")
-            self.log("Using default configuration")
+            logger.error(f"Error loading configuration: {e}", exc_info=True)
+            self.log("Error loading configuration - using defaults")
     
     def _save_configuration(self):
         try:
             from app.config import load_config, save_config
             config = load_config()
             
+            areas_saved = 0
+            
             for area_name, selector in [
                 ("health_bar", self.health_bar_selector),
                 ("minimap", self.minimap_selector),
-                ("coordinates", self.coordinates_selector)
+                ("battle_area", self.battle_area_selector)
             ]:
                 if selector.is_setup():
                     config["areas"][area_name] = {
@@ -348,15 +399,20 @@ class PokeXGamesHelper:
                         "y2": selector.y2,
                         "configured": True
                     }
+                    areas_saved += 1
+                    logger.info(f"Saving {area_name}: ({selector.x1},{selector.y1}) to ({selector.x2},{selector.y2})")
+                else:
+                    config["areas"][area_name]["configured"] = False
+                    logger.debug(f"Area {area_name} not configured, marked as unconfigured")
             
             self.controls_panel.save_settings_to_config(config)
             config["navigation_steps"] = self.navigation_manager.get_steps_data()
             
             save_config(config)
-            logger.info("Configuration saved successfully")
+            logger.info(f"Configuration saved successfully - {areas_saved}/3 areas saved")
             
         except Exception as e:
-            logger.error(f"Error saving configuration: {e}")
+            logger.error(f"Error saving configuration: {e}", exc_info=True)
             raise
     
     def on_closing(self):

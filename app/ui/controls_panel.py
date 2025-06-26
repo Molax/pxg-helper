@@ -63,6 +63,20 @@ class ControlsPanel:
                                        activeforeground="#ffffff", font=("Segoe UI", 9))
         auto_heal_check.pack(side=tk.LEFT)
         
+        battle_frame = tk.LabelFrame(parent, text="Battle Settings", bg="#2d2d2d", fg="#ffffff", 
+                                   font=("Segoe UI", 10, "bold"))
+        battle_frame.pack(fill=tk.X, pady=8)
+        
+        battle_controls = tk.Frame(battle_frame, bg="#2d2d2d")
+        battle_controls.pack(fill=tk.X, padx=8, pady=8)
+        
+        self.battle_detection_var = tk.BooleanVar(value=True)
+        battle_detection_check = tk.Checkbutton(battle_controls, text="Enable battle detection",
+                                              variable=self.battle_detection_var, bg="#2d2d2d", fg="#ffffff",
+                                              selectcolor="#1a1a1a", activebackground="#2d2d2d",
+                                              activeforeground="#ffffff", font=("Segoe UI", 9))
+        battle_detection_check.pack(side=tk.LEFT)
+        
         nav_frame = tk.LabelFrame(parent, text="Navigation", bg="#2d2d2d", fg="#ffffff", 
                                 font=("Segoe UI", 10, "bold"))
         nav_frame.pack(fill=tk.X, pady=8)
@@ -84,6 +98,7 @@ class ControlsPanel:
         stats_labels = [
             ("Heals Used:", "#dc3545", "heals_var"),
             ("Steps Completed:", "#17a2b8", "steps_var"),
+            ("Battles Won:", "#9c27b0", "battles_var"),
             ("Uptime:", "#ffffff", "uptime_var")
         ]
         
@@ -128,6 +143,7 @@ class ControlsPanel:
     def _initialize_variables(self):
         self.heals_used = 0
         self.steps_completed = 0
+        self.battles_won = 0
         self.start_time = None
     
     def enable_start_button(self):
@@ -157,6 +173,10 @@ class ControlsPanel:
     def update_heals_count(self, count):
         self.heals_used = count
         self.heals_var.set(str(count))
+    
+    def update_battles_count(self, count):
+        self.battles_won = count
+        self.battles_var.set(str(count))
     
     def start_display_update(self):
         if not self.display_update_active:
@@ -192,6 +212,7 @@ class ControlsPanel:
             helper_settings = config.get("helper_settings", {})
             self.auto_heal_var.set(helper_settings.get("auto_heal", True))
             self.auto_nav_var.set(helper_settings.get("auto_navigation", False))
+            self.battle_detection_var.set(helper_settings.get("battle_detection_enabled", True))
             
         except Exception as e:
             import logging
@@ -204,6 +225,7 @@ class ControlsPanel:
         config["helper_settings"] = {
             "auto_heal": self.auto_heal_var.get(),
             "auto_navigation": self.auto_nav_var.get(),
+            "battle_detection_enabled": self.battle_detection_var.get(),
             "navigation_check_interval": 0.5,
             "step_timeout": 30,
             "coordinate_validation": True,

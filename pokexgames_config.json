@@ -30,18 +30,52 @@
         },
         "health_bar": {
             "name": "Health Bar",
-            "x1": null,
-            "y1": null,
-            "x2": null,
-            "y2": null,
-            "configured": false
+            "x1": 64,
+            "y1": 516,
+            "x2": 260,
+            "y2": 528,
+            "configured": true
+        },
+        "battle_area": {
+            "name": "Battle Area",
+            "x1": 13,
+            "y1": 412,
+            "x2": 280,
+            "y2": 787,
+            "configured": true
+        },
+        "minimap": {
+            "name": "Minimap Area",
+            "x1": 3173,
+            "y1": 46,
+            "x2": 3436,
+            "y2": 366,
+            "configured": true
         }
     },
     "helper_settings": {
         "auto_heal": true,
-        "image_matching_threshold": 0.8,
-        "pokemon_detection_enabled": true,
-        "battle_detection_enabled": true
+        "auto_navigation": false,
+        "battle_detection_enabled": true,
+        "navigation_check_interval": 0.5,
+        "step_timeout": 30,
+        "coordinate_validation": true,
+        "image_matching_threshold": 0.8
     },
-    "navigation_steps": []
+    "navigation_steps": [
+        {
+            "step_id": 1,
+            "name": "step 2",
+            "icon_image_path": "assets/navigation_icons\\step_2_1750951291.png",
+            "coordinates": "3337,6999,6",
+            "wait_seconds": 5.0,
+            "is_active": true,
+            "icon_bounds": [
+                3291,
+                158,
+                3313,
+                176
+            ]
+        }
+    ]
 }

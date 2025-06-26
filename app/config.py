@@ -26,8 +26,8 @@ DEFAULT_CONFIG = {
             "y2": None,
             "configured": False
         },
-        "coordinates": {
-            "name": "Coordinates Area",
+        "battle_area": {
+            "name": "Battle Area",
             "x1": None,
             "y1": None,
             "x2": None,
@@ -41,7 +41,9 @@ DEFAULT_CONFIG = {
         "navigation_check_interval": 0.5,
         "step_timeout": 30,
         "coordinate_validation": True,
-        "image_matching_threshold": 0.8
+        "image_matching_threshold": 0.8,
+        "battle_detection_enabled": True,
+        "auto_battle": False
     },
     "navigation_steps": []
 }
@@ -95,9 +97,25 @@ def load_config():
                     logging.getLogger('PokeXHelper').info("Added missing areas configuration")
                     save_config(config)
                 
+                if "battle_area" not in config["areas"]:
+                    config["areas"]["battle_area"] = DEFAULT_CONFIG["areas"]["battle_area"]
+                    logging.getLogger('PokeXHelper').info("Added battle area configuration")
+                    save_config(config)
+                
+                if "coordinates" in config["areas"]:
+                    del config["areas"]["coordinates"]
+                    logging.getLogger('PokeXHelper').info("Removed deprecated coordinates area")
+                    save_config(config)
+                
                 if "helper_settings" not in config:
                     config["helper_settings"] = DEFAULT_CONFIG["helper_settings"]
                     logging.getLogger('PokeXHelper').info("Added missing helper settings")
+                    save_config(config)
+                
+                if "battle_detection_enabled" not in config["helper_settings"]:
+                    config["helper_settings"]["battle_detection_enabled"] = True
+                    config["helper_settings"]["auto_battle"] = False
+                    logging.getLogger('PokeXHelper').info("Added battle detection settings")
                     save_config(config)
                 
                 if "navigation_steps" not in config:

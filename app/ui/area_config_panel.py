@@ -3,11 +3,11 @@ from tkinter import ttk
 from PIL import Image, ImageTk
 
 class AreaConfigPanel:
-    def __init__(self, parent, health_selector, minimap_selector, coordinates_selector, main_app):
+    def __init__(self, parent, health_selector, minimap_selector, battle_area_selector, main_app):
         self.parent = parent
         self.health_selector = health_selector
         self.minimap_selector = minimap_selector
-        self.coordinates_selector = coordinates_selector
+        self.battle_area_selector = battle_area_selector
         self.main_app = main_app
         
         self._create_ui()
@@ -23,7 +23,7 @@ class AreaConfigPanel:
         for name, color, selector in [
             ("Health Bar", "#dc3545", self.health_selector),
             ("Minimap Area", "#17a2b8", self.minimap_selector),
-            ("Coordinates Area", "#ffc107", self.coordinates_selector)
+            ("Battle Area", "#9c27b0", self.battle_area_selector)
         ]:
             self._create_area_card(areas_frame, name, color, selector)
         
@@ -78,14 +78,24 @@ class AreaConfigPanel:
         tk.Label(health_info_frame, textvariable=self.health_percentage_var, 
                 bg="#2d2d2d", fg="#ffffff", font=("Segoe UI", 10)).pack(side=tk.RIGHT)
         
-        coords_info_frame = tk.Frame(parent, bg="#2d2d2d")
-        coords_info_frame.pack(fill=tk.X, pady=8)
+        battle_info_frame = tk.Frame(parent, bg="#2d2d2d")
+        battle_info_frame.pack(fill=tk.X, pady=8)
         
-        tk.Label(coords_info_frame, text="Current Position:", bg="#2d2d2d", fg="#ffc107",
+        tk.Label(battle_info_frame, text="Enemy Pokemon:", bg="#2d2d2d", fg="#9c27b0",
                 font=("Segoe UI", 10, "bold")).pack(side=tk.LEFT)
         
-        self.coordinates_var = tk.StringVar(value="Not detected")
-        tk.Label(coords_info_frame, textvariable=self.coordinates_var, 
+        self.enemy_count_var = tk.StringVar(value="0")
+        tk.Label(battle_info_frame, textvariable=self.enemy_count_var, 
+                bg="#2d2d2d", fg="#ffffff", font=("Segoe UI", 10)).pack(side=tk.RIGHT)
+        
+        battle_status_frame = tk.Frame(parent, bg="#2d2d2d")
+        battle_status_frame.pack(fill=tk.X, pady=8)
+        
+        tk.Label(battle_status_frame, text="Battle Status:", bg="#2d2d2d", fg="#ffc107",
+                font=("Segoe UI", 10, "bold")).pack(side=tk.LEFT)
+        
+        self.battle_status_var = tk.StringVar(value="No Battle")
+        tk.Label(battle_status_frame, textvariable=self.battle_status_var, 
                 bg="#2d2d2d", fg="#ffffff", font=("Segoe UI", 10)).pack(side=tk.RIGHT)
     
     def update_area_status(self, selector):
@@ -100,11 +110,15 @@ class AreaConfigPanel:
                         photo = ImageTk.PhotoImage(img)
                         selector.preview_label.config(image=photo, text="")
                         selector.preview_label.image = photo
-                    except Exception:
-                        pass
+                    except Exception as e:
+                        self.main_app.log(f"Error updating preview image: {e}")
+                        selector.preview_label.config(text="Configured", fg="#28a745")
             else:
                 selector.status_dot.config(fg="#dc3545")
                 selector.preview_label.config(text="Not Configured", fg="#666666")
+                if hasattr(selector.preview_label, 'image'):
+                    selector.preview_label.config(image="")
+                    delattr(selector.preview_label, 'image')
     
     def set_config_status(self, text, color):
         self.config_status_label.config(text=text, fg=color)
@@ -112,5 +126,9 @@ class AreaConfigPanel:
     def update_health_percentage(self, percentage):
         self.health_percentage_var.set(f"{percentage:.1f}%")
     
-    def update_coordinates(self, coordinates):
-        self.coordinates_var.set(coordinates)
+    def update_battle_info(self, enemy_count, in_battle):
+        self.enemy_count_var.set(str(enemy_count))
+        if in_battle:
+            self.battle_status_var.set("In Battle")
+        else:
+            self.battle_status_var.set("No Battle")

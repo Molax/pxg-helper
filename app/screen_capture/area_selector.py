@@ -57,28 +57,36 @@ class AreaSelector:
         ])
     
     def configure_from_saved(self, x1, y1, x2, y2):
-        if all([x1 is not None, y1 is not None, x2 is not None, y2 is not None]):
-            self.x1 = int(x1)
-            self.y1 = int(y1)
-            self.x2 = int(x2)
-            self.y2 = int(y2)
-            self.is_configured = True
-            
-            title = getattr(self, 'title', 'Selection')
-            self.logger.info(f"{title} configured from saved coordinates: ({self.x1},{self.y1}) to ({self.x2},{self.y2})")
-            
-            try:
-                self.preview_image = ImageGrab.grab(bbox=(self.x1, self.y1, self.x2, self.y2), all_screens=True)
-            except TypeError:
-                try:
-                    self.preview_image = ImageGrab.grab(bbox=(self.x1, self.y1, self.x2, self.y2))
-                except Exception as e:
-                    self.logger.warning(f"Could not create preview image: {e}")
-            except Exception as e:
-                self.logger.warning(f"Could not create preview image: {e}")
+        try:
+            if all([x1 is not None, y1 is not None, x2 is not None, y2 is not None]):
+                self.x1 = int(x1)
+                self.y1 = int(y1)
+                self.x2 = int(x2)
+                self.y2 = int(y2)
+                self.is_configured = True
                 
-            return True
-        return False
+                title = getattr(self, 'title', 'Selection')
+                self.logger.info(f"{title} configured from saved coordinates: ({self.x1},{self.y1}) to ({self.x2},{self.y2})")
+                
+                try:
+                    self.preview_image = ImageGrab.grab(bbox=(self.x1, self.y1, self.x2, self.y2), all_screens=True)
+                    self.logger.debug(f"Created preview image for {title}")
+                except TypeError:
+                    try:
+                        self.preview_image = ImageGrab.grab(bbox=(self.x1, self.y1, self.x2, self.y2))
+                        self.logger.debug(f"Created preview image for {title} (fallback method)")
+                    except Exception as e:
+                        self.logger.warning(f"Could not create preview image for {title}: {e}")
+                except Exception as e:
+                    self.logger.warning(f"Could not create preview image for {title}: {e}")
+                    
+                return True
+            else:
+                self.logger.warning(f"Invalid coordinates provided: ({x1},{y1}) to ({x2},{y2})")
+                return False
+        except Exception as e:
+            self.logger.error(f"Error configuring from saved data: {e}")
+            return False
     
     def _get_desktop_bounds(self):
         monitors = []
@@ -132,7 +140,7 @@ class AreaSelector:
         width = max_x - min_x
         height = max_y - min_y
         
-        self.logger.info(f"Desktop bounds: ({min_x}, {min_y}) to ({max_x}, {max_y}) = {width}x{height}")
+        self.logger.debug(f"Desktop bounds: ({min_x}, {min_y}) to ({max_x}, {max_y}) = {width}x{height}")
         return min_x, min_y, width, height
     
     def start_selection(self, title="Select Area", color="yellow", completion_callback=None):
@@ -160,17 +168,17 @@ class AreaSelector:
             
             desktop_x, desktop_y, desktop_width, desktop_height = self.desktop_bounds
             
-            self.logger.info(f"Creating selection window with desktop bounds: {self.desktop_bounds}")
+            self.logger.debug(f"Creating selection window with desktop bounds: {self.desktop_bounds}")
             
             try:
                 screenshot = ImageGrab.grab(all_screens=True)
-                self.logger.info(f"Screenshot captured with size: {screenshot.size}")
+                self.logger.debug(f"Screenshot captured with size: {screenshot.size}")
             except Exception as e:
                 self.logger.error(f"Failed to capture screenshot: {e}")
                 return False
             
             if screenshot.size != (desktop_width, desktop_height):
-                self.logger.info(f"Screenshot size {screenshot.size} != expected {desktop_width}x{desktop_height}, adjusting")
+                self.logger.debug(f"Screenshot size {screenshot.size} != expected {desktop_width}x{desktop_height}, adjusting")
                 try:
                     if screenshot.size[0] >= desktop_width and screenshot.size[1] >= desktop_height:
                         screenshot = screenshot.crop((0, 0, desktop_width, desktop_height))
@@ -321,7 +329,6 @@ class AreaSelector:
             self.start_y = None
             return
         
-        self.logger.info(f"Selection made: ({self.x1}, {self.y1}) to ({self.x2}, {self.y2})")
         self._show_confirm_dialog()
     
     def _on_escape(self, event):
