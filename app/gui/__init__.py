@@ -42,6 +42,9 @@ class PokeXGamesHelper:
         self.interface_manager = InterfaceManager(self.root, self)
         
         self.component_manager.set_root_window(self.root)
+        
+        # Add compatibility for migration
+        self._add_migration_compatibility()
     
     @property
     def health_bar_selector(self):
@@ -91,6 +94,15 @@ class PokeXGamesHelper:
     def on_closing(self):
         self.config_manager.save_on_exit()
         self.root.destroy()
+    
+    def _add_migration_compatibility(self):
+        """Add compatibility methods for smooth migration"""
+        # Ensure navigation manager compatibility
+        if hasattr(self, 'navigation_manager'):
+            if not hasattr(self.navigation_manager, 'set_ui_log_callback'):
+                def dummy_callback(callback):
+                    logger.debug("Navigation manager set_ui_log_callback not implemented")
+                self.navigation_manager.set_ui_log_callback = dummy_callback
 
 __all__ = [
     'PokeXGamesHelper',

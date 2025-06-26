@@ -98,8 +98,12 @@ class ConfigManager:
             self.main_app.log(f"Loaded {len(navigation_steps)} navigation steps")
     
     def _load_helper_settings(self, config):
-        if hasattr(self.main_app, 'interface_manager') and hasattr(self.main_app.interface_manager, 'controls_panel'):
-            self.main_app.interface_manager.controls_panel.load_settings_from_config(config)
+        try:
+            if (hasattr(self.main_app, 'interface_manager') and 
+                hasattr(self.main_app.interface_manager, 'controls_panel')):
+                self.main_app.interface_manager.controls_panel.load_settings_from_config(config)
+        except Exception as e:
+            logger.debug(f"Could not load helper settings: {e}")
     
     def save_configuration(self):
         try:
@@ -168,8 +172,13 @@ class ConfigManager:
             logger.debug(f"Could not save coordinate area: {e}")
     
     def _save_other_settings(self, config):
-        if hasattr(self.main_app, 'interface_manager') and hasattr(self.main_app.interface_manager, 'controls_panel'):
-            self.main_app.interface_manager.controls_panel.save_settings_to_config(config)
+        try:
+            if (hasattr(self.main_app, 'interface_manager') and 
+                hasattr(self.main_app.interface_manager, 'controls_panel')):
+                self.main_app.interface_manager.controls_panel.save_settings_to_config(config)
+        except Exception as e:
+            logger.debug(f"Could not save controls panel settings: {e}")
+            
         config["navigation_steps"] = self.main_app.navigation_manager.get_steps_data()
     
     def save_on_exit(self):

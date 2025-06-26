@@ -20,7 +20,16 @@ class UILogger:
         
         if self.log_panel:
             try:
-                self.log_panel.add_log_entry(formatted_message, level)
+                # Use add_log method which exists in LogPanel
+                self.log_panel.add_log(message)
+            except Exception as e:
+                logger.error(f"Error adding log entry to UI: {e}")
+    
+    def add_log_entry(self, message, level="INFO"):
+        """Compatibility method for LogPanel interface"""
+        if self.log_panel:
+            try:
+                self.log_panel.add_log(message)
             except Exception as e:
                 logger.error(f"Error adding log entry to UI: {e}")
     
@@ -39,6 +48,6 @@ class UILogger:
     def clear_logs(self):
         if self.log_panel:
             try:
-                self.log_panel.clear_logs()
+                self.log_panel.clear_log()
             except Exception as e:
                 logger.error(f"Error clearing logs: {e}")

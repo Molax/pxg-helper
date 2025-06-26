@@ -1,0 +1,16 @@
+2025-06-26 16:34:26,496 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 16:34:26,694 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 16:34:26,697 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 16:34:26,711 - PokeXHelper - CRITICAL - Fatal error: NavigationPanel.__init__() missing 1 required positional argument: 'main_app'
+Traceback (most recent call last):
+  File "C:\repositories\pxg-helper\pokexgames_helper.py", line 78, in main
+    app = PokeXGamesHelper(root)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repositories\pxg-helper\app\gui\__init__.py", line 17, in __init__
+    self.interface_manager.create_interface()
+  File "C:\repositories\pxg-helper\app\gui\managers\interface_manager.py", line 38, in create_interface
+    self._create_panels(config_frame, nav_frame, controls_container, log_container)
+  File "C:\repositories\pxg-helper\app\gui\managers\interface_manager.py", line 58, in _create_panels
+    self.navigation_panel = NavigationPanel(nav_frame, self.main_app.navigation_manager)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: NavigationPanel.__init__() missing 1 required positional argument: 'main_app'

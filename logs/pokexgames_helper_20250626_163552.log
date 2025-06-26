@@ -1,0 +1,133 @@
+2025-06-26 16:35:52,533 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 16:35:52,710 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 16:35:52,713 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 16:35:52,731 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 16:35:52,737 - PokeXHelper - INFO - No saved areas found - using default configuration
+2025-06-26 16:35:52,739 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 16:35:52,739 - PokeXHelper - INFO - Selection configured from saved coordinates: (1452,60) to (1571,84)
+2025-06-26 16:35:52,897 - PokeXHelper - INFO - Loaded coordinate area: (1452,60) to (1571,84)
+2025-06-26 16:35:52,900 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 16:36:06,062 - PokeXHelper - INFO - Starting Health Bar selection...
+2025-06-26 16:36:06,063 - PokeXHelper - INFO - Starting area selection: Health Bar
+2025-06-26 16:36:06,381 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 16:36:07,604 - PokeXHelper - INFO - Selection complete: (65, 425) to (270, 463), size: 205x38
+2025-06-26 16:36:08,895 - PokeXHelper - INFO - Health Bar selection confirmed: (65, 425) to (270, 463)
+2025-06-26 16:36:08,898 - PokeXHelper - INFO - Health Bar configured: (65,425) to (270,463)
+2025-06-26 16:36:09,060 - PokeXHelper - INFO - Saving health_bar: (65,425) to (270,463)
+2025-06-26 16:36:09,060 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-06-26 16:36:09,060 - PokeXHelper - INFO - Serialized 0 steps for saving
+2025-06-26 16:36:09,061 - PokeXHelper - INFO - Configuration saved successfully - 1/3 areas saved
+2025-06-26 16:36:11,077 - PokeXHelper - INFO - Starting Minimap Area selection...
+2025-06-26 16:36:11,077 - PokeXHelper - INFO - Starting area selection: Minimap Area
+2025-06-26 16:36:11,361 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 16:36:15,732 - PokeXHelper - INFO - Selection complete: (1452, 59) to (1718, 362), size: 266x303
+2025-06-26 16:36:16,821 - PokeXHelper - INFO - Minimap Area selection confirmed: (1452, 59) to (1718, 362)
+2025-06-26 16:36:16,828 - PokeXHelper - INFO - Minimap Area configured: (1452,59) to (1718,362)
+2025-06-26 16:36:16,965 - PokeXHelper - INFO - Saving health_bar: (65,425) to (270,463)
+2025-06-26 16:36:16,965 - PokeXHelper - INFO - Saving minimap: (1452,59) to (1718,362)
+2025-06-26 16:36:16,965 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-06-26 16:36:16,966 - PokeXHelper - INFO - Serialized 0 steps for saving
+2025-06-26 16:36:16,966 - PokeXHelper - INFO - Configuration saved successfully - 2/3 areas saved
+2025-06-26 16:36:17,896 - PokeXHelper - INFO - Starting Battle Area selection...
+2025-06-26 16:36:17,897 - PokeXHelper - INFO - Starting area selection: Battle Area
+2025-06-26 16:36:18,170 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 16:36:19,884 - PokeXHelper - INFO - Selection complete: (3, 342) to (282, 704), size: 279x362
+2025-06-26 16:36:21,217 - PokeXHelper - INFO - Battle Area selection confirmed: (3, 342) to (282, 704)
+2025-06-26 16:36:21,222 - PokeXHelper - INFO - Battle Area configured: (3,342) to (282,704)
+2025-06-26 16:36:21,374 - PokeXHelper - INFO - Saving health_bar: (65,425) to (270,463)
+2025-06-26 16:36:21,374 - PokeXHelper - INFO - Saving minimap: (1452,59) to (1718,362)
+2025-06-26 16:36:21,374 - PokeXHelper - INFO - Saving battle_area: (3,342) to (282,704)
+2025-06-26 16:36:21,374 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-06-26 16:36:21,375 - PokeXHelper - INFO - Serialized 0 steps for saving
+2025-06-26 16:36:21,375 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 16:36:22,262 - PokeXHelper - INFO - Save Settings button clicked
+2025-06-26 16:36:22,269 - PokeXHelper - INFO - Saving health_bar: (65,425) to (270,463)
+2025-06-26 16:36:22,269 - PokeXHelper - INFO - Saving minimap: (1452,59) to (1718,362)
+2025-06-26 16:36:22,270 - PokeXHelper - INFO - Saving battle_area: (3,342) to (282,704)
+2025-06-26 16:36:22,270 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-06-26 16:36:22,270 - PokeXHelper - INFO - Serialized 0 steps for saving
+2025-06-26 16:36:22,270 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 16:37:15,467 - PokeXHelper - INFO - Starting area selection: Select Coordinate Display Area
+2025-06-26 16:37:15,718 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 16:37:19,737 - PokeXHelper - INFO - Selection complete: (1451, 55) to (1571, 82), size: 120x27
+2025-06-26 16:37:20,853 - PokeXHelper - INFO - Select Coordinate Display Area selection confirmed: (1451, 55) to (1571, 82)
+2025-06-26 16:37:20,858 - PokeXHelper - INFO - Coordinate area configured: (1451,55) to (1571,82)
+2025-06-26 16:37:39,646 - PokeXHelper - INFO - Added step 1: 'passo exclamacao' with icon path: 
+2025-06-26 16:37:39,646 - PokeXHelper - INFO - Created step 1: 'passo exclamacao'
+2025-06-26 16:37:39,647 - PokeXHelper - INFO - Refreshing steps display - 1 steps
+2025-06-26 16:37:39,748 - PokeXHelper - INFO - Select an icon for 'passo exclamacao' within the minimap area
+2025-06-26 16:37:39,750 - PokeXHelper - INFO - Starting area selection: Select Icon for 'passo exclamacao' (in minimap area)
+2025-06-26 16:37:40,037 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 16:37:43,229 - PokeXHelper - INFO - Selection complete: (1545, 183) to (1565, 202), size: 20x19
+2025-06-26 16:37:44,436 - PokeXHelper - INFO - Select Icon for 'passo exclamacao' (in minimap area) selection confirmed: (1545, 183) to (1565, 202)
+2025-06-26 16:37:44,625 - PokeXHelper - INFO - Saved and loaded icon for step 1: assets/navigation_icons\step_1_1750966664615.png
+2025-06-26 16:37:44,625 - PokeXHelper - INFO - Icon saved for step 'passo exclamacao'
+2025-06-26 16:37:44,631 - PokeXHelper - INFO - Refreshing steps display - 1 steps
+2025-06-26 16:37:44,642 - PokeXHelper - INFO - Navigation ready with 1 configured steps
+2025-06-26 16:38:01,694 - PokeXHelper - INFO - Added step 2: 'passo interregocao' with icon path: 
+2025-06-26 16:38:01,696 - PokeXHelper - INFO - Created step 2: 'passo interregocao'
+2025-06-26 16:38:01,701 - PokeXHelper - INFO - Refreshing steps display - 2 steps
+2025-06-26 16:38:01,703 - PokeXHelper - INFO - Select an icon for 'passo interregocao' within the minimap area
+2025-06-26 16:38:01,705 - PokeXHelper - INFO - Starting area selection: Select Icon for 'passo interregocao' (in minimap area)
+2025-06-26 16:38:01,968 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 16:38:05,989 - PokeXHelper - INFO - Selection complete: (1576, 235) to (1594, 262), size: 18x27
+2025-06-26 16:38:07,171 - PokeXHelper - INFO - Select Icon for 'passo interregocao' (in minimap area) selection confirmed: (1576, 235) to (1594, 262)
+2025-06-26 16:38:07,334 - PokeXHelper - INFO - Saved and loaded icon for step 2: assets/navigation_icons\step_2_1750966687328.png
+2025-06-26 16:38:07,334 - PokeXHelper - INFO - Icon saved for step 'passo interregocao'
+2025-06-26 16:38:07,343 - PokeXHelper - INFO - Refreshing steps display - 2 steps
+2025-06-26 16:38:07,346 - PokeXHelper - INFO - Navigation ready with 2 configured steps
+2025-06-26 16:38:08,656 - PokeXHelper - INFO - Save Settings button clicked
+2025-06-26 16:38:08,659 - PokeXHelper - INFO - Saving health_bar: (65,425) to (270,463)
+2025-06-26 16:38:08,659 - PokeXHelper - INFO - Saving minimap: (1452,59) to (1718,362)
+2025-06-26 16:38:08,659 - PokeXHelper - INFO - Saving battle_area: (3,342) to (282,704)
+2025-06-26 16:38:08,660 - PokeXHelper - INFO - Saving coordinate area: (1451,55) to (1571,82)
+2025-06-26 16:38:08,660 - PokeXHelper - INFO - Serialized 2 steps for saving
+2025-06-26 16:38:08,661 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 16:38:11,096 - PokeXHelper - INFO - Starting navigation sequence
+2025-06-26 16:38:11,097 - PokeXHelper - INFO - Starting navigation with 2 valid steps
+2025-06-26 16:38:11,097 - PokeXHelper - INFO -  Starting navigation sequence with 2 steps
+2025-06-26 16:38:11,098 - PokeXHelper - INFO - Navigation started successfully
+2025-06-26 16:38:11,098 - PokeXHelper - INFO -  Found 2 active steps, 2 ready with icons
+2025-06-26 16:38:11,098 - PokeXHelper - INFO -  Processing step 1/2: 'passo exclamacao'
+2025-06-26 16:38:11,099 - PokeXHelper - INFO -  Executing step 1: 'passo exclamacao' (attempt 1/2)
+2025-06-26 16:38:11,233 - PokeXHelper - INFO -  Found step 1 icon at (1555, 192) with 100.0% confidence (attempt 1/2)
+2025-06-26 16:38:11,494 - PokeXHelper - INFO -  Clicked at (1555, 192) for step 1 (attempt 1/2)
+2025-06-26 16:38:11,546 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:38:11,546 - PokeXHelper - INFO -  Waiting 4.0 seconds for step completion
+2025-06-26 16:38:16,652 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3953, 3633, 6)
+2025-06-26 16:38:16,653 - PokeXHelper - INFO - [SUCCESS] Step 1 validated - reached target coordinates
+2025-06-26 16:38:16,653 - PokeXHelper - INFO -  Step 1 'passo exclamacao' completed successfully
+2025-06-26 16:38:16,653 - PokeXHelper - INFO -  Processing step 2/2: 'passo interregocao'
+2025-06-26 16:38:16,653 - PokeXHelper - INFO -  Executing step 2: 'passo interregocao' (attempt 1/2)
+2025-06-26 16:38:16,797 - PokeXHelper - INFO -  Found step 2 icon at (1615, 273) with 100.0% confidence (attempt 1/2)
+2025-06-26 16:38:17,062 - PokeXHelper - INFO -  Clicked at (1615, 273) for step 2 (attempt 1/2)
+2025-06-26 16:38:17,114 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:38:17,114 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 16:38:23,576 - PokeXHelper - INFO - OCR method 'color_isolation' successful: (3958, 3643, 6)
+2025-06-26 16:38:23,576 - PokeXHelper - INFO - [SUCCESS] Step 2 validated - reached target coordinates
+2025-06-26 16:38:23,576 - PokeXHelper - INFO -  Step 2 'passo interregocao' completed successfully
+2025-06-26 16:38:24,577 - PokeXHelper - INFO -  Navigation sequence completed successfully - restarting from beginning
+2025-06-26 16:38:24,577 - PokeXHelper - INFO -  Processing step 1/2: 'passo exclamacao'
+2025-06-26 16:38:24,578 - PokeXHelper - INFO -  Executing step 1: 'passo exclamacao' (attempt 1/2)
+2025-06-26 16:38:24,754 - PokeXHelper - INFO -  Found step 1 icon at (1555, 162) with 100.0% confidence (attempt 1/2)
+2025-06-26 16:38:25,014 - PokeXHelper - INFO -  Clicked at (1555, 162) for step 1 (attempt 1/2)
+2025-06-26 16:38:25,065 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:38:25,066 - PokeXHelper - INFO -  Waiting 4.0 seconds for step completion
+2025-06-26 16:38:29,980 - PokeXHelper - INFO - OCR method 'color_isolation' successful: (3956, 3634, 6)
+2025-06-26 16:38:29,980 - PokeXHelper - INFO - [SUCCESS] Step 1 validated - reached target coordinates
+2025-06-26 16:38:29,981 - PokeXHelper - INFO -  Step 1 'passo exclamacao' completed successfully
+2025-06-26 16:38:29,981 - PokeXHelper - INFO -  Processing step 2/2: 'passo interregocao'
+2025-06-26 16:38:29,981 - PokeXHelper - INFO -  Executing step 2: 'passo interregocao' (attempt 1/2)
+2025-06-26 16:38:30,107 - PokeXHelper - INFO - Stopping navigation sequence
+2025-06-26 16:38:30,108 - PokeXHelper - INFO - Stopping navigation...
+2025-06-26 16:38:30,130 - PokeXHelper - INFO -  Found step 2 icon at (1601, 268) with 97.3% confidence (attempt 1/2)
+2025-06-26 16:38:30,399 - PokeXHelper - INFO -  Clicked at (1601, 268) for step 2 (attempt 1/2)
+2025-06-26 16:38:30,551 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:38:30,551 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 16:38:32,115 - PokeXHelper - INFO - Navigation stopped
+2025-06-26 16:38:32,115 - PokeXHelper - INFO - Navigation ready with 2 configured steps
+2025-06-26 16:38:32,116 - PokeXHelper - INFO - Navigation stopped
+2025-06-26 16:38:38,376 - PokeXHelper - WARNING - All coordinate extraction methods failed
+2025-06-26 16:38:38,376 - PokeXHelper - WARNING - Could not extract coordinates for validation
+2025-06-26 16:38:38,376 - PokeXHelper - INFO -  Step 2 'passo interregocao' completed successfully
+2025-06-26 16:38:38,376 - PokeXHelper - INFO -  Navigation sequence ended

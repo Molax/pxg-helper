@@ -55,12 +55,16 @@ class InterfaceManager:
             self.main_app
         )
         
-        self.navigation_panel = NavigationPanel(nav_frame, self.main_app.navigation_manager)
+        self.navigation_panel = NavigationPanel(nav_frame, self.main_app.navigation_manager, self.main_app)
         
         self.controls_panel = ControlsPanel(controls_container, self.main_app.health_detector, self.main_app)
         
         self.log_panel = LogPanel(log_container)
         self.ui_logger.set_log_panel(self.log_panel)
+        
+        # Set up navigation manager callback if it exists
+        if hasattr(self.main_app.navigation_manager, 'set_ui_log_callback'):
+            self.main_app.navigation_manager.set_ui_log_callback(self.log)
     
     def check_configuration(self):
         try:
