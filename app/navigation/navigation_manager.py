@@ -69,217 +69,115 @@ class NavigationManager:
         self.minimap_area = minimap_area_selector
         self.battle_area = battle_area_selector
         self.mouse_controller = mouse_controller
-        self.logger = logging.getLogger('PokeXHelper')
-        
         self.steps = []
-        self.current_step_index = 0
         self.is_navigating = False
+        self.current_step_index = 0
         self.navigation_thread = None
+        self.stop_navigation_flag = False
+        self.logger = logger
         
-        self.step_icons_dir = "assets/navigation_icons"
-        if not os.path.exists(self.step_icons_dir):
-            os.makedirs(self.step_icons_dir)
+        self.next_step_id = 1
     
-    def cleanup_unused_icons(self):
-        try:
-            if not os.path.exists(self.step_icons_dir):
-                self.logger.info("Icons directory does not exist, nothing to clean up")
-                return
-            
-            used_files = set()
-            for step in self.steps:
-                if hasattr(step, 'icon_image_path') and step.icon_image_path:
-                    filename = os.path.basename(step.icon_image_path)
-                    if filename:
-                        used_files.add(filename)
-            
-            self.logger.info(f"Found {len(used_files)} icon files in use: {used_files}")
-            
-            cleaned_count = 0
-            for filename in os.listdir(self.step_icons_dir):
-                if filename.endswith('.png') and filename not in used_files:
-                    file_path = os.path.join(self.step_icons_dir, filename)
-                    try:
-                        os.remove(file_path)
-                        self.logger.info(f"Cleaned up unused icon file: {filename}")
-                        cleaned_count += 1
-                    except Exception as e:
-                        self.logger.warning(f"Could not delete unused icon {filename}: {e}")
-            
-            if cleaned_count > 0:
-                self.logger.info(f"Cleaned up {cleaned_count} unused icon files")
-            else:
-                self.logger.info("No unused icon files to clean up")
-                        
-        except Exception as e:
-            self.logger.error(f"Error cleaning up unused icons: {e}", exc_info=True)
-    
-    def add_step(self, name="", coordinates="", wait_seconds=3.0):
-        step_id = len(self.steps) + 1
-        icon_filename = f"step_{step_id}_{int(time.time())}.png"
-        icon_path = os.path.join(self.step_icons_dir, icon_filename)
+    def add_step(self, name, coordinates="", wait_seconds=3.0):
+        step = NavigationStep(
+            step_id=self.next_step_id,
+            name=name,
+            coordinates=coordinates,
+            wait_seconds=wait_seconds
+        )
         
-        step = NavigationStep(step_id, name, icon_path, coordinates, wait_seconds)
         self.steps.append(step)
+        self.next_step_id += 1
         
-        self.logger.info(f"Added step {step_id}: '{name}' with icon path: {icon_path}")
+        self.logger.info(f"Added step {step.step_id}: '{step.name}' with icon path: {step.icon_image_path}")
         return step
     
     def remove_step(self, step_id):
-        step_to_remove = None
-        for step in self.steps:
-            if step.step_id == step_id:
-                step_to_remove = step
-                break
-        
-        if step_to_remove:
-            self.logger.info(f"Removing step {step_id}: '{step_to_remove.name}'")
-            
-            if hasattr(step_to_remove, 'icon_image_path') and step_to_remove.icon_image_path and os.path.exists(step_to_remove.icon_image_path):
+        step = next((s for s in self.steps if s.step_id == step_id), None)
+        if step:
+            if step.icon_image_path and os.path.exists(step.icon_image_path):
                 try:
-                    os.remove(step_to_remove.icon_image_path)
-                    self.logger.info(f"Deleted icon file: {step_to_remove.icon_image_path}")
+                    os.remove(step.icon_image_path)
+                    self.logger.info(f"Deleted icon file: {step.icon_image_path}")
                 except Exception as e:
-                    self.logger.warning(f"Could not delete icon file: {e}")
+                    self.logger.error(f"Failed to delete icon file: {e}")
             
-            self.steps = [step for step in self.steps if step.step_id != step_id]
-            self._reindex_steps()
+            self.steps.remove(step)
+            self.logger.info(f"Removing step {step_id}: '{step.name}'")
             self.logger.info(f"Step {step_id} removed, remaining steps: {len(self.steps)}")
-        else:
-            self.logger.warning(f"Step {step_id} not found for removal")
-    
-    def _reindex_steps(self):
-        for i, step in enumerate(self.steps):
-            step.step_id = i + 1
-    
-    def save_step_icon(self, step, icon_bounds):
-        try:
-            x1, y1, x2, y2 = icon_bounds
-            
-            screenshot = ImageGrab.grab(bbox=(x1, y1, x2, y2), all_screens=True)
-            
-            os.makedirs(os.path.dirname(step.icon_image_path), exist_ok=True)
-            screenshot.save(step.icon_image_path)
-            step.icon_bounds = icon_bounds
-            
-            if step.load_template():
-                self.logger.info(f"Saved and loaded icon for step {step.step_id}: {step.icon_image_path}")
-                return True
-            else:
-                self.logger.error(f"Failed to load template after saving for step {step.step_id}")
-                return False
-            
-        except Exception as e:
-            self.logger.error(f"Error saving step icon: {e}", exc_info=True)
-            return False
     
     def find_step_icon_in_minimap(self, step, threshold=0.8):
-        if not step.load_template():
-            self.logger.warning(f"Could not load template for step {step.step_id}")
+        if step.template_image is None:
             return None
             
         if not self.minimap_area.is_setup():
-            self.logger.error("Minimap area not configured")
             return None
             
         try:
             minimap_image = self.minimap_area.get_current_screenshot_region()
             if minimap_image is None:
-                self.logger.error("Could not capture minimap area")
                 return None
             
-            minimap_np = np.array(minimap_image)
-            minimap_gray = cv2.cvtColor(minimap_np, cv2.COLOR_RGB2GRAY)
-            template_gray = cv2.cvtColor(step.template_image, cv2.COLOR_BGR2GRAY)
+            minimap_cv = cv2.cvtColor(np.array(minimap_image), cv2.COLOR_RGB2BGR)
             
-            self.logger.info(f"Searching for step {step.step_id} icon in minimap area")
-            self.logger.debug(f"Minimap size: {minimap_gray.shape}, Template size: {template_gray.shape}")
+            result = cv2.matchTemplate(minimap_cv, step.template_image, cv2.TM_CCOEFF_NORMED)
+            min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
             
-            result = cv2.matchTemplate(minimap_gray, template_gray, cv2.TM_CCOEFF_NORMED)
-            
-            locations = np.where(result >= threshold)
-            
-            if len(locations[0]) > 0:
-                max_val = np.max(result)
-                max_loc = np.unravel_index(np.argmax(result), result.shape)
+            if max_val >= threshold:
+                template_height, template_width = step.template_image.shape[:2]
+                center_x = max_loc[0] + template_width // 2
+                center_y = max_loc[1] + template_height // 2
                 
-                h, w = template_gray.shape
-                minimap_center_x = max_loc[1] + w // 2
-                minimap_center_y = max_loc[0] + h // 2
+                minimap_x = self.minimap_area.x1 + center_x
+                minimap_y = self.minimap_area.y1 + center_y
                 
-                screen_x = self.minimap_area.x1 + minimap_center_x
-                screen_y = self.minimap_area.y1 + minimap_center_y
-                
-                self.logger.info(f"Found step {step.step_id} icon at minimap ({minimap_center_x}, {minimap_center_y}) -> screen ({screen_x}, {screen_y}) with confidence {max_val:.3f}")
-                return (screen_x, screen_y, max_val)
-            
-            self.logger.warning(f"Step {step.step_id} icon not found in minimap (threshold: {threshold})")
-            return None
+                return (minimap_x, minimap_y, max_val)
             
         except Exception as e:
-            self.logger.error(f"Error finding step icon in minimap: {e}", exc_info=True)
-            return None
-    
-    def click_step_icon(self, step):
-        location = self.find_step_icon_in_minimap(step)
-        if location is None:
-            self.logger.warning(f"Step {step.step_id} '{step.name}' icon not found in minimap")
-            return False
-            
-        try:
-            x, y, confidence = location
-            self.logger.info(f"Clicking step {step.step_id} '{step.name}' icon at ({x}, {y}) with confidence {confidence:.3f}")
-            
-            success = self.mouse_controller.click_left(x, y)
-            if success:
-                self.logger.info(f"Successfully clicked step {step.step_id} icon")
-            else:
-                self.logger.error(f"Failed to click step {step.step_id} icon")
-            
-            return success
-            
-        except Exception as e:
-            self.logger.error(f"Error clicking step icon: {e}", exc_info=True)
-            return False
+            self.logger.error(f"Error finding step icon: {e}")
+        
+        return None
     
     def execute_step(self, step):
-        max_attempts = 3
-        
-        for attempt in range(max_attempts):
-            self.logger.info(f"Executing step {step.step_id}: '{step.name}' (attempt {attempt + 1})")
+        try:
+            self.logger.info(f"Executing step {step.step_id}: '{step.name}'")
             
-            if not self.click_step_icon(step):
-                self.logger.warning(f"Failed to click step {step.step_id} icon")
-                time.sleep(2)
-                continue
+            location = self.find_step_icon_in_minimap(step, threshold=0.7)
+            if not location:
+                self.logger.warning(f"Step {step.step_id} icon not found in minimap")
+                return False
+                
+            x, y, confidence = location
+            self.logger.info(f"Found step {step.step_id} icon at ({x}, {y}) with {confidence:.1%} confidence")
             
-            self.logger.info(f"Waiting {step.wait_seconds} seconds for step {step.step_id} to complete")
-            time.sleep(step.wait_seconds)
-            
-            if step.coordinates:
-                if self.validate_step_completion(step):
-                    self.logger.info(f"Step {step.step_id} completed successfully")
-                    return True
-                else:
-                    self.logger.warning(f"Step {step.step_id} validation failed")
-                    time.sleep(2)
-                    continue
+            if self.mouse_controller.click_at(x, y):
+                self.logger.info(f"Clicked at ({x}, {y}) for step {step.step_id}")
+                time.sleep(step.wait_seconds)
+                return self.validate_step_completion(step)
             else:
-                self.logger.info(f"Step {step.step_id} completed (no validation)")
-                return True
-        
-        self.logger.error(f"Step {step.step_id} failed after {max_attempts} attempts")
-        return False
+                self.logger.error(f"Failed to click at ({x}, {y}) for step {step.step_id}")
+                return False
+                
+        except Exception as e:
+            self.logger.error(f"Error executing step {step.step_id}: {e}")
+            return False
     
     def validate_step_completion(self, step):
-        if not step.coordinates:
-            return True
-            
         try:
+            time.sleep(0.5)
+            
             if self.battle_area.is_setup():
                 battle_image = self.battle_area.get_current_screenshot_region()
                 if battle_image:
-                    return True
+                    import tempfile
+                    with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as temp_file:
+                        battle_image.save(temp_file.name)
+                        temp_path = temp_file.name
+                    
+                    try:
+                        os.remove(temp_path)
+                    except:
+                        pass
             
             return True
             
@@ -307,6 +205,7 @@ class NavigationManager:
             
         self.logger.info(f"Starting navigation with {len(valid_steps)} valid steps")
         self.is_navigating = True
+        self.stop_navigation_flag = False
         self.current_step_index = 0
         
         self.navigation_thread = threading.Thread(target=self._navigation_loop, daemon=True)
@@ -315,9 +214,14 @@ class NavigationManager:
         return True
     
     def stop_navigation(self):
+        self.logger.info("Stopping navigation...")
+        self.stop_navigation_flag = True
         self.is_navigating = False
-        if self.navigation_thread:
-            self.navigation_thread.join(timeout=1.0)
+        
+        if self.navigation_thread and self.navigation_thread.is_alive():
+            self.navigation_thread.join(timeout=2.0)
+        
+        self.logger.info("Navigation stopped")
     
     def _navigation_loop(self):
         self.logger.info(f"Starting navigation sequence with {len(self.steps)} steps")
@@ -332,37 +236,42 @@ class NavigationManager:
             self.is_navigating = False
             return
         
-        while self.is_navigating and self.current_step_index < len(self.steps):
-            step = self.steps[self.current_step_index]
+        try:
+            while self.is_navigating and not self.stop_navigation_flag and self.current_step_index < len(self.steps):
+                step = self.steps[self.current_step_index]
+                
+                self.logger.info(f"Processing step {self.current_step_index + 1}/{len(self.steps)}: '{step.name}'")
+                
+                if not step.is_active:
+                    self.logger.info(f"Step {step.step_id} '{step.name}' is inactive, skipping")
+                    self.current_step_index += 1
+                    continue
+                
+                if not step.template_image:
+                    self.logger.warning(f"Step {step.step_id} '{step.name}' has no icon, skipping")
+                    self.current_step_index += 1
+                    continue
+                
+                if self.execute_step(step):
+                    self.logger.info(f"Step {step.step_id} '{step.name}' completed successfully")
+                    self.current_step_index += 1
+                else:
+                    self.logger.error(f"Navigation failed at step {step.step_id} '{step.name}'")
+                    break
+                
+                if self.is_navigating and not self.stop_navigation_flag:
+                    time.sleep(1.0)
             
-            self.logger.info(f"Processing step {self.current_step_index + 1}/{len(self.steps)}: '{step.name}'")
+            if self.current_step_index >= len(self.steps) and not self.stop_navigation_flag:
+                self.logger.info("Navigation sequence completed successfully")
+                self.current_step_index = 0
             
-            if not step.is_active:
-                self.logger.info(f"Step {step.step_id} '{step.name}' is inactive, skipping")
-                self.current_step_index += 1
-                continue
-            
-            if not step.template_image:
-                self.logger.warning(f"Step {step.step_id} '{step.name}' has no icon, skipping")
-                self.current_step_index += 1
-                continue
-            
-            if self.execute_step(step):
-                self.logger.info(f"Step {step.step_id} '{step.name}' completed successfully")
-                self.current_step_index += 1
-            else:
-                self.logger.error(f"Navigation failed at step {step.step_id} '{step.name}'")
-                break
-            
-            if self.is_navigating:
-                time.sleep(1.0)
-        
-        if self.current_step_index >= len(self.steps):
-            self.logger.info("Navigation sequence completed successfully")
-            self.current_step_index = 0
-        
-        self.logger.info("Navigation sequence ended")
-        self.is_navigating = False
+        except Exception as e:
+            self.logger.error(f"Error in navigation loop: {e}")
+        finally:
+            self.logger.info("Navigation sequence ended")
+            self.is_navigating = False
+            self.stop_navigation_flag = False
     
     def get_steps_data(self):
         try:
@@ -382,13 +291,20 @@ class NavigationManager:
     
     def load_steps_data(self, steps_data):
         self.steps = []
+        max_step_id = 0
+        
         for data in steps_data:
             step = NavigationStep.from_dict(data)
             if step.load_template():
                 self.logger.debug(f"Loaded template for step {step.step_id}: {step.name}")
             else:
                 self.logger.warning(f"Could not load template for step {step.step_id}: {step.name}")
+            
             self.steps.append(step)
+            max_step_id = max(max_step_id, step.step_id)
+        
+        self.next_step_id = max_step_id + 1
+        self.logger.info(f"Loaded {len(self.steps)} navigation steps")
     
     def preview_step_detection(self, step):
         if not self.minimap_area.is_setup():
@@ -400,3 +316,23 @@ class NavigationManager:
             return f"Found at ({x}, {y}) - {confidence:.1%} match"
         else:
             return "Not found in minimap area"
+    
+    def cleanup_unused_icons(self):
+        try:
+            icons_dir = "assets/navigation_icons"
+            if not os.path.exists(icons_dir):
+                return
+                
+            used_files = {step.icon_image_path for step in self.steps if step.icon_image_path}
+            
+            for filename in os.listdir(icons_dir):
+                file_path = os.path.join(icons_dir, filename)
+                if file_path not in used_files and filename.startswith("step_"):
+                    try:
+                        os.remove(file_path)
+                        self.logger.info(f"Cleaned up unused icon: {file_path}")
+                    except Exception as e:
+                        self.logger.error(f"Failed to cleanup icon {file_path}: {e}")
+                        
+        except Exception as e:
+            self.logger.error(f"Error during icon cleanup: {e}")

@@ -1,6 +1,6 @@
+import time
 import tkinter as tk
 from tkinter import ttk
-import time
 
 class ControlsPanel:
     def __init__(self, parent, health_detector, main_app):
@@ -8,84 +8,66 @@ class ControlsPanel:
         self.health_detector = health_detector
         self.main_app = main_app
         
+        self.display_update_active = False
+        
         self._create_ui()
         self._initialize_variables()
-        self.display_update_active = False
     
     def _create_ui(self):
-        settings_frame = tk.Frame(self.parent, bg="#2d2d2d")
-        settings_frame.pack(side=tk.TOP, fill=tk.X, padx=12, pady=12)
-        
-        self._create_helper_settings(settings_frame)
-        
         controls_frame = tk.Frame(self.parent, bg="#2d2d2d")
-        controls_frame.pack(side=tk.BOTTOM, fill=tk.X, padx=12, pady=12)
+        controls_frame.pack(fill=tk.BOTH, expand=True)
         
+        title_label = tk.Label(controls_frame, text="Helper Controls", 
+                              font=("Segoe UI", 14, "bold"), bg="#2d2d2d", fg="#ffffff")
+        title_label.pack(pady=12)
+        
+        self._create_auto_controls(controls_frame)
         self._create_main_controls(controls_frame)
     
-    def _create_helper_settings(self, parent):
-        title_label = tk.Label(parent, text="Helper Settings", 
-                              font=("Segoe UI", 14, "bold"), bg="#2d2d2d", fg="#ffffff")
-        title_label.pack(anchor=tk.W, pady=12)
+    def _create_auto_controls(self, parent):
+        auto_frame = tk.LabelFrame(parent, text="Auto Settings", 
+                                  font=("Segoe UI", 10, "bold"), bg="#2d2d2d", 
+                                  fg="#ffffff", bd=1, relief=tk.RIDGE)
+        auto_frame.pack(fill=tk.X, padx=12, pady=12)
         
-        health_frame = tk.LabelFrame(parent, text="Health Management", bg="#2d2d2d", fg="#ffffff", 
-                                   font=("Segoe UI", 10, "bold"))
-        health_frame.pack(fill=tk.X, pady=8)
-        
-        heal_controls = tk.Frame(health_frame, bg="#2d2d2d")
-        heal_controls.pack(fill=tk.X, padx=8, pady=8)
-        
-        tk.Label(heal_controls, text="Heal Key:", bg="#2d2d2d", fg="#dc3545",
-                font=("Segoe UI", 9, "bold")).pack(side=tk.LEFT)
-        
-        self.heal_key_var = tk.StringVar(value="F1")
-        heal_combo = ttk.Combobox(heal_controls, textvariable=self.heal_key_var,
-                                values=["F1", "F2", "F3", "F4", "F5", "1", "2", "3"], 
-                                state="readonly", width=6)
-        heal_combo.pack(side=tk.LEFT, padx=12)
-        
-        tk.Label(heal_controls, text="Threshold:", bg="#2d2d2d", fg="#dc3545",
-                font=("Segoe UI", 9, "bold")).pack(side=tk.LEFT)
-        
-        self.health_threshold = tk.Scale(heal_controls, from_=0, to=100, orient=tk.HORIZONTAL,
-                                       bg="#2d2d2d", fg="#ffffff", troughcolor="#1a1a1a",
-                                       highlightthickness=0, activebackground="#dc3545", length=100)
-        self.health_threshold.set(60)
-        self.health_threshold.pack(side=tk.LEFT, padx=4)
-        
-        auto_heal_frame = tk.Frame(health_frame, bg="#2d2d2d")
-        auto_heal_frame.pack(fill=tk.X, padx=8, pady=8)
+        heal_frame = tk.Frame(auto_frame, bg="#2d2d2d")
+        heal_frame.pack(fill=tk.X, padx=8, pady=8)
         
         self.auto_heal_var = tk.BooleanVar(value=True)
-        auto_heal_check = tk.Checkbutton(auto_heal_frame, text="Enable auto healing",
+        auto_heal_check = tk.Checkbutton(heal_frame, text="Auto Heal", 
                                        variable=self.auto_heal_var, bg="#2d2d2d", fg="#ffffff",
                                        selectcolor="#1a1a1a", activebackground="#2d2d2d",
                                        activeforeground="#ffffff", font=("Segoe UI", 9))
         auto_heal_check.pack(side=tk.LEFT)
         
-        battle_frame = tk.LabelFrame(parent, text="Battle Settings", bg="#2d2d2d", fg="#ffffff", 
-                                   font=("Segoe UI", 10, "bold"))
-        battle_frame.pack(fill=tk.X, pady=8)
+        threshold_frame = tk.Frame(heal_frame, bg="#2d2d2d")
+        threshold_frame.pack(side=tk.RIGHT)
         
-        battle_controls = tk.Frame(battle_frame, bg="#2d2d2d")
-        battle_controls.pack(fill=tk.X, padx=8, pady=8)
+        tk.Label(threshold_frame, text="Health %:", bg="#2d2d2d", fg="#ffffff",
+                font=("Segoe UI", 8)).pack(side=tk.LEFT, padx=(0, 4))
         
-        self.battle_detection_var = tk.BooleanVar(value=True)
-        battle_detection_check = tk.Checkbutton(battle_controls, text="Enable battle detection",
-                                              variable=self.battle_detection_var, bg="#2d2d2d", fg="#ffffff",
-                                              selectcolor="#1a1a1a", activebackground="#2d2d2d",
-                                              activeforeground="#ffffff", font=("Segoe UI", 9))
-        battle_detection_check.pack(side=tk.LEFT)
+        self.health_threshold = tk.IntVar(value=30)
+        threshold_spin = tk.Spinbox(threshold_frame, from_=10, to=90, width=5,
+                                  textvariable=self.health_threshold, font=("Segoe UI", 8))
+        threshold_spin.pack(side=tk.LEFT)
         
-        nav_frame = tk.LabelFrame(parent, text="Navigation", bg="#2d2d2d", fg="#ffffff", 
-                                font=("Segoe UI", 10, "bold"))
-        nav_frame.pack(fill=tk.X, pady=8)
+        key_frame = tk.Frame(auto_frame, bg="#2d2d2d")
+        key_frame.pack(fill=tk.X, padx=8, pady=4)
         
-        nav_controls = tk.Frame(nav_frame, bg="#2d2d2d")
-        nav_controls.pack(fill=tk.X, padx=8, pady=8)
+        tk.Label(key_frame, text="Heal Key:", bg="#2d2d2d", fg="#ffffff",
+                font=("Segoe UI", 9)).pack(side=tk.LEFT)
+        
+        self.heal_key_var = tk.StringVar(value="F1")
+        heal_key_combo = ttk.Combobox(key_frame, textvariable=self.heal_key_var,
+                                    values=["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8"],
+                                    width=8, font=("Segoe UI", 9), state="readonly")
+        heal_key_combo.pack(side=tk.RIGHT)
+        
+        nav_frame = tk.Frame(auto_frame, bg="#2d2d2d")
+        nav_frame.pack(fill=tk.X, padx=8, pady=4)
         
         self.auto_nav_var = tk.BooleanVar(value=False)
-        auto_nav_check = tk.Checkbutton(nav_controls, text="Auto navigation",
+        auto_nav_check = tk.Checkbutton(nav_frame, text="Auto Navigate", 
                                       variable=self.auto_nav_var, bg="#2d2d2d", fg="#ffffff",
                                       selectcolor="#1a1a1a", activebackground="#2d2d2d",
                                       activeforeground="#ffffff", font=("Segoe UI", 9))
@@ -195,52 +177,37 @@ class ControlsPanel:
             self.display_update_active = True
             self._update_display()
     
+    def stop_display_update(self):
+        self.display_update_active = False
+    
     def _update_display(self):
-        if not self.main_app.running:
-            self.display_update_active = False
-            return
-        
-        try:
+        if self.display_update_active and self.main_app.running:
             if self.start_time:
-                uptime = time.time() - self.start_time
-                hours = int(uptime // 3600)
-                minutes = int((uptime % 3600) // 60)
-                seconds = int(uptime % 60)
+                elapsed = time.time() - self.start_time
+                hours = int(elapsed // 3600)
+                minutes = int((elapsed % 3600) // 60)
+                seconds = int(elapsed % 60)
                 self.uptime_var.set(f"{hours:02d}:{minutes:02d}:{seconds:02d}")
             
-            if hasattr(self.main_app, 'navigation_manager'):
-                self.steps_var.set(str(self.main_app.navigation_manager.current_step_index))
-            
-        except Exception:
-            pass
-        
-        if self.display_update_active:
             self.main_app.root.after(1000, self._update_display)
-    
-    def load_settings_from_config(self, config):
-        try:
-            self.heal_key_var.set(config.get("health_healing_key", "F1"))
-            self.health_threshold.set(config.get("health_threshold", 60))
-            
-            helper_settings = config.get("helper_settings", {})
-            self.auto_heal_var.set(helper_settings.get("auto_heal", True))
-            self.auto_nav_var.set(helper_settings.get("auto_navigation", False))
-            self.battle_detection_var.set(helper_settings.get("battle_detection_enabled", True))
-            
-        except Exception as e:
-            import logging
-            logging.getLogger('PokeXHelper').error(f"Error loading settings: {e}")
+        else:
+            self.display_update_active = False
     
     def save_settings_to_config(self, config):
-        config["health_healing_key"] = self.heal_key_var.get()
-        config["health_threshold"] = self.health_threshold.get()
+        if "helper_settings" not in config:
+            config["helper_settings"] = {}
         
-        config["helper_settings"] = {
+        config["helper_settings"].update({
             "auto_heal": self.auto_heal_var.get(),
-            "auto_navigation": self.auto_nav_var.get(),
-            "battle_detection_enabled": self.battle_detection_var.get(),
-            "navigation_check_interval": 0.5,
-            "step_timeout": 30,
-            "coordinate_validation": True,
-            "image_matching_threshold": 0.8
-        }
+            "health_threshold": self.health_threshold.get(),
+            "heal_key": self.heal_key_var.get(),
+            "auto_navigate": self.auto_nav_var.get()
+        })
+    
+    def load_settings_from_config(self, config):
+        settings = config.get("helper_settings", {})
+        
+        self.auto_heal_var.set(settings.get("auto_heal", True))
+        self.health_threshold.set(settings.get("health_threshold", 30))
+        self.heal_key_var.set(settings.get("heal_key", "F1"))
+        self.auto_nav_var.set(settings.get("auto_navigate", False))

@@ -1,107 +1,50 @@
-import tkinter as tk
-from tkinter import ttk
 import time
 import logging
 import threading
-from app.ui.area_config_panel import AreaConfigPanel
-from app.ui.navigation_panel import NavigationPanel
-from app.ui.controls_panel import ControlsPanel
-from app.ui.log_panel import LogPanel
+import tkinter as tk
+from tkinter import ttk
 
 logger = logging.getLogger('PokeXHelper')
 
 class InterfaceManager:
-    def __init__(self, root, main_app):
-        self.root = root
+    def __init__(self, main_app):
         self.main_app = main_app
-        self._setup_scrollable_canvas()
+        self.area_selector_window = None
+        self._create_interface()
     
-    def _setup_scrollable_canvas(self):
-        self.main_canvas = tk.Canvas(self.root, bg="#1a1a1a", highlightthickness=0)
-        self.main_scrollbar = ttk.Scrollbar(self.root, orient="vertical", command=self.main_canvas.yview)
-        self.scrollable_main = tk.Frame(self.main_canvas, bg="#1a1a1a")
+    def _create_interface(self):
+        self.main_app.root.title("PokeXGames Helper v1.0")
+        self.main_app.root.geometry("1400x900")
+        self.main_app.root.configure(bg="#1a1a1a")
+        self.main_app.root.protocol("WM_DELETE_WINDOW", self.main_app.on_closing)
         
-        self.scrollable_main.bind(
-            "<Configure>",
-            lambda e: self.main_canvas.configure(scrollregion=self.main_canvas.bbox("all"))
-        )
+        main_container = tk.Frame(self.main_app.root, bg="#1a1a1a")
+        main_container.pack(fill=tk.BOTH, expand=True, padx=8, pady=8)
         
-        self.main_canvas.create_window((0, 0), window=self.scrollable_main, anchor="nw")
-        self.main_canvas.configure(yscrollcommand=self.main_scrollbar.set)
+        self._create_left_panel(main_container)
+        self._create_right_panel(main_container)
+        self._create_bottom_status(main_container)
         
-        self.main_canvas.pack(side="left", fill="both", expand=True)
-        self.main_scrollbar.pack(side="right", fill="y")
-        
-        def _on_mousewheel(event):
-            self.main_canvas.yview_scroll(int(-1*(event.delta/120)), "units")
-        
-        self.main_canvas.bind_all("<MouseWheel>", _on_mousewheel)
+        logger.info("PokeXGames Helper interface initialized")
     
-    def create_interface(self):
-        self.main_app.component_manager.set_root_window(self.root)
+    def _create_left_panel(self, parent):
+        left_panel = tk.Frame(parent, bg="#2d2d2d", relief=tk.RIDGE, bd=1)
+        left_panel.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         
-        main_container = tk.Frame(self.scrollable_main, bg="#1a1a1a")
-        main_container.pack(fill=tk.BOTH, expand=True, padx=12, pady=12)
+        notebook = ttk.Notebook(left_panel)
+        notebook.pack(fill=tk.BOTH, expand=True, padx=8, pady=8)
         
-        self._create_header(main_container)
-        self._create_content_area(main_container)
+        config_frame = tk.Frame(notebook, bg="#2d2d2d")
+        nav_frame = tk.Frame(notebook, bg="#2d2d2d")
         
-        self.main_app.log("PokeXGames Helper interface initialized")
-    
-    def _create_header(self, parent):
-        header_frame = tk.Frame(parent, bg="#1a1a1a", height=70)
-        header_frame.pack(fill=tk.X, pady=12)
-        header_frame.pack_propagate(False)
+        notebook.add(config_frame, text="Configuration")
+        notebook.add(nav_frame, text="Navigation")
         
-        title_section = tk.Frame(header_frame, bg="#1a1a1a")
-        title_section.pack(side=tk.LEFT, fill=tk.Y, pady=8)
-        
-        title_label = tk.Label(title_section, text="PokeXGames Helper", 
-                              font=("Segoe UI", 20, "bold"), bg="#1a1a1a", fg="#ffffff")
-        title_label.pack(anchor=tk.W)
-        
-        subtitle_label = tk.Label(title_section, text="Battle Automation & Navigation Helper", 
-                                 font=("Segoe UI", 12), bg="#1a1a1a", fg="#ff6b35")
-        subtitle_label.pack(anchor=tk.W)
-        
-        status_section = tk.Frame(header_frame, bg="#1a1a1a")
-        status_section.pack(side=tk.RIGHT, fill=tk.Y, pady=8)
-        
-        status_frame = tk.Frame(status_section, bg="#1a1a1a")
-        status_frame.pack(side=tk.RIGHT, padx=20)
-        
-        status_label = tk.Label(status_frame, text="Status:", 
-                               font=("Segoe UI", 10), bg="#1a1a1a", fg="#b3b3b3")
-        status_label.pack(side=tk.LEFT)
-        
-        self.status_indicator = tk.Label(status_frame, text="●", 
-                                       font=("Segoe UI", 16), bg="#1a1a1a", fg="#28a745")
-        self.status_indicator.pack(side=tk.LEFT, padx=5)
-        
-        self.status_text = tk.Label(status_frame, text="Ready", 
-                                   font=("Segoe UI", 10, "bold"), bg="#1a1a1a", fg="#28a745")
-        self.status_text.pack(side=tk.LEFT, padx=5)
-    
-    def _create_content_area(self, parent):
-        content_frame = tk.Frame(parent, bg="#1a1a1a")
-        content_frame.pack(fill=tk.BOTH, expand=True)
-        
-        content_frame.grid_rowconfigure(0, weight=1)
-        content_frame.grid_columnconfigure(0, weight=1)
-        content_frame.grid_columnconfigure(1, weight=1)
-        content_frame.grid_columnconfigure(2, weight=1)
-        
-        left_panel = tk.Frame(content_frame, bg="#2d2d2d", relief=tk.FLAT, bd=1)
-        left_panel.grid(row=0, column=0, sticky="nsew", padx=3)
-        
-        middle_panel = tk.Frame(content_frame, bg="#2d2d2d", relief=tk.FLAT, bd=1)
-        middle_panel.grid(row=0, column=1, sticky="nsew", padx=3)
-        
-        right_panel = tk.Frame(content_frame, bg="#2d2d2d", relief=tk.FLAT, bd=1)
-        right_panel.grid(row=0, column=2, sticky="nsew", padx=3)
+        from app.ui.area_config_panel import AreaConfigPanel
+        from app.ui.navigation_panel import NavigationPanel
         
         self.area_config_panel = AreaConfigPanel(
-            left_panel, 
+            config_frame, 
             self.main_app.health_bar_selector,
             self.main_app.minimap_selector,
             self.main_app.battle_area_selector,
@@ -109,22 +52,50 @@ class InterfaceManager:
         )
         
         self.navigation_panel = NavigationPanel(
-            middle_panel,
+            nav_frame,
             self.main_app.navigation_manager,
             self.main_app
         )
         
+        self.main_app.area_config_panel = self.area_config_panel
         self.main_app.navigation_panel = self.navigation_panel
+    
+    def _create_right_panel(self, parent):
+        right_panel = tk.Frame(parent, bg="#2d2d2d", relief=tk.RIDGE, bd=1, width=350)
+        right_panel.pack(side=tk.RIGHT, fill=tk.Y, padx=(8, 0))
+        right_panel.pack_propagate(False)
         
-        self.log_panel = LogPanel(right_panel)
+        controls_container = tk.Frame(right_panel, bg="#2d2d2d")
+        controls_container.pack(fill=tk.X, padx=8, pady=8)
+        
+        log_container = tk.Frame(right_panel, bg="#2d2d2d")
+        log_container.pack(fill=tk.BOTH, expand=True, padx=8, pady=(0, 8))
+        
+        from app.ui.controls_panel import ControlsPanel
+        from app.ui.log_panel import LogPanel
         
         self.controls_panel = ControlsPanel(
-            right_panel,
+            controls_container,
             self.main_app.health_detector,
             self.main_app
         )
         
+        self.log_panel = LogPanel(log_container)
+        
         self.main_app.controls_panel = self.controls_panel
+    
+    def _create_bottom_status(self, parent):
+        status_frame = tk.Frame(parent, bg="#1a1a1a", height=30)
+        status_frame.pack(side=tk.BOTTOM, fill=tk.X, pady=(8, 0))
+        status_frame.pack_propagate(False)
+        
+        self.status_indicator = tk.Label(status_frame, text="●", 
+                                       font=("Segoe UI", 16), bg="#1a1a1a", fg="#ffc107")
+        self.status_indicator.pack(side=tk.LEFT, padx=(8, 4))
+        
+        self.status_text = tk.Label(status_frame, text="Ready", 
+                                  font=("Segoe UI", 10), bg="#1a1a1a", fg="#ffc107")
+        self.status_text.pack(side=tk.LEFT)
     
     def start_area_selection(self, title, color, selector):
         self.log(f"Starting {title} selection...")
@@ -173,6 +144,9 @@ class InterfaceManager:
             
             self.area_config_panel.set_config_status(f"Configure: {', '.join(missing)}", "#ffc107")
             self.controls_panel.disable_start_button()
+        
+        if minimap_configured:
+            self.navigation_panel.check_navigation_ready()
     
     def start_helper(self):
         self.log("Starting PokeXGames Helper...")
@@ -180,6 +154,7 @@ class InterfaceManager:
         self.main_app.start_time = time.time()
         
         self.controls_panel.set_helper_running(True)
+        self.navigation_panel.on_helper_state_changed(True)
         self.update_status("Running", "#28a745")
         
         self.main_app.helper_thread = threading.Thread(target=self.helper_loop, daemon=True)
@@ -191,10 +166,8 @@ class InterfaceManager:
         self.log("Stopping PokeXGames Helper...")
         self.main_app.running = False
         
-        if self.main_app.navigation_manager.is_navigating:
-            self.main_app.navigation_manager.stop_navigation()
-        
         self.controls_panel.set_helper_running(False)
+        self.navigation_panel.on_helper_state_changed(False)
         self.update_status("Ready", "#28a745")
     
     def helper_loop(self):
@@ -226,10 +199,12 @@ class InterfaceManager:
                         if in_battle:
                             self.log(f"Battle detected! {enemy_count} enemy Pokemon found")
                 
-                if self.controls_panel.should_auto_navigate() and not self.main_app.navigation_manager.is_navigating:
+                if (self.controls_panel.should_auto_navigate() and 
+                    not self.main_app.navigation_manager.is_navigating and
+                    not self.navigation_panel.navigation_running):
                     if self.main_app.navigation_manager.steps:
-                        self.main_app.navigation_manager.start_navigation()
-                        self.log("Auto-navigation started")
+                        self.navigation_panel.start_navigation()
+                        self.log("Auto-navigation started by helper")
                 
                 time.sleep(0.5)
                 

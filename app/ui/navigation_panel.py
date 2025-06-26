@@ -8,6 +8,7 @@ class NavigationPanel:
         self.parent = parent
         self.navigation_manager = navigation_manager
         self.main_app = main_app
+        self.navigation_running = False
         
         self._create_ui()
     
@@ -98,25 +99,31 @@ class NavigationPanel:
             messagebox.showerror("Minimap Not Configured", 
                 "Please configure the minimap area first before selecting step icons.")
             return
-            
-        from app.screen_capture.area_selector import AreaSelector
         
-        icon_selector = AreaSelector(self.main_app.root)
+        self.main_app.log(f"Select an icon for '{step.name}' within the minimap area")
         
-        def on_icon_completion():
-            if icon_selector.is_setup():
-                icon_bounds = (icon_selector.x1, icon_selector.y1, icon_selector.x2, icon_selector.y2)
-                if self.navigation_manager.save_step_icon(step, icon_bounds):
-                    self.main_app.log(f"Icon saved for step '{step.name}'")
-                    self.refresh_steps_display()
-                    self.check_navigation_ready()
-                else:
-                    self.main_app.log(f"Failed to save icon for step '{step.name}'")
-            else:
-                self.main_app.log(f"Icon selection cancelled for step '{step.name}'")
+        def on_selection_complete():
+            self.main_app.log(f"Icon selection completed for '{step.name}'")
+            self.refresh_steps_display()
+            self.check_navigation_ready()
         
         try:
-            self.main_app.log(f"Select an icon for '{step.name}' within the minimap area")
+            from app.screen_capture.area_selector import AreaSelector
+            
+            icon_selector = AreaSelector(self.main_app.root)
+            
+            def on_icon_completion():
+                if icon_selector.is_setup():
+                    icon_bounds = (icon_selector.x1, icon_selector.y1, icon_selector.x2, icon_selector.y2)
+                    if self.navigation_manager.save_step_icon(step, icon_bounds):
+                        self.main_app.log(f"Icon saved for step '{step.name}'")
+                        self.refresh_steps_display()
+                        self.check_navigation_ready()
+                    else:
+                        self.main_app.log(f"Failed to save icon for step '{step.name}'")
+                else:
+                    self.main_app.log(f"Icon selection cancelled for step '{step.name}'")
+            
             success = icon_selector.start_selection(
                 title=f"Select Icon for '{step.name}' (in minimap area)",
                 color="#00ff00",
@@ -137,83 +144,110 @@ class NavigationPanel:
         
         for i, step in enumerate(self.navigation_manager.steps):
             self.create_step_widget(step, i)
-            
-        self.steps_canvas.update_idletasks()
     
     def create_step_widget(self, step, index):
-        step_frame = tk.Frame(self.steps_frame, bg="#3d3d3d", relief=tk.FLAT, bd=1)
-        step_frame.pack(fill=tk.X, padx=4, pady=2)
+        step_frame = tk.Frame(self.steps_frame, bg="#1a1a1a", relief=tk.RIDGE, bd=1)
+        step_frame.pack(fill=tk.X, pady=4, padx=8)
         
-        header = tk.Frame(step_frame, bg="#3d3d3d")
-        header.pack(fill=tk.X, padx=8, pady=8)
+        main_frame = tk.Frame(step_frame, bg="#1a1a1a")
+        main_frame.pack(fill=tk.BOTH, expand=True, padx=8, pady=8)
         
-        step_label = tk.Label(header, text=f"{step.step_id}. {step.name}", 
-                             font=("Segoe UI", 10, "bold"), bg="#3d3d3d", fg="#ffffff")
+        header_frame = tk.Frame(main_frame, bg="#1a1a1a")
+        header_frame.pack(fill=tk.X)
+        
+        step_label = tk.Label(header_frame, text=f"Step {step.step_id}: {step.name}",
+                             font=("Segoe UI", 12, "bold"), bg="#1a1a1a", fg="#ffffff")
         step_label.pack(side=tk.LEFT)
         
-        buttons_frame = tk.Frame(header, bg="#3d3d3d")
-        buttons_frame.pack(side=tk.RIGHT)
+        if step.is_active:
+            status_text = "Active"
+            status_color = "#28a745"
+        else:
+            status_text = "Inactive"
+            status_color = "#6c757d"
         
-        edit_btn = tk.Button(buttons_frame, text="📝", font=("Arial", 10),
-                            bg="#17a2b8", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
-                            width=3, command=lambda: self.edit_step_icon(step))
-        edit_btn.pack(side=tk.LEFT, padx=2)
+        status_label = tk.Label(header_frame, text=status_text,
+                               font=("Segoe UI", 9, "bold"), bg="#1a1a1a", fg=status_color)
+        status_label.pack(side=tk.RIGHT)
         
-        test_btn = tk.Button(buttons_frame, text="🔍", font=("Arial", 10),
-                            bg="#ffc107", fg="#000000", relief=tk.FLAT, borderwidth=0,
-                            width=3, command=lambda: self.test_step_detection(step))
-        test_btn.pack(side=tk.LEFT, padx=2)
-        
-        delete_btn = tk.Button(buttons_frame, text="×", font=("Arial", 12, "bold"),
-                              bg="#dc3545", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
-                              width=3, command=lambda: self.delete_step(step.step_id))
-        delete_btn.pack(side=tk.LEFT, padx=2)
-        
-        info_frame = tk.Frame(step_frame, bg="#3d3d3d")
-        info_frame.pack(fill=tk.X, padx=8, pady=8)
+        details_frame = tk.Frame(main_frame, bg="#1a1a1a")
+        details_frame.pack(fill=tk.X, pady=4)
         
         if step.coordinates:
-            coords_label = tk.Label(info_frame, text=f"Target: {step.coordinates}",
-                                   font=("Segoe UI", 8), bg="#3d3d3d", fg="#17a2b8")
-            coords_label.pack(anchor=tk.W)
+            coord_label = tk.Label(details_frame, text=f"Target: {step.coordinates}",
+                                  font=("Segoe UI", 9), bg="#1a1a1a", fg="#cccccc")
+            coord_label.pack(side=tk.LEFT)
         
-        wait_label = tk.Label(info_frame, text=f"Wait: {step.wait_seconds}s",
-                             font=("Segoe UI", 8), bg="#3d3d3d", fg="#ffc107")
-        wait_label.pack(anchor=tk.W)
+        wait_label = tk.Label(details_frame, text=f"Wait: {step.wait_seconds}s",
+                             font=("Segoe UI", 9), bg="#1a1a1a", fg="#cccccc")
+        wait_label.pack(side=tk.RIGHT)
         
-        has_icon = (step.template_image is not None and 
-                   hasattr(step, 'icon_image_path') and 
-                   step.icon_image_path and 
-                   os.path.exists(step.icon_image_path))
-        status_text = "✓ Icon Ready" if has_icon else "⚠ No Icon"
-        status_color = "#28a745" if has_icon else "#dc3545"
+        icon_frame = tk.Frame(main_frame, bg="#1a1a1a")
+        icon_frame.pack(fill=tk.X, pady=4)
         
-        status_label = tk.Label(info_frame, text=status_text,
-                               font=("Segoe UI", 8), bg="#3d3d3d", fg=status_color)
-        status_label.pack(anchor=tk.W)
+        has_icon = (step.icon_image_path and os.path.exists(step.icon_image_path))
+        icon_status_text = "Icon: Configured" if has_icon else "Icon: Not Set"
+        icon_status_color = "#28a745" if has_icon else "#ffc107"
         
-        if has_icon:
-            try:
-                from PIL import Image, ImageTk
-                
-                if os.path.exists(step.icon_image_path):
-                    icon_img = Image.open(step.icon_image_path)
-                    icon_img.thumbnail((60, 30), Image.Resampling.LANCZOS)
-                    icon_photo = ImageTk.PhotoImage(icon_img)
-                    
-                    icon_label = tk.Label(info_frame, image=icon_photo, bg="#3d3d3d")
-                    icon_label.image = icon_photo
-                    icon_label.pack(anchor=tk.W, pady=2)
-            except Exception as e:
-                self.main_app.log(f"Error loading icon preview: {e}")
+        icon_status_label = tk.Label(icon_frame, text=icon_status_text,
+                                   font=("Segoe UI", 9), bg="#1a1a1a", fg=icon_status_color)
+        icon_status_label.pack(side=tk.LEFT)
+        
+        controls_frame = tk.Frame(main_frame, bg="#1a1a1a")
+        controls_frame.pack(fill=tk.X, pady=4)
+        
+        icon_btn = tk.Button(controls_frame, text="Set Icon",
+                           bg="#007acc", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
+                           font=("Segoe UI", 8), command=lambda: self.select_step_icon(step))
+        icon_btn.pack(side=tk.LEFT, padx=2)
+        
+        edit_btn = tk.Button(controls_frame, text="Edit",
+                           bg="#6c757d", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
+                           font=("Segoe UI", 8), command=lambda: self.edit_step(step))
+        edit_btn.pack(side=tk.LEFT, padx=2)
+        
+        test_btn = tk.Button(controls_frame, text="Test",
+                           bg="#17a2b8", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
+                           font=("Segoe UI", 8), command=lambda: self.test_step(step))
+        test_btn.pack(side=tk.LEFT, padx=2)
+        
+        toggle_text = "Deactivate" if step.is_active else "Activate"
+        toggle_color = "#ffc107" if step.is_active else "#28a745"
+        toggle_btn = tk.Button(controls_frame, text=toggle_text,
+                             bg=toggle_color, fg="#ffffff", relief=tk.FLAT, borderwidth=0,
+                             font=("Segoe UI", 8), command=lambda: self.toggle_step(step.step_id))
+        toggle_btn.pack(side=tk.LEFT, padx=2)
+        
+        delete_btn = tk.Button(controls_frame, text="Delete",
+                             bg="#dc3545", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
+                             font=("Segoe UI", 8), command=lambda: self.delete_step(step.step_id))
+        delete_btn.pack(side=tk.RIGHT, padx=2)
     
-    def edit_step_icon(self, step):
-        if messagebox.askyesno("Edit Icon", f"Select a new icon for '{step.name}'?"):
-            self.select_step_icon(step)
+    def edit_step(self, step):
+        dialog = StepConfigDialog(self.main_app.root, step)
+        self.main_app.root.wait_window(dialog.dialog)
+        
+        if dialog.result:
+            step.name = dialog.result['name']
+            step.coordinates = dialog.result['coordinates']
+            step.wait_seconds = dialog.result['wait_seconds']
+            
+            self.main_app.log(f"Updated step {step.step_id}: '{step.name}'")
+            self.refresh_steps_display()
     
-    def test_step_detection(self, step):
-        if not step.template_image:
-            messagebox.showwarning("No Icon", f"Step '{step.name}' has no icon to test.")
+    def toggle_step(self, step_id):
+        step = next((s for s in self.navigation_manager.steps if s.step_id == step_id), None)
+        if step:
+            step.is_active = not step.is_active
+            status = "activated" if step.is_active else "deactivated"
+            self.main_app.log(f"Step {step_id} '{step.name}' {status}")
+            self.refresh_steps_display()
+            self.check_navigation_ready()
+    
+    def test_step(self, step):
+        if not self.main_app.minimap_selector.is_setup():
+            messagebox.showerror("Minimap Not Configured", 
+                "Please configure the minimap area first before testing steps.")
             return
         
         result = self.navigation_manager.preview_step_detection(step)
@@ -239,7 +273,7 @@ class NavigationPanel:
                 if step.template_image is not None:
                     ready_steps.append(step)
         
-        if ready_steps:
+        if ready_steps and not self.navigation_running:
             self.start_nav_btn.config(state=tk.NORMAL)
             self.main_app.log(f"Navigation ready with {len(ready_steps)} configured steps")
         else:
@@ -248,15 +282,37 @@ class NavigationPanel:
     def start_navigation(self):
         self.main_app.log("Starting navigation sequence")
         if self.navigation_manager.start_navigation():
+            self.navigation_running = True
             self.start_nav_btn.config(state=tk.DISABLED)
             self.stop_nav_btn.config(state=tk.NORMAL)
-            self.main_app.log("Navigation started")
+            self.main_app.log("Navigation started successfully")
+            self._monitor_navigation_status()
         else:
             self.main_app.log("Failed to start navigation - check that steps have icons configured")
     
     def stop_navigation(self):
         self.main_app.log("Stopping navigation sequence") 
         self.navigation_manager.stop_navigation()
-        self.start_nav_btn.config(state=tk.NORMAL)
-        self.stop_nav_btn.config(state=tk.DISABLED)
+        self.navigation_running = False
+        self._update_navigation_buttons()
         self.main_app.log("Navigation stopped")
+    
+    def _monitor_navigation_status(self):
+        if self.navigation_running and not self.navigation_manager.is_navigating:
+            self.navigation_running = False
+            self._update_navigation_buttons()
+            self.main_app.log("Navigation sequence completed")
+        
+        if self.navigation_running:
+            self.main_app.root.after(1000, self._monitor_navigation_status)
+    
+    def _update_navigation_buttons(self):
+        if self.navigation_running:
+            self.start_nav_btn.config(state=tk.DISABLED)
+            self.stop_nav_btn.config(state=tk.NORMAL)
+        else:
+            self.check_navigation_ready()
+            self.stop_nav_btn.config(state=tk.DISABLED)
+    
+    def on_helper_state_changed(self, helper_running):
+        pass

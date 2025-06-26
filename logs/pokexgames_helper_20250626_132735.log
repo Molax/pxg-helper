@@ -1,0 +1,14 @@
+2025-06-26 13:27:35,620 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 13:27:35,839 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 13:27:35,862 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 13:27:35,862 - PokeXHelper - CRITICAL - Fatal error: InterfaceManager.__init__() takes 2 positional arguments but 3 were given
+Traceback (most recent call last):
+  File "C:\repositories\pxg-helper\pokexgames_helper.py", line 78, in main
+    app = PokeXGamesHelper(root)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repositories\pxg-helper\app\gui\__init__.py", line 19, in __init__
+    self._initialize_managers()
+  File "C:\repositories\pxg-helper\app\gui\__init__.py", line 46, in _initialize_managers
+    self.interface_manager = InterfaceManager(self.root, self)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: InterfaceManager.__init__() takes 2 positional arguments but 3 were given
