@@ -1,9 +1,12 @@
+from .interface_manager import InterfaceManager
+from .component_manager import ComponentManager
+from .config_manager import ConfigManager
+
 import tkinter as tk
-from tkinter import ttk
 import logging
-from app.gui.interface_manager import InterfaceManager
-from app.gui.component_manager import ComponentManager
-from app.gui.config_manager import ConfigManager
+from .interface_manager import InterfaceManager
+from .component_manager import ComponentManager
+from .config_manager import ConfigManager
 
 logger = logging.getLogger('PokeXHelper')
 
@@ -101,12 +104,9 @@ class PokeXGamesHelper:
         self.config_manager.save_on_exit()
         self.root.destroy()
 
-if __name__ == "__main__":
-    import logging
-    from app.config import setup_logging
-    
-    setup_logging()
-    
-    root = tk.Tk()
-    app = PokeXGamesHelper(root)
-    root.mainloop()
+__all__ = [
+    'PokeXGamesHelper',
+    'InterfaceManager',
+    'ComponentManager', 
+    'ConfigManager'
+]

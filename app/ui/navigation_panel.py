@@ -1,3 +1,4 @@
+import os
 import tkinter as tk
 from tkinter import ttk, messagebox
 from app.ui.dialogs import StepConfigDialog
@@ -194,7 +195,6 @@ class NavigationPanel:
         if has_icon:
             try:
                 from PIL import Image, ImageTk
-                import os
                 
                 if os.path.exists(step.icon_image_path):
                     icon_img = Image.open(step.icon_image_path)
@@ -231,8 +231,13 @@ class NavigationPanel:
             self.start_nav_btn.config(state=tk.DISABLED)
             return
             
-        ready_steps = [step for step in self.navigation_manager.steps 
-                      if step.is_active and step.template_image is not None]
+        ready_steps = []
+        for step in self.navigation_manager.steps:
+            if step.is_active:
+                if step.template_image is None and step.icon_image_path:
+                    step.load_template()
+                if step.template_image is not None:
+                    ready_steps.append(step)
         
         if ready_steps:
             self.start_nav_btn.config(state=tk.NORMAL)
@@ -241,6 +246,7 @@ class NavigationPanel:
             self.start_nav_btn.config(state=tk.DISABLED)
     
     def start_navigation(self):
+        self.main_app.log("Starting navigation sequence")
         if self.navigation_manager.start_navigation():
             self.start_nav_btn.config(state=tk.DISABLED)
             self.stop_nav_btn.config(state=tk.NORMAL)
@@ -249,6 +255,7 @@ class NavigationPanel:
             self.main_app.log("Failed to start navigation - check that steps have icons configured")
     
     def stop_navigation(self):
+        self.main_app.log("Stopping navigation sequence") 
         self.navigation_manager.stop_navigation()
         self.start_nav_btn.config(state=tk.NORMAL)
         self.stop_nav_btn.config(state=tk.DISABLED)

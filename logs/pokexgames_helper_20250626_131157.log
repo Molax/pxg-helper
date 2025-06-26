@@ -1,0 +1,28 @@
+2025-06-26 13:11:57,206 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 13:11:57,385 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 13:11:57,387 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 13:11:57,416 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 13:11:57,421 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 13:11:57,421 - PokeXHelper - INFO - Selection configured from saved coordinates: (64,516) to (260,528)
+2025-06-26 13:11:57,484 - PokeXHelper - INFO - Loaded health_bar: (64,516) to (260,528)
+2025-06-26 13:11:57,551 - PokeXHelper - INFO - Selection configured from saved coordinates: (3173,46) to (3436,366)
+2025-06-26 13:11:57,613 - PokeXHelper - INFO - Loaded minimap: (3173,46) to (3436,366)
+2025-06-26 13:11:57,681 - PokeXHelper - INFO - Selection configured from saved coordinates: (13,412) to (280,787)
+2025-06-26 13:11:57,748 - PokeXHelper - INFO - Loaded battle_area: (13,412) to (280,787)
+2025-06-26 13:11:57,815 - PokeXHelper - INFO - Configuration loaded: 3/3 areas restored
+2025-06-26 13:11:57,816 - PokeXHelper - INFO - Refreshing steps display - 2 steps
+2025-06-26 13:11:58,371 - PokeXHelper - INFO - Navigation ready with 2 configured steps
+2025-06-26 13:11:58,371 - PokeXHelper - INFO - Loaded 2 navigation steps
+2025-06-26 13:11:58,372 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 13:11:58,372 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 13:12:05,607 - PokeXHelper - INFO - Starting navigation with 2 valid steps
+2025-06-26 13:12:05,608 - PokeXHelper - INFO - Starting navigation sequence with 2 steps
+2025-06-26 13:12:05,608 - PokeXHelper - INFO - Navigation started
+2025-06-26 13:12:05,608 - PokeXHelper - INFO - Found 2 active steps, 2 ready with icons
+2025-06-26 13:12:05,608 - PokeXHelper - INFO - Processing step 1/2: 'step first'
+2025-06-26 13:12:22,118 - PokeXHelper - INFO - Navigation stopped
+2025-06-26 13:12:22,931 - PokeXHelper - INFO - Starting navigation with 2 valid steps
+2025-06-26 13:12:22,932 - PokeXHelper - INFO - Starting navigation sequence with 2 steps
+2025-06-26 13:12:22,932 - PokeXHelper - INFO - Navigation started
+2025-06-26 13:12:22,932 - PokeXHelper - INFO - Found 2 active steps, 2 ready with icons
+2025-06-26 13:12:22,933 - PokeXHelper - INFO - Processing step 1/2: 'step first'

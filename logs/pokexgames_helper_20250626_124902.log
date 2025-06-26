@@ -1,0 +1,85 @@
+2025-06-26 12:49:02,085 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 12:49:02,290 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 12:49:02,315 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 12:49:02,345 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 12:49:02,360 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 12:49:02,361 - PokeXHelper - INFO - Selection configured from saved coordinates: (64,516) to (260,528)
+2025-06-26 12:49:02,431 - PokeXHelper - INFO - Loaded health_bar: (64,516) to (260,528)
+2025-06-26 12:49:02,493 - PokeXHelper - INFO - Selection configured from saved coordinates: (3173,46) to (3436,366)
+2025-06-26 12:49:02,554 - PokeXHelper - INFO - Loaded minimap: (3173,46) to (3436,366)
+2025-06-26 12:49:02,620 - PokeXHelper - INFO - Selection configured from saved coordinates: (13,412) to (280,787)
+2025-06-26 12:49:02,672 - PokeXHelper - INFO - Loaded battle_area: (13,412) to (280,787)
+2025-06-26 12:49:02,738 - PokeXHelper - INFO - Refreshing steps display - 1 steps
+2025-06-26 12:49:03,359 - PokeXHelper - INFO - Loaded 1 navigation steps
+2025-06-26 12:49:03,360 - PokeXHelper - INFO - Configuration loaded: 3/3 areas restored
+2025-06-26 12:49:03,360 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 12:49:14,318 - PokeXHelper - INFO - Select an icon for 'step 1' within the minimap area
+2025-06-26 12:49:14,319 - PokeXHelper - INFO - Starting area selection: Select Icon for 'step 1' (in minimap area)
+2025-06-26 12:49:14,451 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 12:49:18,486 - PokeXHelper - INFO - Selection complete: (3266, 143) to (3286, 163), size: 20x20
+2025-06-26 12:49:19,815 - PokeXHelper - INFO - Select Icon for 'step 1' (in minimap area) selection confirmed: (3266, 143) to (3286, 163)
+2025-06-26 12:49:19,893 - PokeXHelper - INFO - Saved and loaded icon for step 1: assets/navigation_icons\step_1_1750952757.png
+2025-06-26 12:49:19,894 - PokeXHelper - INFO - Icon saved for step 'step 1'
+2025-06-26 12:49:19,897 - PokeXHelper - INFO - Refreshing steps display - 1 steps
+2025-06-26 12:49:19,915 - PokeXHelper - INFO - Navigation ready with 1 configured steps
+2025-06-26 12:49:29,578 - PokeXHelper - INFO - Removing step 1: 'step 1'
+2025-06-26 12:49:29,579 - PokeXHelper - INFO - Deleted icon file: assets/navigation_icons\step_1_1750952757.png
+2025-06-26 12:49:29,579 - PokeXHelper - INFO - Step 1 removed, remaining steps: 0
+2025-06-26 12:49:29,581 - PokeXHelper - INFO - Refreshing steps display - 0 steps
+2025-06-26 12:50:11,692 - PokeXHelper - INFO - Added step 1: 'step first' with icon path: assets/navigation_icons\step_1_1750953011.png
+2025-06-26 12:50:11,693 - PokeXHelper - INFO - Created step 1: 'step first'
+2025-06-26 12:50:13,462 - PokeXHelper - INFO - Select an icon for 'step first' within the minimap area
+2025-06-26 12:50:13,462 - PokeXHelper - INFO - Starting area selection: Select Icon for 'step first' (in minimap area)
+2025-06-26 12:50:13,591 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 12:50:16,577 - PokeXHelper - INFO - Selection complete: (3290, 199) to (3330, 216), size: 40x17
+2025-06-26 12:50:17,534 - PokeXHelper - INFO - Select Icon for 'step first' (in minimap area) selection confirmed: (3290, 199) to (3330, 216)
+2025-06-26 12:50:17,614 - PokeXHelper - INFO - Saved and loaded icon for step 1: assets/navigation_icons\step_1_1750953011.png
+2025-06-26 12:50:17,615 - PokeXHelper - INFO - Icon saved for step 'step first'
+2025-06-26 12:50:17,615 - PokeXHelper - INFO - Refreshing steps display - 1 steps
+2025-06-26 12:50:17,631 - PokeXHelper - INFO - Navigation ready with 1 configured steps
+2025-06-26 12:50:23,741 - PokeXHelper - INFO - Select an icon for 'step first' within the minimap area
+2025-06-26 12:50:23,742 - PokeXHelper - INFO - Starting area selection: Select Icon for 'step first' (in minimap area)
+2025-06-26 12:50:23,859 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 12:50:27,495 - PokeXHelper - INFO - Selection complete: (3256, 198) to (3277, 215), size: 21x17
+2025-06-26 12:50:28,763 - PokeXHelper - INFO - Select Icon for 'step first' (in minimap area) selection confirmed: (3256, 198) to (3277, 215)
+2025-06-26 12:50:28,840 - PokeXHelper - INFO - Saved and loaded icon for step 1: assets/navigation_icons\step_1_1750953011.png
+2025-06-26 12:50:28,840 - PokeXHelper - INFO - Icon saved for step 'step first'
+2025-06-26 12:50:28,845 - PokeXHelper - INFO - Refreshing steps display - 1 steps
+2025-06-26 12:50:28,858 - PokeXHelper - INFO - Navigation ready with 1 configured steps
+2025-06-26 12:51:01,754 - PokeXHelper - INFO - Added step 2: 'step second' with icon path: assets/navigation_icons\step_2_1750953061.png
+2025-06-26 12:51:01,755 - PokeXHelper - INFO - Created step 2: 'step second'
+2025-06-26 12:51:02,783 - PokeXHelper - INFO - Select an icon for 'step second' within the minimap area
+2025-06-26 12:51:02,783 - PokeXHelper - INFO - Starting area selection: Select Icon for 'step second' (in minimap area)
+2025-06-26 12:51:02,909 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 12:51:07,333 - PokeXHelper - INFO - Selection complete: (3301, 257) to (3316, 279), size: 15x22
+2025-06-26 12:51:08,445 - PokeXHelper - INFO - Select Icon for 'step second' (in minimap area) selection confirmed: (3301, 257) to (3316, 279)
+2025-06-26 12:51:08,521 - PokeXHelper - INFO - Saved and loaded icon for step 2: assets/navigation_icons\step_2_1750953061.png
+2025-06-26 12:51:08,522 - PokeXHelper - INFO - Icon saved for step 'step second'
+2025-06-26 12:51:08,526 - PokeXHelper - INFO - Refreshing steps display - 2 steps
+2025-06-26 12:51:08,548 - PokeXHelper - INFO - Navigation ready with 2 configured steps
+2025-06-26 12:51:15,908 - PokeXHelper - INFO - Starting settings save...
+2025-06-26 12:51:15,909 - PokeXHelper - INFO - Found 2 icon files in use: {'step_1_1750953011.png', 'step_2_1750953061.png'}
+2025-06-26 12:51:15,910 - PokeXHelper - INFO - Cleaned up unused icon file: step_1_1750952081.png
+2025-06-26 12:51:15,911 - PokeXHelper - INFO - Cleaned up unused icon file: step_1_1750952464.png
+2025-06-26 12:51:15,911 - PokeXHelper - INFO - Cleaned up unused icon file: step_2_1750952163.png
+2025-06-26 12:51:15,911 - PokeXHelper - INFO - Cleaned up unused icon file: step_2_1750952502.png
+2025-06-26 12:51:15,912 - PokeXHelper - INFO - Cleaned up unused icon file: step_3_1750952196.png
+2025-06-26 12:51:15,912 - PokeXHelper - INFO - Cleaned up unused icon file: step_3_1750952583.png
+2025-06-26 12:51:15,912 - PokeXHelper - INFO - Cleaned up 6 unused icon files
+2025-06-26 12:51:15,913 - PokeXHelper - INFO - Icon cleanup completed
+2025-06-26 12:51:15,913 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 12:51:15,914 - PokeXHelper - INFO - Saving health_bar: (64,516) to (260,528)
+2025-06-26 12:51:15,914 - PokeXHelper - INFO - Saving minimap: (3173,46) to (3436,366)
+2025-06-26 12:51:15,914 - PokeXHelper - INFO - Saving battle_area: (13,412) to (280,787)
+2025-06-26 12:51:15,915 - PokeXHelper - INFO - Serialized 2 steps for saving
+2025-06-26 12:51:15,915 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 12:51:15,915 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 12:51:15,917 - PokeXHelper - INFO - Settings saved successfully
+2025-06-26 12:51:17,099 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 12:51:17,099 - PokeXHelper - INFO - Saving health_bar: (64,516) to (260,528)
+2025-06-26 12:51:17,099 - PokeXHelper - INFO - Saving minimap: (3173,46) to (3436,366)
+2025-06-26 12:51:17,099 - PokeXHelper - INFO - Saving battle_area: (13,412) to (280,787)
+2025-06-26 12:51:17,099 - PokeXHelper - INFO - Serialized 2 steps for saving
+2025-06-26 12:51:17,101 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 12:51:17,101 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 12:51:17,101 - PokeXHelper - INFO - Application closing gracefully

@@ -1,37 +1,3 @@
-def cleanup_unused_icons(self):
-        try:
-            if not os.path.exists(self.step_icons_dir):
-                self.logger.info("Icons directory does not exist, nothing to clean up")
-                return
-            
-            used_files = set()
-            for step in self.steps:
-                if hasattr(step, 'icon_image_path') and step.icon_image_path:
-                    filename = os.path.basename(step.icon_image_path)
-                    if filename:
-                        used_files.add(filename)
-            
-            self.logger.info(f"Found {len(used_files)} icon files in use: {used_files}")
-            
-            cleaned_count = 0
-            for filename in os.listdir(self.step_icons_dir):
-                if filename.endswith('.png') and filename not in used_files:
-                    file_path = os.path.join(self.step_icons_dir, filename)
-                    try:
-                        os.remove(file_path)
-                        self.logger.info(f"Cleaned up unused icon file: {filename}")
-                        cleaned_count += 1
-                    except Exception as e:
-                        self.logger.warning(f"Could not delete unused icon {filename}: {e}")
-            
-            if cleaned_count > 0:
-                self.logger.info(f"Cleaned up {cleaned_count} unused icon files")
-            else:
-                self.logger.info("No unused icon files to clean up")
-                        
-        except Exception as e:
-            self.logger.error(f"Error cleaning up unused icons: {e}", exc_info=True)
-
 import os
 import time
 import logging
@@ -113,6 +79,40 @@ class NavigationManager:
         self.step_icons_dir = "assets/navigation_icons"
         if not os.path.exists(self.step_icons_dir):
             os.makedirs(self.step_icons_dir)
+    
+    def cleanup_unused_icons(self):
+        try:
+            if not os.path.exists(self.step_icons_dir):
+                self.logger.info("Icons directory does not exist, nothing to clean up")
+                return
+            
+            used_files = set()
+            for step in self.steps:
+                if hasattr(step, 'icon_image_path') and step.icon_image_path:
+                    filename = os.path.basename(step.icon_image_path)
+                    if filename:
+                        used_files.add(filename)
+            
+            self.logger.info(f"Found {len(used_files)} icon files in use: {used_files}")
+            
+            cleaned_count = 0
+            for filename in os.listdir(self.step_icons_dir):
+                if filename.endswith('.png') and filename not in used_files:
+                    file_path = os.path.join(self.step_icons_dir, filename)
+                    try:
+                        os.remove(file_path)
+                        self.logger.info(f"Cleaned up unused icon file: {filename}")
+                        cleaned_count += 1
+                    except Exception as e:
+                        self.logger.warning(f"Could not delete unused icon {filename}: {e}")
+            
+            if cleaned_count > 0:
+                self.logger.info(f"Cleaned up {cleaned_count} unused icon files")
+            else:
+                self.logger.info("No unused icon files to clean up")
+                        
+        except Exception as e:
+            self.logger.error(f"Error cleaning up unused icons: {e}", exc_info=True)
     
     def add_step(self, name="", coordinates="", wait_seconds=3.0):
         step_id = len(self.steps) + 1

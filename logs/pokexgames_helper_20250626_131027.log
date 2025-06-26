@@ -1,0 +1,6 @@
+2025-06-26 13:10:27,170 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 13:10:28,288 - PokeXHelper - CRITICAL - Fatal error: cannot import name 'PokeXGamesHelper' from 'app.gui' (C:\repositories\pxg-helper\app\gui\__init__.py)
+Traceback (most recent call last):
+  File "C:\repositories\pxg-helper\pokexgames_helper.py", line 75, in main
+    from app.gui import PokeXGamesHelper
+ImportError: cannot import name 'PokeXGamesHelper' from 'app.gui' (C:\repositories\pxg-helper\app\gui\__init__.py)

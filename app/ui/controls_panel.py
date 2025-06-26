@@ -125,19 +125,19 @@ class ControlsPanel:
         self.start_btn = tk.Button(buttons_frame, text="START HELPER",
                                  bg="#28a745", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
                                  font=("Segoe UI", 12, "bold"), height=2, state=tk.DISABLED,
-                                 activebackground="#218838", command=self.main_app.start_helper)
+                                 activebackground="#218838", command=self._start_helper_clicked)
         self.start_btn.pack(fill=tk.X, pady=4)
         
         self.stop_btn = tk.Button(buttons_frame, text="STOP HELPER",
                                 bg="#dc3545", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
                                 font=("Segoe UI", 12, "bold"), height=2, state=tk.DISABLED,
-                                activebackground="#c82333", command=self.main_app.stop_helper)
+                                activebackground="#c82333", command=self._stop_helper_clicked)
         self.stop_btn.pack(fill=tk.X, pady=4)
         
         save_btn = tk.Button(buttons_frame, text="Save Settings",
                            bg="#6c757d", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
                            font=("Segoe UI", 10), height=1, activebackground="#5a6268",
-                           command=self.main_app.save_settings)
+                           command=self._save_settings_clicked)
         save_btn.pack(fill=tk.X)
     
     def _initialize_variables(self):
@@ -145,6 +145,18 @@ class ControlsPanel:
         self.steps_completed = 0
         self.battles_won = 0
         self.start_time = None
+    
+    def _start_helper_clicked(self):
+        self.main_app.log("Start Helper button clicked")
+        self.main_app.start_helper()
+    
+    def _stop_helper_clicked(self):
+        self.main_app.log("Stop Helper button clicked")
+        self.main_app.stop_helper()
+    
+    def _save_settings_clicked(self):
+        self.main_app.log("Save Settings button clicked")
+        self.main_app.save_settings()
     
     def enable_start_button(self):
         self.start_btn.config(state=tk.NORMAL)
@@ -196,7 +208,8 @@ class ControlsPanel:
                 seconds = int(uptime % 60)
                 self.uptime_var.set(f"{hours:02d}:{minutes:02d}:{seconds:02d}")
             
-            self.steps_var.set(str(self.main_app.navigation_manager.current_step_index))
+            if hasattr(self.main_app, 'navigation_manager'):
+                self.steps_var.set(str(self.main_app.navigation_manager.current_step_index))
             
         except Exception:
             pass

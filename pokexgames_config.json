@@ -54,9 +54,9 @@
         }
     },
     "helper_settings": {
-        "auto_heal": true,
-        "auto_navigation": false,
-        "battle_detection_enabled": true,
+        "auto_heal": false,
+        "auto_navigation": true,
+        "battle_detection_enabled": false,
         "navigation_check_interval": 0.5,
         "step_timeout": 30,
         "coordinate_validation": true,
@@ -65,16 +65,30 @@
     "navigation_steps": [
         {
             "step_id": 1,
-            "name": "step 2",
-            "icon_image_path": "assets/navigation_icons\\step_2_1750951291.png",
-            "coordinates": "3337,6999,6",
-            "wait_seconds": 5.0,
+            "name": "step first",
+            "icon_image_path": "assets/navigation_icons\\step_1_1750953011.png",
+            "coordinates": "3953,3633,6",
+            "wait_seconds": 4.0,
             "is_active": true,
             "icon_bounds": [
-                3291,
-                158,
-                3313,
-                176
+                3256,
+                198,
+                3277,
+                215
+            ]
+        },
+        {
+            "step_id": 2,
+            "name": "step second",
+            "icon_image_path": "assets/navigation_icons\\step_2_1750953061.png",
+            "coordinates": "3959,3643,6",
+            "wait_seconds": 6.0,
+            "is_active": true,
+            "icon_bounds": [
+                3301,
+                257,
+                3316,
+                279
             ]
         }
     ]
