@@ -13,6 +13,7 @@ class ConfigManager:
             config = load_config()
             
             self._load_areas_config(config)
+            self._load_coordinate_area_config(config)
             self._load_navigation_config(config)
             self._load_helper_settings(config)
             
@@ -23,6 +24,7 @@ class ConfigManager:
             self.main_app.log("Error loading configuration - using defaults")
     
     def _load_areas_config(self, config):
+        """Load main area configurations (health bar, minimap, battle area)"""
         areas_config = config.get("areas", {})
         areas_loaded = 0
         
@@ -62,7 +64,19 @@ class ConfigManager:
         else:
             self.main_app.log("No saved areas found - using default configuration")
     
+    def _load_coordinate_area_config(self, config):
+        """Load coordinate area configuration"""
+        try:
+            # Try to load coordinate area config after navigation panel is created
+            if hasattr(self.main_app, 'interface_manager') and hasattr(self.main_app.interface_manager, 'navigation_panel'):
+                navigation_panel = self.main_app.interface_manager.navigation_panel
+                if hasattr(navigation_panel, 'load_coordinate_area_config'):
+                    navigation_panel.load_coordinate_area_config()
+        except Exception as e:
+            logger.debug(f"Could not load coordinate area config: {e}")
+    
     def _load_navigation_config(self, config):
+        """Load navigation steps configuration"""
         navigation_steps = config.get("navigation_steps", [])
         if navigation_steps:
             self.main_app.navigation_manager.load_steps_data(navigation_steps)
@@ -71,6 +85,7 @@ class ConfigManager:
             self.main_app.log(f"Loaded {len(navigation_steps)} navigation steps")
     
     def _load_helper_settings(self, config):
+        """Load helper settings"""
         self.main_app.interface_manager.controls_panel.load_settings_from_config(config)
     
     def save_settings(self):
@@ -101,6 +116,7 @@ class ConfigManager:
             
             areas_saved = 0
             
+            # Save main areas
             for area_name, selector in [
                 ("health_bar", self.main_app.health_bar_selector),
                 ("minimap", self.main_app.minimap_selector),
@@ -121,6 +137,31 @@ class ConfigManager:
                     config["areas"][area_name]["configured"] = False
                     logger.debug(f"Area {area_name} not configured, marked as unconfigured")
             
+            # Save coordinate area if it exists
+            try:
+                if (hasattr(self.main_app, 'interface_manager') and 
+                    hasattr(self.main_app.interface_manager, 'navigation_panel') and
+                    hasattr(self.main_app.interface_manager.navigation_panel, 'coordinate_area')):
+                    
+                    coord_area = self.main_app.interface_manager.navigation_panel.coordinate_area
+                    if coord_area and coord_area.is_setup():
+                        config["coordinate_area"] = {
+                            "name": "Coordinate Display Area",
+                            "x1": coord_area.x1,
+                            "y1": coord_area.y1,
+                            "x2": coord_area.x2,
+                            "y2": coord_area.y2,
+                            "configured": True
+                        }
+                        logger.info(f"Saving coordinate area: ({coord_area.x1},{coord_area.y1}) to ({coord_area.x2},{coord_area.y2})")
+                    else:
+                        if "coordinate_area" not in config:
+                            config["coordinate_area"] = {}
+                        config["coordinate_area"]["configured"] = False
+            except Exception as e:
+                logger.debug(f"Could not save coordinate area: {e}")
+            
+            # Save other settings
             self.main_app.interface_manager.controls_panel.save_settings_to_config(config)
             config["navigation_steps"] = self.main_app.navigation_manager.get_steps_data()
             

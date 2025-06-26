@@ -1,0 +1,79 @@
+2025-06-26 14:57:03,890 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 14:57:04,061 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 14:57:04,064 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 14:57:04,105 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 14:57:04,126 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 14:57:04,127 - PokeXHelper - INFO - Selection configured from saved coordinates: (64,516) to (260,528)
+2025-06-26 14:57:04,411 - PokeXHelper - INFO - Selection configured from saved coordinates: (3173,46) to (3436,366)
+2025-06-26 14:57:04,681 - PokeXHelper - INFO - Selection configured from saved coordinates: (13,412) to (280,787)
+2025-06-26 14:57:04,949 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 14:57:04,950 - PokeXHelper - INFO - Loaded 2 navigation steps
+2025-06-26 14:57:05,108 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 14:57:08,558 - PokeXHelper - INFO - Starting area selection: Coordinate Display Area
+2025-06-26 14:57:08,834 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 14:57:14,173 - PokeXHelper - INFO - Selection complete: (3171, 50) to (3292, 73), size: 121x23
+2025-06-26 14:57:15,638 - PokeXHelper - INFO - Coordinate Display Area selection confirmed: (3171, 50) to (3292, 73)
+2025-06-26 14:57:15,644 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 14:57:15,645 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 14:57:21,907 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 14:57:21,907 - PokeXHelper - INFO - Saving health_bar: (64,516) to (260,528)
+2025-06-26 14:57:21,908 - PokeXHelper - INFO - Saving minimap: (3173,46) to (3436,366)
+2025-06-26 14:57:21,908 - PokeXHelper - INFO - Saving battle_area: (13,412) to (280,787)
+2025-06-26 14:57:21,908 - PokeXHelper - INFO - Saving coordinate area: (3171,50) to (3292,73)
+2025-06-26 14:57:21,908 - PokeXHelper - INFO - Serialized 2 steps for saving
+2025-06-26 14:57:21,909 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 14:57:21,910 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 14:57:28,564 - PokeXHelper - INFO - Starting navigation with 2 valid steps
+2025-06-26 14:57:28,565 - PokeXHelper - INFO -  Starting navigation sequence with 2 steps
+2025-06-26 14:57:28,565 - PokeXHelper - INFO -  Found 2 active steps, 2 ready with icons
+2025-06-26 14:57:28,566 - PokeXHelper - INFO -  Processing step 1/2: 'step first'
+2025-06-26 14:57:28,566 - PokeXHelper - INFO -  Executing step 1: 'step first'
+2025-06-26 14:57:28,727 - PokeXHelper - INFO -  Found step 1 icon at (3281, 216) with 100.0% confidence
+2025-06-26 14:57:28,727 - PokeXHelper - ERROR - Error executing step 1: 'MouseController' object has no attribute 'click_at'
+2025-06-26 14:57:28,727 - PokeXHelper - ERROR -  Navigation failed at step 1 'step first'
+2025-06-26 14:57:29,728 - PokeXHelper - INFO -  Processing step 2/2: 'step second'
+2025-06-26 14:57:29,728 - PokeXHelper - INFO -  Executing step 2: 'step second'
+2025-06-26 14:57:29,866 - PokeXHelper - INFO -  Found step 2 icon at (3308, 273) with 100.0% confidence
+2025-06-26 14:57:29,867 - PokeXHelper - ERROR - Error executing step 2: 'MouseController' object has no attribute 'click_at'
+2025-06-26 14:57:29,867 - PokeXHelper - ERROR -  Navigation failed at step 2 'step second'
+2025-06-26 14:57:30,868 - PokeXHelper - INFO -  Navigation sequence completed - restarting from beginning
+2025-06-26 14:57:32,869 - PokeXHelper - INFO -  Processing step 1/2: 'step first'
+2025-06-26 14:57:32,869 - PokeXHelper - INFO -  Executing step 1: 'step first'
+2025-06-26 14:57:33,004 - PokeXHelper - INFO -  Found step 1 icon at (3281, 216) with 100.0% confidence
+2025-06-26 14:57:33,004 - PokeXHelper - ERROR - Error executing step 1: 'MouseController' object has no attribute 'click_at'
+2025-06-26 14:57:33,004 - PokeXHelper - ERROR -  Navigation failed at step 1 'step first'
+2025-06-26 14:57:34,006 - PokeXHelper - INFO -  Processing step 2/2: 'step second'
+2025-06-26 14:57:34,006 - PokeXHelper - INFO -  Executing step 2: 'step second'
+2025-06-26 14:57:34,141 - PokeXHelper - INFO -  Found step 2 icon at (3308, 273) with 100.0% confidence
+2025-06-26 14:57:34,141 - PokeXHelper - ERROR - Error executing step 2: 'MouseController' object has no attribute 'click_at'
+2025-06-26 14:57:34,141 - PokeXHelper - ERROR -  Navigation failed at step 2 'step second'
+2025-06-26 14:57:35,142 - PokeXHelper - INFO -  Navigation sequence completed - restarting from beginning
+2025-06-26 14:57:37,143 - PokeXHelper - INFO -  Processing step 1/2: 'step first'
+2025-06-26 14:57:37,144 - PokeXHelper - INFO -  Executing step 1: 'step first'
+2025-06-26 14:57:37,274 - PokeXHelper - INFO -  Found step 1 icon at (3281, 216) with 100.0% confidence
+2025-06-26 14:57:37,274 - PokeXHelper - ERROR - Error executing step 1: 'MouseController' object has no attribute 'click_at'
+2025-06-26 14:57:37,274 - PokeXHelper - ERROR -  Navigation failed at step 1 'step first'
+2025-06-26 14:57:38,275 - PokeXHelper - INFO -  Processing step 2/2: 'step second'
+2025-06-26 14:57:38,275 - PokeXHelper - INFO -  Executing step 2: 'step second'
+2025-06-26 14:57:38,408 - PokeXHelper - INFO -  Found step 2 icon at (3308, 273) with 100.0% confidence
+2025-06-26 14:57:38,408 - PokeXHelper - ERROR - Error executing step 2: 'MouseController' object has no attribute 'click_at'
+2025-06-26 14:57:38,408 - PokeXHelper - ERROR -  Navigation failed at step 2 'step second'
+2025-06-26 14:57:39,409 - PokeXHelper - INFO -  Navigation sequence completed - restarting from beginning
+2025-06-26 14:57:41,409 - PokeXHelper - INFO -  Processing step 1/2: 'step first'
+2025-06-26 14:57:41,409 - PokeXHelper - INFO -  Executing step 1: 'step first'
+2025-06-26 14:57:41,556 - PokeXHelper - INFO -  Found step 1 icon at (3281, 216) with 100.0% confidence
+2025-06-26 14:57:41,558 - PokeXHelper - ERROR - Error executing step 1: 'MouseController' object has no attribute 'click_at'
+2025-06-26 14:57:41,558 - PokeXHelper - ERROR -  Navigation failed at step 1 'step first'
+2025-06-26 14:57:42,559 - PokeXHelper - INFO -  Processing step 2/2: 'step second'
+2025-06-26 14:57:42,560 - PokeXHelper - INFO -  Executing step 2: 'step second'
+2025-06-26 14:57:42,708 - PokeXHelper - INFO -  Found step 2 icon at (3308, 273) with 100.0% confidence
+2025-06-26 14:57:42,709 - PokeXHelper - ERROR - Error executing step 2: 'MouseController' object has no attribute 'click_at'
+2025-06-26 14:57:42,709 - PokeXHelper - ERROR -  Navigation failed at step 2 'step second'
+2025-06-26 14:57:43,710 - PokeXHelper - INFO -  Navigation sequence completed - restarting from beginning
+2025-06-26 14:57:45,711 - PokeXHelper - INFO -  Processing step 1/2: 'step first'
+2025-06-26 14:57:45,711 - PokeXHelper - INFO -  Executing step 1: 'step first'
+2025-06-26 14:57:45,845 - PokeXHelper - INFO -  Found step 1 icon at (3281, 216) with 100.0% confidence
+2025-06-26 14:57:45,845 - PokeXHelper - ERROR - Error executing step 1: 'MouseController' object has no attribute 'click_at'
+2025-06-26 14:57:45,846 - PokeXHelper - ERROR -  Navigation failed at step 1 'step first'
+2025-06-26 14:57:46,847 - PokeXHelper - INFO -  Processing step 2/2: 'step second'
+2025-06-26 14:57:46,847 - PokeXHelper - INFO -  Executing step 2: 'step second'

@@ -1,0 +1,31 @@
+2025-06-26 14:46:51,814 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 14:46:51,987 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 14:46:52,016 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 14:46:52,059 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 14:46:52,062 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 14:46:52,062 - PokeXHelper - INFO - Selection configured from saved coordinates: (64,516) to (260,528)
+2025-06-26 14:46:52,421 - PokeXHelper - INFO - Selection configured from saved coordinates: (3173,46) to (3436,366)
+2025-06-26 14:46:52,686 - PokeXHelper - INFO - Selection configured from saved coordinates: (13,412) to (280,787)
+2025-06-26 14:46:52,958 - PokeXHelper - INFO - Loaded 2 navigation steps
+2025-06-26 14:46:53,120 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 14:47:05,280 - PokeXHelper - INFO - Starting area selection: Coordinate Display Area
+2025-06-26 14:47:05,538 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 14:47:10,958 - PokeXHelper - INFO - Selection complete: (3171, 46) to (3291, 73), size: 120x27
+2025-06-26 14:47:12,255 - PokeXHelper - INFO - Coordinate Display Area selection confirmed: (3171, 46) to (3291, 73)
+2025-06-26 14:47:12,260 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 14:47:12,261 - PokeXHelper - INFO - Saving health_bar: (64,516) to (260,528)
+2025-06-26 14:47:12,261 - PokeXHelper - INFO - Saving minimap: (3173,46) to (3436,366)
+2025-06-26 14:47:12,261 - PokeXHelper - INFO - Saving battle_area: (13,412) to (280,787)
+2025-06-26 14:47:12,261 - PokeXHelper - INFO - Serialized 2 steps for saving
+2025-06-26 14:47:12,262 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 14:47:12,262 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 14:47:21,956 - PokeXHelper - INFO - Starting navigation with 2 valid steps
+2025-06-26 14:47:21,956 - PokeXHelper - INFO -  Starting navigation sequence with 2 steps
+2025-06-26 14:47:21,957 - PokeXHelper - INFO -  Found 2 active steps, 2 ready with icons
+2025-06-26 14:47:21,957 - PokeXHelper - ERROR - Error in navigation loop: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-06-26 14:47:21,958 - PokeXHelper - INFO -  Navigation sequence completed
+2025-06-26 14:47:29,973 - PokeXHelper - INFO - Starting navigation with 2 valid steps
+2025-06-26 14:47:29,974 - PokeXHelper - INFO -  Starting navigation sequence with 2 steps
+2025-06-26 14:47:29,974 - PokeXHelper - INFO -  Found 2 active steps, 2 ready with icons
+2025-06-26 14:47:29,974 - PokeXHelper - ERROR - Error in navigation loop: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2025-06-26 14:47:29,974 - PokeXHelper - INFO -  Navigation sequence completed

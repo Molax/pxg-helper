@@ -1,0 +1,14 @@
+2025-06-26 14:41:09,495 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 14:41:09,712 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 14:41:10,079 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 14:41:10,115 - PokeXHelper - CRITICAL - Fatal error: 'NavigationManager' object has no attribute 'set_ui_log_callback'
+Traceback (most recent call last):
+  File "C:\repositories\pxg-helper\pokexgames_helper.py", line 78, in main
+    app = PokeXGamesHelper(root)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repositories\pxg-helper\app\gui\__init__.py", line 21, in __init__
+    self.interface_manager.create_interface()
+  File "C:\repositories\pxg-helper\app\gui\interface_manager.py", line 28, in create_interface
+    self.main_app.navigation_manager.set_ui_log_callback(self.log)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NavigationManager' object has no attribute 'set_ui_log_callback'

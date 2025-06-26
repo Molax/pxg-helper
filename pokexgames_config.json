@@ -94,5 +94,13 @@
                 279
             ]
         }
-    ]
+    ],
+    "coordinate_area": {
+        "name": "Coordinate Display Area",
+        "x1": 3171,
+        "y1": 50,
+        "x2": 3292,
+        "y2": 73,
+        "configured": true
+    }
 }
