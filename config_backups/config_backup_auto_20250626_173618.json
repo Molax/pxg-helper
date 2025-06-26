@@ -65,10 +65,10 @@
     "navigation_steps": [],
     "coordinate_area": {
         "name": "Coordinate Display Area",
-        "x1": 1448,
-        "y1": 58,
-        "x2": 1576,
-        "y2": 85,
-        "configured": true
+        "x1": null,
+        "y1": null,
+        "x2": null,
+        "y2": null,
+        "configured": false
     }
 }

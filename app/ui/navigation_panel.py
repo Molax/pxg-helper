@@ -131,6 +131,37 @@ class NavigationPanel:
     def load_coordinate_area_config(self):
         """Load coordinate area configuration"""
         try:
+            # This method is called by the config manager during load
+            # The coordinate area will be loaded by the new config system
+            # through load_coordinate_area_from_schema if available
+            pass
+                            
+        except Exception as e:
+            self.main_app.log(f"Error loading coordinate area config: {e}")
+        
+        return False
+
+    def load_coordinate_area_from_schema(self, coordinate_area_config):
+        """Load coordinate area configuration from schema"""
+        try:
+            if coordinate_area_config.configured and coordinate_area_config.is_valid():
+                if self.coordinate_area and self.coordinate_area.configure_from_saved(
+                    coordinate_area_config.x1, 
+                    coordinate_area_config.y1, 
+                    coordinate_area_config.x2, 
+                    coordinate_area_config.y2
+                ):
+                    self.main_app.log(f"Loaded coordinate area: ({coordinate_area_config.x1},{coordinate_area_config.y1}) to ({coordinate_area_config.x2},{coordinate_area_config.y2})")
+                    self.update_coordinate_area_status()
+                    return True
+                            
+        except Exception as e:
+            self.main_app.log(f"Error loading coordinate area config: {e}")
+        
+        return False
+
+        """Load coordinate area configuration"""
+        try:
             from app.config import load_config
             config = load_config()
             coord_config = config.get("coordinate_area", {})
@@ -471,3 +502,4 @@ class NavigationPanel:
     def on_helper_state_changed(self, helper_running):
         """Handle helper state changes"""
         pass
+    

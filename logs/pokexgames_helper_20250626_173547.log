@@ -1,0 +1,148 @@
+2025-06-26 17:35:47,472 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 17:35:47,640 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 17:35:47,650 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 17:35:47,707 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 17:35:47,708 - PokeXHelper - INFO - Configuration validation passed successfully
+2025-06-26 17:35:47,708 - PokeXHelper - INFO - Configuration loaded successfully
+2025-06-26 17:35:47,708 - PokeXHelper - INFO - No saved areas found - using default configuration
+2025-06-26 17:35:47,714 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 17:35:47,715 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 17:35:59,795 - PokeXHelper - INFO - Starting Health Bar selection...
+2025-06-26 17:35:59,795 - PokeXHelper - INFO - Starting area selection: Health Bar
+2025-06-26 17:36:00,120 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 17:36:00,775 - PokeXHelper - INFO - Selection complete: (63, 390) to (101, 460), size: 38x70
+2025-06-26 17:36:02,018 - PokeXHelper - INFO - Health Bar selection confirmed: (63, 390) to (101, 460)
+2025-06-26 17:36:02,022 - PokeXHelper - INFO - Health Bar configured: (63,390) to (101,460)
+2025-06-26 17:36:02,165 - PokeXHelper - INFO - Configuration backup created: config_backups\config_backup_auto_20250626_173602.json
+2025-06-26 17:36:02,166 - PokeXHelper - INFO - Configuration saved successfully
+2025-06-26 17:36:02,167 - PokeXHelper - INFO - Saving health_bar: (63,390) to (101,460)
+2025-06-26 17:36:02,167 - PokeXHelper - INFO - Serialized 0 steps for saving
+2025-06-26 17:36:02,167 - PokeXHelper - INFO - Configuration backup created: config_backups\config_backup_auto_20250626_173602.json
+2025-06-26 17:36:02,168 - PokeXHelper - INFO - Configuration saved successfully
+2025-06-26 17:36:02,168 - PokeXHelper - INFO - Configuration saved successfully
+2025-06-26 17:36:02,823 - PokeXHelper - INFO - Starting Minimap Area selection...
+2025-06-26 17:36:02,824 - PokeXHelper - INFO - Starting area selection: Minimap Area
+2025-06-26 17:36:03,104 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 17:36:05,516 - PokeXHelper - INFO - Selection complete: (1444, 56) to (1717, 377), size: 273x321
+2025-06-26 17:36:06,606 - PokeXHelper - INFO - Minimap Area selection confirmed: (1444, 56) to (1717, 377)
+2025-06-26 17:36:06,612 - PokeXHelper - INFO - Minimap Area configured: (1444,56) to (1717,377)
+2025-06-26 17:36:06,750 - PokeXHelper - INFO - Saving health_bar: (63,390) to (101,460)
+2025-06-26 17:36:06,750 - PokeXHelper - INFO - Saving minimap: (1444,56) to (1717,377)
+2025-06-26 17:36:06,750 - PokeXHelper - INFO - Serialized 0 steps for saving
+2025-06-26 17:36:06,751 - PokeXHelper - INFO - Configuration backup created: config_backups\config_backup_auto_20250626_173606.json
+2025-06-26 17:36:06,753 - PokeXHelper - INFO - Configuration saved successfully
+2025-06-26 17:36:06,753 - PokeXHelper - INFO - Configuration saved successfully
+2025-06-26 17:36:08,614 - PokeXHelper - INFO - Starting Battle Area selection...
+2025-06-26 17:36:08,615 - PokeXHelper - INFO - Starting area selection: Battle Area
+2025-06-26 17:36:08,873 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 17:36:09,396 - PokeXHelper - INFO - Selection complete: (34, 367) to (269, 657), size: 235x290
+2025-06-26 17:36:10,526 - PokeXHelper - INFO - Battle Area selection confirmed: (34, 367) to (269, 657)
+2025-06-26 17:36:10,537 - PokeXHelper - INFO - Battle Area configured: (34,367) to (269,657)
+2025-06-26 17:36:10,674 - PokeXHelper - INFO - Saving health_bar: (63,390) to (101,460)
+2025-06-26 17:36:10,675 - PokeXHelper - INFO - Saving minimap: (1444,56) to (1717,377)
+2025-06-26 17:36:10,675 - PokeXHelper - INFO - Saving battle_area: (34,367) to (269,657)
+2025-06-26 17:36:10,676 - PokeXHelper - INFO - Serialized 0 steps for saving
+2025-06-26 17:36:10,678 - PokeXHelper - INFO - Configuration backup created: config_backups\config_backup_auto_20250626_173610.json
+2025-06-26 17:36:10,679 - PokeXHelper - INFO - Configuration saved successfully
+2025-06-26 17:36:10,681 - PokeXHelper - INFO - Configuration saved successfully
+2025-06-26 17:36:13,532 - PokeXHelper - INFO - Starting area selection: Select Coordinate Display Area
+2025-06-26 17:36:13,851 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 17:36:16,675 - PokeXHelper - INFO - Selection complete: (1448, 58) to (1576, 85), size: 128x27
+2025-06-26 17:36:17,786 - PokeXHelper - INFO - Select Coordinate Display Area selection confirmed: (1448, 58) to (1576, 85)
+2025-06-26 17:36:17,789 - PokeXHelper - INFO - Coordinate area configured: (1448,58) to (1576,85)
+2025-06-26 17:36:18,580 - PokeXHelper - INFO - Save Settings button clicked
+2025-06-26 17:36:18,582 - PokeXHelper - INFO - Saving health_bar: (63,390) to (101,460)
+2025-06-26 17:36:18,582 - PokeXHelper - INFO - Saving minimap: (1444,56) to (1717,377)
+2025-06-26 17:36:18,582 - PokeXHelper - INFO - Saving battle_area: (34,367) to (269,657)
+2025-06-26 17:36:18,583 - PokeXHelper - INFO - Saving coordinate area: (1448,58) to (1576,85)
+2025-06-26 17:36:18,583 - PokeXHelper - INFO - Serialized 0 steps for saving
+2025-06-26 17:36:18,585 - PokeXHelper - INFO - Configuration backup created: config_backups\config_backup_auto_20250626_173618.json
+2025-06-26 17:36:18,585 - PokeXHelper - INFO - Configuration saved successfully
+2025-06-26 17:36:18,586 - PokeXHelper - INFO - Configuration saved successfully
+2025-06-26 17:36:36,240 - PokeXHelper - INFO - Added step 1: '3953,3633,6' with icon path: 
+2025-06-26 17:36:36,240 - PokeXHelper - INFO - Created step 1: '3953,3633,6'
+2025-06-26 17:36:36,240 - PokeXHelper - INFO - Refreshing steps display - 1 steps
+2025-06-26 17:36:36,346 - PokeXHelper - INFO - Select an icon for '3953,3633,6' within the minimap area
+2025-06-26 17:36:36,346 - PokeXHelper - INFO - Starting area selection: Select Icon for '3953,3633,6' (in minimap area)
+2025-06-26 17:36:36,639 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 17:36:38,811 - PokeXHelper - INFO - Selection complete: (1556, 224) to (1573, 241), size: 17x17
+2025-06-26 17:36:39,858 - PokeXHelper - INFO - Select Icon for '3953,3633,6' (in minimap area) selection confirmed: (1556, 224) to (1573, 241)
+2025-06-26 17:36:40,027 - PokeXHelper - INFO - Saved and loaded icon for step 1: assets/navigation_icons\step_1_1750970200016.png
+2025-06-26 17:36:40,028 - PokeXHelper - INFO - Icon saved for step '3953,3633,6'
+2025-06-26 17:36:40,032 - PokeXHelper - INFO - Refreshing steps display - 1 steps
+2025-06-26 17:36:40,040 - PokeXHelper - INFO - Navigation ready with 1 configured steps
+2025-06-26 17:36:51,515 - PokeXHelper - INFO - Added step 2: 'exccc' with icon path: 
+2025-06-26 17:36:51,515 - PokeXHelper - INFO - Created step 2: 'exccc'
+2025-06-26 17:36:51,521 - PokeXHelper - INFO - Refreshing steps display - 2 steps
+2025-06-26 17:36:51,523 - PokeXHelper - INFO - Select an icon for 'exccc' within the minimap area
+2025-06-26 17:36:51,524 - PokeXHelper - INFO - Starting area selection: Select Icon for 'exccc' (in minimap area)
+2025-06-26 17:36:51,782 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 17:36:54,658 - PokeXHelper - INFO - Selection complete: (1591, 223) to (1607, 244), size: 16x21
+2025-06-26 17:36:55,773 - PokeXHelper - INFO - Select Icon for 'exccc' (in minimap area) selection confirmed: (1591, 223) to (1607, 244)
+2025-06-26 17:36:55,947 - PokeXHelper - INFO - Saved and loaded icon for step 2: assets/navigation_icons\step_2_1750970215938.png
+2025-06-26 17:36:55,948 - PokeXHelper - INFO - Icon saved for step 'exccc'
+2025-06-26 17:36:55,960 - PokeXHelper - INFO - Refreshing steps display - 2 steps
+2025-06-26 17:36:55,963 - PokeXHelper - INFO - Navigation ready with 2 configured steps
+2025-06-26 17:36:57,825 - PokeXHelper - INFO - Save Settings button clicked
+2025-06-26 17:36:57,827 - PokeXHelper - INFO - Configuration backup created: config_backups\config_backup_auto_20250626_173657.json
+2025-06-26 17:36:57,834 - PokeXHelper - INFO - Configuration saved successfully
+2025-06-26 17:36:57,834 - PokeXHelper - INFO - Saving health_bar: (63,390) to (101,460)
+2025-06-26 17:36:57,835 - PokeXHelper - INFO - Saving minimap: (1444,56) to (1717,377)
+2025-06-26 17:36:57,835 - PokeXHelper - INFO - Saving battle_area: (34,367) to (269,657)
+2025-06-26 17:36:57,835 - PokeXHelper - INFO - Saving coordinate area: (1448,58) to (1576,85)
+2025-06-26 17:36:57,835 - PokeXHelper - INFO - Serialized 2 steps for saving
+2025-06-26 17:36:57,835 - PokeXHelper - ERROR - Cannot save invalid configuration
+2025-06-26 17:36:57,836 - PokeXHelper - ERROR - Configuration validation found 1 errors:
+2025-06-26 17:36:57,836 - PokeXHelper - ERROR -   ERROR: navigation_steps[1].id - Duplicate step ID: 
+2025-06-26 17:36:57,836 - PokeXHelper - ERROR - Error saving configuration: Configuration validation failed with 1 errors
+2025-06-26 17:36:57,836 - PokeXHelper - ERROR - Error saving configuration: Configuration validation failed with 1 errors
+Traceback (most recent call last):
+  File "C:\repositories\pxg-helper\app\gui\managers\config_manager.py", line 249, in save_configuration
+    self._save_to_schema()
+  File "C:\repositories\pxg-helper\app\gui\managers\config_manager.py", line 266, in _save_to_schema
+    self._config_core.save_config()
+  File "C:\repositories\pxg-helper\app\config\manager.py", line 150, in save_config
+    raise ValueError(f"Configuration validation failed with {len(errors)} errors")
+ValueError: Configuration validation failed with 1 errors
+2025-06-26 17:37:00,126 - PokeXHelper - INFO - Starting navigation sequence
+2025-06-26 17:37:00,127 - PokeXHelper - INFO - Starting navigation with 2 valid steps
+2025-06-26 17:37:00,127 - PokeXHelper - INFO -  Starting navigation sequence with 2 steps
+2025-06-26 17:37:00,128 - PokeXHelper - INFO -  Found 2 active steps, 2 ready with icons
+2025-06-26 17:37:00,128 - PokeXHelper - INFO - Navigation started successfully
+2025-06-26 17:37:00,128 - PokeXHelper - INFO -  Processing step 1/2: '3953,3633,6'
+2025-06-26 17:37:00,129 - PokeXHelper - INFO -  Executing step 1: '3953,3633,6' (attempt 1/2)
+2025-06-26 17:37:00,276 - PokeXHelper - INFO -  Found step 1 icon at (1564, 232) with 100.0% confidence (attempt 1/2)
+2025-06-26 17:37:00,550 - PokeXHelper - INFO -  Clicked at (1564, 232) for step 1 (attempt 1/2)
+2025-06-26 17:37:00,601 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 17:37:00,602 - PokeXHelper - INFO -  Waiting 4.0 seconds for step completion
+2025-06-26 17:37:05,690 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3953, 3633, 6)
+2025-06-26 17:37:05,690 - PokeXHelper - INFO -  Step 1 '3953,3633,6' completed successfully
+2025-06-26 17:37:05,690 - PokeXHelper - INFO -  Processing step 2/2: 'exccc'
+2025-06-26 17:37:05,690 - PokeXHelper - INFO -  Executing step 2: 'exccc' (attempt 1/2)
+2025-06-26 17:37:05,837 - PokeXHelper - INFO -  Found step 2 icon at (1619, 218) with 100.0% confidence (attempt 1/2)
+2025-06-26 17:37:06,101 - PokeXHelper - INFO -  Clicked at (1619, 218) for step 2 (attempt 1/2)
+2025-06-26 17:37:06,153 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 17:37:06,153 - PokeXHelper - INFO -  Waiting 4.0 seconds for step completion
+2025-06-26 17:37:10,999 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3960, 3633, 6)
+2025-06-26 17:37:10,999 - PokeXHelper - INFO - [SUCCESS] Step 2 validated - reached target coordinates
+2025-06-26 17:37:11,000 - PokeXHelper - INFO -  Step 2 'exccc' completed successfully
+2025-06-26 17:37:12,000 - PokeXHelper - INFO -  Navigation sequence completed successfully - restarting from beginning
+2025-06-26 17:37:12,001 - PokeXHelper - INFO -  Processing step 1/2: '3953,3633,6'
+2025-06-26 17:37:12,002 - PokeXHelper - INFO -  Executing step 1: '3953,3633,6' (attempt 1/2)
+2025-06-26 17:37:12,187 - PokeXHelper - INFO -  Found step 1 icon at (1549, 217) with 100.0% confidence (attempt 1/2)
+2025-06-26 17:37:12,452 - PokeXHelper - INFO -  Clicked at (1549, 217) for step 1 (attempt 1/2)
+2025-06-26 17:37:12,503 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 17:37:12,503 - PokeXHelper - INFO -  Waiting 4.0 seconds for step completion
+2025-06-26 17:37:17,289 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3953, 3633, 6)
+2025-06-26 17:37:17,289 - PokeXHelper - INFO -  Step 1 '3953,3633,6' completed successfully
+2025-06-26 17:37:17,290 - PokeXHelper - INFO -  Processing step 2/2: 'exccc'
+2025-06-26 17:37:17,290 - PokeXHelper - INFO -  Executing step 2: 'exccc' (attempt 1/2)
+2025-06-26 17:37:17,430 - PokeXHelper - INFO -  Found step 2 icon at (1619, 218) with 100.0% confidence (attempt 1/2)
+2025-06-26 17:37:17,788 - PokeXHelper - INFO -  Clicked at (1619, 218) for step 2 (attempt 1/2)
+2025-06-26 17:37:17,839 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 17:37:17,839 - PokeXHelper - INFO -  Waiting 4.0 seconds for step completion
+2025-06-26 17:37:19,680 - PokeXHelper - INFO - Stopping navigation sequence
+2025-06-26 17:37:19,682 - PokeXHelper - INFO - Stopping navigation...
+2025-06-26 17:37:21,690 - PokeXHelper - INFO - Navigation stopped
+2025-06-26 17:37:21,690 - PokeXHelper - INFO - Navigation ready with 2 configured steps
+2025-06-26 17:37:21,691 - PokeXHelper - INFO - Navigation stopped

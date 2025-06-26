@@ -10,20 +10,20 @@
             "configured": true
         },
         "minimap": {
-            "name": "Minimap Area",
-            "x1": 1444,
-            "y1": 56,
-            "x2": 1717,
-            "y2": 377,
-            "configured": true
+            "name": "Minimap",
+            "x1": null,
+            "y1": null,
+            "x2": null,
+            "y2": null,
+            "configured": false
         },
         "battle_area": {
             "name": "Battle Area",
-            "x1": 34,
-            "y1": 367,
-            "x2": 269,
-            "y2": 657,
-            "configured": true
+            "x1": null,
+            "y1": null,
+            "x2": null,
+            "y2": null,
+            "configured": false
         }
     },
     "helper_settings": {
@@ -65,10 +65,10 @@
     "navigation_steps": [],
     "coordinate_area": {
         "name": "Coordinate Display Area",
-        "x1": 1448,
-        "y1": 58,
-        "x2": 1576,
-        "y2": 85,
-        "configured": true
+        "x1": null,
+        "y1": null,
+        "x2": null,
+        "y2": null,
+        "configured": false
     }
 }

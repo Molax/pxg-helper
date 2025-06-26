@@ -1,0 +1,10 @@
+2025-06-26 17:32:55,487 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 17:32:55,671 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 17:32:55,679 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 17:32:55,747 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 17:32:55,747 - PokeXHelper - INFO - No configuration file found, creating default configuration
+2025-06-26 17:32:55,747 - PokeXHelper - INFO - Configuration saved successfully
+2025-06-26 17:32:55,748 - PokeXHelper - INFO - No saved areas found - using default configuration
+2025-06-26 17:32:55,750 - PokeXHelper - INFO - Error loading coordinate area config: cannot import name 'load_config' from 'app.config' (C:\repositories\pxg-helper\app\config\__init__.py)
+2025-06-26 17:32:55,754 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 17:32:55,756 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully

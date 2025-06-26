@@ -11,16 +11,6 @@ from .schemas import (
 from .validator import ConfigValidator, ValidationError
 from .migration import ConfigMigrator, ConfigMigration, MigrationError
 
-def load_config():
-    config_manager = ConfigManager()
-    return config_manager.load_config().to_dict()
-
-def save_config(config_dict):
-    config_manager = ConfigManager()
-    schema = ConfigSchema.from_dict(config_dict)
-    config_manager.schema = schema
-    config_manager.save_config()
-
 __all__ = [
     'ConfigManager',
     'ConfigBackupManager', 
@@ -36,7 +26,5 @@ __all__ = [
     'ValidationError',
     'ConfigMigrator',
     'ConfigMigration',
-    'MigrationError',
-    'load_config',
-    'save_config'
+    'MigrationError'
 ]
