@@ -10,7 +10,9 @@ __version__ = '1.0.0'
 # app/core/__init__.py
 """Core detection and analysis modules"""
 
-from app.core.pokemon_detector import HealthDetector, PokemonDetector, BattleDetector
+from app.core.pokemon_detector import  PokemonDetector, BattleDetector
+
+from app.core.health_detector import  HealthDetector
 
 # app/screen_capture/__init__.py
 """Screen capture and area selection modules"""

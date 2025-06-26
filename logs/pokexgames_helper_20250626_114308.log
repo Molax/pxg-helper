@@ -1,0 +1,13 @@
+2025-06-26 11:43:08,185 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 11:43:08,406 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 11:43:08,407 - PokeXHelper - ERROR - Failed to import components: No module named 'app.core.health_detector'
+2025-06-26 11:43:08,407 - PokeXHelper - CRITICAL - Fatal error: No module named 'app.core.health_detector'
+Traceback (most recent call last):
+  File "C:\repositories\pxg-helper\pokexgames_helper.py", line 78, in main
+    app = PokeXGamesHelper(root)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repositories\pxg-helper\app\gui.py", line 108, in __init__
+    self._initialize_components()
+  File "C:\repositories\pxg-helper\app\gui.py", line 121, in _initialize_components
+    from app.core.health_detector import HealthDetector
+ModuleNotFoundError: No module named 'app.core.health_detector'

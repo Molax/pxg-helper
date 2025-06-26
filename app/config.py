@@ -10,32 +10,24 @@ DEFAULT_CONFIG = {
     "scan_interval": 0.5,
     "debug_enabled": True,
     "areas": {
-        "area_1": {
-            "name": "Area 1",
-            "x1": None,
-            "y1": None,
-            "x2": None,
-            "y2": None,
-            "configured": False
-        },
-        "area_2": {
-            "name": "Area 2", 
-            "x1": None,
-            "y1": None,
-            "x2": None,
-            "y2": None,
-            "configured": False
-        },
-        "area_3": {
-            "name": "Area 3",
-            "x1": None,
-            "y1": None,
-            "x2": None,
-            "y2": None,
-            "configured": False
-        },
         "health_bar": {
             "name": "Health Bar",
+            "x1": None,
+            "y1": None,
+            "x2": None,
+            "y2": None,
+            "configured": False
+        },
+        "minimap": {
+            "name": "Minimap",
+            "x1": None,
+            "y1": None,
+            "x2": None,
+            "y2": None,
+            "configured": False
+        },
+        "coordinates": {
+            "name": "Coordinates Area",
             "x1": None,
             "y1": None,
             "x2": None,
@@ -45,10 +37,13 @@ DEFAULT_CONFIG = {
     },
     "helper_settings": {
         "auto_heal": True,
-        "image_matching_threshold": 0.8,
-        "pokemon_detection_enabled": True,
-        "battle_detection_enabled": True
-    }
+        "auto_navigation": False,
+        "navigation_check_interval": 0.5,
+        "step_timeout": 30,
+        "coordinate_validation": True,
+        "image_matching_threshold": 0.8
+    },
+    "navigation_steps": []
 }
 
 def setup_logging():
@@ -103,6 +98,11 @@ def load_config():
                 if "helper_settings" not in config:
                     config["helper_settings"] = DEFAULT_CONFIG["helper_settings"]
                     logging.getLogger('PokeXHelper').info("Added missing helper settings")
+                    save_config(config)
+                
+                if "navigation_steps" not in config:
+                    config["navigation_steps"] = DEFAULT_CONFIG["navigation_steps"]
+                    logging.getLogger('PokeXHelper').info("Added missing navigation steps")
                     save_config(config)
                 
                 return config

@@ -67,7 +67,7 @@ def main():
             print(error_message)
         sys.exit(1)
     
-    for directory in ["logs", "debug_images", "assets/pokemon_templates"]:
+    for directory in ["logs", "debug_images", "assets/step_templates", "assets/minimap_steps"]:
         if not os.path.exists(directory):
             os.makedirs(directory)
     

@@ -1,11 +1,90 @@
 import tkinter as tk
-from tkinter import ttk, scrolledtext, messagebox
+from tkinter import ttk, scrolledtext, messagebox, simpledialog
 import time
 import logging
 import threading
 from PIL import Image, ImageTk
 
 logger = logging.getLogger('PokeXHelper')
+
+class StepConfigDialog:
+    def __init__(self, parent, step=None):
+        self.parent = parent
+        self.step = step
+        self.result = None
+        
+        self.dialog = tk.Toplevel(parent)
+        self.dialog.title("Configure Navigation Step")
+        self.dialog.geometry("400x300")
+        self.dialog.transient(parent)
+        self.dialog.grab_set()
+        
+        self._create_widgets()
+        
+        if step:
+            self.name_var.set(step.name)
+            self.coordinates_var.set(step.coordinates)
+            self.wait_seconds_var.set(step.wait_seconds)
+        
+        self.dialog.protocol("WM_DELETE_WINDOW", self._on_cancel)
+        
+    def _create_widgets(self):
+        main_frame = ttk.Frame(self.dialog)
+        main_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=20)
+        
+        ttk.Label(main_frame, text="Step Name:").grid(row=0, column=0, sticky="w", pady=5)
+        self.name_var = tk.StringVar()
+        ttk.Entry(main_frame, textvariable=self.name_var, width=30).grid(row=0, column=1, pady=5)
+        
+        ttk.Label(main_frame, text="Coordinates:").grid(row=1, column=0, sticky="w", pady=5)
+        self.coordinates_var = tk.StringVar()
+        ttk.Entry(main_frame, textvariable=self.coordinates_var, width=30).grid(row=1, column=1, pady=5)
+        
+        ttk.Label(main_frame, text="Wait Seconds:").grid(row=2, column=0, sticky="w", pady=5)
+        self.wait_seconds_var = tk.DoubleVar(value=3.0)
+        ttk.Spinbox(main_frame, from_=0.5, to=60.0, increment=0.5, 
+                   textvariable=self.wait_seconds_var, width=28).grid(row=2, column=1, pady=5)
+        
+        ttk.Label(main_frame, text="Instructions:", font=("Arial", 9, "bold")).grid(row=3, column=0, columnspan=2, sticky="w", pady=(15, 5))
+        
+        instructions = tk.Text(main_frame, height=6, width=50, wrap=tk.WORD, state=tk.DISABLED,
+                              bg="#f0f0f0", font=("Arial", 8))
+        instructions.grid(row=4, column=0, columnspan=2, pady=5)
+        
+        instructions.config(state=tk.NORMAL)
+        instructions.insert(tk.END, 
+            "1. Click 'Select Step Icon' to capture the icon area in the minimap\n"
+            "2. Enter coordinates in format: (x, y, z) - e.g., (3947, 3633, 6)\n"
+            "3. Set wait time - how long to wait after clicking before validation\n"
+            "4. The helper will click the icon and wait for the character to reach the coordinates")
+        instructions.config(state=tk.DISABLED)
+        
+        button_frame = ttk.Frame(main_frame)
+        button_frame.grid(row=5, column=0, columnspan=2, pady=20)
+        
+        ttk.Button(button_frame, text="Select Step Icon", 
+                  command=self._select_icon).pack(side=tk.LEFT, padx=5)
+        ttk.Button(button_frame, text="OK", 
+                  command=self._on_ok).pack(side=tk.LEFT, padx=5)
+        ttk.Button(button_frame, text="Cancel", 
+                  command=self._on_cancel).pack(side=tk.LEFT, padx=5)
+    
+    def _select_icon(self):
+        messagebox.showinfo("Select Icon", 
+            "The minimap area selection will open next.\n"
+            "Draw a small rectangle around the step icon in the minimap.")
+    
+    def _on_ok(self):
+        self.result = {
+            'name': self.name_var.get() or f"Step {int(time.time())}",
+            'coordinates': self.coordinates_var.get(),
+            'wait_seconds': self.wait_seconds_var.get()
+        }
+        self.dialog.destroy()
+    
+    def _on_cancel(self):
+        self.result = None
+        self.dialog.destroy()
 
 class PokeXGamesHelper:
     def __init__(self, root):
@@ -21,9 +100,9 @@ class PokeXGamesHelper:
             except (AttributeError, OSError):
                 pass
         
-        self.root.geometry("1200x800")
-        self.root.minsize(1000, 700)
-        self.root.title("PokeXGames Helper")
+        self.root.geometry("1400x900")
+        self.root.minsize(1200, 800)
+        self.root.title("PokeXGames Helper - Navigation & Automation")
         self.root.configure(bg="#1a1a1a")
         
         self._initialize_components()
@@ -39,16 +118,21 @@ class PokeXGamesHelper:
     def _initialize_components(self):
         try:
             from app.screen_capture.area_selector import AreaSelector
-            from app.core.pokemon_detector import HealthDetector, PokemonDetector, BattleDetector
+            from app.core.health_detector import HealthDetector
+            from app.navigation.navigation_manager import NavigationManager
+            from app.utils.mouse_controller import MouseController
             
-            self.area_1_selector = AreaSelector(self.root)
-            self.area_2_selector = AreaSelector(self.root)
-            self.area_3_selector = AreaSelector(self.root)
             self.health_bar_selector = AreaSelector(self.root)
+            self.minimap_selector = AreaSelector(self.root)
+            self.coordinates_selector = AreaSelector(self.root)
             
             self.health_detector = HealthDetector()
-            self.pokemon_detector = PokemonDetector()
-            self.battle_detector = BattleDetector()
+            self.mouse_controller = MouseController()
+            self.navigation_manager = NavigationManager(
+                self.minimap_selector, 
+                self.coordinates_selector, 
+                self.mouse_controller
+            )
             
             logger.info("Components initialized successfully")
             
@@ -59,6 +143,7 @@ class PokeXGamesHelper:
         self.running = False
         self.start_time = None
         self.heals_used = 0
+        self.steps_completed = 0
         
         self.helper_thread = None
     
@@ -101,7 +186,7 @@ class PokeXGamesHelper:
                               font=("Segoe UI", 20, "bold"), bg="#1a1a1a", fg="#ffffff")
         title_label.pack(anchor=tk.W)
         
-        subtitle_label = tk.Label(title_section, text="Pokemon Battle Assistant", 
+        subtitle_label = tk.Label(title_section, text="Navigation & Automation Helper", 
                                  font=("Segoe UI", 12), bg="#1a1a1a", fg="#ff6b35")
         subtitle_label.pack(anchor=tk.W)
         
@@ -128,57 +213,65 @@ class PokeXGamesHelper:
         content_frame.pack(fill=tk.BOTH, expand=True)
         
         content_frame.grid_rowconfigure(0, weight=1)
-        content_frame.grid_columnconfigure(0, weight=2)
+        content_frame.grid_columnconfigure(0, weight=1)
         content_frame.grid_columnconfigure(1, weight=1)
+        content_frame.grid_columnconfigure(2, weight=1)
         
         left_panel = tk.Frame(content_frame, bg="#2d2d2d", relief=tk.FLAT, bd=1)
-        left_panel.grid(row=0, column=0, sticky="nsew", padx=(0, 6))
-        left_panel.grid_rowconfigure(1, weight=1)
+        left_panel.grid(row=0, column=0, sticky="nsew", padx=(0, 3))
+        
+        middle_panel = tk.Frame(content_frame, bg="#2d2d2d", relief=tk.FLAT, bd=1)
+        middle_panel.grid(row=0, column=1, sticky="nsew", padx=(3, 3))
         
         right_panel = tk.Frame(content_frame, bg="#2d2d2d", relief=tk.FLAT, bd=1)
-        right_panel.grid(row=0, column=1, sticky="nsew")
-        right_panel.grid_rowconfigure(0, weight=2)
-        right_panel.grid_rowconfigure(1, weight=1)
+        right_panel.grid(row=0, column=2, sticky="nsew", padx=(3, 0))
         
-        self._create_area_selection_panel(left_panel)
-        self._create_log_panel(left_panel)
-        self._create_settings_panel(right_panel)
-        self._create_controls_panel(right_panel)
+        self._create_area_config_panel(left_panel)
+        self._create_navigation_panel(middle_panel)
+        self._create_controls_and_log_panel(right_panel)
     
-    def _create_area_selection_panel(self, parent):
+    def _create_area_config_panel(self, parent):
         areas_frame = tk.Frame(parent, bg="#2d2d2d", padx=12, pady=12)
-        areas_frame.grid(row=0, column=0, sticky="ew", pady=(0, 6))
+        areas_frame.pack(fill=tk.BOTH, expand=True)
         
         title_label = tk.Label(areas_frame, text="Area Configuration", 
                               font=("Segoe UI", 14, "bold"), bg="#2d2d2d", fg="#ffffff")
         title_label.pack(anchor=tk.W, pady=(0, 12))
         
-        areas_grid = tk.Frame(areas_frame, bg="#2d2d2d")
-        areas_grid.pack(fill=tk.X)
-        
-        main_areas = tk.Frame(areas_grid, bg="#2d2d2d")
-        main_areas.pack(fill=tk.X, pady=(0, 8))
-        
-        for i, (name, color, selector) in enumerate([
-            ("Area 1", "#ff6b35", self.area_1_selector),
-            ("Area 2", "#4ecdc4", self.area_2_selector),
-            ("Area 3", "#45b7d1", self.area_3_selector)
-        ]):
-            main_areas.grid_columnconfigure(i, weight=1, uniform="area")
-            self._create_area_card(main_areas, name, color, selector, 0, i)
-        
-        health_frame = tk.Frame(areas_grid, bg="#2d2d2d")
-        health_frame.pack(fill=tk.X)
-        
-        self._create_health_card(health_frame)
+        for name, color, selector in [
+            ("Health Bar", "#dc3545", self.health_bar_selector),
+            ("Minimap Area", "#17a2b8", self.minimap_selector),
+            ("Coordinates Area", "#ffc107", self.coordinates_selector)
+        ]:
+            self._create_area_card(areas_frame, name, color, selector)
         
         self.config_status_label = tk.Label(areas_frame, text="Configure areas to continue",
                                            font=("Segoe UI", 11), bg="#2d2d2d", fg="#ffc107")
         self.config_status_label.pack(pady=(12, 0))
+        
+        health_info_frame = tk.Frame(areas_frame, bg="#2d2d2d")
+        health_info_frame.pack(fill=tk.X, pady=(12, 0))
+        
+        tk.Label(health_info_frame, text="Current Health:", bg="#2d2d2d", fg="#dc3545",
+                font=("Segoe UI", 10, "bold")).pack(side=tk.LEFT)
+        
+        self.health_percentage_var = tk.StringVar(value="100.0%")
+        tk.Label(health_info_frame, textvariable=self.health_percentage_var, 
+                bg="#2d2d2d", fg="#ffffff", font=("Segoe UI", 10)).pack(side=tk.RIGHT)
+        
+        coords_info_frame = tk.Frame(areas_frame, bg="#2d2d2d")
+        coords_info_frame.pack(fill=tk.X, pady=(8, 0))
+        
+        tk.Label(coords_info_frame, text="Current Position:", bg="#2d2d2d", fg="#ffc107",
+                font=("Segoe UI", 10, "bold")).pack(side=tk.LEFT)
+        
+        self.coordinates_var = tk.StringVar(value="Not detected")
+        tk.Label(coords_info_frame, textvariable=self.coordinates_var, 
+                bg="#2d2d2d", fg="#ffffff", font=("Segoe UI", 10)).pack(side=tk.RIGHT)
     
-    def _create_area_card(self, parent, title, color, selector, row, col):
+    def _create_area_card(self, parent, title, color, selector):
         card = tk.Frame(parent, bg="#3d3d3d", relief=tk.FLAT, bd=1)
-        card.grid(row=row, column=col, padx=4, pady=4, sticky="nsew")
+        card.pack(fill=tk.X, padx=4, pady=4)
         
         header = tk.Frame(card, bg="#3d3d3d")
         header.pack(fill=tk.X, padx=8, pady=(8, 4))
@@ -192,7 +285,7 @@ class PokeXGamesHelper:
         status_dot.pack(side=tk.RIGHT)
         setattr(selector, 'status_dot', status_dot)
         
-        preview_frame = tk.Frame(card, bg="#1a1a1a", height=50)
+        preview_frame = tk.Frame(card, bg="#1a1a1a", height=40)
         preview_frame.pack(fill=tk.X, padx=8, pady=4)
         preview_frame.pack_propagate(False)
         
@@ -210,55 +303,66 @@ class PokeXGamesHelper:
                              command=lambda: self.start_area_selection(title, color, selector))
         select_btn.pack(fill=tk.X)
     
-    def _create_health_card(self, parent):
-        card = tk.Frame(parent, bg="#3d3d3d", relief=tk.FLAT, bd=1)
-        card.pack(fill=tk.X, padx=4, pady=4)
+    def _create_navigation_panel(self, parent):
+        nav_frame = tk.Frame(parent, bg="#2d2d2d", padx=12, pady=12)
+        nav_frame.pack(fill=tk.BOTH, expand=True)
         
-        header = tk.Frame(card, bg="#3d3d3d")
-        header.pack(fill=tk.X, padx=12, pady=(12, 8))
+        header_frame = tk.Frame(nav_frame, bg="#2d2d2d")
+        header_frame.pack(fill=tk.X, pady=(0, 12))
         
-        title_label = tk.Label(header, text="Health Bar", 
-                              font=("Segoe UI", 11, "bold"), bg="#3d3d3d", fg="#ffffff")
+        title_label = tk.Label(header_frame, text="Navigation Steps", 
+                              font=("Segoe UI", 14, "bold"), bg="#2d2d2d", fg="#ffffff")
         title_label.pack(side=tk.LEFT)
         
-        status_dot = tk.Label(header, text="●", font=("Segoe UI", 12), 
-                             bg="#3d3d3d", fg="#dc3545")
-        status_dot.pack(side=tk.RIGHT)
-        setattr(self.health_bar_selector, 'status_dot', status_dot)
+        add_btn = tk.Button(header_frame, text="+ Add Step",
+                           bg="#28a745", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
+                           font=("Segoe UI", 10, "bold"), command=self.add_navigation_step)
+        add_btn.pack(side=tk.RIGHT)
         
-        content = tk.Frame(card, bg="#3d3d3d")
-        content.pack(fill=tk.X, padx=12, pady=(0, 12))
+        steps_container = tk.Frame(nav_frame, bg="#2d2d2d")
+        steps_container.pack(fill=tk.BOTH, expand=True)
         
-        preview_frame = tk.Frame(content, bg="#1a1a1a", width=100, height=40)
-        preview_frame.pack(side=tk.LEFT, padx=(0, 12))
-        preview_frame.pack_propagate(False)
+        self.steps_canvas = tk.Canvas(steps_container, bg="#2d2d2d", highlightthickness=0, height=400)
+        steps_scrollbar = ttk.Scrollbar(steps_container, orient="vertical", command=self.steps_canvas.yview)
+        self.steps_frame = tk.Frame(self.steps_canvas, bg="#2d2d2d")
         
-        preview_label = tk.Label(preview_frame, text="Not Configured",
-                               bg="#1a1a1a", fg="#666666", font=("Segoe UI", 9))
-        preview_label.pack(expand=True)
-        setattr(self.health_bar_selector, 'preview_label', preview_label)
+        self.steps_frame.bind(
+            "<Configure>",
+            lambda e: self.steps_canvas.configure(scrollregion=self.steps_canvas.bbox("all"))
+        )
         
-        controls_frame = tk.Frame(content, bg="#3d3d3d")
-        controls_frame.pack(side=tk.LEFT, fill=tk.X, expand=True)
+        self.steps_canvas.create_window((0, 0), window=self.steps_frame, anchor="nw")
+        self.steps_canvas.configure(yscrollcommand=steps_scrollbar.set)
         
-        select_btn = tk.Button(controls_frame, text="Select Health Bar",
-                             bg="#dc3545", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
-                             font=("Segoe UI", 10), activebackground="#c82333",
-                             command=lambda: self.start_area_selection("Health Bar", "#dc3545", self.health_bar_selector))
-        select_btn.pack(fill=tk.X, pady=(0, 4))
+        self.steps_canvas.pack(side="left", fill="both", expand=True)
+        steps_scrollbar.pack(side="right", fill="y")
         
-        health_info_frame = tk.Frame(controls_frame, bg="#3d3d3d")
-        health_info_frame.pack(fill=tk.X)
+        nav_controls_frame = tk.Frame(nav_frame, bg="#2d2d2d")
+        nav_controls_frame.pack(fill=tk.X, pady=(12, 0))
         
-        tk.Label(health_info_frame, text="Health:", bg="#3d3d3d", fg="#dc3545",
-                font=("Segoe UI", 9, "bold")).pack(side=tk.LEFT)
+        self.start_nav_btn = tk.Button(nav_controls_frame, text="Start Navigation",
+                                     bg="#007acc", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
+                                     font=("Segoe UI", 11, "bold"), state=tk.DISABLED,
+                                     command=self.start_navigation)
+        self.start_nav_btn.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 4))
         
-        self.health_percentage_var = tk.StringVar(value="100.0%")
-        tk.Label(health_info_frame, textvariable=self.health_percentage_var, 
-                bg="#3d3d3d", fg="#ffffff", font=("Segoe UI", 9)).pack(side=tk.RIGHT)
+        self.stop_nav_btn = tk.Button(nav_controls_frame, text="Stop Navigation",
+                                    bg="#dc3545", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
+                                    font=("Segoe UI", 11, "bold"), state=tk.DISABLED,
+                                    command=self.stop_navigation)
+        self.stop_nav_btn.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(4, 0))
     
-    def _create_log_panel(self, parent):
-        log_frame = tk.Frame(parent, bg="#2d2d2d", padx=12, pady=12)
+    def _create_controls_and_log_panel(self, parent):
+        parent.grid_rowconfigure(0, weight=0)
+        parent.grid_rowconfigure(1, weight=1)
+        parent.grid_rowconfigure(2, weight=0)
+        
+        settings_frame = tk.Frame(parent, bg="#2d2d2d", padx=12, pady=12)
+        settings_frame.grid(row=0, column=0, sticky="ew")
+        
+        self._create_helper_settings(settings_frame)
+        
+        log_frame = tk.Frame(parent, bg="#2d2d2d", padx=12, pady=(0, 12))
         log_frame.grid(row=1, column=0, sticky="nsew")
         log_frame.grid_rowconfigure(1, weight=1)
         
@@ -269,62 +373,46 @@ class PokeXGamesHelper:
         self.log_text = scrolledtext.ScrolledText(
             log_frame, bg="#1a1a1a", fg="#ffffff", insertbackground="#ffffff",
             selectbackground="#ff6b35", selectforeground="#ffffff",
-            relief=tk.FLAT, borderwidth=0, font=("Consolas", 10), wrap=tk.WORD
+            relief=tk.FLAT, borderwidth=0, font=("Consolas", 9), wrap=tk.WORD
         )
         self.log_text.grid(row=1, column=0, sticky="nsew")
-    
-    def _create_settings_panel(self, parent):
-        settings_frame = tk.Frame(parent, bg="#2d2d2d", padx=12, pady=12)
-        settings_frame.grid(row=0, column=0, sticky="nsew")
-        settings_frame.grid_rowconfigure(1, weight=1)
         
-        title_label = tk.Label(settings_frame, text="Helper Settings", 
+        controls_frame = tk.Frame(parent, bg="#2d2d2d", padx=12, pady=12)
+        controls_frame.grid(row=2, column=0, sticky="ew")
+        
+        self._create_main_controls(controls_frame)
+    
+    def _create_helper_settings(self, parent):
+        title_label = tk.Label(parent, text="Helper Settings", 
                               font=("Segoe UI", 14, "bold"), bg="#2d2d2d", fg="#ffffff")
-        title_label.grid(row=0, column=0, sticky="w", pady=(0, 8))
+        title_label.pack(anchor=tk.W, pady=(0, 12))
         
-        settings_content = tk.Frame(settings_frame, bg="#2d2d2d")
-        settings_content.grid(row=1, column=0, sticky="nsew", pady=(0, 8))
+        health_frame = tk.LabelFrame(parent, text="Health Management", bg="#2d2d2d", fg="#ffffff", 
+                                   font=("Segoe UI", 10, "bold"))
+        health_frame.pack(fill=tk.X, pady=(0, 8))
         
-        self._create_health_settings(settings_content)
-        self._create_behavior_settings(settings_content)
-        self._create_detection_settings(settings_content)
-    
-    def _create_health_settings(self, parent):
-        frame = tk.LabelFrame(parent, text="Health Management", bg="#2d2d2d", fg="#ffffff", 
-                             font=("Segoe UI", 10, "bold"))
-        frame.pack(fill=tk.X, padx=4, pady=(0, 8))
+        heal_controls = tk.Frame(health_frame, bg="#2d2d2d")
+        heal_controls.pack(fill=tk.X, padx=8, pady=8)
         
-        heal_frame = tk.Frame(frame, bg="#2d2d2d")
-        heal_frame.pack(fill=tk.X, padx=8, pady=8)
-        
-        tk.Label(heal_frame, text="Heal Key:", bg="#2d2d2d", fg="#dc3545",
+        tk.Label(heal_controls, text="Heal Key:", bg="#2d2d2d", fg="#dc3545",
                 font=("Segoe UI", 9, "bold")).pack(side=tk.LEFT)
         
         self.heal_key_var = tk.StringVar(value="F1")
-        heal_combo = ttk.Combobox(heal_frame, textvariable=self.heal_key_var,
+        heal_combo = ttk.Combobox(heal_controls, textvariable=self.heal_key_var,
                                 values=["F1", "F2", "F3", "F4", "F5", "1", "2", "3"], 
                                 state="readonly", width=6)
         heal_combo.pack(side=tk.LEFT, padx=(4, 12))
         
-        threshold_frame = tk.Frame(frame, bg="#2d2d2d")
-        threshold_frame.pack(fill=tk.X, padx=8, pady=(0, 8))
-        
-        tk.Label(threshold_frame, text="Health Threshold:", bg="#2d2d2d", fg="#dc3545",
+        tk.Label(heal_controls, text="Threshold:", bg="#2d2d2d", fg="#dc3545",
                 font=("Segoe UI", 9, "bold")).pack(side=tk.LEFT)
         
-        self.health_threshold = tk.Scale(threshold_frame, from_=0, to=100, orient=tk.HORIZONTAL,
+        self.health_threshold = tk.Scale(heal_controls, from_=0, to=100, orient=tk.HORIZONTAL,
                                        bg="#2d2d2d", fg="#ffffff", troughcolor="#1a1a1a",
-                                       highlightthickness=0, activebackground="#dc3545")
+                                       highlightthickness=0, activebackground="#dc3545", length=100)
         self.health_threshold.set(60)
-        self.health_threshold.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(8, 4))
+        self.health_threshold.pack(side=tk.LEFT, padx=(4, 4))
         
-        self.threshold_label = tk.Label(threshold_frame, text="60%", bg="#2d2d2d", fg="#dc3545",
-                                       font=("Segoe UI", 9, "bold"), width=5)
-        self.threshold_label.pack(side=tk.RIGHT)
-        
-        self.health_threshold.bind("<Motion>", lambda e: self.threshold_label.config(text=f"{self.health_threshold.get()}%"))
-        
-        auto_heal_frame = tk.Frame(frame, bg="#2d2d2d")
+        auto_heal_frame = tk.Frame(health_frame, bg="#2d2d2d")
         auto_heal_frame.pack(fill=tk.X, padx=8, pady=(0, 8))
         
         self.auto_heal_var = tk.BooleanVar(value=True)
@@ -333,167 +421,149 @@ class PokeXGamesHelper:
                                        selectcolor="#1a1a1a", activebackground="#2d2d2d",
                                        activeforeground="#ffffff", font=("Segoe UI", 9))
         auto_heal_check.pack(side=tk.LEFT)
+        
+        nav_frame = tk.LabelFrame(parent, text="Navigation", bg="#2d2d2d", fg="#ffffff", 
+                                font=("Segoe UI", 10, "bold"))
+        nav_frame.pack(fill=tk.X, pady=(0, 8))
+        
+        nav_controls = tk.Frame(nav_frame, bg="#2d2d2d")
+        nav_controls.pack(fill=tk.X, padx=8, pady=8)
+        
+        self.auto_nav_var = tk.BooleanVar(value=False)
+        auto_nav_check = tk.Checkbutton(nav_controls, text="Auto navigation",
+                                      variable=self.auto_nav_var, bg="#2d2d2d", fg="#ffffff",
+                                      selectcolor="#1a1a1a", activebackground="#2d2d2d",
+                                      activeforeground="#ffffff", font=("Segoe UI", 9))
+        auto_nav_check.pack(side=tk.LEFT)
     
-    def _create_behavior_settings(self, parent):
-        frame = tk.LabelFrame(parent, text="Helper Behavior", bg="#2d2d2d", fg="#ffffff", 
-                             font=("Segoe UI", 10, "bold"))
-        frame.pack(fill=tk.X, padx=4, pady=(0, 8))
+    def _create_main_controls(self, parent):
+        stats_frame = tk.Frame(parent, bg="#2d2d2d")
+        stats_frame.pack(fill=tk.X, pady=(0, 12))
         
-        scan_frame = tk.Frame(frame, bg="#2d2d2d")
-        scan_frame.pack(fill=tk.X, padx=8, pady=8)
-        
-        tk.Label(scan_frame, text="Scan Interval:", bg="#2d2d2d", fg="#ffffff",
-                font=("Segoe UI", 9)).pack(side=tk.LEFT)
-        
-        self.scan_interval = tk.Scale(scan_frame, from_=0.1, to=2.0, resolution=0.1,
-                                    orient=tk.HORIZONTAL, bg="#2d2d2d", fg="#ffffff",
-                                    troughcolor="#1a1a1a", highlightthickness=0)
-        self.scan_interval.set(0.5)
-        self.scan_interval.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(8, 4))
-        
-        self.scan_label = tk.Label(scan_frame, text="0.5s", bg="#2d2d2d", fg="#ffffff",
-                                 font=("Segoe UI", 9), width=5)
-        self.scan_label.pack(side=tk.RIGHT)
-        
-        self.scan_interval.bind("<Motion>", lambda e: self.scan_label.config(text=f"{self.scan_interval.get()}s"))
-        
-        debug_frame = tk.Frame(frame, bg="#2d2d2d")
-        debug_frame.pack(fill=tk.X, padx=8, pady=(0, 8))
-        
-        self.debug_var = tk.BooleanVar()
-        debug_check = tk.Checkbutton(debug_frame, text="Enable debug mode",
-                                   variable=self.debug_var, bg="#2d2d2d", fg="#ffffff",
-                                   selectcolor="#1a1a1a", activebackground="#2d2d2d",
-                                   activeforeground="#ffffff", font=("Segoe UI", 9))
-        debug_check.pack(side=tk.LEFT)
-    
-    def _create_detection_settings(self, parent):
-        frame = tk.LabelFrame(parent, text="Detection Settings", bg="#2d2d2d", fg="#ffffff", 
-                             font=("Segoe UI", 10, "bold"))
-        frame.pack(fill=tk.X, padx=4, pady=(0, 8))
-        
-        threshold_frame = tk.Frame(frame, bg="#2d2d2d")
-        threshold_frame.pack(fill=tk.X, padx=8, pady=8)
-        
-        tk.Label(threshold_frame, text="Match Threshold:", bg="#2d2d2d", fg="#ffffff",
-                font=("Segoe UI", 9)).pack(side=tk.LEFT)
-        
-        self.match_threshold = tk.Scale(threshold_frame, from_=0.5, to=1.0, resolution=0.05,
-                                      orient=tk.HORIZONTAL, bg="#2d2d2d", fg="#ffffff",
-                                      troughcolor="#1a1a1a", highlightthickness=0)
-        self.match_threshold.set(0.8)
-        self.match_threshold.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(8, 4))
-        
-        self.match_label = tk.Label(threshold_frame, text="0.8", bg="#2d2d2d", fg="#ffffff",
-                                   font=("Segoe UI", 9), width=5)
-        self.match_label.pack(side=tk.RIGHT)
-        
-        self.match_threshold.bind("<Motion>", lambda e: self.match_label.config(text=f"{self.match_threshold.get():.2f}"))
-        
-        pokemon_frame = tk.Frame(frame, bg="#2d2d2d")
-        pokemon_frame.pack(fill=tk.X, padx=8, pady=(0, 4))
-        
-        self.pokemon_detection_var = tk.BooleanVar(value=True)
-        pokemon_check = tk.Checkbutton(pokemon_frame, text="Pokemon detection",
-                                     variable=self.pokemon_detection_var, bg="#2d2d2d", fg="#ffffff",
-                                     selectcolor="#1a1a1a", activebackground="#2d2d2d",
-                                     activeforeground="#ffffff", font=("Segoe UI", 9))
-        pokemon_check.pack(side=tk.LEFT)
-        
-        battle_frame = tk.Frame(frame, bg="#2d2d2d")
-        battle_frame.pack(fill=tk.X, padx=8, pady=(0, 8))
-        
-        self.battle_detection_var = tk.BooleanVar(value=True)
-        battle_check = tk.Checkbutton(battle_frame, text="Battle detection",
-                                    variable=self.battle_detection_var, bg="#2d2d2d", fg="#ffffff",
-                                    selectcolor="#1a1a1a", activebackground="#2d2d2d",
-                                    activeforeground="#ffffff", font=("Segoe UI", 9))
-        battle_check.pack(side=tk.LEFT)
-    
-    def _create_controls_panel(self, parent):
-        controls_frame = tk.Frame(parent, bg="#2d2d2d", padx=12, pady=12)
-        controls_frame.grid(row=1, column=0, sticky="ew")
-        controls_frame.grid_columnconfigure(0, weight=1)
-        controls_frame.grid_columnconfigure(1, weight=1)
-        
-        helper_frame = tk.Frame(controls_frame, bg="#2d2d2d")
-        helper_frame.grid(row=0, column=0, columnspan=2, sticky="ew", pady=(0, 8))
-        helper_frame.grid_columnconfigure(0, weight=1)
-        helper_frame.grid_columnconfigure(1, weight=1)
-        
-        self.start_btn = tk.Button(helper_frame, text="START HELPER",
-                                 bg="#28a745", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
-                                 font=("Segoe UI", 12, "bold"), height=2, state=tk.DISABLED,
-                                 activebackground="#218838", command=self.start_helper)
-        self.start_btn.grid(row=0, column=0, sticky="ew", padx=(0, 4))
-        
-        self.stop_btn = tk.Button(helper_frame, text="STOP HELPER",
-                                bg="#dc3545", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
-                                font=("Segoe UI", 12, "bold"), height=2, state=tk.DISABLED,
-                                activebackground="#c82333", command=self.stop_helper)
-        self.stop_btn.grid(row=0, column=1, sticky="ew", padx=(4, 0))
-        
-        stats_frame = tk.Frame(controls_frame, bg="#2d2d2d")
-        stats_frame.grid(row=1, column=0, columnspan=2, sticky="ew", pady=(0, 8))
-        
-        self._create_stats_display(stats_frame)
-        
-        actions_frame = tk.Frame(controls_frame, bg="#2d2d2d")
-        actions_frame.grid(row=2, column=0, columnspan=2, sticky="ew")
-        actions_frame.grid_columnconfigure(0, weight=1)
-        actions_frame.grid_columnconfigure(1, weight=1)
-        
-        reset_btn = tk.Button(actions_frame, text="Reset Stats",
-                             bg="#6c757d", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
-                             font=("Segoe UI", 10), height=1, activebackground="#5a6268",
-                             command=self.reset_stats)
-        reset_btn.grid(row=0, column=0, sticky="ew", padx=(0, 4))
-        
-        save_btn = tk.Button(actions_frame, text="Save Settings",
-                           bg="#17a2b8", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
-                           font=("Segoe UI", 10), height=1, activebackground="#138496",
-                           command=self.save_settings)
-        save_btn.grid(row=0, column=1, sticky="ew", padx=(4, 0))
-    
-    def _create_stats_display(self, parent):
-        stats_grid = tk.Frame(parent, bg="#2d2d2d")
-        stats_grid.pack(fill=tk.X)
-        
-        for i in range(3):
-            stats_grid.grid_columnconfigure(i, weight=1)
-        
-        labels = [
+        stats_labels = [
             ("Heals Used:", "#dc3545", "heals_var"),
-            ("Pokemon Found:", "#4ecdc4", "pokemon_var"),
-            ("Battles:", "#45b7d1", "battles_var"),
-            ("Uptime:", "#ffffff", "uptime_var"),
-            ("Health:", "#dc3545", "health_var"),
-            ("Status:", "#28a745", "status_var")
+            ("Steps Completed:", "#17a2b8", "steps_var"),
+            ("Uptime:", "#ffffff", "uptime_var")
         ]
         
-        for i, (text, color, var_name) in enumerate(labels):
-            row, col = divmod(i, 3)
-            
-            frame = tk.Frame(stats_grid, bg="#2d2d2d")
-            frame.grid(row=row, column=col, sticky="ew", padx=1, pady=1)
+        for text, color, var_name in stats_labels:
+            frame = tk.Frame(stats_frame, bg="#2d2d2d")
+            frame.pack(fill=tk.X, pady=1)
             
             tk.Label(frame, text=text, bg="#2d2d2d", fg=color,
                     font=("Segoe UI", 9, "bold")).pack(side=tk.LEFT)
             
             if var_name == "uptime_var":
                 var = tk.StringVar(value="00:00:00")
-            elif var_name == "health_var":
-                var = tk.StringVar(value="100%")
-            elif var_name == "status_var":
-                var = tk.StringVar(value="Ready")
             else:
                 var = tk.StringVar(value="0")
             
-            label = tk.Label(frame, textvariable=var, bg="#2d2d2d", fg="#ffffff",
-                           font=("Segoe UI", 9))
-            label.pack(side=tk.RIGHT)
+            tk.Label(frame, textvariable=var, bg="#2d2d2d", fg="#ffffff",
+                    font=("Segoe UI", 9)).pack(side=tk.RIGHT)
             
             setattr(self, var_name, var)
+        
+        buttons_frame = tk.Frame(parent, bg="#2d2d2d")
+        buttons_frame.pack(fill=tk.X)
+        
+        self.start_btn = tk.Button(buttons_frame, text="START HELPER",
+                                 bg="#28a745", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
+                                 font=("Segoe UI", 12, "bold"), height=2, state=tk.DISABLED,
+                                 activebackground="#218838", command=self.start_helper)
+        self.start_btn.pack(fill=tk.X, pady=(0, 4))
+        
+        self.stop_btn = tk.Button(buttons_frame, text="STOP HELPER",
+                                bg="#dc3545", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
+                                font=("Segoe UI", 12, "bold"), height=2, state=tk.DISABLED,
+                                activebackground="#c82333", command=self.stop_helper)
+        self.stop_btn.pack(fill=tk.X, pady=(0, 4))
+        
+        save_btn = tk.Button(buttons_frame, text="Save Settings",
+                           bg="#6c757d", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
+                           font=("Segoe UI", 10), height=1, activebackground="#5a6268",
+                           command=self.save_settings)
+        save_btn.pack(fill=tk.X)
+    
+    def add_navigation_step(self):
+        if len(self.navigation_manager.steps) >= 20:
+            messagebox.showwarning("Maximum Steps", "Maximum 20 navigation steps allowed.")
+            return
+            
+        dialog = StepConfigDialog(self.root)
+        self.root.wait_window(dialog.dialog)
+        
+        if dialog.result:
+            step = self.navigation_manager.add_step(
+                dialog.result['name'],
+                dialog.result['coordinates'],
+                dialog.result['wait_seconds']
+            )
+            
+            if messagebox.askyesno("Select Step Icon", 
+                "Would you like to select the step icon in the minimap now?"):
+                self.select_step_icon(step)
+            
+            self.refresh_steps_display()
+            self.check_navigation_ready()
+    
+    def select_step_icon(self, step):
+        def on_completion():
+            self.log(f"Step icon selected for {step.name}")
+        
+        try:
+            self.minimap_selector.start_selection(
+                title=f"Select Icon for {step.name}",
+                color="#00ff00",
+                completion_callback=on_completion
+            )
+        except Exception as e:
+            self.log(f"Error selecting step icon: {e}")
+    
+    def refresh_steps_display(self):
+        for widget in self.steps_frame.winfo_children():
+            widget.destroy()
+        
+        for i, step in enumerate(self.navigation_manager.steps):
+            self.create_step_widget(step, i)
+    
+    def create_step_widget(self, step, index):
+        step_frame = tk.Frame(self.steps_frame, bg="#3d3d3d", relief=tk.FLAT, bd=1)
+        step_frame.pack(fill=tk.X, padx=4, pady=2)
+        
+        header = tk.Frame(step_frame, bg="#3d3d3d")
+        header.pack(fill=tk.X, padx=8, pady=(8, 4))
+        
+        step_label = tk.Label(header, text=f"{step.step_id}. {step.name}", 
+                             font=("Segoe UI", 10, "bold"), bg="#3d3d3d", fg="#ffffff")
+        step_label.pack(side=tk.LEFT)
+        
+        delete_btn = tk.Button(header, text="×", font=("Arial", 12, "bold"),
+                              bg="#dc3545", fg="#ffffff", relief=tk.FLAT, borderwidth=0,
+                              width=3, command=lambda: self.delete_step(step.step_id))
+        delete_btn.pack(side=tk.RIGHT)
+        
+        info_frame = tk.Frame(step_frame, bg="#3d3d3d")
+        info_frame.pack(fill=tk.X, padx=8, pady=(0, 8))
+        
+        if step.coordinates:
+            coords_label = tk.Label(info_frame, text=f"Target: {step.coordinates}",
+                                   font=("Segoe UI", 8), bg="#3d3d3d", fg="#17a2b8")
+            coords_label.pack(anchor=tk.W)
+        
+        wait_label = tk.Label(info_frame, text=f"Wait: {step.wait_seconds}s",
+                             font=("Segoe UI", 8), bg="#3d3d3d", fg="#ffc107")
+        wait_label.pack(anchor=tk.W)
+        
+        status_label = tk.Label(info_frame, text="✓ Ready" if step.template_image else "⚠ No Icon",
+                               font=("Segoe UI", 8), bg="#3d3d3d", 
+                               fg="#28a745" if step.template_image else "#dc3545")
+        status_label.pack(anchor=tk.W)
+    
+    def delete_step(self, step_id):
+        if messagebox.askyesno("Delete Step", f"Delete step {step_id}?"):
+            self.navigation_manager.remove_step(step_id)
+            self.refresh_steps_display()
+            self.check_navigation_ready()
     
     def start_area_selection(self, title, color, selector):
         self.log(f"Starting {title} selection...")
@@ -522,36 +592,52 @@ class PokeXGamesHelper:
             if selector.is_setup():
                 selector.status_dot.config(fg="#28a745")
                 selector.preview_label.config(text="Configured", fg="#28a745")
-                
-                if hasattr(selector, 'preview_image') and selector.preview_image:
-                    try:
-                        img = selector.preview_image.resize((80, 40), Image.Resampling.LANCZOS)
-                        photo = ImageTk.PhotoImage(img)
-                        selector.preview_label.config(image=photo, text="")
-                        selector.preview_label.image = photo
-                    except Exception as e:
-                        logger.debug(f"Could not update preview image: {e}")
             else:
                 selector.status_dot.config(fg="#dc3545")
                 selector.preview_label.config(text="Not Configured", fg="#666666")
     
     def check_configuration(self):
         health_configured = self.health_bar_selector.is_setup()
-        areas_configured = sum([
-            self.area_1_selector.is_setup(),
-            self.area_2_selector.is_setup(),
-            self.area_3_selector.is_setup()
-        ])
+        minimap_configured = self.minimap_selector.is_setup()
+        coords_configured = self.coordinates_selector.is_setup()
         
-        if health_configured:
-            self.config_status_label.config(text="Health bar configured! Helper ready to start.", fg="#28a745")
+        if health_configured and minimap_configured and coords_configured:
+            self.config_status_label.config(text="All areas configured! Helper ready.", fg="#28a745")
             self.start_btn.config(state=tk.NORMAL)
         else:
-            self.config_status_label.config(text="Configure health bar to continue", fg="#ffc107")
+            missing = []
+            if not health_configured:
+                missing.append("Health Bar")
+            if not minimap_configured:
+                missing.append("Minimap")
+            if not coords_configured:
+                missing.append("Coordinates")
+            
+            self.config_status_label.config(text=f"Configure: {', '.join(missing)}", fg="#ffc107")
             self.start_btn.config(state=tk.DISABLED)
         
-        for selector in [self.area_1_selector, self.area_2_selector, self.area_3_selector, self.health_bar_selector]:
+        for selector in [self.health_bar_selector, self.minimap_selector, self.coordinates_selector]:
             self.update_area_status(selector)
+    
+    def check_navigation_ready(self):
+        if self.navigation_manager.steps and self.minimap_selector.is_setup():
+            self.start_nav_btn.config(state=tk.NORMAL)
+        else:
+            self.start_nav_btn.config(state=tk.DISABLED)
+    
+    def start_navigation(self):
+        if self.navigation_manager.start_navigation():
+            self.start_nav_btn.config(state=tk.DISABLED)
+            self.stop_nav_btn.config(state=tk.NORMAL)
+            self.log("Navigation started")
+        else:
+            self.log("Failed to start navigation")
+    
+    def stop_navigation(self):
+        self.navigation_manager.stop_navigation()
+        self.start_nav_btn.config(state=tk.NORMAL)
+        self.stop_nav_btn.config(state=tk.DISABLED)
+        self.log("Navigation stopped")
     
     def start_helper(self):
         self.log("Starting PokeXGames Helper...")
@@ -572,6 +658,9 @@ class PokeXGamesHelper:
         self.log("Stopping PokeXGames Helper...")
         self.running = False
         
+        if self.navigation_manager.is_navigating:
+            self.navigation_manager.stop_navigation()
+        
         self.start_btn.config(state=tk.NORMAL)
         self.stop_btn.config(state=tk.DISABLED)
         
@@ -587,7 +676,6 @@ class PokeXGamesHelper:
                     if health_image:
                         health_percent = self.health_detector.detect_health_percentage(health_image)
                         self.health_percentage_var.set(f"{health_percent:.1f}%")
-                        self.health_var.set(f"{health_percent:.0f}%")
                         
                         if self.auto_heal_var.get() and health_percent < self.health_threshold.get():
                             heal_key = self.heal_key_var.get()
@@ -596,7 +684,19 @@ class PokeXGamesHelper:
                                 self.heals_var.set(str(self.heals_used))
                                 self.log(f"Health low ({health_percent:.1f}%), used heal ({heal_key})")
                 
-                time.sleep(self.scan_interval.get())
+                if self.coordinates_selector.is_setup():
+                    current_coords = self.navigation_manager.coordinates_reader.read_coordinates()
+                    if current_coords:
+                        self.coordinates_var.set(current_coords)
+                    else:
+                        self.coordinates_var.set("Not detected")
+                
+                if self.auto_nav_var.get() and not self.navigation_manager.is_navigating:
+                    if self.navigation_manager.steps:
+                        self.navigation_manager.start_navigation()
+                        self.log("Auto-navigation started")
+                
+                time.sleep(0.5)
                 
             except Exception as e:
                 logger.error(f"Error in helper loop: {e}")
@@ -604,25 +704,6 @@ class PokeXGamesHelper:
                 time.sleep(1.0)
         
         self.log("Helper stopped")
-    
-    def reset_stats(self):
-        self.heals_used = 0
-        self.start_time = None
-        
-        self.heals_var.set("0")
-        self.pokemon_var.set("0")
-        self.battles_var.set("0")
-        self.uptime_var.set("00:00:00")
-        self.health_var.set("100%")
-        
-        self.log("Statistics reset")
-    
-    def save_settings(self):
-        try:
-            self._save_configuration()
-            self.log("Settings saved successfully")
-        except Exception as e:
-            self.log(f"Error saving settings: {e}")
     
     def _update_display(self):
         if not self.running:
@@ -636,6 +717,8 @@ class PokeXGamesHelper:
                 seconds = int(uptime % 60)
                 self.uptime_var.set(f"{hours:02d}:{minutes:02d}:{seconds:02d}")
             
+            self.steps_var.set(str(self.navigation_manager.current_step_index))
+            
         except Exception as e:
             logger.error(f"Error updating display: {e}")
         
@@ -645,13 +728,19 @@ class PokeXGamesHelper:
     def update_status(self, text, color):
         self.status_indicator.config(fg=color)
         self.status_text.config(text=text, fg=color)
-        self.status_var.set(text)
     
     def log(self, message):
         timestamp = time.strftime("%H:%M:%S")
         self.log_text.insert(tk.END, f"[{timestamp}] {message}\n")
         self.log_text.see(tk.END)
         logger.info(message)
+    
+    def save_settings(self):
+        try:
+            self._save_configuration()
+            self.log("Settings saved successfully")
+        except Exception as e:
+            self.log(f"Error saving settings: {e}")
     
     def _load_configuration(self):
         try:
@@ -661,10 +750,9 @@ class PokeXGamesHelper:
             areas_config = config.get("areas", {})
             
             for area_name, selector in [
-                ("area_1", self.area_1_selector),
-                ("area_2", self.area_2_selector),
-                ("area_3", self.area_3_selector),
-                ("health_bar", self.health_bar_selector)
+                ("health_bar", self.health_bar_selector),
+                ("minimap", self.minimap_selector),
+                ("coordinates", self.coordinates_selector)
             ]:
                 area_config = areas_config.get(area_name, {})
                 if area_config.get("configured", False):
@@ -677,6 +765,11 @@ class PokeXGamesHelper:
                         selector.configure_from_saved(x1, y1, x2, y2)
                         selector.title = area_config.get("name", area_name.replace("_", " ").title())
             
+            navigation_steps = config.get("navigation_steps", [])
+            if navigation_steps:
+                self.navigation_manager.load_steps_data(navigation_steps)
+                self.refresh_steps_display()
+            
             self._load_settings_from_config(config)
             self.log("Configuration loaded from file")
             
@@ -688,14 +781,10 @@ class PokeXGamesHelper:
         try:
             self.heal_key_var.set(config.get("health_healing_key", "F1"))
             self.health_threshold.set(config.get("health_threshold", 60))
-            self.scan_interval.set(config.get("scan_interval", 0.5))
-            self.debug_var.set(config.get("debug_enabled", False))
             
             helper_settings = config.get("helper_settings", {})
             self.auto_heal_var.set(helper_settings.get("auto_heal", True))
-            self.match_threshold.set(helper_settings.get("image_matching_threshold", 0.8))
-            self.pokemon_detection_var.set(helper_settings.get("pokemon_detection_enabled", True))
-            self.battle_detection_var.set(helper_settings.get("battle_detection_enabled", True))
+            self.auto_nav_var.set(helper_settings.get("auto_navigation", False))
             
         except Exception as e:
             logger.error(f"Error loading settings: {e}")
@@ -706,10 +795,9 @@ class PokeXGamesHelper:
             config = load_config()
             
             for area_name, selector in [
-                ("area_1", self.area_1_selector),
-                ("area_2", self.area_2_selector),
-                ("area_3", self.area_3_selector),
-                ("health_bar", self.health_bar_selector)
+                ("health_bar", self.health_bar_selector),
+                ("minimap", self.minimap_selector),
+                ("coordinates", self.coordinates_selector)
             ]:
                 if selector.is_setup():
                     config["areas"][area_name] = {
@@ -723,15 +811,17 @@ class PokeXGamesHelper:
             
             config["health_healing_key"] = self.heal_key_var.get()
             config["health_threshold"] = self.health_threshold.get()
-            config["scan_interval"] = self.scan_interval.get()
-            config["debug_enabled"] = self.debug_var.get()
             
             config["helper_settings"] = {
                 "auto_heal": self.auto_heal_var.get(),
-                "image_matching_threshold": self.match_threshold.get(),
-                "pokemon_detection_enabled": self.pokemon_detection_var.get(),
-                "battle_detection_enabled": self.battle_detection_var.get()
+                "auto_navigation": self.auto_nav_var.get(),
+                "navigation_check_interval": 0.5,
+                "step_timeout": 30,
+                "coordinate_validation": True,
+                "image_matching_threshold": 0.8
             }
+            
+            config["navigation_steps"] = self.navigation_manager.get_steps_data()
             
             save_config(config)
             logger.info("Configuration saved successfully")
@@ -744,6 +834,9 @@ class PokeXGamesHelper:
         try:
             if self.running:
                 self.stop_helper()
+            
+            if self.navigation_manager.is_navigating:
+                self.navigation_manager.stop_navigation()
             
             self._save_configuration()
             logger.info("Application closing gracefully")

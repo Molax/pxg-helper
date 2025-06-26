@@ -1,0 +1,22 @@
+2025-06-26 11:45:29,813 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 11:45:30,006 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 11:45:30,014 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 11:45:30,029 - PokeXHelper - CRITICAL - Fatal error: bad screen distance "0 12"
+Traceback (most recent call last):
+  File "C:\repositories\pxg-helper\pokexgames_helper.py", line 78, in main
+    app = PokeXGamesHelper(root)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repositories\pxg-helper\app\gui.py", line 109, in __init__
+    self._create_interface()
+  File "C:\repositories\pxg-helper\app\gui.py", line 175, in _create_interface
+    self._create_content_area(main_container)
+  File "C:\repositories\pxg-helper\app\gui.py", line 231, in _create_content_area
+    self._create_controls_and_log_panel(right_panel)
+  File "C:\repositories\pxg-helper\app\gui.py", line 365, in _create_controls_and_log_panel
+    log_frame = tk.Frame(parent, bg="#2d2d2d", padx=12, pady=(0, 12))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Joaop\AppData\Local\Programs\Python\Python312\Lib\tkinter\__init__.py", line 3224, in __init__
+    Widget.__init__(self, master, 'frame', cnf, {}, extra)
+  File "C:\Users\Joaop\AppData\Local\Programs\Python\Python312\Lib\tkinter\__init__.py", line 2659, in __init__
+    self.tk.call(
+_tkinter.TclError: bad screen distance "0 12"

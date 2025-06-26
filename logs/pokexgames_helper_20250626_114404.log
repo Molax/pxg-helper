@@ -1,0 +1,8 @@
+2025-06-26 11:44:04,481 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 11:44:04,607 - PokeXHelper - CRITICAL - Fatal error: cannot import name 'HealthDetector' from 'app.core.pokemon_detector' (C:\repositories\pxg-helper\app\core\pokemon_detector.py)
+Traceback (most recent call last):
+  File "C:\repositories\pxg-helper\pokexgames_helper.py", line 75, in main
+    from app.gui import PokeXGamesHelper
+  File "C:\repositories\pxg-helper\app\__init__.py", line 13, in <module>
+    from app.core.pokemon_detector import HealthDetector, PokemonDetector, BattleDetector
+ImportError: cannot import name 'HealthDetector' from 'app.core.pokemon_detector' (C:\repositories\pxg-helper\app\core\pokemon_detector.py)
