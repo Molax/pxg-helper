@@ -1,0 +1,12 @@
+2025-06-26 15:12:26,342 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 15:12:26,533 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 15:12:26,537 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 15:12:26,561 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 15:12:26,565 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:12:26,565 - PokeXHelper - INFO - Selection configured from saved coordinates: (64,516) to (260,528)
+2025-06-26 15:12:26,907 - PokeXHelper - INFO - Selection configured from saved coordinates: (3173,46) to (3436,366)
+2025-06-26 15:12:27,156 - PokeXHelper - INFO - Selection configured from saved coordinates: (13,412) to (280,787)
+2025-06-26 15:12:27,419 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:12:27,419 - PokeXHelper - INFO - Coordinate Display Area configured from saved coordinates: (3171,50) to (3292,73)
+2025-06-26 15:12:27,562 - PokeXHelper - INFO - Loaded 2 navigation steps
+2025-06-26 15:12:27,718 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully

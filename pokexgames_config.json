@@ -29,27 +29,27 @@
             "configured": false
         },
         "health_bar": {
-            "name": "Health Bar",
-            "x1": 64,
-            "y1": 516,
-            "x2": 260,
-            "y2": 528,
+            "name": "Selection",
+            "x1": 65,
+            "y1": 444,
+            "x2": 258,
+            "y2": 460,
             "configured": true
         },
         "battle_area": {
-            "name": "Battle Area",
-            "x1": 13,
-            "y1": 412,
-            "x2": 280,
-            "y2": 787,
+            "name": "Selection",
+            "x1": 11,
+            "y1": 339,
+            "x2": 281,
+            "y2": 710,
             "configured": true
         },
         "minimap": {
-            "name": "Minimap Area",
-            "x1": 3173,
-            "y1": 46,
-            "x2": 3436,
-            "y2": 366,
+            "name": "Selection",
+            "x1": 1445,
+            "y1": 55,
+            "x2": 1717,
+            "y2": 374,
             "configured": true
         }
     },
@@ -63,7 +63,7 @@
         "image_matching_threshold": 0.8,
         "health_threshold": 30,
         "heal_key": "F1",
-        "auto_navigate": false
+        "auto_navigate": true
     },
     "navigation_steps": [
         {
@@ -71,7 +71,7 @@
             "name": "step first",
             "icon_image_path": "assets/navigation_icons\\step_1_1750953011.png",
             "coordinates": "3953,3633,6",
-            "wait_seconds": 4.0,
+            "wait_seconds": 8.0,
             "is_active": true,
             "icon_bounds": [
                 3256,
@@ -93,14 +93,42 @@
                 3316,
                 279
             ]
+        },
+        {
+            "step_id": 3,
+            "name": "exclamacao",
+            "icon_image_path": "assets/navigation_icons\\step_3_1750962727881.png",
+            "coordinates": "3960,3633,6",
+            "wait_seconds": 5.0,
+            "is_active": true,
+            "icon_bounds": [
+                3302,
+                180,
+                3322,
+                201
+            ]
+        },
+        {
+            "step_id": 4,
+            "name": "estrela",
+            "icon_image_path": "assets/navigation_icons\\step_4_1750962809755.png",
+            "coordinates": "3969,3631,6",
+            "wait_seconds": 5.0,
+            "is_active": true,
+            "icon_bounds": [
+                3338,
+                195,
+                3365,
+                214
+            ]
         }
     ],
     "coordinate_area": {
         "name": "Coordinate Display Area",
-        "x1": 3171,
-        "y1": 50,
-        "x2": 3292,
-        "y2": 73,
+        "x1": 1452,
+        "y1": 60,
+        "x2": 1571,
+        "y2": 84,
         "configured": true
     }
 }

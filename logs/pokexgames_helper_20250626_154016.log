@@ -1,0 +1,21 @@
+2025-06-26 15:40:16,080 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 15:40:16,254 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 15:40:16,259 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 15:40:16,285 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 15:40:16,288 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:40:16,288 - PokeXHelper - INFO - Selection configured from saved coordinates: (64,516) to (260,528)
+2025-06-26 15:40:16,586 - PokeXHelper - INFO - Selection configured from saved coordinates: (3173,46) to (3436,366)
+2025-06-26 15:40:16,852 - PokeXHelper - INFO - Selection configured from saved coordinates: (13,412) to (280,787)
+2025-06-26 15:40:17,132 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:40:17,132 - PokeXHelper - INFO - Selection configured from saved coordinates: (3171,50) to (3292,73)
+2025-06-26 15:40:17,268 - PokeXHelper - INFO - Loaded 4 navigation steps
+2025-06-26 15:40:17,440 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 15:40:34,155 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:40:34,155 - PokeXHelper - INFO - Saving health_bar: (64,516) to (260,528)
+2025-06-26 15:40:34,155 - PokeXHelper - INFO - Saving minimap: (3173,46) to (3436,366)
+2025-06-26 15:40:34,155 - PokeXHelper - INFO - Saving battle_area: (13,412) to (280,787)
+2025-06-26 15:40:34,157 - PokeXHelper - INFO - Saving coordinate area: (3171,50) to (3292,73)
+2025-06-26 15:40:34,157 - PokeXHelper - INFO - Serialized 4 steps for saving
+2025-06-26 15:40:34,158 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 15:40:34,158 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 15:40:34,159 - PokeXHelper - INFO - Application closing gracefully

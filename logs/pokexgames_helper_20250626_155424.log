@@ -1,0 +1,20 @@
+2025-06-26 15:54:24,253 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 15:54:24,427 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 15:54:24,432 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 15:54:24,457 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 15:54:24,462 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:54:24,462 - PokeXHelper - INFO - Selection configured from saved coordinates: (64,516) to (260,528)
+2025-06-26 15:54:24,750 - PokeXHelper - INFO - Selection configured from saved coordinates: (3173,46) to (3436,366)
+2025-06-26 15:54:25,015 - PokeXHelper - INFO - Selection configured from saved coordinates: (13,412) to (280,787)
+2025-06-26 15:54:25,305 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:54:25,305 - PokeXHelper - INFO - Selection configured from saved coordinates: (1452,60) to (1571,84)
+2025-06-26 15:54:25,440 - PokeXHelper - INFO - Loaded 4 navigation steps
+2025-06-26 15:54:25,611 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 15:54:34,697 - PokeXHelper - INFO - Starting area selection: Health Bar
+2025-06-26 15:54:34,939 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 15:54:38,284 - PokeXHelper - INFO - Selection complete: (62, 444) to (262, 459), size: 200x15
+2025-06-26 15:54:39,502 - PokeXHelper - INFO - Health Bar selection confirmed: (62, 444) to (262, 459)
+2025-06-26 15:54:41,083 - PokeXHelper - INFO - Starting area selection: Minimap Area
+2025-06-26 15:54:41,340 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 15:54:44,541 - PokeXHelper - INFO - Selection complete: (1451, 57) to (1720, 374), size: 269x317
+2025-06-26 15:54:45,570 - PokeXHelper - INFO - Minimap Area selection confirmed: (1451, 57) to (1720, 374)

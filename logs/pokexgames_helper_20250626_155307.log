@@ -1,0 +1,102 @@
+2025-06-26 15:53:07,370 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 15:53:07,577 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 15:53:07,583 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 15:53:07,612 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 15:53:07,616 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:53:07,616 - PokeXHelper - INFO - Selection configured from saved coordinates: (64,516) to (260,528)
+2025-06-26 15:53:07,907 - PokeXHelper - INFO - Selection configured from saved coordinates: (3173,46) to (3436,366)
+2025-06-26 15:53:08,188 - PokeXHelper - INFO - Selection configured from saved coordinates: (13,412) to (280,787)
+2025-06-26 15:53:08,446 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:53:08,446 - PokeXHelper - INFO - Selection configured from saved coordinates: (3171,50) to (3292,73)
+2025-06-26 15:53:08,572 - PokeXHelper - INFO - Loaded 4 navigation steps
+2025-06-26 15:53:08,749 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 15:53:13,753 - PokeXHelper - INFO - Starting area selection: Select Coordinate Display Area
+2025-06-26 15:53:14,085 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 15:53:21,539 - PokeXHelper - INFO - Selection complete: (1452, 60) to (1571, 84), size: 119x24
+2025-06-26 15:53:22,941 - PokeXHelper - INFO - Select Coordinate Display Area selection confirmed: (1452, 60) to (1571, 84)
+2025-06-26 15:53:24,779 - PokeXHelper - INFO - Found 4 icon files in use: {'step_1_1750953011.png', 'step_3_1750962727881.png', 'step_2_1750953061.png', 'step_4_1750962809755.png'}
+2025-06-26 15:53:24,779 - PokeXHelper - INFO - No unused icon files to clean up
+2025-06-26 15:53:24,780 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:53:24,780 - PokeXHelper - INFO - Saving health_bar: (64,516) to (260,528)
+2025-06-26 15:53:24,781 - PokeXHelper - INFO - Saving minimap: (3173,46) to (3436,366)
+2025-06-26 15:53:24,781 - PokeXHelper - INFO - Saving battle_area: (13,412) to (280,787)
+2025-06-26 15:53:24,781 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-06-26 15:53:24,782 - PokeXHelper - INFO - Serialized 4 steps for saving
+2025-06-26 15:53:24,783 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 15:53:24,783 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 15:53:33,060 - PokeXHelper - INFO - Starting navigation with 4 valid steps
+2025-06-26 15:53:33,060 - PokeXHelper - INFO -  Starting navigation sequence with 4 steps
+2025-06-26 15:53:33,061 - PokeXHelper - INFO -  Found 4 active steps, 4 ready with icons
+2025-06-26 15:53:33,061 - PokeXHelper - INFO -  Processing step 1/4: 'step first'
+2025-06-26 15:53:33,062 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 15:53:33,205 - PokeXHelper - WARNING -  Step 1 icon not found in minimap (attempt 1/2)
+2025-06-26 15:53:33,205 - PokeXHelper - INFO -  Retrying step 1 in 2 seconds...
+2025-06-26 15:53:35,207 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 2/2)
+2025-06-26 15:53:35,346 - PokeXHelper - WARNING -  Step 1 icon not found in minimap (attempt 2/2)
+2025-06-26 15:53:35,346 - PokeXHelper - ERROR -  Navigation failed at step 1 'step first' after retries
+2025-06-26 15:53:35,347 - PokeXHelper - WARNING -  Navigation sequence failed - retrying from beginning in 5 seconds
+2025-06-26 15:53:39,808 - PokeXHelper - INFO - Stopping navigation...
+2025-06-26 15:53:40,348 - PokeXHelper - INFO -  Navigation sequence ended
+2025-06-26 15:53:40,348 - PokeXHelper - INFO - Navigation stopped
+2025-06-26 15:53:43,164 - PokeXHelper - INFO - Starting area selection: Health Bar
+2025-06-26 15:53:43,452 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 15:53:47,506 - PokeXHelper - INFO - Selection complete: (65, 443) to (258, 458), size: 193x15
+2025-06-26 15:53:48,574 - PokeXHelper - INFO - Health Bar selection confirmed: (65, 443) to (258, 458)
+2025-06-26 15:53:49,443 - PokeXHelper - INFO - Starting area selection: Minimap Area
+2025-06-26 15:53:49,686 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 15:53:53,559 - PokeXHelper - INFO - Selection complete: (1448, 56) to (1718, 373), size: 270x317
+2025-06-26 15:53:54,654 - PokeXHelper - INFO - Minimap Area selection confirmed: (1448, 56) to (1718, 373)
+2025-06-26 15:53:56,439 - PokeXHelper - INFO - Starting area selection: Battle Area
+2025-06-26 15:53:56,741 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 15:54:01,289 - PokeXHelper - INFO - Selection complete: (14, 339) to (280, 712), size: 266x373
+2025-06-26 15:54:02,787 - PokeXHelper - INFO - Battle Area selection confirmed: (14, 339) to (280, 712)
+2025-06-26 15:54:05,998 - PokeXHelper - INFO - Found 4 icon files in use: {'step_1_1750953011.png', 'step_3_1750962727881.png', 'step_2_1750953061.png', 'step_4_1750962809755.png'}
+2025-06-26 15:54:06,000 - PokeXHelper - INFO - No unused icon files to clean up
+2025-06-26 15:54:06,009 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:54:06,009 - PokeXHelper - INFO - Saving health_bar: (64,516) to (260,528)
+2025-06-26 15:54:06,009 - PokeXHelper - INFO - Saving minimap: (3173,46) to (3436,366)
+2025-06-26 15:54:06,010 - PokeXHelper - INFO - Saving battle_area: (13,412) to (280,787)
+2025-06-26 15:54:06,010 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-06-26 15:54:06,010 - PokeXHelper - INFO - Serialized 4 steps for saving
+2025-06-26 15:54:06,011 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 15:54:06,011 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 15:54:08,258 - PokeXHelper - INFO - Starting navigation with 4 valid steps
+2025-06-26 15:54:08,259 - PokeXHelper - INFO -  Starting navigation sequence with 4 steps
+2025-06-26 15:54:08,259 - PokeXHelper - INFO -  Found 4 active steps, 4 ready with icons
+2025-06-26 15:54:08,260 - PokeXHelper - INFO -  Processing step 1/4: 'step first'
+2025-06-26 15:54:08,260 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 15:54:08,432 - PokeXHelper - WARNING -  Step 1 icon not found in minimap (attempt 1/2)
+2025-06-26 15:54:08,433 - PokeXHelper - INFO -  Retrying step 1 in 2 seconds...
+2025-06-26 15:54:10,434 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 2/2)
+2025-06-26 15:54:10,581 - PokeXHelper - WARNING -  Step 1 icon not found in minimap (attempt 2/2)
+2025-06-26 15:54:10,581 - PokeXHelper - ERROR -  Navigation failed at step 1 'step first' after retries
+2025-06-26 15:54:10,582 - PokeXHelper - WARNING -  Navigation sequence failed - retrying from beginning in 5 seconds
+2025-06-26 15:54:15,583 - PokeXHelper - INFO -  Processing step 1/4: 'step first'
+2025-06-26 15:54:15,583 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 15:54:15,751 - PokeXHelper - WARNING -  Step 1 icon not found in minimap (attempt 1/2)
+2025-06-26 15:54:15,751 - PokeXHelper - INFO -  Retrying step 1 in 2 seconds...
+2025-06-26 15:54:17,753 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 2/2)
+2025-06-26 15:54:17,890 - PokeXHelper - WARNING -  Step 1 icon not found in minimap (attempt 2/2)
+2025-06-26 15:54:17,891 - PokeXHelper - ERROR -  Navigation failed at step 1 'step first' after retries
+2025-06-26 15:54:17,891 - PokeXHelper - WARNING -  Navigation sequence failed - retrying from beginning in 5 seconds
+2025-06-26 15:54:18,725 - PokeXHelper - INFO - Stopping navigation...
+2025-06-26 15:54:20,725 - PokeXHelper - INFO - Navigation stopped
+2025-06-26 15:54:21,390 - PokeXHelper - INFO - Found 4 icon files in use: {'step_1_1750953011.png', 'step_3_1750962727881.png', 'step_2_1750953061.png', 'step_4_1750962809755.png'}
+2025-06-26 15:54:21,391 - PokeXHelper - INFO - No unused icon files to clean up
+2025-06-26 15:54:21,392 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:54:21,393 - PokeXHelper - INFO - Saving health_bar: (64,516) to (260,528)
+2025-06-26 15:54:21,393 - PokeXHelper - INFO - Saving minimap: (3173,46) to (3436,366)
+2025-06-26 15:54:21,393 - PokeXHelper - INFO - Saving battle_area: (13,412) to (280,787)
+2025-06-26 15:54:21,394 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-06-26 15:54:21,394 - PokeXHelper - INFO - Serialized 4 steps for saving
+2025-06-26 15:54:21,395 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 15:54:21,395 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 15:54:22,551 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:54:22,552 - PokeXHelper - INFO - Saving health_bar: (64,516) to (260,528)
+2025-06-26 15:54:22,552 - PokeXHelper - INFO - Saving minimap: (3173,46) to (3436,366)
+2025-06-26 15:54:22,552 - PokeXHelper - INFO - Saving battle_area: (13,412) to (280,787)
+2025-06-26 15:54:22,553 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-06-26 15:54:22,553 - PokeXHelper - INFO - Serialized 4 steps for saving
+2025-06-26 15:54:22,554 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 15:54:22,554 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 15:54:22,554 - PokeXHelper - INFO - Application closing gracefully

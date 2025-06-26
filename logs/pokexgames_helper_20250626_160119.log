@@ -1,0 +1,302 @@
+2025-06-26 16:01:19,664 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 16:01:19,833 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 16:01:19,837 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 16:01:19,860 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 16:01:19,865 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 16:01:19,866 - PokeXHelper - INFO - Selection configured from saved coordinates: (65,444) to (258,460)
+2025-06-26 16:01:20,159 - PokeXHelper - INFO - Selection configured from saved coordinates: (1445,55) to (1717,374)
+2025-06-26 16:01:20,436 - PokeXHelper - INFO - Selection configured from saved coordinates: (11,339) to (281,710)
+2025-06-26 16:01:20,740 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 16:01:20,740 - PokeXHelper - INFO - Selection configured from saved coordinates: (1452,60) to (1571,84)
+2025-06-26 16:01:20,864 - PokeXHelper - INFO - Loaded 4 navigation steps
+2025-06-26 16:01:21,439 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 16:01:34,632 - PokeXHelper - INFO - Starting navigation with 4 valid steps
+2025-06-26 16:01:34,632 - PokeXHelper - INFO -  Starting navigation sequence with 4 steps
+2025-06-26 16:01:34,633 - PokeXHelper - INFO -  Found 4 active steps, 4 ready with icons
+2025-06-26 16:01:34,633 - PokeXHelper - INFO -  Processing step 1/4: 'step first'
+2025-06-26 16:01:34,633 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 16:01:34,784 - PokeXHelper - INFO -  Found step 1 icon at (1550, 216) with 99.8% confidence (attempt 1/2)
+2025-06-26 16:01:35,058 - PokeXHelper - INFO -  Clicked at (1550, 216) for step 1 (attempt 1/2)
+2025-06-26 16:01:35,109 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:01:35,109 - PokeXHelper - INFO -  Waiting 8.0 seconds for step completion
+2025-06-26 16:01:44,180 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3953, 3633, 6)
+2025-06-26 16:01:44,181 - PokeXHelper - INFO - [SUCCESS] Step 1 validated - reached target coordinates
+2025-06-26 16:01:44,181 - PokeXHelper - INFO -  Step 1 'step first' completed successfully
+2025-06-26 16:01:44,181 - PokeXHelper - INFO -  Processing step 2/4: 'step second'
+2025-06-26 16:01:44,181 - PokeXHelper - INFO -  Executing step 2: 'step second' (attempt 1/2)
+2025-06-26 16:01:44,336 - PokeXHelper - INFO -  Found step 2 icon at (1612, 273) with 99.8% confidence (attempt 1/2)
+2025-06-26 16:01:44,593 - PokeXHelper - INFO -  Clicked at (1612, 273) for step 2 (attempt 1/2)
+2025-06-26 16:01:44,644 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:01:44,645 - PokeXHelper - INFO -  Waiting 6.0 seconds for step completion
+2025-06-26 16:01:52,014 - PokeXHelper - INFO - OCR method 'color_isolation' successful: (3959, 3644, 6)
+2025-06-26 16:01:52,014 - PokeXHelper - INFO - [SUCCESS] Step 2 validated - reached target coordinates
+2025-06-26 16:01:52,015 - PokeXHelper - INFO -  Step 2 'step second' completed successfully
+2025-06-26 16:01:52,015 - PokeXHelper - INFO -  Processing step 3/4: 'exclamacao'
+2025-06-26 16:01:52,015 - PokeXHelper - INFO -  Executing step 3: 'exclamacao' (attempt 1/2)
+2025-06-26 16:01:52,175 - PokeXHelper - INFO -  Found step 3 icon at (1591, 160) with 97.1% confidence (attempt 1/2)
+2025-06-26 16:01:52,447 - PokeXHelper - INFO -  Clicked at (1591, 160) for step 3 (attempt 1/2)
+2025-06-26 16:01:52,498 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:01:52,498 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 16:01:58,280 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3960, 3633, 6)
+2025-06-26 16:01:58,280 - PokeXHelper - INFO - [SUCCESS] Step 3 validated - reached target coordinates
+2025-06-26 16:01:58,280 - PokeXHelper - INFO -  Step 3 'exclamacao' completed successfully
+2025-06-26 16:01:58,280 - PokeXHelper - INFO -  Processing step 4/4: 'estrela'
+2025-06-26 16:01:58,280 - PokeXHelper - INFO -  Executing step 4: 'estrela' (attempt 1/2)
+2025-06-26 16:01:58,423 - PokeXHelper - INFO -  Found step 4 icon at (1630, 209) with 99.9% confidence (attempt 1/2)
+2025-06-26 16:01:58,676 - PokeXHelper - INFO -  Clicked at (1630, 209) for step 4 (attempt 1/2)
+2025-06-26 16:01:58,727 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:01:58,727 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 16:02:04,509 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3969, 3631, 6)
+2025-06-26 16:02:04,510 - PokeXHelper - INFO - [SUCCESS] Step 4 validated - reached target coordinates
+2025-06-26 16:02:04,510 - PokeXHelper - INFO -  Step 4 'estrela' completed successfully
+2025-06-26 16:02:05,510 - PokeXHelper - INFO -  Navigation sequence completed successfully - restarting from beginning
+2025-06-26 16:02:05,511 - PokeXHelper - INFO -  Processing step 1/4: 'step first'
+2025-06-26 16:02:05,511 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 16:02:05,669 - PokeXHelper - INFO -  Found step 1 icon at (1505, 226) with 99.7% confidence (attempt 1/2)
+2025-06-26 16:02:05,921 - PokeXHelper - INFO -  Clicked at (1505, 226) for step 1 (attempt 1/2)
+2025-06-26 16:02:05,973 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:02:05,973 - PokeXHelper - INFO -  Waiting 8.0 seconds for step completion
+2025-06-26 16:02:14,755 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3953, 3633, 6)
+2025-06-26 16:02:14,755 - PokeXHelper - INFO - [SUCCESS] Step 1 validated - reached target coordinates
+2025-06-26 16:02:14,755 - PokeXHelper - INFO -  Step 1 'step first' completed successfully
+2025-06-26 16:02:14,755 - PokeXHelper - INFO -  Processing step 2/4: 'step second'
+2025-06-26 16:02:14,756 - PokeXHelper - INFO -  Executing step 2: 'step second' (attempt 1/2)
+2025-06-26 16:02:14,897 - PokeXHelper - INFO -  Found step 2 icon at (1612, 273) with 99.8% confidence (attempt 1/2)
+2025-06-26 16:02:15,157 - PokeXHelper - INFO -  Clicked at (1612, 273) for step 2 (attempt 1/2)
+2025-06-26 16:02:15,208 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:02:15,208 - PokeXHelper - INFO -  Waiting 6.0 seconds for step completion
+2025-06-26 16:02:19,591 - PokeXHelper - INFO - Stopping navigation...
+2025-06-26 16:02:21,606 - PokeXHelper - INFO - Navigation stopped
+2025-06-26 16:02:22,629 - PokeXHelper - INFO - OCR method 'color_isolation' successful: (3959, 3644, 6)
+2025-06-26 16:02:22,629 - PokeXHelper - INFO - [SUCCESS] Step 2 validated - reached target coordinates
+2025-06-26 16:02:22,629 - PokeXHelper - INFO -  Step 2 'step second' completed successfully
+2025-06-26 16:02:22,630 - PokeXHelper - INFO -  Navigation sequence ended
+2025-06-26 16:04:13,835 - PokeXHelper - INFO - Starting navigation with 4 valid steps
+2025-06-26 16:04:13,835 - PokeXHelper - INFO -  Starting navigation sequence with 4 steps
+2025-06-26 16:04:13,835 - PokeXHelper - INFO -  Found 4 active steps, 4 ready with icons
+2025-06-26 16:04:13,837 - PokeXHelper - INFO -  Processing step 1/4: 'step first'
+2025-06-26 16:04:13,837 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 16:04:14,032 - PokeXHelper - INFO -  Found step 1 icon at (1555, 181) with 99.8% confidence (attempt 1/2)
+2025-06-26 16:04:14,295 - PokeXHelper - INFO -  Clicked at (1555, 181) for step 1 (attempt 1/2)
+2025-06-26 16:04:14,346 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:04:14,346 - PokeXHelper - INFO -  Waiting 8.0 seconds for step completion
+2025-06-26 16:04:23,148 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3953, 3633, 6)
+2025-06-26 16:04:23,148 - PokeXHelper - INFO - [SUCCESS] Step 1 validated - reached target coordinates
+2025-06-26 16:04:23,149 - PokeXHelper - INFO -  Step 1 'step first' completed successfully
+2025-06-26 16:04:23,149 - PokeXHelper - INFO -  Processing step 2/4: 'step second'
+2025-06-26 16:04:23,149 - PokeXHelper - INFO -  Executing step 2: 'step second' (attempt 1/2)
+2025-06-26 16:04:23,298 - PokeXHelper - INFO -  Found step 2 icon at (1612, 273) with 99.8% confidence (attempt 1/2)
+2025-06-26 16:04:23,563 - PokeXHelper - INFO -  Clicked at (1612, 273) for step 2 (attempt 1/2)
+2025-06-26 16:04:23,614 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:04:23,615 - PokeXHelper - INFO -  Waiting 6.0 seconds for step completion
+2025-06-26 16:04:31,050 - PokeXHelper - INFO - OCR method 'color_isolation' successful: (3959, 3644, 6)
+2025-06-26 16:04:31,051 - PokeXHelper - INFO - [SUCCESS] Step 2 validated - reached target coordinates
+2025-06-26 16:04:31,051 - PokeXHelper - INFO -  Step 2 'step second' completed successfully
+2025-06-26 16:04:31,051 - PokeXHelper - INFO -  Processing step 3/4: 'exclamacao'
+2025-06-26 16:04:31,051 - PokeXHelper - INFO -  Executing step 3: 'exclamacao' (attempt 1/2)
+2025-06-26 16:04:31,202 - PokeXHelper - INFO -  Found step 3 icon at (1591, 160) with 97.1% confidence (attempt 1/2)
+2025-06-26 16:04:31,467 - PokeXHelper - INFO -  Clicked at (1591, 160) for step 3 (attempt 1/2)
+2025-06-26 16:04:31,519 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:04:31,519 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 16:04:37,303 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3960, 3633, 6)
+2025-06-26 16:04:37,303 - PokeXHelper - INFO - [SUCCESS] Step 3 validated - reached target coordinates
+2025-06-26 16:04:37,303 - PokeXHelper - INFO -  Step 3 'exclamacao' completed successfully
+2025-06-26 16:04:37,303 - PokeXHelper - INFO -  Processing step 4/4: 'estrela'
+2025-06-26 16:04:37,304 - PokeXHelper - INFO -  Executing step 4: 'estrela' (attempt 1/2)
+2025-06-26 16:04:37,439 - PokeXHelper - INFO -  Found step 4 icon at (1630, 209) with 99.9% confidence (attempt 1/2)
+2025-06-26 16:04:37,704 - PokeXHelper - INFO -  Clicked at (1630, 209) for step 4 (attempt 1/2)
+2025-06-26 16:04:37,756 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:04:37,756 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 16:04:43,521 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3969, 3631, 6)
+2025-06-26 16:04:43,521 - PokeXHelper - INFO - [SUCCESS] Step 4 validated - reached target coordinates
+2025-06-26 16:04:43,521 - PokeXHelper - INFO -  Step 4 'estrela' completed successfully
+2025-06-26 16:04:44,522 - PokeXHelper - INFO -  Navigation sequence completed successfully - restarting from beginning
+2025-06-26 16:04:44,522 - PokeXHelper - INFO -  Processing step 1/4: 'step first'
+2025-06-26 16:04:44,523 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 16:04:44,671 - PokeXHelper - INFO -  Found step 1 icon at (1505, 226) with 99.7% confidence (attempt 1/2)
+2025-06-26 16:04:44,940 - PokeXHelper - INFO -  Clicked at (1505, 226) for step 1 (attempt 1/2)
+2025-06-26 16:04:44,992 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:04:44,992 - PokeXHelper - INFO -  Waiting 8.0 seconds for step completion
+2025-06-26 16:04:53,763 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3953, 3633, 6)
+2025-06-26 16:04:53,764 - PokeXHelper - INFO - [SUCCESS] Step 1 validated - reached target coordinates
+2025-06-26 16:04:53,764 - PokeXHelper - INFO -  Step 1 'step first' completed successfully
+2025-06-26 16:04:53,764 - PokeXHelper - INFO -  Processing step 2/4: 'step second'
+2025-06-26 16:04:53,764 - PokeXHelper - INFO -  Executing step 2: 'step second' (attempt 1/2)
+2025-06-26 16:04:53,893 - PokeXHelper - INFO -  Found step 2 icon at (1612, 273) with 99.8% confidence (attempt 1/2)
+2025-06-26 16:04:54,163 - PokeXHelper - INFO -  Clicked at (1612, 273) for step 2 (attempt 1/2)
+2025-06-26 16:04:54,214 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:04:54,214 - PokeXHelper - INFO -  Waiting 6.0 seconds for step completion
+2025-06-26 16:05:01,650 - PokeXHelper - INFO - OCR method 'color_isolation' successful: (3959, 3644, 6)
+2025-06-26 16:05:01,651 - PokeXHelper - INFO - [SUCCESS] Step 2 validated - reached target coordinates
+2025-06-26 16:05:01,651 - PokeXHelper - INFO -  Step 2 'step second' completed successfully
+2025-06-26 16:05:01,651 - PokeXHelper - INFO -  Processing step 3/4: 'exclamacao'
+2025-06-26 16:05:01,651 - PokeXHelper - INFO -  Executing step 3: 'exclamacao' (attempt 1/2)
+2025-06-26 16:05:01,791 - PokeXHelper - INFO -  Found step 3 icon at (1591, 160) with 97.1% confidence (attempt 1/2)
+2025-06-26 16:05:02,065 - PokeXHelper - INFO -  Clicked at (1591, 160) for step 3 (attempt 1/2)
+2025-06-26 16:05:02,116 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:05:02,116 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 16:05:07,907 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3960, 3633, 6)
+2025-06-26 16:05:07,907 - PokeXHelper - INFO - [SUCCESS] Step 3 validated - reached target coordinates
+2025-06-26 16:05:07,907 - PokeXHelper - INFO -  Step 3 'exclamacao' completed successfully
+2025-06-26 16:05:07,908 - PokeXHelper - INFO -  Processing step 4/4: 'estrela'
+2025-06-26 16:05:07,908 - PokeXHelper - INFO -  Executing step 4: 'estrela' (attempt 1/2)
+2025-06-26 16:05:08,037 - PokeXHelper - INFO -  Found step 4 icon at (1630, 209) with 99.9% confidence (attempt 1/2)
+2025-06-26 16:05:08,301 - PokeXHelper - INFO -  Clicked at (1630, 209) for step 4 (attempt 1/2)
+2025-06-26 16:05:08,353 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:05:08,353 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 16:05:14,145 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3969, 3631, 6)
+2025-06-26 16:05:14,146 - PokeXHelper - INFO - [SUCCESS] Step 4 validated - reached target coordinates
+2025-06-26 16:05:14,146 - PokeXHelper - INFO -  Step 4 'estrela' completed successfully
+2025-06-26 16:05:15,147 - PokeXHelper - INFO -  Navigation sequence completed successfully - restarting from beginning
+2025-06-26 16:05:15,147 - PokeXHelper - INFO -  Processing step 1/4: 'step first'
+2025-06-26 16:05:15,147 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 16:05:15,304 - PokeXHelper - INFO -  Found step 1 icon at (1505, 226) with 99.7% confidence (attempt 1/2)
+2025-06-26 16:05:15,571 - PokeXHelper - INFO -  Clicked at (1505, 226) for step 1 (attempt 1/2)
+2025-06-26 16:05:15,622 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:05:15,622 - PokeXHelper - INFO -  Waiting 8.0 seconds for step completion
+2025-06-26 16:05:24,386 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3953, 3633, 6)
+2025-06-26 16:05:24,386 - PokeXHelper - INFO - [SUCCESS] Step 1 validated - reached target coordinates
+2025-06-26 16:05:24,387 - PokeXHelper - INFO -  Step 1 'step first' completed successfully
+2025-06-26 16:05:24,387 - PokeXHelper - INFO -  Processing step 2/4: 'step second'
+2025-06-26 16:05:24,388 - PokeXHelper - INFO -  Executing step 2: 'step second' (attempt 1/2)
+2025-06-26 16:05:24,531 - PokeXHelper - INFO -  Found step 2 icon at (1612, 273) with 99.8% confidence (attempt 1/2)
+2025-06-26 16:05:24,790 - PokeXHelper - INFO -  Clicked at (1612, 273) for step 2 (attempt 1/2)
+2025-06-26 16:05:24,842 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:05:24,842 - PokeXHelper - INFO -  Waiting 6.0 seconds for step completion
+2025-06-26 16:05:32,315 - PokeXHelper - INFO - OCR method 'color_isolation' successful: (3959, 3644, 6)
+2025-06-26 16:05:32,315 - PokeXHelper - INFO - [SUCCESS] Step 2 validated - reached target coordinates
+2025-06-26 16:05:32,315 - PokeXHelper - INFO -  Step 2 'step second' completed successfully
+2025-06-26 16:05:32,315 - PokeXHelper - INFO -  Processing step 3/4: 'exclamacao'
+2025-06-26 16:05:32,315 - PokeXHelper - INFO -  Executing step 3: 'exclamacao' (attempt 1/2)
+2025-06-26 16:05:32,459 - PokeXHelper - INFO -  Found step 3 icon at (1591, 160) with 97.1% confidence (attempt 1/2)
+2025-06-26 16:05:32,729 - PokeXHelper - INFO -  Clicked at (1591, 160) for step 3 (attempt 1/2)
+2025-06-26 16:05:32,781 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:05:32,781 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 16:05:38,569 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3960, 3633, 6)
+2025-06-26 16:05:38,569 - PokeXHelper - INFO - [SUCCESS] Step 3 validated - reached target coordinates
+2025-06-26 16:05:38,569 - PokeXHelper - INFO -  Step 3 'exclamacao' completed successfully
+2025-06-26 16:05:38,569 - PokeXHelper - INFO -  Processing step 4/4: 'estrela'
+2025-06-26 16:05:38,569 - PokeXHelper - INFO -  Executing step 4: 'estrela' (attempt 1/2)
+2025-06-26 16:05:38,697 - PokeXHelper - INFO -  Found step 4 icon at (1630, 209) with 99.9% confidence (attempt 1/2)
+2025-06-26 16:05:38,965 - PokeXHelper - INFO -  Clicked at (1630, 209) for step 4 (attempt 1/2)
+2025-06-26 16:05:39,016 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:05:39,016 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 16:05:44,842 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3970, 3631, 6)
+2025-06-26 16:05:44,843 - PokeXHelper - INFO - [SUCCESS] Step 4 validated - reached target coordinates
+2025-06-26 16:05:44,843 - PokeXHelper - INFO -  Step 4 'estrela' completed successfully
+2025-06-26 16:05:45,844 - PokeXHelper - INFO -  Navigation sequence completed successfully - restarting from beginning
+2025-06-26 16:05:45,844 - PokeXHelper - INFO -  Processing step 1/4: 'step first'
+2025-06-26 16:05:45,844 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 16:05:46,019 - PokeXHelper - INFO -  Found step 1 icon at (1500, 226) with 99.7% confidence (attempt 1/2)
+2025-06-26 16:05:46,286 - PokeXHelper - INFO -  Clicked at (1500, 226) for step 1 (attempt 1/2)
+2025-06-26 16:05:46,337 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:05:46,337 - PokeXHelper - INFO -  Waiting 8.0 seconds for step completion
+2025-06-26 16:05:55,115 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3954, 3632, 6)
+2025-06-26 16:05:55,115 - PokeXHelper - INFO - [SUCCESS] Step 1 validated - reached target coordinates
+2025-06-26 16:05:55,116 - PokeXHelper - INFO -  Step 1 'step first' completed successfully
+2025-06-26 16:05:55,116 - PokeXHelper - INFO -  Processing step 2/4: 'step second'
+2025-06-26 16:05:55,117 - PokeXHelper - INFO -  Executing step 2: 'step second' (attempt 1/2)
+2025-06-26 16:05:55,246 - PokeXHelper - INFO -  Found step 2 icon at (1607, 278) with 99.8% confidence (attempt 1/2)
+2025-06-26 16:05:55,503 - PokeXHelper - INFO -  Clicked at (1607, 278) for step 2 (attempt 1/2)
+2025-06-26 16:05:55,655 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:05:55,655 - PokeXHelper - INFO -  Waiting 6.0 seconds for step completion
+2025-06-26 16:06:02,440 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3258, 3643, 6)
+2025-06-26 16:06:02,440 - PokeXHelper - WARNING - [WARNING] Step 2 validation failed - distance: 701.0
+2025-06-26 16:06:02,441 - PokeXHelper - WARNING -  Step 2 validation failed, retrying...
+2025-06-26 16:06:03,442 - PokeXHelper - INFO -  Executing step 2: 'step second' (attempt 2/2)
+2025-06-26 16:06:03,603 - PokeXHelper - WARNING -  Step 2 icon not found in minimap (attempt 2/2)
+2025-06-26 16:06:03,603 - PokeXHelper - ERROR -  Navigation failed at step 2 'step second' after retries
+2025-06-26 16:06:03,604 - PokeXHelper - WARNING -  Navigation sequence failed - retrying from beginning in 5 seconds
+2025-06-26 16:06:08,605 - PokeXHelper - INFO -  Processing step 1/4: 'step first'
+2025-06-26 16:06:08,605 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 16:06:08,759 - PokeXHelper - INFO -  Found step 1 icon at (1560, 166) with 99.8% confidence (attempt 1/2)
+2025-06-26 16:06:09,126 - PokeXHelper - INFO -  Clicked at (1560, 166) for step 1 (attempt 1/2)
+2025-06-26 16:06:09,177 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:06:09,177 - PokeXHelper - INFO -  Waiting 8.0 seconds for step completion
+2025-06-26 16:06:17,978 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3258, 3643, 6)
+2025-06-26 16:06:17,980 - PokeXHelper - WARNING - [WARNING] Step 1 validation failed - distance: 695.0719387228922
+2025-06-26 16:06:17,980 - PokeXHelper - WARNING -  Step 1 validation failed, retrying...
+2025-06-26 16:06:18,981 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 2/2)
+2025-06-26 16:06:19,127 - PokeXHelper - INFO -  Found step 1 icon at (1560, 166) with 99.8% confidence (attempt 2/2)
+2025-06-26 16:06:19,399 - PokeXHelper - INFO -  Clicked at (1560, 166) for step 1 (attempt 2/2)
+2025-06-26 16:06:19,449 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:06:19,449 - PokeXHelper - INFO -  Waiting 8.0 seconds for step completion
+2025-06-26 16:06:28,237 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3953, 3633, 6)
+2025-06-26 16:06:28,237 - PokeXHelper - INFO - [SUCCESS] Step 1 validated - reached target coordinates
+2025-06-26 16:06:28,237 - PokeXHelper - INFO -  Step 1 'step first' completed successfully
+2025-06-26 16:06:28,237 - PokeXHelper - INFO -  Processing step 2/4: 'step second'
+2025-06-26 16:06:28,238 - PokeXHelper - INFO -  Executing step 2: 'step second' (attempt 1/2)
+2025-06-26 16:06:28,372 - PokeXHelper - INFO -  Found step 2 icon at (1612, 273) with 99.8% confidence (attempt 1/2)
+2025-06-26 16:06:28,637 - PokeXHelper - INFO -  Clicked at (1612, 273) for step 2 (attempt 1/2)
+2025-06-26 16:06:28,689 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:06:28,689 - PokeXHelper - INFO -  Waiting 6.0 seconds for step completion
+2025-06-26 16:06:36,112 - PokeXHelper - INFO - OCR method 'color_isolation' successful: (3959, 3644, 6)
+2025-06-26 16:06:36,112 - PokeXHelper - INFO - [SUCCESS] Step 2 validated - reached target coordinates
+2025-06-26 16:06:36,113 - PokeXHelper - INFO -  Step 2 'step second' completed successfully
+2025-06-26 16:06:36,113 - PokeXHelper - INFO -  Processing step 3/4: 'exclamacao'
+2025-06-26 16:06:36,113 - PokeXHelper - INFO -  Executing step 3: 'exclamacao' (attempt 1/2)
+2025-06-26 16:06:36,247 - PokeXHelper - INFO -  Found step 3 icon at (1591, 160) with 97.1% confidence (attempt 1/2)
+2025-06-26 16:06:36,505 - PokeXHelper - INFO -  Clicked at (1591, 160) for step 3 (attempt 1/2)
+2025-06-26 16:06:36,556 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:06:36,556 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 16:06:42,348 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3960, 3633, 6)
+2025-06-26 16:06:42,348 - PokeXHelper - INFO - [SUCCESS] Step 3 validated - reached target coordinates
+2025-06-26 16:06:42,348 - PokeXHelper - INFO -  Step 3 'exclamacao' completed successfully
+2025-06-26 16:06:42,348 - PokeXHelper - INFO -  Processing step 4/4: 'estrela'
+2025-06-26 16:06:42,348 - PokeXHelper - INFO -  Executing step 4: 'estrela' (attempt 1/2)
+2025-06-26 16:06:42,476 - PokeXHelper - INFO -  Found step 4 icon at (1630, 209) with 99.9% confidence (attempt 1/2)
+2025-06-26 16:06:42,742 - PokeXHelper - INFO -  Clicked at (1630, 209) for step 4 (attempt 1/2)
+2025-06-26 16:06:42,793 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:06:42,793 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 16:06:48,640 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3969, 3631, 6)
+2025-06-26 16:06:48,640 - PokeXHelper - INFO - [SUCCESS] Step 4 validated - reached target coordinates
+2025-06-26 16:06:48,641 - PokeXHelper - INFO -  Step 4 'estrela' completed successfully
+2025-06-26 16:06:49,642 - PokeXHelper - INFO -  Navigation sequence completed successfully - restarting from beginning
+2025-06-26 16:06:49,643 - PokeXHelper - INFO -  Processing step 1/4: 'step first'
+2025-06-26 16:06:49,643 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 16:06:49,817 - PokeXHelper - INFO -  Found step 1 icon at (1505, 226) with 99.7% confidence (attempt 1/2)
+2025-06-26 16:06:50,081 - PokeXHelper - INFO -  Clicked at (1505, 226) for step 1 (attempt 1/2)
+2025-06-26 16:06:50,133 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:06:50,133 - PokeXHelper - INFO -  Waiting 8.0 seconds for step completion
+2025-06-26 16:06:59,003 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3953, 3633, 6)
+2025-06-26 16:06:59,004 - PokeXHelper - INFO - [SUCCESS] Step 1 validated - reached target coordinates
+2025-06-26 16:06:59,004 - PokeXHelper - INFO -  Step 1 'step first' completed successfully
+2025-06-26 16:06:59,004 - PokeXHelper - INFO -  Processing step 2/4: 'step second'
+2025-06-26 16:06:59,004 - PokeXHelper - INFO -  Executing step 2: 'step second' (attempt 1/2)
+2025-06-26 16:06:59,145 - PokeXHelper - INFO -  Found step 2 icon at (1612, 273) with 99.8% confidence (attempt 1/2)
+2025-06-26 16:06:59,416 - PokeXHelper - INFO -  Clicked at (1612, 273) for step 2 (attempt 1/2)
+2025-06-26 16:06:59,469 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:06:59,470 - PokeXHelper - INFO -  Waiting 6.0 seconds for step completion
+2025-06-26 16:07:06,927 - PokeXHelper - INFO - OCR method 'color_isolation' successful: (3959, 3644, 6)
+2025-06-26 16:07:06,927 - PokeXHelper - INFO - [SUCCESS] Step 2 validated - reached target coordinates
+2025-06-26 16:07:06,927 - PokeXHelper - INFO -  Step 2 'step second' completed successfully
+2025-06-26 16:07:06,928 - PokeXHelper - INFO -  Processing step 3/4: 'exclamacao'
+2025-06-26 16:07:06,928 - PokeXHelper - INFO -  Executing step 3: 'exclamacao' (attempt 1/2)
+2025-06-26 16:07:07,061 - PokeXHelper - INFO -  Found step 3 icon at (1591, 160) with 97.1% confidence (attempt 1/2)
+2025-06-26 16:07:07,320 - PokeXHelper - INFO -  Clicked at (1591, 160) for step 3 (attempt 1/2)
+2025-06-26 16:07:07,372 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:07:07,372 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 16:07:13,162 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3960, 3633, 6)
+2025-06-26 16:07:13,163 - PokeXHelper - INFO - [SUCCESS] Step 3 validated - reached target coordinates
+2025-06-26 16:07:13,164 - PokeXHelper - INFO -  Step 3 'exclamacao' completed successfully
+2025-06-26 16:07:13,165 - PokeXHelper - INFO -  Processing step 4/4: 'estrela'
+2025-06-26 16:07:13,166 - PokeXHelper - INFO -  Executing step 4: 'estrela' (attempt 1/2)
+2025-06-26 16:07:13,313 - PokeXHelper - INFO -  Found step 4 icon at (1630, 209) with 99.9% confidence (attempt 1/2)
+2025-06-26 16:07:13,573 - PokeXHelper - INFO -  Clicked at (1630, 209) for step 4 (attempt 1/2)
+2025-06-26 16:07:13,727 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:07:13,727 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 16:07:14,778 - PokeXHelper - INFO - Stopping navigation...
+2025-06-26 16:07:16,790 - PokeXHelper - INFO - Navigation stopped
+2025-06-26 16:07:19,557 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3968, 3631, 6)
+2025-06-26 16:07:19,558 - PokeXHelper - INFO - [SUCCESS] Step 4 validated - reached target coordinates
+2025-06-26 16:07:19,558 - PokeXHelper - INFO -  Step 4 'estrela' completed successfully
+2025-06-26 16:07:19,558 - PokeXHelper - INFO -  Navigation sequence ended
+2025-06-26 16:08:01,503 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 16:08:01,503 - PokeXHelper - INFO - Saving health_bar: (65,444) to (258,460)
+2025-06-26 16:08:01,504 - PokeXHelper - INFO - Saving minimap: (1445,55) to (1717,374)
+2025-06-26 16:08:01,504 - PokeXHelper - INFO - Saving battle_area: (11,339) to (281,710)
+2025-06-26 16:08:01,505 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-06-26 16:08:01,505 - PokeXHelper - INFO - Serialized 4 steps for saving
+2025-06-26 16:08:01,506 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 16:08:01,506 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 16:08:01,506 - PokeXHelper - INFO - Application closing gracefully

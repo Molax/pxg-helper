@@ -1,0 +1,40 @@
+2025-06-26 15:17:49,247 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 15:17:49,431 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 15:17:49,536 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 15:17:49,561 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 15:17:49,564 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:17:49,565 - PokeXHelper - INFO - Selection configured from saved coordinates: (64,516) to (260,528)
+2025-06-26 15:17:49,902 - PokeXHelper - INFO - Selection configured from saved coordinates: (3173,46) to (3436,366)
+2025-06-26 15:17:50,168 - PokeXHelper - INFO - Selection configured from saved coordinates: (13,412) to (280,787)
+2025-06-26 15:17:50,433 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:17:50,433 - PokeXHelper - INFO - Coordinate Display Area configured from saved coordinates: (3171,50) to (3292,73)
+2025-06-26 15:17:50,566 - PokeXHelper - INFO - Loaded 2 navigation steps
+2025-06-26 15:17:50,728 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 15:18:01,571 - PokeXHelper - INFO - Starting navigation with 2 valid steps
+2025-06-26 15:18:01,572 - PokeXHelper - INFO -  Starting navigation sequence with 2 steps
+2025-06-26 15:18:01,572 - PokeXHelper - INFO -  Found 2 active steps, 2 ready with icons
+2025-06-26 15:18:01,573 - PokeXHelper - INFO -  Processing step 1/2: 'step first'
+2025-06-26 15:18:01,573 - PokeXHelper - INFO -  Executing step 1: 'step first'
+2025-06-26 15:18:01,717 - PokeXHelper - INFO -  Found step 1 icon at (3281, 206) with 100.0% confidence
+2025-06-26 15:18:01,989 - PokeXHelper - INFO -  Clicked at (3281, 206) for step 1
+2025-06-26 15:18:02,040 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 15:18:02,040 - PokeXHelper - INFO -  Waiting 4.0 seconds for step completion
+2025-06-26 15:18:07,190 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3953, 3633, 6)
+2025-06-26 15:18:07,191 - PokeXHelper - ERROR - Error validating step completion: 'EnhancedCoordinateValidator' object has no attribute 'calculate_distance'
+2025-06-26 15:18:07,191 - PokeXHelper - INFO -  Step 1 'step first' completed successfully
+2025-06-26 15:18:07,191 - PokeXHelper - INFO -  Processing step 2/2: 'step second'
+2025-06-26 15:18:07,191 - PokeXHelper - INFO -  Executing step 2: 'step second'
+2025-06-26 15:18:07,372 - PokeXHelper - INFO -  Found step 2 icon at (3333, 263) with 100.0% confidence
+2025-06-26 15:18:07,640 - PokeXHelper - INFO -  Clicked at (3333, 263) for step 2
+2025-06-26 15:18:07,692 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 15:18:07,692 - PokeXHelper - INFO -  Waiting 6.0 seconds for step completion
+2025-06-26 15:18:15,308 - PokeXHelper - INFO - OCR method 'color_isolation' successful: (3958, 3644, 6)
+2025-06-26 15:18:15,308 - PokeXHelper - ERROR - Error validating step completion: 'EnhancedCoordinateValidator' object has no attribute 'calculate_distance'
+2025-06-26 15:18:15,309 - PokeXHelper - INFO -  Step 2 'step second' completed successfully
+2025-06-26 15:18:16,310 - PokeXHelper - INFO -  Navigation sequence completed - restarting from beginning
+2025-06-26 15:18:16,310 - PokeXHelper - INFO -  Processing step 1/2: 'step first'
+2025-06-26 15:18:16,311 - PokeXHelper - INFO -  Executing step 1: 'step first'
+2025-06-26 15:18:16,450 - PokeXHelper - INFO -  Found step 1 icon at (3281, 151) with 100.0% confidence
+2025-06-26 15:18:16,711 - PokeXHelper - INFO -  Clicked at (3281, 151) for step 1
+2025-06-26 15:18:16,762 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 15:18:16,762 - PokeXHelper - INFO -  Waiting 4.0 seconds for step completion

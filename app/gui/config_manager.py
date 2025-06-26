@@ -185,3 +185,66 @@ class ConfigManager:
             
         except Exception as e:
             logger.error(f"Error during cleanup: {e}")
+            
+    def _load_areas_config(self, config):
+        """Load area configurations with proper preview updates"""
+        areas_config = config.get("areas", {})
+        areas_loaded = 0
+        
+        for area_name, selector in [
+            ("health_bar", self.main_app.health_bar_selector),
+            ("minimap", self.main_app.minimap_selector),
+            ("battle_area", self.main_app.battle_area_selector)
+        ]:
+            area_config = areas_config.get(area_name, {})
+            if area_config.get("configured", False):
+                x1 = area_config.get("x1")
+                y1 = area_config.get("y1") 
+                x2 = area_config.get("x2")
+                y2 = area_config.get("y2")
+                
+                if all([x1 is not None, y1 is not None, x2 is not None, y2 is not None]):
+                    try:
+                        if selector.configure_from_saved(x1, y1, x2, y2):
+                            areas_loaded += 1
+                            self.main_app.log(f"Loaded {area_name}: ({x1},{y1}) to ({x2},{y2})")
+                            
+                            # Force create preview image for loaded areas
+                            try:
+                                from PIL import ImageGrab
+                                bbox = (selector.x1, selector.y1, selector.x2, selector.y2)
+                                try:
+                                    preview_img = ImageGrab.grab(bbox=bbox, all_screens=True)
+                                except TypeError:
+                                    preview_img = ImageGrab.grab(bbox=bbox)
+                                selector.preview_image = preview_img
+                                logger.debug(f"Created preview for loaded {area_name}")
+                            except Exception as e:
+                                logger.warning(f"Could not create preview for {area_name}: {e}")
+                            
+                            # Update area status in UI
+                            try:
+                                if hasattr(self.main_app, 'interface_manager') and hasattr(self.main_app.interface_manager, 'area_config_panel'):
+                                    self.main_app.interface_manager.area_config_panel.update_area_status(selector)
+                            except Exception as e:
+                                logger.debug(f"Could not update area status for {area_name}: {e}")
+                        else:
+                            logger.warning(f"Failed to configure {area_name} from saved data")
+                    except Exception as e:
+                        logger.error(f"Error configuring {area_name}: {e}")
+                else:
+                    logger.warning(f"Invalid coordinates for {area_name}: {area_config}")
+            else:
+                logger.debug(f"Area {area_name} not configured in saved data")
+        
+        if areas_loaded > 0:
+            self.main_app.log(f"Configuration loaded: {areas_loaded}/3 areas restored")
+            # Refresh all area previews after loading
+            try:
+                if hasattr(self.main_app, 'interface_manager') and hasattr(self.main_app.interface_manager, 'area_config_panel'):
+                    # Small delay to ensure UI is ready
+                    self.main_app.root.after(100, lambda: self.main_app.interface_manager.area_config_panel.refresh_all_previews())
+            except Exception as e:
+                logger.debug(f"Could not refresh previews: {e}")
+        else:
+            self.main_app.log("No saved areas found - using default configuration")

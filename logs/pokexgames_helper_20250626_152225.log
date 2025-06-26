@@ -1,0 +1,22 @@
+2025-06-26 15:22:25,816 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 15:22:26,001 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 15:22:26,006 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 15:22:26,032 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 15:22:26,036 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:22:26,036 - PokeXHelper - INFO - Selection configured from saved coordinates: (64,516) to (260,528)
+2025-06-26 15:22:26,304 - PokeXHelper - INFO - Selection configured from saved coordinates: (3173,46) to (3436,366)
+2025-06-26 15:22:26,549 - PokeXHelper - INFO - Selection configured from saved coordinates: (13,412) to (280,787)
+2025-06-26 15:22:26,802 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:22:26,803 - PokeXHelper - INFO - Coordinate Display Area configured from saved coordinates: (3171,50) to (3292,73)
+2025-06-26 15:22:26,932 - PokeXHelper - INFO - Loaded 2 navigation steps
+2025-06-26 15:22:27,090 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 15:23:06,498 - PokeXHelper - INFO - Added step 3: 'step exclamacao' with icon path: 
+2025-06-26 15:23:06,498 - PokeXHelper - INFO - Starting area selection: Select Icon for 'step exclamacao' (in minimap area)
+2025-06-26 15:23:06,775 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 15:23:09,576 - PokeXHelper - INFO - Selection cancelled by user (ESC key)
+2025-06-26 15:23:50,010 - PokeXHelper - INFO - Added step 4: 'icone exclamacao' with icon path: 
+2025-06-26 15:23:50,011 - PokeXHelper - INFO - Starting area selection: Select Icon for 'icone exclamacao' (in minimap area)
+2025-06-26 15:23:50,299 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 15:23:55,169 - PokeXHelper - INFO - Selection complete: (3301, 173) to (3312, 193), size: 11x20
+2025-06-26 15:23:56,437 - PokeXHelper - INFO - Select Icon for 'icone exclamacao' (in minimap area) selection confirmed: (3301, 173) to (3312, 193)
+2025-06-26 15:23:56,440 - PokeXHelper - ERROR - Error in completion callback: 'NavigationManager' object has no attribute 'save_step_icon'

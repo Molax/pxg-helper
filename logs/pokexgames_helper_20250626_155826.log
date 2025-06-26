@@ -1,0 +1,187 @@
+2025-06-26 15:58:26,054 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 15:58:26,279 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 15:58:26,286 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 15:58:26,331 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 15:58:26,333 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:58:26,333 - PokeXHelper - INFO - Selection configured from saved coordinates: (64,516) to (260,528)
+2025-06-26 15:58:26,777 - PokeXHelper - INFO - Selection configured from saved coordinates: (3173,46) to (3436,366)
+2025-06-26 15:58:27,065 - PokeXHelper - INFO - Selection configured from saved coordinates: (13,412) to (280,787)
+2025-06-26 15:58:27,352 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:58:27,353 - PokeXHelper - INFO - Selection configured from saved coordinates: (1452,60) to (1571,84)
+2025-06-26 15:58:27,492 - PokeXHelper - INFO - Loaded 4 navigation steps
+2025-06-26 15:58:28,053 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 15:58:33,476 - PokeXHelper - INFO - Starting area selection: Health Bar
+2025-06-26 15:58:33,780 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 15:58:37,785 - PokeXHelper - INFO - Selection complete: (65, 444) to (258, 460), size: 193x16
+2025-06-26 15:58:39,062 - PokeXHelper - INFO - Health Bar selection confirmed: (65, 444) to (258, 460)
+2025-06-26 15:58:39,576 - PokeXHelper - INFO - Found 4 icon files in use: {'step_4_1750962809755.png', 'step_2_1750953061.png', 'step_1_1750953011.png', 'step_3_1750962727881.png'}
+2025-06-26 15:58:39,576 - PokeXHelper - INFO - No unused icon files to clean up
+2025-06-26 15:58:39,578 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:58:39,578 - PokeXHelper - INFO - Saving health_bar: (65,444) to (258,460)
+2025-06-26 15:58:39,579 - PokeXHelper - INFO - Saving minimap: (3173,46) to (3436,366)
+2025-06-26 15:58:39,579 - PokeXHelper - INFO - Saving battle_area: (13,412) to (280,787)
+2025-06-26 15:58:39,579 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-06-26 15:58:39,579 - PokeXHelper - INFO - Serialized 4 steps for saving
+2025-06-26 15:58:39,580 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 15:58:39,580 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 15:58:45,883 - PokeXHelper - INFO - Starting area selection: Minimap Area
+2025-06-26 15:58:46,182 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 15:58:50,513 - PokeXHelper - INFO - Selection complete: (1445, 55) to (1717, 374), size: 272x319
+2025-06-26 15:58:51,632 - PokeXHelper - INFO - Minimap Area selection confirmed: (1445, 55) to (1717, 374)
+2025-06-26 15:58:52,213 - PokeXHelper - INFO - Found 4 icon files in use: {'step_4_1750962809755.png', 'step_2_1750953061.png', 'step_1_1750953011.png', 'step_3_1750962727881.png'}
+2025-06-26 15:58:52,215 - PokeXHelper - INFO - No unused icon files to clean up
+2025-06-26 15:58:52,224 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:58:52,224 - PokeXHelper - INFO - Saving health_bar: (65,444) to (258,460)
+2025-06-26 15:58:52,224 - PokeXHelper - INFO - Saving minimap: (1445,55) to (1717,374)
+2025-06-26 15:58:52,224 - PokeXHelper - INFO - Saving battle_area: (13,412) to (280,787)
+2025-06-26 15:58:52,224 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-06-26 15:58:52,226 - PokeXHelper - INFO - Serialized 4 steps for saving
+2025-06-26 15:58:52,227 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 15:58:52,227 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 15:58:54,069 - PokeXHelper - INFO - Starting area selection: Battle Area
+2025-06-26 15:58:54,340 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 15:58:58,205 - PokeXHelper - INFO - Selection complete: (11, 339) to (281, 710), size: 270x371
+2025-06-26 15:58:59,409 - PokeXHelper - INFO - Battle Area selection confirmed: (11, 339) to (281, 710)
+2025-06-26 15:58:59,949 - PokeXHelper - INFO - Found 4 icon files in use: {'step_4_1750962809755.png', 'step_2_1750953061.png', 'step_1_1750953011.png', 'step_3_1750962727881.png'}
+2025-06-26 15:58:59,949 - PokeXHelper - INFO - No unused icon files to clean up
+2025-06-26 15:58:59,958 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:58:59,958 - PokeXHelper - INFO - Saving health_bar: (65,444) to (258,460)
+2025-06-26 15:58:59,958 - PokeXHelper - INFO - Saving minimap: (1445,55) to (1717,374)
+2025-06-26 15:58:59,958 - PokeXHelper - INFO - Saving battle_area: (11,339) to (281,710)
+2025-06-26 15:58:59,958 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-06-26 15:58:59,958 - PokeXHelper - INFO - Serialized 4 steps for saving
+2025-06-26 15:58:59,960 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 15:58:59,960 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 15:59:01,601 - PokeXHelper - INFO - Found 4 icon files in use: {'step_4_1750962809755.png', 'step_2_1750953061.png', 'step_1_1750953011.png', 'step_3_1750962727881.png'}
+2025-06-26 15:59:01,602 - PokeXHelper - INFO - No unused icon files to clean up
+2025-06-26 15:59:01,610 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 15:59:01,610 - PokeXHelper - INFO - Saving health_bar: (65,444) to (258,460)
+2025-06-26 15:59:01,610 - PokeXHelper - INFO - Saving minimap: (1445,55) to (1717,374)
+2025-06-26 15:59:01,611 - PokeXHelper - INFO - Saving battle_area: (11,339) to (281,710)
+2025-06-26 15:59:01,611 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-06-26 15:59:01,611 - PokeXHelper - INFO - Serialized 4 steps for saving
+2025-06-26 15:59:01,612 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 15:59:01,612 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 15:59:06,045 - PokeXHelper - INFO - Starting navigation with 4 valid steps
+2025-06-26 15:59:06,047 - PokeXHelper - INFO -  Starting navigation sequence with 4 steps
+2025-06-26 15:59:06,047 - PokeXHelper - INFO -  Found 4 active steps, 4 ready with icons
+2025-06-26 15:59:06,047 - PokeXHelper - INFO -  Processing step 1/4: 'step first'
+2025-06-26 15:59:06,048 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 15:59:06,223 - PokeXHelper - INFO -  Found step 1 icon at (1550, 221) with 99.8% confidence (attempt 1/2)
+2025-06-26 15:59:06,491 - PokeXHelper - INFO -  Clicked at (1550, 221) for step 1 (attempt 1/2)
+2025-06-26 15:59:06,543 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 15:59:06,543 - PokeXHelper - INFO -  Waiting 8.0 seconds for step completion
+2025-06-26 15:59:15,660 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3953, 3633, 6)
+2025-06-26 15:59:15,660 - PokeXHelper - INFO - [SUCCESS] Step 1 validated - reached target coordinates
+2025-06-26 15:59:15,660 - PokeXHelper - INFO -  Step 1 'step first' completed successfully
+2025-06-26 15:59:15,660 - PokeXHelper - INFO -  Processing step 2/4: 'step second'
+2025-06-26 15:59:15,661 - PokeXHelper - INFO -  Executing step 2: 'step second' (attempt 1/2)
+2025-06-26 15:59:15,812 - PokeXHelper - INFO -  Found step 2 icon at (1612, 273) with 99.8% confidence (attempt 1/2)
+2025-06-26 15:59:16,077 - PokeXHelper - INFO -  Clicked at (1612, 273) for step 2 (attempt 1/2)
+2025-06-26 15:59:16,128 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 15:59:16,128 - PokeXHelper - INFO -  Waiting 6.0 seconds for step completion
+2025-06-26 15:59:23,622 - PokeXHelper - INFO - OCR method 'color_isolation' successful: (3959, 3644, 6)
+2025-06-26 15:59:23,622 - PokeXHelper - INFO - [SUCCESS] Step 2 validated - reached target coordinates
+2025-06-26 15:59:23,622 - PokeXHelper - INFO -  Step 2 'step second' completed successfully
+2025-06-26 15:59:23,622 - PokeXHelper - INFO -  Processing step 3/4: 'exclamacao'
+2025-06-26 15:59:23,623 - PokeXHelper - INFO -  Executing step 3: 'exclamacao' (attempt 1/2)
+2025-06-26 15:59:23,768 - PokeXHelper - INFO -  Found step 3 icon at (1591, 160) with 97.1% confidence (attempt 1/2)
+2025-06-26 15:59:24,132 - PokeXHelper - INFO -  Clicked at (1591, 160) for step 3 (attempt 1/2)
+2025-06-26 15:59:24,283 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 15:59:24,283 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 15:59:30,071 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3959, 3644, 6)
+2025-06-26 15:59:30,072 - PokeXHelper - WARNING - [WARNING] Step 3 validation failed - distance: 269.2248131209306
+2025-06-26 15:59:30,072 - PokeXHelper - WARNING -  Step 3 validation failed, retrying...
+2025-06-26 15:59:31,073 - PokeXHelper - INFO -  Executing step 3: 'exclamacao' (attempt 2/2)
+2025-06-26 15:59:31,227 - PokeXHelper - WARNING -  Step 3 icon not found in minimap (attempt 2/2)
+2025-06-26 15:59:31,227 - PokeXHelper - ERROR -  Navigation failed at step 3 'exclamacao' after retries
+2025-06-26 15:59:31,227 - PokeXHelper - WARNING -  Navigation sequence failed - retrying from beginning in 5 seconds
+2025-06-26 15:59:36,228 - PokeXHelper - INFO -  Processing step 1/4: 'step first'
+2025-06-26 15:59:36,228 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 15:59:36,393 - PokeXHelper - WARNING -  Step 1 icon not found in minimap (attempt 1/2)
+2025-06-26 15:59:36,393 - PokeXHelper - INFO -  Retrying step 1 in 2 seconds...
+2025-06-26 15:59:38,394 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 2/2)
+2025-06-26 15:59:38,538 - PokeXHelper - WARNING -  Step 1 icon not found in minimap (attempt 2/2)
+2025-06-26 15:59:38,539 - PokeXHelper - ERROR -  Navigation failed at step 1 'step first' after retries
+2025-06-26 15:59:38,539 - PokeXHelper - WARNING -  Navigation sequence failed - retrying from beginning in 5 seconds
+2025-06-26 15:59:43,541 - PokeXHelper - INFO -  Processing step 1/4: 'step first'
+2025-06-26 15:59:43,541 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 15:59:43,698 - PokeXHelper - WARNING -  Step 1 icon not found in minimap (attempt 1/2)
+2025-06-26 15:59:43,699 - PokeXHelper - INFO -  Retrying step 1 in 2 seconds...
+2025-06-26 15:59:45,700 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 2/2)
+2025-06-26 15:59:45,859 - PokeXHelper - WARNING -  Step 1 icon not found in minimap (attempt 2/2)
+2025-06-26 15:59:45,859 - PokeXHelper - ERROR -  Navigation failed at step 1 'step first' after retries
+2025-06-26 15:59:45,860 - PokeXHelper - WARNING -  Navigation sequence failed - retrying from beginning in 5 seconds
+2025-06-26 15:59:50,860 - PokeXHelper - INFO -  Processing step 1/4: 'step first'
+2025-06-26 15:59:50,860 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 15:59:51,020 - PokeXHelper - WARNING -  Step 1 icon not found in minimap (attempt 1/2)
+2025-06-26 15:59:51,021 - PokeXHelper - INFO -  Retrying step 1 in 2 seconds...
+2025-06-26 15:59:53,022 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 2/2)
+2025-06-26 15:59:53,161 - PokeXHelper - WARNING -  Step 1 icon not found in minimap (attempt 2/2)
+2025-06-26 15:59:53,162 - PokeXHelper - ERROR -  Navigation failed at step 1 'step first' after retries
+2025-06-26 15:59:53,162 - PokeXHelper - WARNING -  Navigation sequence failed - retrying from beginning in 5 seconds
+2025-06-26 15:59:58,163 - PokeXHelper - INFO -  Processing step 1/4: 'step first'
+2025-06-26 15:59:58,163 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 15:59:58,318 - PokeXHelper - WARNING -  Step 1 icon not found in minimap (attempt 1/2)
+2025-06-26 15:59:58,319 - PokeXHelper - INFO -  Retrying step 1 in 2 seconds...
+2025-06-26 16:00:00,319 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 2/2)
+2025-06-26 16:00:00,475 - PokeXHelper - INFO -  Found step 1 icon at (1599, 216) with 95.4% confidence (attempt 2/2)
+2025-06-26 16:00:00,731 - PokeXHelper - INFO -  Clicked at (1599, 216) for step 1 (attempt 2/2)
+2025-06-26 16:00:00,782 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:00:00,782 - PokeXHelper - INFO -  Waiting 8.0 seconds for step completion
+2025-06-26 16:00:09,582 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3952, 3633, 6)
+2025-06-26 16:00:09,582 - PokeXHelper - INFO - [SUCCESS] Step 1 validated - reached target coordinates
+2025-06-26 16:00:09,582 - PokeXHelper - INFO -  Step 1 'step first' completed successfully
+2025-06-26 16:00:09,583 - PokeXHelper - INFO -  Processing step 2/4: 'step second'
+2025-06-26 16:00:09,583 - PokeXHelper - INFO -  Executing step 2: 'step second' (attempt 1/2)
+2025-06-26 16:00:09,728 - PokeXHelper - INFO -  Found step 2 icon at (1617, 273) with 99.8% confidence (attempt 1/2)
+2025-06-26 16:00:09,985 - PokeXHelper - INFO -  Clicked at (1617, 273) for step 2 (attempt 1/2)
+2025-06-26 16:00:10,037 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:00:10,037 - PokeXHelper - INFO -  Waiting 6.0 seconds for step completion
+2025-06-26 16:00:17,500 - PokeXHelper - INFO - OCR method 'color_isolation' successful: (3959, 3644, 6)
+2025-06-26 16:00:17,501 - PokeXHelper - INFO - [SUCCESS] Step 2 validated - reached target coordinates
+2025-06-26 16:00:17,501 - PokeXHelper - INFO -  Step 2 'step second' completed successfully
+2025-06-26 16:00:17,501 - PokeXHelper - INFO -  Processing step 3/4: 'exclamacao'
+2025-06-26 16:00:17,501 - PokeXHelper - INFO -  Executing step 3: 'exclamacao' (attempt 1/2)
+2025-06-26 16:00:17,669 - PokeXHelper - INFO -  Found step 3 icon at (1591, 160) with 97.1% confidence (attempt 1/2)
+2025-06-26 16:00:17,942 - PokeXHelper - INFO -  Clicked at (1591, 160) for step 3 (attempt 1/2)
+2025-06-26 16:00:17,994 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:00:17,994 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 16:00:23,812 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3960, 3633, 6)
+2025-06-26 16:00:23,813 - PokeXHelper - WARNING - [WARNING] Step 3 validation failed - distance: 270.0
+2025-06-26 16:00:23,813 - PokeXHelper - WARNING -  Step 3 validation failed, retrying...
+2025-06-26 16:00:24,813 - PokeXHelper - INFO -  Executing step 3: 'exclamacao' (attempt 2/2)
+2025-06-26 16:00:24,990 - PokeXHelper - WARNING -  Step 3 icon not found in minimap (attempt 2/2)
+2025-06-26 16:00:24,990 - PokeXHelper - ERROR -  Navigation failed at step 3 'exclamacao' after retries
+2025-06-26 16:00:24,990 - PokeXHelper - WARNING -  Navigation sequence failed - retrying from beginning in 5 seconds
+2025-06-26 16:00:29,991 - PokeXHelper - INFO -  Processing step 1/4: 'step first'
+2025-06-26 16:00:29,992 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 16:00:30,163 - PokeXHelper - INFO -  Found step 1 icon at (1550, 216) with 99.8% confidence (attempt 1/2)
+2025-06-26 16:00:30,427 - PokeXHelper - INFO -  Clicked at (1550, 216) for step 1 (attempt 1/2)
+2025-06-26 16:00:30,477 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 16:00:30,478 - PokeXHelper - INFO -  Waiting 8.0 seconds for step completion
+2025-06-26 16:00:35,200 - PokeXHelper - INFO - Stopping navigation...
+2025-06-26 16:00:37,211 - PokeXHelper - INFO - Navigation stopped
+2025-06-26 16:00:39,255 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3953, 3633, 6)
+2025-06-26 16:00:39,255 - PokeXHelper - INFO - [SUCCESS] Step 1 validated - reached target coordinates
+2025-06-26 16:00:39,255 - PokeXHelper - INFO -  Step 1 'step first' completed successfully
+2025-06-26 16:00:39,257 - PokeXHelper - INFO -  Navigation sequence ended
+2025-06-26 16:01:16,776 - PokeXHelper - INFO - Found 4 icon files in use: {'step_4_1750962809755.png', 'step_2_1750953061.png', 'step_1_1750953011.png', 'step_3_1750962727881.png'}
+2025-06-26 16:01:16,777 - PokeXHelper - INFO - No unused icon files to clean up
+2025-06-26 16:01:16,780 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 16:01:16,780 - PokeXHelper - INFO - Saving health_bar: (65,444) to (258,460)
+2025-06-26 16:01:16,781 - PokeXHelper - INFO - Saving minimap: (1445,55) to (1717,374)
+2025-06-26 16:01:16,781 - PokeXHelper - INFO - Saving battle_area: (11,339) to (281,710)
+2025-06-26 16:01:16,781 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-06-26 16:01:16,782 - PokeXHelper - INFO - Serialized 4 steps for saving
+2025-06-26 16:01:16,783 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 16:01:16,783 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 16:01:18,400 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 16:01:18,400 - PokeXHelper - INFO - Saving health_bar: (65,444) to (258,460)
+2025-06-26 16:01:18,400 - PokeXHelper - INFO - Saving minimap: (1445,55) to (1717,374)
+2025-06-26 16:01:18,401 - PokeXHelper - INFO - Saving battle_area: (11,339) to (281,710)
+2025-06-26 16:01:18,401 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-06-26 16:01:18,401 - PokeXHelper - INFO - Serialized 4 steps for saving
+2025-06-26 16:01:18,402 - PokeXHelper - INFO - Configuration saved to file
+2025-06-26 16:01:18,402 - PokeXHelper - INFO - Configuration saved successfully - 3/3 areas saved
+2025-06-26 16:01:18,402 - PokeXHelper - INFO - Application closing gracefully

@@ -5,6 +5,7 @@ import logging
 import os
 import re
 import threading
+import math
 from .enhanced_coordinate_validator import EnhancedCoordinateValidator
 
 logger = logging.getLogger('PokeXHelper')
@@ -121,101 +122,32 @@ class NavigationManager:
             coordinates = self.coordinate_validator.extract_coordinates_from_image(coord_image)
             
             if coordinates:
-                self.logger.info(f"Extracted coordinates from coordinate area: {coordinates}")
+                self.logger.debug(f"Extracted coordinates: {coordinates}")
                 return coordinates
             else:
-                self.logger.warning("Failed to extract coordinates from coordinate area")
+                self.logger.debug("No valid coordinates found in coordinate area")
                 return None
-        
+                
         except Exception as e:
             self.logger.error(f"Error extracting coordinates from coordinate area: {e}")
             return None
     
-    def validate_step_completion(self, step):
-        """Validate step completion using coordinate area if configured"""
+    def parse_coordinates(self, coord_string):
+        """Parse coordinate string and return (x, y, z) tuple"""
+        if not coord_string or not isinstance(coord_string, str):
+            return None
+            
         try:
-            if not self.coordinate_validation_enabled:
-                self.logger.debug("Coordinate validation disabled, skipping")
-                return True
+            coord_string = coord_string.strip()
             
-            if not step.coordinates:
-                self.logger.debug("No coordinates specified for validation")
-                return True
-            
-            self.logger.info(f" Validating completion of step {step.step_id}: '{step.name}'")
-            self.logger.info(f" Step has coordinate validation: {step.coordinates}")
-            
-            expected = self._parse_expected_coordinates(step.coordinates)
-            if not expected:
-                self.logger.warning(f"Could not parse expected coordinates: {step.coordinates}")
-                return True
-            
-            if self.coordinate_area and self.coordinate_area.is_setup():
-                return self._validate_with_coordinate_area(step, expected)
-            else:
-                self.logger.warning("No coordinate validation area configured")
-                return True
-                
-        except Exception as e:
-            self.logger.error(f"Error validating step completion: {e}")
-            return True
-    
-    def _validate_with_coordinate_area(self, step, expected):
-        """Validate using coordinate area with enhanced OCR"""
-        max_attempts = 4
-        
-        for attempt in range(max_attempts):
-            try:
-                coord_image = self.coordinate_area.get_current_screenshot_region()
-                if coord_image is None:
-                    self.logger.warning(f"Could not capture coordinate area on attempt {attempt + 1}")
-                    if attempt < max_attempts - 1:
-                        time.sleep(0.5)
-                    continue
-                
-                coordinates = self.coordinate_validator.extract_coordinates_from_image(
-                    coord_image, expected_coords=expected
-                )
-                
-                if coordinates:
-                    exp_x, exp_y = expected[0], expected[1]
-                    act_x, act_y = coordinates[0], coordinates[1]
-                    
-                    x_diff = abs(act_x - exp_x)
-                    y_diff = abs(act_y - exp_y)
-                    
-                    self.logger.info(f" Coordinate check: Expected ({exp_x}, {exp_y}), Actual ({act_x}, {act_y})")
-                    self.logger.info(f" X difference: {x_diff}, Y difference: {y_diff} (margin: {self.coordinate_tolerance})")
-                    
-                    if x_diff <= self.coordinate_tolerance and y_diff <= self.coordinate_tolerance:
-                        self.logger.info(f" Coordinate validation successful on attempt {attempt + 1}")
-                        return True
-                    else:
-                        self.logger.info(f" Coordinate validation failed on attempt {attempt + 1}, retrying...")
-                        if attempt < max_attempts - 1:
-                            time.sleep(0.5)
-                else:
-                    self.logger.info(f" Could not extract coordinates on attempt {attempt + 1}")
-                    if attempt < max_attempts - 1:
-                        time.sleep(0.5)
-                        
-            except Exception as e:
-                self.logger.error(f"Error in coordinate validation attempt {attempt + 1}: {e}")
-                if attempt < max_attempts - 1:
-                    time.sleep(0.5)
-        
-        self.logger.warning(f" Coordinate validation failed after {max_attempts} attempts")
-        return False
-    
-    def _parse_expected_coordinates(self, coord_string):
-        """Parse expected coordinate string"""
-        try:
             patterns = [
-                r'\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*',
-                r'\((\d+),\s*(\d+),\s*(\d+)\)',
                 r'(\d{4}),\s*(\d{4}),\s*(\d+)',
-                r'\((\d{4}),(\d{4}),(\d+)\)',
-                r'(\d{4}),(\d{4}),(\d+)'
+                r'(\d{4})\s+(\d{4})\s+(\d+)',
+                r'(\d{4}):(\d{4}):(\d+)',
+                r'X:\s*(\d{4})\s*Y:\s*(\d{4})\s*Z:\s*(\d+)',
+                r'x:\s*(\d{4})\s*y:\s*(\d{4})\s*z:\s*(\d+)',
+                r'\[(\d{4}),\s*(\d{4}),\s*(\d+)\]',
+                r'\((\d{4}),\s*(\d{4}),\s*(\d+)\)'
             ]
             
             for pattern in patterns:
@@ -240,39 +172,107 @@ class NavigationManager:
             self.logger.error(f"Error parsing coordinates: {e}")
             return None
     
-    def execute_step(self, step):
+    def calculate_distance(self, coord1, coord2):
+        """Calculate distance between two coordinates"""
+        if not coord1 or not coord2:
+            return float('inf')
+        
+        x1, y1 = coord1[:2]
+        x2, y2 = coord2[:2]
+        
+        distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+        return distance
+    
+    def execute_step(self, step, max_retries=2):
+        """Execute a step with retry logic"""
+        for attempt in range(max_retries):
+            try:
+                attempt_msg = f" (attempt {attempt + 1}/{max_retries})" if max_retries > 1 else ""
+                self.logger.info(f" Executing step {step.step_id}: '{step.name}'{attempt_msg}")
+                
+                location = self.find_step_icon_in_minimap(step, threshold=0.7)
+                if not location:
+                    self.logger.warning(f" Step {step.step_id} icon not found in minimap{attempt_msg}")
+                    if attempt < max_retries - 1:
+                        self.logger.info(f" Retrying step {step.step_id} in 2 seconds...")
+                        time.sleep(2)
+                        continue
+                    return False
+                    
+                x, y, confidence = location
+                self.logger.info(f" Found step {step.step_id} icon at ({x}, {y}) with {confidence:.1%} confidence{attempt_msg}")
+                
+                if self.mouse_controller.click_at(x, y):
+                    self.logger.info(f" Clicked at ({x}, {y}) for step {step.step_id}{attempt_msg}")
+                    
+                    screen_width = 3440
+                    screen_height = 1440
+                    center_x = screen_width // 2
+                    center_y = screen_height // 2
+                    self.mouse_controller.move_to(center_x, center_y)
+                    self.logger.info(f" Moved mouse to screen center ({center_x}, {center_y})")
+                    
+                    self.logger.info(f" Waiting {step.wait_seconds} seconds for step completion")
+                    time.sleep(step.wait_seconds)
+                    
+                    validation_result = self.validate_step_completion(step)
+                    if validation_result:
+                        return True
+                    elif attempt < max_retries - 1:
+                        self.logger.warning(f" Step {step.step_id} validation failed, retrying...")
+                        time.sleep(1)
+                        continue
+                    else:
+                        self.logger.error(f" Step {step.step_id} validation failed after {max_retries} attempts")
+                        return False
+                else:
+                    self.logger.error(f" Failed to click at ({x}, {y}) for step {step.step_id}{attempt_msg}")
+                    if attempt < max_retries - 1:
+                        self.logger.info(f" Retrying click for step {step.step_id}...")
+                        time.sleep(1)
+                        continue
+                    return False
+                    
+            except Exception as e:
+                self.logger.error(f"Error executing step {step.step_id}{attempt_msg}: {e}")
+                if attempt < max_retries - 1:
+                    self.logger.info(f" Retrying step {step.step_id} due to error...")
+                    time.sleep(2)
+                    continue
+                return False
+        
+        return False
+    
+    def validate_step_completion(self, step):
+        """Validate if step was completed successfully"""
         try:
-            self.logger.info(f" Executing step {step.step_id}: '{step.name}'")
+            if self.coordinate_validation_enabled and self.coordinate_area:
+                time.sleep(0.5)
+                
+                current_coords = self.extract_coordinates_from_coordinate_area()
+                if not current_coords:
+                    self.logger.warning(f"Could not extract coordinates for validation")
+                    return True
+                
+                target_coords = self.parse_coordinates(step.coordinates)
+                if not target_coords:
+                    self.logger.debug(f"No target coordinates configured for step {step.step_id}")
+                    return True
+                
+                distance = self.calculate_distance(current_coords, target_coords)
+                
+                if distance <= self.coordinate_tolerance:
+                    self.logger.info(f"[SUCCESS] Step {step.step_id} validated - reached target coordinates")
+                    return True
+                else:
+                    self.logger.warning(f"[WARNING] Step {step.step_id} validation failed - distance: {distance}")
+                    return False
             
-            location = self.find_step_icon_in_minimap(step, threshold=0.7)
-            if not location:
-                self.logger.warning(f" Step {step.step_id} icon not found in minimap")
-                return False
-                
-            x, y, confidence = location
-            self.logger.info(f" Found step {step.step_id} icon at ({x}, {y}) with {confidence:.1%} confidence")
+            return True
             
-            if self.mouse_controller.click_at(x, y):
-                self.logger.info(f" Clicked at ({x}, {y}) for step {step.step_id}")
-                
-                screen_width = 3440
-                screen_height = 1440
-                center_x = screen_width // 2
-                center_y = screen_height // 2
-                self.mouse_controller.move_to(center_x, center_y)
-                self.logger.info(f" Moved mouse to screen center ({center_x}, {center_y})")
-                
-                self.logger.info(f" Waiting {step.wait_seconds} seconds for step completion")
-                time.sleep(step.wait_seconds)
-                
-                return self.validate_step_completion(step)
-            else:
-                self.logger.error(f" Failed to click at ({x}, {y}) for step {step.step_id}")
-                return False
-                
         except Exception as e:
-            self.logger.error(f"Error executing step {step.step_id}: {e}")
-            return False
+            self.logger.error(f"Error validating step completion: {e}")
+            return True
     
     def start_navigation(self):
         if self.is_navigating:
@@ -313,7 +313,7 @@ class NavigationManager:
         self.logger.info("Navigation stopped")
     
     def _navigation_loop(self):
-        """Main navigation loop with enhanced coordinate validation"""
+        """Main navigation loop with enhanced coordinate validation and retry logic"""
         self.logger.info(f" Starting navigation sequence with {len(self.steps)} steps")
         
         active_steps = [step for step in self.steps if step.is_active]
@@ -328,6 +328,7 @@ class NavigationManager:
         
         try:
             while self.is_navigating and not self.stop_navigation_flag:
+                sequence_success = True
                 
                 for step_index, step in enumerate(ready_steps):
                     if self.stop_navigation_flag:
@@ -335,14 +336,21 @@ class NavigationManager:
                     
                     self.logger.info(f" Processing step {step_index+1}/{len(ready_steps)}: '{step.name}'")
                     
-                    if self.execute_step(step):
+                    step_success = self.execute_step(step, max_retries=2)
+                    
+                    if step_success:
                         self.logger.info(f" Step {step.step_id} '{step.name}' completed successfully")
                     else:
-                        self.logger.error(f" Navigation failed at step {step.step_id} '{step.name}'")
+                        self.logger.error(f" Navigation failed at step {step.step_id} '{step.name}' after retries")
+                        sequence_success = False
+                        break
                 
-                if not self.stop_navigation_flag:
+                if sequence_success and not self.stop_navigation_flag:
                     time.sleep(1)
-                    self.logger.info(" Navigation sequence completed - restarting from beginning")
+                    self.logger.info(" Navigation sequence completed successfully - restarting from beginning")
+                elif not self.stop_navigation_flag:
+                    self.logger.warning(" Navigation sequence failed - retrying from beginning in 5 seconds")
+                    time.sleep(5)
                     
         except Exception as e:
             self.logger.error(f"Error in navigation loop: {e}")
@@ -384,3 +392,113 @@ class NavigationManager:
         
         self.next_step_id = max_step_id + 1
         self.logger.info(f"Loaded {len(self.steps)} navigation steps")
+    
+    def preview_step_detection(self, step):
+        """Test step detection and return human-readable result"""
+        if step.template_image is None:
+            return "No icon configured for this step"
+        
+        if not self.minimap_area.is_setup():
+            return "Minimap area not configured"
+        
+        try:
+            result = self.find_step_icon_in_minimap(step, threshold=0.6)
+            if result:
+                x, y, confidence = result
+                return f"[SUCCESS] Icon found at ({x}, {y})\nConfidence: {confidence:.1%}"
+            else:
+                return "[WARNING] Icon not found in minimap\nTry lowering the detection threshold or reconfiguring the icon"
+        except Exception as e:
+            return f"Error during detection: {e}"
+
+    def save_step_icon(self, step, icon_bounds):
+        """Save step icon from selected area"""
+        try:
+            x1, y1, x2, y2 = icon_bounds
+            
+            minimap_image = self.minimap_area.get_current_screenshot_region()
+            if minimap_image is None:
+                self.logger.error("Could not capture minimap image")
+                return False
+            
+            rel_x1 = x1 - self.minimap_area.x1
+            rel_y1 = y1 - self.minimap_area.y1
+            rel_x2 = x2 - self.minimap_area.x1
+            rel_y2 = y2 - self.minimap_area.y1
+            
+            rel_x1 = max(0, rel_x1)
+            rel_y1 = max(0, rel_y1)
+            rel_x2 = min(minimap_image.width, rel_x2)
+            rel_y2 = min(minimap_image.height, rel_y2)
+            
+            if rel_x2 <= rel_x1 or rel_y2 <= rel_y1:
+                self.logger.error("Invalid icon bounds")
+                return False
+            
+            icon_image = minimap_image.crop((rel_x1, rel_y1, rel_x2, rel_y2))
+            
+            icons_dir = "assets/navigation_icons"
+            if not os.path.exists(icons_dir):
+                os.makedirs(icons_dir)
+            
+            timestamp = int(time.time() * 1000)
+            filename = f"step_{step.step_id}_{timestamp}.png"
+            icon_path = os.path.join(icons_dir, filename)
+            
+            if step.icon_image_path and os.path.exists(step.icon_image_path):
+                try:
+                    os.remove(step.icon_image_path)
+                    self.logger.info(f"Removed old icon: {step.icon_image_path}")
+                except Exception as e:
+                    self.logger.warning(f"Could not remove old icon: {e}")
+            
+            icon_image.save(icon_path, "PNG")
+            step.icon_image_path = icon_path
+            step.icon_bounds = icon_bounds
+            
+            if step.load_template():
+                self.logger.info(f"Saved and loaded icon for step {step.step_id}: {icon_path}")
+                return True
+            else:
+                self.logger.error(f"Failed to load template after saving icon")
+                return False
+                
+        except Exception as e:
+            self.logger.error(f"Error saving step icon: {e}")
+            return False
+
+    def cleanup_unused_icons(self):
+        """Clean up unused icon files"""
+        try:
+            icons_dir = "assets/navigation_icons"
+            if not os.path.exists(icons_dir):
+                self.logger.info("Icons directory does not exist")
+                return
+            
+            used_files = set()
+            for step in self.steps:
+                if step.icon_image_path:
+                    filename = os.path.basename(step.icon_image_path)
+                    used_files.add(filename)
+            
+            self.logger.info(f"Found {len(used_files)} icon files in use: {used_files}")
+            
+            cleanup_count = 0
+            for filename in os.listdir(icons_dir):
+                if filename.endswith('.png') and filename not in used_files:
+                    file_path = os.path.join(icons_dir, filename)
+                    try:
+                        os.remove(file_path)
+                        self.logger.info(f"Cleaned up unused icon file: {filename}")
+                        cleanup_count += 1
+                    except Exception as e:
+                        self.logger.error(f"Failed to delete {filename}: {e}")
+            
+            if cleanup_count == 0:
+                self.logger.info("No unused icon files to clean up")
+            else:
+                self.logger.info(f"Cleaned up {cleanup_count} unused icon files")
+                
+        except Exception as e:
+            self.logger.error(f"Error during icon cleanup: {e}")
+            raise

@@ -1,0 +1,16 @@
+2025-06-26 15:28:38,936 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 15:28:39,152 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 15:28:39,182 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 15:28:39,229 - PokeXHelper - CRITICAL - Fatal error: NavigationPanel.__init__() takes 3 positional arguments but 4 were given
+Traceback (most recent call last):
+  File "C:\repositories\pxg-helper\pokexgames_helper.py", line 78, in main
+    app = PokeXGamesHelper(root)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\repositories\pxg-helper\app\gui\__init__.py", line 21, in __init__
+    self.interface_manager.create_interface()
+  File "C:\repositories\pxg-helper\app\gui\interface_manager.py", line 24, in create_interface
+    self._create_left_panel(main_container)
+  File "C:\repositories\pxg-helper\app\gui\interface_manager.py", line 56, in _create_left_panel
+    self.navigation_panel = NavigationPanel(nav_frame, self.main_app.navigation_manager, self.main_app)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: NavigationPanel.__init__() takes 3 positional arguments but 4 were given

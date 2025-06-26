@@ -22,9 +22,9 @@ class ComponentManager:
             self.battle_detector = BattleDetector()
             self.mouse_controller = MouseController()
             self.navigation_manager = NavigationManager(
-                self.minimap_selector, 
-                self.battle_area_selector, 
-                self.mouse_controller
+                self.mouse_controller,
+                self.minimap_selector,
+                settings={}
             )
             
             logger.info("Components initialized successfully")
