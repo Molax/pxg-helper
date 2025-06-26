@@ -1,0 +1,11 @@
+2025-06-26 17:21:56,607 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 17:21:56,780 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 17:21:56,790 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 17:21:56,861 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 17:21:56,862 - PokeXHelper - ERROR - Error loading configuration: NavigationStep.__init__() got an unexpected keyword argument 'coordinates'
+2025-06-26 17:21:56,862 - PokeXHelper - INFO - Using default configuration
+2025-06-26 17:21:56,864 - PokeXHelper - INFO - No saved areas found - using default configuration
+2025-06-26 17:21:56,867 - PokeXHelper - ERROR - Error loading configuration: NavigationStep.__init__() got an unexpected keyword argument 'coordinates'
+2025-06-26 17:21:56,867 - PokeXHelper - INFO - Using default configuration
+2025-06-26 17:21:56,868 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 17:21:56,869 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully

@@ -1,4 +1,8 @@
 {
+    "health_healing_key": "F1",
+    "health_threshold": 60,
+    "scan_interval": 0.5,
+    "debug_enabled": true,
     "areas": {
         "area_1": {
             "name": "Area 1",
@@ -126,32 +130,5 @@
         "x2": 1571,
         "y2": 84,
         "configured": true
-    },
-    "version": "2.0",
-    "ui_settings": {
-        "theme": "dark",
-        "font_family": "Segoe UI",
-        "font_size": 9,
-        "window_geometry": null,
-        "panel_states": {
-            "controls_expanded": true,
-            "areas_expanded": true,
-            "navigation_expanded": true,
-            "log_expanded": true
-        },
-        "log_level": "INFO",
-        "auto_save_enabled": true
-    },
-    "advanced_settings": {
-        "debug_enabled": true,
-        "health_healing_key": "F1",
-        "health_threshold": 60,
-        "scan_interval": 0.5,
-        "max_log_lines": 1000,
-        "auto_save_interval": 30.0,
-        "backup_configs": true,
-        "max_backups": 5,
-        "detection_sensitivity": 0.8,
-        "performance_mode": false
     }
 }

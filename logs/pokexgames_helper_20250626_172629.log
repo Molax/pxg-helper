@@ -1,0 +1,116 @@
+2025-06-26 17:26:29,822 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 17:26:30,001 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 17:26:30,008 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 17:26:30,049 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 17:26:30,050 - PokeXHelper - INFO - Configuration validation passed successfully
+2025-06-26 17:26:30,050 - PokeXHelper - INFO - Configuration loaded successfully
+2025-06-26 17:26:30,050 - PokeXHelper - INFO - Selection configured from saved coordinates: (65,444) to (258,460)
+2025-06-26 17:26:30,182 - PokeXHelper - INFO - Loaded health_bar: (65,444) to (258,460)
+2025-06-26 17:26:30,316 - PokeXHelper - INFO - Selection configured from saved coordinates: (1445,55) to (1717,374)
+2025-06-26 17:26:30,445 - PokeXHelper - INFO - Loaded minimap: (1445,55) to (1717,374)
+2025-06-26 17:26:30,576 - PokeXHelper - INFO - Selection configured from saved coordinates: (11,339) to (281,710)
+2025-06-26 17:26:30,685 - PokeXHelper - INFO - Loaded battle_area: (11,339) to (281,710)
+2025-06-26 17:26:30,810 - PokeXHelper - INFO - Configuration loaded: 3/3 areas restored
+2025-06-26 17:26:30,815 - PokeXHelper - INFO - Configuration validation passed successfully
+2025-06-26 17:26:30,815 - PokeXHelper - INFO - Configuration loaded successfully
+2025-06-26 17:26:30,816 - PokeXHelper - INFO - Selection configured from saved coordinates: (1452,60) to (1571,84)
+2025-06-26 17:26:30,938 - PokeXHelper - INFO - Loaded coordinate area: (1452,60) to (1571,84)
+2025-06-26 17:26:30,947 - PokeXHelper - INFO - Loaded 4 navigation steps
+2025-06-26 17:26:30,947 - PokeXHelper - INFO - Refreshing steps display - 4 steps
+2025-06-26 17:26:31,132 - PokeXHelper - INFO - Navigation ready with 4 configured steps
+2025-06-26 17:26:31,134 - PokeXHelper - INFO - Loaded 4 navigation steps
+2025-06-26 17:26:31,134 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 17:26:31,137 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 17:26:41,814 - PokeXHelper - INFO - Updated step 1: 'step first'
+2025-06-26 17:26:41,840 - PokeXHelper - INFO - Refreshing steps display - 4 steps
+2025-06-26 17:26:53,777 - PokeXHelper - INFO - Updated step 1: 'step first'
+2025-06-26 17:26:53,797 - PokeXHelper - INFO - Refreshing steps display - 4 steps
+2025-06-26 17:26:56,256 - PokeXHelper - INFO - Deleted icon file: assets/navigation_icons\step_3_1750962727881.png
+2025-06-26 17:26:56,257 - PokeXHelper - INFO - Removing step 3: 'exclamacao'
+2025-06-26 17:26:56,257 - PokeXHelper - INFO - Step 3 removed, remaining steps: 3
+2025-06-26 17:26:56,288 - PokeXHelper - INFO - Refreshing steps display - 3 steps
+2025-06-26 17:26:56,292 - PokeXHelper - INFO - Navigation ready with 3 configured steps
+2025-06-26 17:26:57,948 - PokeXHelper - INFO - Deleted icon file: assets/navigation_icons\step_4_1750962809755.png
+2025-06-26 17:26:57,948 - PokeXHelper - INFO - Removing step 4: 'estrela'
+2025-06-26 17:26:57,949 - PokeXHelper - INFO - Step 4 removed, remaining steps: 2
+2025-06-26 17:26:57,966 - PokeXHelper - INFO - Refreshing steps display - 2 steps
+2025-06-26 17:26:57,972 - PokeXHelper - INFO - Navigation ready with 2 configured steps
+2025-06-26 17:26:59,904 - PokeXHelper - INFO - Deleted icon file: assets/navigation_icons\step_2_1750953061.png
+2025-06-26 17:26:59,904 - PokeXHelper - INFO - Removing step 2: 'step second'
+2025-06-26 17:26:59,905 - PokeXHelper - INFO - Step 2 removed, remaining steps: 1
+2025-06-26 17:26:59,914 - PokeXHelper - INFO - Refreshing steps display - 1 steps
+2025-06-26 17:26:59,916 - PokeXHelper - INFO - Navigation ready with 1 configured steps
+2025-06-26 17:27:08,253 - PokeXHelper - INFO - Added step 5: 'dasdas' with icon path: 
+2025-06-26 17:27:08,253 - PokeXHelper - INFO - Created step 5: 'dasdas'
+2025-06-26 17:27:08,260 - PokeXHelper - INFO - Refreshing steps display - 2 steps
+2025-06-26 17:27:08,306 - PokeXHelper - INFO - Select an icon for 'dasdas' within the minimap area
+2025-06-26 17:27:08,307 - PokeXHelper - INFO - Starting area selection: Select Icon for 'dasdas' (in minimap area)
+2025-06-26 17:27:08,581 - PokeXHelper - INFO - Area selection window created successfully
+2025-06-26 17:27:14,015 - PokeXHelper - INFO - Selection complete: (1579, 150) to (1593, 175), size: 14x25
+2025-06-26 17:27:15,103 - PokeXHelper - INFO - Select Icon for 'dasdas' (in minimap area) selection confirmed: (1579, 150) to (1593, 175)
+2025-06-26 17:27:15,267 - PokeXHelper - INFO - Saved and loaded icon for step 5: assets/navigation_icons\step_5_1750969635261.png
+2025-06-26 17:27:15,267 - PokeXHelper - INFO - Icon saved for step 'dasdas'
+2025-06-26 17:27:15,280 - PokeXHelper - INFO - Refreshing steps display - 2 steps
+2025-06-26 17:27:15,282 - PokeXHelper - INFO - Navigation ready with 2 configured steps
+2025-06-26 17:27:21,910 - PokeXHelper - INFO - Updated step 5: 'dasdas'
+2025-06-26 17:27:21,922 - PokeXHelper - INFO - Refreshing steps display - 2 steps
+2025-06-26 17:27:26,718 - PokeXHelper - INFO - Updated step 1: 'step first'
+2025-06-26 17:27:26,732 - PokeXHelper - INFO - Refreshing steps display - 2 steps
+2025-06-26 17:27:33,442 - PokeXHelper - INFO - Starting navigation sequence
+2025-06-26 17:27:33,443 - PokeXHelper - INFO - Starting navigation with 2 valid steps
+2025-06-26 17:27:33,444 - PokeXHelper - INFO -  Starting navigation sequence with 2 steps
+2025-06-26 17:27:33,444 - PokeXHelper - INFO - Navigation started successfully
+2025-06-26 17:27:33,444 - PokeXHelper - INFO -  Found 2 active steps, 2 ready with icons
+2025-06-26 17:27:33,444 - PokeXHelper - INFO -  Processing step 1/2: 'step first'
+2025-06-26 17:27:33,444 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 17:27:33,588 - PokeXHelper - INFO -  Found step 1 icon at (1550, 161) with 99.6% confidence (attempt 1/2)
+2025-06-26 17:27:33,850 - PokeXHelper - INFO -  Clicked at (1550, 161) for step 1 (attempt 1/2)
+2025-06-26 17:27:33,901 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 17:27:33,902 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 17:27:39,982 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3956, 3633, 6)
+2025-06-26 17:27:39,982 - PokeXHelper - INFO - [SUCCESS] Step 1 validated - reached target coordinates
+2025-06-26 17:27:39,982 - PokeXHelper - INFO -  Step 1 'step first' completed successfully
+2025-06-26 17:27:39,982 - PokeXHelper - INFO -  Processing step 2/2: 'dasdas'
+2025-06-26 17:27:39,982 - PokeXHelper - INFO -  Executing step 5: 'dasdas' (attempt 1/2)
+2025-06-26 17:27:40,130 - PokeXHelper - INFO -  Found step 5 icon at (1612, 217) with 97.5% confidence (attempt 1/2)
+2025-06-26 17:27:40,386 - PokeXHelper - INFO -  Clicked at (1612, 217) for step 5 (attempt 1/2)
+2025-06-26 17:27:40,438 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 17:27:40,438 - PokeXHelper - INFO -  Waiting 3.0 seconds for step completion
+2025-06-26 17:27:44,229 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3959, 3633, 6)
+2025-06-26 17:27:44,229 - PokeXHelper - INFO - [SUCCESS] Step 5 validated - reached target coordinates
+2025-06-26 17:27:44,229 - PokeXHelper - INFO -  Step 5 'dasdas' completed successfully
+2025-06-26 17:27:45,231 - PokeXHelper - INFO -  Navigation sequence completed successfully - restarting from beginning
+2025-06-26 17:27:45,231 - PokeXHelper - INFO -  Processing step 1/2: 'step first'
+2025-06-26 17:27:45,232 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 17:27:45,407 - PokeXHelper - INFO -  Found step 1 icon at (1555, 216) with 99.5% confidence (attempt 1/2)
+2025-06-26 17:27:45,671 - PokeXHelper - INFO -  Clicked at (1555, 216) for step 1 (attempt 1/2)
+2025-06-26 17:27:45,723 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 17:27:45,723 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 17:27:51,503 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3953, 3633, 6)
+2025-06-26 17:27:51,503 - PokeXHelper - INFO - [SUCCESS] Step 1 validated - reached target coordinates
+2025-06-26 17:27:51,504 - PokeXHelper - INFO -  Step 1 'step first' completed successfully
+2025-06-26 17:27:51,504 - PokeXHelper - INFO -  Processing step 2/2: 'dasdas'
+2025-06-26 17:27:51,504 - PokeXHelper - INFO -  Executing step 5: 'dasdas' (attempt 1/2)
+2025-06-26 17:27:51,648 - PokeXHelper - INFO -  Found step 5 icon at (1621, 217) with 100.0% confidence (attempt 1/2)
+2025-06-26 17:27:51,906 - PokeXHelper - INFO -  Clicked at (1621, 217) for step 5 (attempt 1/2)
+2025-06-26 17:27:51,957 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 17:27:51,957 - PokeXHelper - INFO -  Waiting 3.0 seconds for step completion
+2025-06-26 17:27:55,756 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3960, 3633, 6)
+2025-06-26 17:27:55,756 - PokeXHelper - INFO - [SUCCESS] Step 5 validated - reached target coordinates
+2025-06-26 17:27:55,756 - PokeXHelper - INFO -  Step 5 'dasdas' completed successfully
+2025-06-26 17:27:56,757 - PokeXHelper - INFO -  Navigation sequence completed successfully - restarting from beginning
+2025-06-26 17:27:56,757 - PokeXHelper - INFO -  Processing step 1/2: 'step first'
+2025-06-26 17:27:56,759 - PokeXHelper - INFO -  Executing step 1: 'step first' (attempt 1/2)
+2025-06-26 17:27:56,924 - PokeXHelper - INFO -  Found step 1 icon at (1550, 216) with 99.5% confidence (attempt 1/2)
+2025-06-26 17:27:57,192 - PokeXHelper - INFO -  Clicked at (1550, 216) for step 1 (attempt 1/2)
+2025-06-26 17:27:57,243 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 17:27:57,243 - PokeXHelper - INFO -  Waiting 5.0 seconds for step completion
+2025-06-26 17:28:03,031 - PokeXHelper - INFO - OCR method 'adaptive_threshold' successful: (3952, 3634, 6)
+2025-06-26 17:28:03,031 - PokeXHelper - INFO - [SUCCESS] Step 1 validated - reached target coordinates
+2025-06-26 17:28:03,033 - PokeXHelper - INFO -  Step 1 'step first' completed successfully
+2025-06-26 17:28:03,033 - PokeXHelper - INFO -  Processing step 2/2: 'dasdas'
+2025-06-26 17:28:03,033 - PokeXHelper - INFO -  Executing step 5: 'dasdas' (attempt 1/2)
+2025-06-26 17:28:03,197 - PokeXHelper - INFO -  Found step 5 icon at (1626, 212) with 100.0% confidence (attempt 1/2)
+2025-06-26 17:28:03,461 - PokeXHelper - INFO -  Clicked at (1626, 212) for step 5 (attempt 1/2)
+2025-06-26 17:28:03,512 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-06-26 17:28:03,512 - PokeXHelper - INFO -  Waiting 3.0 seconds for step completion

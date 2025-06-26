@@ -1,0 +1,11 @@
+2025-06-26 17:15:24,386 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 17:15:24,557 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 17:15:24,566 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 17:15:24,673 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 17:15:24,674 - PokeXHelper - ERROR - Error loading configuration: HelperSettings.__init__() got an unexpected keyword argument 'heal_key'
+2025-06-26 17:15:24,674 - PokeXHelper - INFO - Using default configuration
+2025-06-26 17:15:24,677 - PokeXHelper - INFO - No saved areas found - using default configuration
+2025-06-26 17:15:24,679 - PokeXHelper - ERROR - Error loading configuration: HelperSettings.__init__() got an unexpected keyword argument 'heal_key'
+2025-06-26 17:15:24,679 - PokeXHelper - INFO - Using default configuration
+2025-06-26 17:15:24,679 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 17:15:24,680 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully

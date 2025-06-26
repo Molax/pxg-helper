@@ -1,0 +1,18 @@
+2025-06-26 17:14:37,089 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 17:14:37,265 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 17:14:37,273 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 17:14:37,297 - PokeXHelper - WARNING - New config system not available, using legacy system
+2025-06-26 17:14:37,323 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 17:14:37,325 - PokeXHelper - ERROR - Error loading configuration: cannot import name 'ConfigMigrator' from 'app.config.migration' (C:\repositories\pxg-helper\app\config\migration.py)
+Traceback (most recent call last):
+  File "C:\repositories\pxg-helper\app\gui\managers\config_manager.py", line 27, in load_configuration
+    self._load_legacy_config()
+  File "C:\repositories\pxg-helper\app\gui\managers\config_manager.py", line 42, in _load_legacy_config
+    from app.config import load_config
+  File "C:\repositories\pxg-helper\app\config\__init__.py", line 1, in <module>
+    from .manager import ConfigManager, ConfigBackupManager, ConfigChangeNotifier
+  File "C:\repositories\pxg-helper\app\config\manager.py", line 9, in <module>
+    from .migration import ConfigMigrator
+ImportError: cannot import name 'ConfigMigrator' from 'app.config.migration' (C:\repositories\pxg-helper\app\config\migration.py)
+2025-06-26 17:14:37,327 - PokeXHelper - INFO - Error loading configuration - using defaults
+2025-06-26 17:14:37,329 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully

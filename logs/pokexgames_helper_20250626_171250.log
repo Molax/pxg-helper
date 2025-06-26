@@ -1,0 +1,24 @@
+2025-06-26 17:12:50,107 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 17:12:51,954 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 17:12:51,966 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 17:12:52,044 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 17:12:52,045 - PokeXHelper - INFO - Configuration migration required
+2025-06-26 17:12:52,047 - PokeXHelper - INFO - Configuration backup created: config_backups\config_backup_pre_migration_20250626_171252.json
+2025-06-26 17:12:52,047 - PokeXHelper - INFO - Applying migration from 1.0 to 1.1
+2025-06-26 17:12:52,048 - PokeXHelper - INFO - Successfully migrated from 1.0 to 1.1
+2025-06-26 17:12:52,048 - PokeXHelper - INFO - Applying migration from 1.1 to 2.0
+2025-06-26 17:12:52,048 - PokeXHelper - INFO - Added UI settings section
+2025-06-26 17:12:52,048 - PokeXHelper - INFO - Created advanced_settings from legacy settings
+2025-06-26 17:12:52,048 - PokeXHelper - INFO - Moved debug_enabled to advanced_settings
+2025-06-26 17:12:52,048 - PokeXHelper - INFO - Moved health_healing_key to advanced_settings
+2025-06-26 17:12:52,048 - PokeXHelper - INFO - Moved health_threshold to advanced_settings
+2025-06-26 17:12:52,049 - PokeXHelper - INFO - Moved scan_interval to advanced_settings
+2025-06-26 17:12:52,049 - PokeXHelper - INFO - Successfully migrated from 1.1 to 2.0
+2025-06-26 17:12:52,049 - PokeXHelper - INFO - Configuration migration completed
+2025-06-26 17:12:52,049 - PokeXHelper - ERROR - Error loading configuration: HelperSettings.__init__() got an unexpected keyword argument 'health_threshold'
+2025-06-26 17:12:52,049 - PokeXHelper - INFO - Using default configuration
+2025-06-26 17:12:52,050 - PokeXHelper - INFO - No saved areas found - using default configuration
+2025-06-26 17:12:52,060 - PokeXHelper - ERROR - Error loading configuration: HelperSettings.__init__() got an unexpected keyword argument 'health_threshold'
+2025-06-26 17:12:52,062 - PokeXHelper - INFO - Using default configuration
+2025-06-26 17:12:52,062 - PokeXHelper - INFO - Configuration loaded from file
+2025-06-26 17:12:52,063 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
