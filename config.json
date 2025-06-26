@@ -6,7 +6,7 @@
       "y1": 425,
       "x2": 270,
       "y2": 463,
-      "configured": true
+      "configured": false
     },
     "minimap": {
       "name": "Minimap",
@@ -14,7 +14,7 @@
       "y1": 59,
       "x2": 1718,
       "y2": 362,
-      "configured": true
+      "configured": false
     },
     "battle_area": {
       "name": "Battle Area",
@@ -22,7 +22,7 @@
       "y1": 342,
       "x2": 282,
       "y2": 704,
-      "configured": true
+      "configured": false
     }
   },
   "coordinate_area": {
@@ -31,7 +31,7 @@
     "y1": 55,
     "x2": 1571,
     "y2": 82,
-    "configured": true
+    "configured": false
   },
   "helper_settings": {
     "auto_heal": true,
@@ -39,34 +39,5 @@
     "heal_key": "F1",
     "auto_navigate": false
   },
-  "navigation_steps": [
-    {
-      "step_id": 1,
-      "name": "passo exclamacao",
-      "icon_image_path": "assets/navigation_icons\\step_1_1750966664615.png",
-      "coordinates": "3953,3633,6",
-      "wait_seconds": 4.0,
-      "is_active": true,
-      "icon_bounds": [
-        1545,
-        183,
-        1565,
-        202
-      ]
-    },
-    {
-      "step_id": 2,
-      "name": "passo interregocao",
-      "icon_image_path": "assets/navigation_icons\\step_2_1750966687328.png",
-      "coordinates": "3959,3644,6",
-      "wait_seconds": 5.0,
-      "is_active": true,
-      "icon_bounds": [
-        1576,
-        235,
-        1594,
-        262
-      ]
-    }
-  ]
+  "navigation_steps": []
 }

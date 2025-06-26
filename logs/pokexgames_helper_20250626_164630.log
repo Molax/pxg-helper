@@ -1,0 +1,9 @@
+2025-06-26 16:46:30,561 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-06-26 16:46:30,788 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-06-26 16:46:30,792 - PokeXHelper - INFO - Components initialized successfully
+2025-06-26 16:46:31,002 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-06-26 16:46:31,016 - PokeXHelper - ERROR - Error loading configuration: 'AreaSelector' object has no attribute 'configure_from_coordinates'
+2025-06-26 16:46:31,016 - PokeXHelper - INFO - Error loading configuration - using defaults
+2025-06-26 16:46:31,019 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-06-26 16:46:43,022 - PokeXHelper - INFO - Serialized 0 steps for saving
+2025-06-26 16:46:43,023 - PokeXHelper - INFO - Configuration saved successfully - 0/3 areas saved

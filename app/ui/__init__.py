@@ -1,8 +1,7 @@
-# app/ui/__init__.py
-from .area_config_panel import AreaConfigPanel
+from .panels.area_config.area_config_panel import AreaConfigPanel
 from .navigation_panel import NavigationPanel
-from .controls_panel import ControlsPanel
-from .log_panel import LogPanel
+from .panels.controls.controls_panel import ControlsPanel
+from .panels.log.log_panel import LogPanel
 from .dialogs import StepConfigDialog, SettingsDialog
 
 __all__ = [
