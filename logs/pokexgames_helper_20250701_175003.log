@@ -1,0 +1,104 @@
+2025-07-01 17:50:03,358 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-07-01 17:50:03,581 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-07-01 17:50:03,615 - PokeXHelper - INFO - Components initialized successfully
+2025-07-01 17:50:03,701 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-07-01 17:50:03,702 - PokeXHelper - INFO - Configuration validation passed successfully
+2025-07-01 17:50:03,703 - PokeXHelper - INFO - Configuration loaded successfully
+2025-07-01 17:50:03,703 - PokeXHelper - INFO - Selection configured from saved coordinates: (65,444) to (258,460)
+2025-07-01 17:50:03,848 - PokeXHelper - INFO - Loaded health_bar: (65,444) to (258,460)
+2025-07-01 17:50:03,992 - PokeXHelper - INFO - Selection configured from saved coordinates: (1445,55) to (1717,374)
+2025-07-01 17:50:04,131 - PokeXHelper - INFO - Loaded minimap: (1445,55) to (1717,374)
+2025-07-01 17:50:04,281 - PokeXHelper - INFO - Selection configured from saved coordinates: (11,339) to (281,710)
+2025-07-01 17:50:04,405 - PokeXHelper - INFO - Loaded battle_area: (11,339) to (281,710)
+2025-07-01 17:50:04,537 - PokeXHelper - INFO - Configuration loaded: 3/3 areas restored
+2025-07-01 17:50:04,540 - PokeXHelper - INFO - Configuration validation passed successfully
+2025-07-01 17:50:04,540 - PokeXHelper - INFO - Configuration loaded successfully
+2025-07-01 17:50:04,540 - PokeXHelper - INFO - Selection configured from saved coordinates: (1452,60) to (1571,84)
+2025-07-01 17:50:04,671 - PokeXHelper - INFO - Loaded coordinate area: (1452,60) to (1571,84)
+2025-07-01 17:50:04,676 - PokeXHelper - WARNING - Could not load template for step 2: step second
+2025-07-01 17:50:04,676 - PokeXHelper - WARNING - Could not load template for step 3: exclamacao
+2025-07-01 17:50:04,676 - PokeXHelper - WARNING - Could not load template for step 4: estrela
+2025-07-01 17:50:04,676 - PokeXHelper - INFO - Loaded 4 navigation steps
+2025-07-01 17:50:04,677 - PokeXHelper - INFO - Refreshing steps display - 4 steps
+2025-07-01 17:50:04,969 - PokeXHelper - INFO - Navigation ready with 1 configured steps
+2025-07-01 17:50:04,971 - PokeXHelper - INFO - Loaded 4 navigation steps
+2025-07-01 17:50:04,972 - PokeXHelper - INFO - Configuration loaded from file
+2025-07-01 17:50:04,973 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-07-01 17:50:11,929 - PokeXHelper - INFO - Removing step 4: 'estrela'
+2025-07-01 17:50:11,930 - PokeXHelper - INFO - Step 4 removed, remaining steps: 3
+2025-07-01 17:50:11,955 - PokeXHelper - INFO - Refreshing steps display - 3 steps
+2025-07-01 17:50:11,958 - PokeXHelper - INFO - Navigation ready with 1 configured steps
+2025-07-01 17:50:13,899 - PokeXHelper - INFO - Removing step 3: 'exclamacao'
+2025-07-01 17:50:13,900 - PokeXHelper - INFO - Step 3 removed, remaining steps: 2
+2025-07-01 17:50:13,933 - PokeXHelper - INFO - Refreshing steps display - 2 steps
+2025-07-01 17:50:13,937 - PokeXHelper - INFO - Navigation ready with 1 configured steps
+2025-07-01 17:50:15,052 - PokeXHelper - INFO - Removing step 2: 'step second'
+2025-07-01 17:50:15,053 - PokeXHelper - INFO - Step 2 removed, remaining steps: 1
+2025-07-01 17:50:15,067 - PokeXHelper - INFO - Refreshing steps display - 1 steps
+2025-07-01 17:50:15,069 - PokeXHelper - INFO - Navigation ready with 1 configured steps
+2025-07-01 17:50:16,577 - PokeXHelper - INFO - Deleted icon file: assets/navigation_icons\step_1_1750953011.png
+2025-07-01 17:50:16,578 - PokeXHelper - INFO - Removing step 1: 'step first'
+2025-07-01 17:50:16,578 - PokeXHelper - INFO - Step 1 removed, remaining steps: 0
+2025-07-01 17:50:16,585 - PokeXHelper - INFO - Refreshing steps display - 0 steps
+2025-07-01 17:50:17,202 - PokeXHelper - INFO - Save Settings button clicked
+2025-07-01 17:50:17,207 - PokeXHelper - INFO - Configuration backup created: config_backups\config_backup_auto_20250701_175017.json
+2025-07-01 17:50:17,209 - PokeXHelper - INFO - Configuration saved successfully
+2025-07-01 17:50:17,209 - PokeXHelper - INFO - Saving health_bar: (65,444) to (258,460)
+2025-07-01 17:50:17,209 - PokeXHelper - INFO - Saving minimap: (1445,55) to (1717,374)
+2025-07-01 17:50:17,209 - PokeXHelper - INFO - Saving battle_area: (11,339) to (281,710)
+2025-07-01 17:50:17,210 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-07-01 17:50:17,210 - PokeXHelper - INFO - Serialized 0 steps for saving
+2025-07-01 17:50:17,211 - PokeXHelper - INFO - Configuration backup created: config_backups\config_backup_auto_20250701_175017.json
+2025-07-01 17:50:17,211 - PokeXHelper - INFO - Configuration saved successfully
+2025-07-01 17:50:17,212 - PokeXHelper - INFO - Configuration saved successfully
+2025-07-01 17:50:19,016 - PokeXHelper - INFO - Starting Health Bar selection...
+2025-07-01 17:50:19,016 - PokeXHelper - INFO - Starting area selection: Health Bar
+2025-07-01 17:50:19,309 - PokeXHelper - INFO - Area selection window created successfully
+2025-07-01 17:50:21,429 - PokeXHelper - INFO - Selection complete: (84, 80) to (182, 118), size: 98x38
+2025-07-01 17:50:22,435 - PokeXHelper - INFO - Health Bar selection confirmed: (84, 80) to (182, 118)
+2025-07-01 17:50:22,439 - PokeXHelper - INFO - Health Bar configured: (84,80) to (182,118)
+2025-07-01 17:50:22,588 - PokeXHelper - INFO - Saving health_bar: (84,80) to (182,118)
+2025-07-01 17:50:22,589 - PokeXHelper - INFO - Saving minimap: (1445,55) to (1717,374)
+2025-07-01 17:50:22,589 - PokeXHelper - INFO - Saving battle_area: (11,339) to (281,710)
+2025-07-01 17:50:22,589 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-07-01 17:50:22,589 - PokeXHelper - INFO - Serialized 0 steps for saving
+2025-07-01 17:50:22,590 - PokeXHelper - INFO - Configuration backup created: config_backups\config_backup_auto_20250701_175022.json
+2025-07-01 17:50:22,591 - PokeXHelper - INFO - Configuration saved successfully
+2025-07-01 17:50:22,591 - PokeXHelper - INFO - Configuration saved successfully
+2025-07-01 17:50:23,199 - PokeXHelper - INFO - Starting Minimap Area selection...
+2025-07-01 17:50:23,199 - PokeXHelper - INFO - Starting area selection: Minimap Area
+2025-07-01 17:50:23,491 - PokeXHelper - INFO - Area selection window created successfully
+2025-07-01 17:50:27,006 - PokeXHelper - INFO - Selection complete: (1449, 54) to (1727, 417), size: 278x363
+2025-07-01 17:50:28,853 - PokeXHelper - INFO - Minimap Area selection confirmed: (1449, 54) to (1727, 417)
+2025-07-01 17:50:28,858 - PokeXHelper - INFO - Minimap Area configured: (1449,54) to (1727,417)
+2025-07-01 17:50:28,984 - PokeXHelper - INFO - Saving health_bar: (84,80) to (182,118)
+2025-07-01 17:50:28,984 - PokeXHelper - INFO - Saving minimap: (1449,54) to (1727,417)
+2025-07-01 17:50:28,984 - PokeXHelper - INFO - Saving battle_area: (11,339) to (281,710)
+2025-07-01 17:50:28,985 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-07-01 17:50:28,985 - PokeXHelper - INFO - Serialized 0 steps for saving
+2025-07-01 17:50:28,986 - PokeXHelper - INFO - Configuration backup created: config_backups\config_backup_auto_20250701_175028.json
+2025-07-01 17:50:28,987 - PokeXHelper - INFO - Configuration saved successfully
+2025-07-01 17:50:28,988 - PokeXHelper - INFO - Configuration saved successfully
+2025-07-01 17:50:29,434 - PokeXHelper - INFO - Starting Battle Area selection...
+2025-07-01 17:50:29,436 - PokeXHelper - INFO - Starting area selection: Battle Area
+2025-07-01 17:50:29,718 - PokeXHelper - INFO - Area selection window created successfully
+2025-07-01 17:50:31,756 - PokeXHelper - INFO - Selection complete: (21, 341) to (291, 717), size: 270x376
+2025-07-01 17:50:32,841 - PokeXHelper - INFO - Battle Area selection confirmed: (21, 341) to (291, 717)
+2025-07-01 17:50:32,847 - PokeXHelper - INFO - Battle Area configured: (21,341) to (291,717)
+2025-07-01 17:50:32,997 - PokeXHelper - INFO - Saving health_bar: (84,80) to (182,118)
+2025-07-01 17:50:32,998 - PokeXHelper - INFO - Saving minimap: (1449,54) to (1727,417)
+2025-07-01 17:50:32,998 - PokeXHelper - INFO - Saving battle_area: (21,341) to (291,717)
+2025-07-01 17:50:32,998 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-07-01 17:50:32,999 - PokeXHelper - INFO - Serialized 0 steps for saving
+2025-07-01 17:50:33,000 - PokeXHelper - INFO - Configuration backup created: config_backups\config_backup_auto_20250701_175032.json
+2025-07-01 17:50:33,001 - PokeXHelper - INFO - Configuration saved successfully
+2025-07-01 17:50:33,001 - PokeXHelper - INFO - Configuration saved successfully
+2025-07-01 17:50:33,898 - PokeXHelper - INFO - Save Settings button clicked
+2025-07-01 17:50:33,899 - PokeXHelper - INFO - Saving health_bar: (84,80) to (182,118)
+2025-07-01 17:50:33,899 - PokeXHelper - INFO - Saving minimap: (1449,54) to (1727,417)
+2025-07-01 17:50:33,900 - PokeXHelper - INFO - Saving battle_area: (21,341) to (291,717)
+2025-07-01 17:50:33,900 - PokeXHelper - INFO - Saving coordinate area: (1452,60) to (1571,84)
+2025-07-01 17:50:33,900 - PokeXHelper - INFO - Serialized 0 steps for saving
+2025-07-01 17:50:33,903 - PokeXHelper - INFO - Configuration backup created: config_backups\config_backup_auto_20250701_175033.json
+2025-07-01 17:50:33,904 - PokeXHelper - INFO - Configuration saved successfully
+2025-07-01 17:50:33,904 - PokeXHelper - INFO - Configuration saved successfully

@@ -1,0 +1,102 @@
+2025-07-01 17:50:40,207 - PokeXHelper - INFO - PokeXGames Helper logging initialized
+2025-07-01 17:50:40,412 - PokeXHelper - INFO - Initializing PokeXGames Helper
+2025-07-01 17:50:40,425 - PokeXHelper - INFO - Components initialized successfully
+2025-07-01 17:50:40,473 - PokeXHelper - INFO - PokeXGames Helper interface initialized
+2025-07-01 17:50:40,489 - PokeXHelper - INFO - Configuration validation passed successfully
+2025-07-01 17:50:40,489 - PokeXHelper - INFO - Configuration loaded successfully
+2025-07-01 17:50:40,489 - PokeXHelper - INFO - Selection configured from saved coordinates: (84,80) to (182,118)
+2025-07-01 17:50:40,637 - PokeXHelper - INFO - Loaded health_bar: (84,80) to (182,118)
+2025-07-01 17:50:40,771 - PokeXHelper - INFO - Selection configured from saved coordinates: (1449,54) to (1727,417)
+2025-07-01 17:50:40,894 - PokeXHelper - INFO - Loaded minimap: (1449,54) to (1727,417)
+2025-07-01 17:50:41,023 - PokeXHelper - INFO - Selection configured from saved coordinates: (21,341) to (291,717)
+2025-07-01 17:50:41,145 - PokeXHelper - INFO - Loaded battle_area: (21,341) to (291,717)
+2025-07-01 17:50:41,277 - PokeXHelper - INFO - Configuration loaded: 3/3 areas restored
+2025-07-01 17:50:41,280 - PokeXHelper - INFO - Configuration validation passed successfully
+2025-07-01 17:50:41,280 - PokeXHelper - INFO - Configuration loaded successfully
+2025-07-01 17:50:41,280 - PokeXHelper - INFO - Selection configured from saved coordinates: (1452,60) to (1571,84)
+2025-07-01 17:50:41,410 - PokeXHelper - INFO - Loaded coordinate area: (1452,60) to (1571,84)
+2025-07-01 17:50:41,412 - PokeXHelper - INFO - Configuration loaded from file
+2025-07-01 17:50:41,413 - PokeXHelper - INFO - PokeXGames Helper GUI initialized successfully
+2025-07-01 17:50:45,090 - PokeXHelper - INFO - Starting area selection: Select Coordinate Display Area
+2025-07-01 17:50:45,354 - PokeXHelper - INFO - Area selection window created successfully
+2025-07-01 17:50:47,898 - PokeXHelper - INFO - Selection complete: (1456, 81) to (1579, 111), size: 123x30
+2025-07-01 17:50:49,034 - PokeXHelper - INFO - Select Coordinate Display Area selection confirmed: (1456, 81) to (1579, 111)
+2025-07-01 17:50:49,041 - PokeXHelper - INFO - Coordinate area configured: (1456,81) to (1579,111)
+2025-07-01 17:50:50,117 - PokeXHelper - INFO - Save Settings button clicked
+2025-07-01 17:50:50,121 - PokeXHelper - INFO - Configuration backup created: config_backups\config_backup_auto_20250701_175050.json
+2025-07-01 17:50:50,122 - PokeXHelper - INFO - Configuration saved successfully
+2025-07-01 17:50:50,122 - PokeXHelper - INFO - Saving health_bar: (84,80) to (182,118)
+2025-07-01 17:50:50,123 - PokeXHelper - INFO - Saving minimap: (1449,54) to (1727,417)
+2025-07-01 17:50:50,123 - PokeXHelper - INFO - Saving battle_area: (21,341) to (291,717)
+2025-07-01 17:50:50,123 - PokeXHelper - INFO - Saving coordinate area: (1456,81) to (1579,111)
+2025-07-01 17:50:50,124 - PokeXHelper - INFO - Serialized 0 steps for saving
+2025-07-01 17:50:50,125 - PokeXHelper - INFO - Configuration backup created: config_backups\config_backup_auto_20250701_175050.json
+2025-07-01 17:50:50,126 - PokeXHelper - INFO - Configuration saved successfully
+2025-07-01 17:50:50,126 - PokeXHelper - INFO - Configuration saved successfully
+2025-07-01 17:51:09,916 - PokeXHelper - INFO - Added step 1: 'ste first' with icon path: 
+2025-07-01 17:51:09,916 - PokeXHelper - INFO - Created step 1: 'ste first'
+2025-07-01 17:51:09,917 - PokeXHelper - INFO - Refreshing steps display - 1 steps
+2025-07-01 17:51:10,024 - PokeXHelper - INFO - Select an icon for 'ste first' within the minimap area
+2025-07-01 17:51:10,025 - PokeXHelper - INFO - Starting area selection: Select Icon for 'ste first' (in minimap area)
+2025-07-01 17:51:10,297 - PokeXHelper - INFO - Area selection window created successfully
+2025-07-01 17:51:14,172 - PokeXHelper - INFO - Selection complete: (1552, 229) to (1567, 244), size: 15x15
+2025-07-01 17:51:15,396 - PokeXHelper - INFO - Select Icon for 'ste first' (in minimap area) selection confirmed: (1552, 229) to (1567, 244)
+2025-07-01 17:51:15,555 - PokeXHelper - INFO - Saved and loaded icon for step 1: assets/navigation_icons\step_1_1751403075547.png
+2025-07-01 17:51:15,555 - PokeXHelper - INFO - Icon saved for step 'ste first'
+2025-07-01 17:51:15,560 - PokeXHelper - INFO - Refreshing steps display - 1 steps
+2025-07-01 17:51:15,570 - PokeXHelper - INFO - Navigation ready with 1 configured steps
+2025-07-01 17:51:22,414 - PokeXHelper - INFO - Save Settings button clicked
+2025-07-01 17:51:22,415 - PokeXHelper - INFO - Configuration backup created: config_backups\config_backup_auto_20250701_175122.json
+2025-07-01 17:51:22,417 - PokeXHelper - INFO - Configuration saved successfully
+2025-07-01 17:51:22,418 - PokeXHelper - INFO - Saving health_bar: (84,80) to (182,118)
+2025-07-01 17:51:22,418 - PokeXHelper - INFO - Saving minimap: (1449,54) to (1727,417)
+2025-07-01 17:51:22,418 - PokeXHelper - INFO - Saving battle_area: (21,341) to (291,717)
+2025-07-01 17:51:22,419 - PokeXHelper - INFO - Saving coordinate area: (1456,81) to (1579,111)
+2025-07-01 17:51:22,419 - PokeXHelper - INFO - Serialized 1 steps for saving
+2025-07-01 17:51:22,421 - PokeXHelper - INFO - Configuration backup created: config_backups\config_backup_auto_20250701_175122.json
+2025-07-01 17:51:22,422 - PokeXHelper - INFO - Configuration saved successfully
+2025-07-01 17:51:22,422 - PokeXHelper - INFO - Configuration saved successfully
+2025-07-01 17:51:24,528 - PokeXHelper - INFO - Starting navigation sequence
+2025-07-01 17:51:24,528 - PokeXHelper - INFO - Starting navigation with 1 valid steps
+2025-07-01 17:51:24,529 - PokeXHelper - INFO -  Starting navigation sequence with 1 steps
+2025-07-01 17:51:24,529 - PokeXHelper - INFO - Navigation started successfully
+2025-07-01 17:51:24,529 - PokeXHelper - INFO -  Found 1 active steps, 1 ready with icons
+2025-07-01 17:51:24,530 - PokeXHelper - INFO -  Processing step 1/1: 'ste first'
+2025-07-01 17:51:24,530 - PokeXHelper - INFO -  Executing step 1: 'ste first' (attempt 1/2)
+2025-07-01 17:51:24,684 - PokeXHelper - INFO -  Found step 1 icon at (1559, 236) with 100.0% confidence (attempt 1/2)
+2025-07-01 17:51:24,957 - PokeXHelper - INFO -  Clicked at (1559, 236) for step 1 (attempt 1/2)
+2025-07-01 17:51:25,008 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-07-01 17:51:25,008 - PokeXHelper - INFO -  Waiting 3.0 seconds for step completion
+2025-07-01 17:51:33,024 - PokeXHelper - INFO - OCR method 'color_isolation' successful: (3942, 3597, 7)
+2025-07-01 17:51:33,025 - PokeXHelper - WARNING - [WARNING] Step 1 validation failed - distance: 447.0044742505381
+2025-07-01 17:51:33,025 - PokeXHelper - WARNING -  Step 1 validation failed, retrying...
+2025-07-01 17:51:34,026 - PokeXHelper - INFO -  Executing step 1: 'ste first' (attempt 2/2)
+2025-07-01 17:51:34,168 - PokeXHelper - WARNING -  Step 1 icon not found in minimap (attempt 2/2)
+2025-07-01 17:51:34,168 - PokeXHelper - ERROR -  Navigation failed at step 1 'ste first' after retries
+2025-07-01 17:51:34,168 - PokeXHelper - WARNING -  Navigation sequence failed - retrying from beginning in 5 seconds
+2025-07-01 17:51:39,170 - PokeXHelper - INFO -  Processing step 1/1: 'ste first'
+2025-07-01 17:51:39,170 - PokeXHelper - INFO -  Executing step 1: 'ste first' (attempt 1/2)
+2025-07-01 17:51:39,312 - PokeXHelper - WARNING -  Step 1 icon not found in minimap (attempt 1/2)
+2025-07-01 17:51:39,312 - PokeXHelper - INFO -  Retrying step 1 in 2 seconds...
+2025-07-01 17:51:41,313 - PokeXHelper - INFO -  Executing step 1: 'ste first' (attempt 2/2)
+2025-07-01 17:51:41,461 - PokeXHelper - WARNING -  Step 1 icon not found in minimap (attempt 2/2)
+2025-07-01 17:51:41,462 - PokeXHelper - ERROR -  Navigation failed at step 1 'ste first' after retries
+2025-07-01 17:51:41,462 - PokeXHelper - WARNING -  Navigation sequence failed - retrying from beginning in 5 seconds
+2025-07-01 17:51:46,463 - PokeXHelper - INFO -  Processing step 1/1: 'ste first'
+2025-07-01 17:51:46,463 - PokeXHelper - INFO -  Executing step 1: 'ste first' (attempt 1/2)
+2025-07-01 17:51:46,619 - PokeXHelper - INFO -  Found step 1 icon at (1589, 206) with 88.0% confidence (attempt 1/2)
+2025-07-01 17:51:46,882 - PokeXHelper - INFO -  Clicked at (1589, 206) for step 1 (attempt 1/2)
+2025-07-01 17:51:46,934 - PokeXHelper - INFO -  Moved mouse to screen center (1720, 720)
+2025-07-01 17:51:46,934 - PokeXHelper - INFO -  Waiting 3.0 seconds for step completion
+2025-07-01 17:51:50,944 - PokeXHelper - INFO - OCR method 'color_isolation' successful: (3940, 3599, 7)
+2025-07-01 17:51:50,944 - PokeXHelper - WARNING - [WARNING] Step 1 validation failed - distance: 445.01797716496804
+2025-07-01 17:51:50,944 - PokeXHelper - WARNING -  Step 1 validation failed, retrying...
+2025-07-01 17:51:51,093 - PokeXHelper - INFO - Stopping navigation sequence
+2025-07-01 17:51:51,094 - PokeXHelper - INFO - Stopping navigation...
+2025-07-01 17:51:51,945 - PokeXHelper - INFO -  Executing step 1: 'ste first' (attempt 2/2)
+2025-07-01 17:51:52,087 - PokeXHelper - WARNING -  Step 1 icon not found in minimap (attempt 2/2)
+2025-07-01 17:51:52,087 - PokeXHelper - ERROR -  Navigation failed at step 1 'ste first' after retries
+2025-07-01 17:51:52,087 - PokeXHelper - INFO -  Navigation sequence ended
+2025-07-01 17:51:52,088 - PokeXHelper - INFO - Navigation stopped
+2025-07-01 17:51:52,088 - PokeXHelper - INFO - Navigation ready with 1 configured steps
+2025-07-01 17:51:52,088 - PokeXHelper - INFO - Navigation stopped

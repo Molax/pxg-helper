@@ -40,7 +40,7 @@
         "theme": "dark",
         "font_family": "Segoe UI",
         "font_size": 9,
-        "window_geometry": "1400x879+1612+234",
+        "window_geometry": "1400x900+946+214",
         "panel_states": {
             "controls_expanded": true,
             "areas_expanded": true,
@@ -62,25 +62,13 @@
         "detection_sensitivity": 0.8,
         "performance_mode": false
     },
-    "navigation_steps": [
-        {
-            "id": "",
-            "name": "ste first",
-            "x": 0,
-            "y": 0,
-            "icon_path": null,
-            "delay": 1.0,
-            "enabled": true,
-            "step_id": 1,
-            "icon_image_path": "assets/navigation_icons\\step_1_1751403075547.png"
-        }
-    ],
+    "navigation_steps": [],
     "coordinate_area": {
         "name": "Coordinate Display Area",
-        "x1": 1456,
-        "y1": 81,
-        "x2": 1579,
-        "y2": 111,
+        "x1": 1452,
+        "y1": 60,
+        "x2": 1571,
+        "y2": 84,
         "configured": true
     }
 }
